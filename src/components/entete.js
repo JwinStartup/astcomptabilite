@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import { userActions } from '../reducer/user';
 import { useDispatch,useSelector } from 'react-redux';
 import {useNavigate}from  'react-router-dom'
@@ -11,6 +12,7 @@ export default function Entete() {
   return (
     <div className=' w-full flex justify-between'>
           <h1 className='text-2xl m-3 text-green-300'>ASTComptable</h1>
+           <Link to='/inscriptionUser'>inscrivrez-vous</Link>
          {me&&<div className='flex m-2 items-center gap-1 '>
             <div className='bg-gray-400 rounded-full w-14 h-14'/>
              <p className=''>{me.user.nom} </p>
