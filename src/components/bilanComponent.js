@@ -13,7 +13,7 @@ export default function BilanComponent({retour,id}) {
   const {isLoader,bilan} = useSelector((state)=>{
     return state.comptabiliteReducer
    });
-     console.log(bilan)
+     console.log(bilan,id)
   return (
     <div className='z-10 absolute top-[150px] left-[400px] p-4 border bg-white border-gray-100 shadow-lg w-[400px] flex justify-center items-center flex-col'>
        {isLoader===true?<RingLoader
