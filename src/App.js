@@ -19,7 +19,6 @@ import InscriptionUser from "./pages/InscriptionUser.js";
 import ListeParents from "./pages/ListeParents.js";
 import ListePersonnel from "./pages/ListePersonnels.js";
 import PrivateRouter from "./context/PrivateRouter.js";
-import BilanById from "./pages/bilanById.js"
 function App() {
   return (
     <div className="App">
@@ -32,7 +31,6 @@ function App() {
         <Route path="/cp" element={<ClientsPersonnels/>}/>
         <Route path="/factures" element={<Factures/>}/>
         <Route path="/bilan" element={<Bilan/>}/>
-          <Route path="/bilan/:id" element={<BilanById/>}/>
         <Route path="/charges" element={<Charges/>}/>
         <Route path="/factures/commissions" element={<FacturesCommissions/>}/>
         <Route path="/factures/impayes" element={<FacturesImpayes/>}/>
