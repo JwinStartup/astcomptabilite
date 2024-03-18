@@ -39,7 +39,7 @@ export default function Bilan() {
 
     <div className='flex-row flex-wrap items-center justify-center mt-8 flex  w-full  '>
       {bilans.map((value,index)=>
-         <div key={index} onClick={()=>setRub({retour:true,id:value._id})} className='w-52 h-18 m-3 p-2 cursor-pointer bg-gray-100 border rounded border-gray-200 shadow-lg flex flex-col'>
+         <div key={index} onClick={()=>navigate(`/bilan/${value._id}`)} className='w-52 h-18 m-3 p-2 cursor-pointer bg-gray-100 border rounded border-gray-200 shadow-lg flex flex-col'>
           <div className='text-lg font-bold '>
               Bilan financier
           </div>
