@@ -7,13 +7,14 @@ export default function BilanComponent({retour,id}) {
     const dispatch =useDispatch()
 
   useEffect(() => { 
+      console.log("idUseEffect:",id)
     dispatch(comptabiliteActions.voirByIdBilan(id))
-  },[id])
+  },[])
   
   const {isLoader,bilan} = useSelector((state)=>{
     return state.comptabiliteReducer
    });
-     console.log(bilan,id)
+     console.log("corps:"bilan,id)
   return (
     <div className='z-10 absolute top-[150px] left-[400px] p-4 border bg-white border-gray-100 shadow-lg w-[400px] flex justify-center items-center flex-col'>
        {isLoader===true?<RingLoader
@@ -23,22 +24,22 @@ export default function BilanComponent({retour,id}) {
         <div className='text-lg font-bold  '>
          Bilan financier
      </div>
-         <span className='tracking-wide text-sm text-gray-300 font-medium'>Mois: {bilan.periode} </span>
-         <span className='tracking-wide text-sm text-green-400 font-medium mt-1'>{bilan.statut} </span>
+         <span className='tracking-wide text-sm text-gray-300 font-medium'>Mois: {bilan.periode?bilan.periode:0} </span>
+         <span className='tracking-wide text-sm text-green-400 font-medium mt-1'>{bilan.statut?bilan.statut:0} </span>
      </div>
       <table className='w-full'>
        <tbody>
          <tr className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
            <td className='font-medium text-base text-gray-500 text-start'>Recettes</td>
-           <td className='font-medium text-base text-gray-500 text-center'>{bilan.recette} </td>
+           <td className='font-medium text-base text-gray-500 text-center'>{bilan.recette?bilan.recette:0} </td>
          </tr>
          <tr className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
            <td className='font-medium text-base text-gray-500 text-start'>Charges</td>
-           <td className='font-medium text-base text-gray-500 text-center'>{bilan.charge}</td>
+           <td className='font-medium text-base text-gray-500 text-center'>{bilan.charge?bilan.charge:0}</td>
          </tr>
          <tr className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
            <td className='font-medium text-base text-gray-500 text-start'>Commissions</td>
-           <td className='font-medium text-base text-gray-500 text-center'>{bilan.commission}</td>
+           <td className='font-medium text-base text-gray-500 text-center'>{bilan.commission?bilan.commission:0}</td>
          </tr>
        </tbody>
        <tfoot>
