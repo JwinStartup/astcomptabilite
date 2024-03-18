@@ -7,14 +7,14 @@ export default function BilanById() {
   const {id}=useParams()
     const dispatch =useDispatch()
    const navigate = useNavigate()
+   const {isLoader,bilan} = useSelector((state)=>{
+     return state.comptabiliteReducer
+    });
   useEffect(() => { 
       console.log("idUseEffect:",id)
     dispatch(comptabiliteActions.voirByIdBilan(id))
   },[])
   
-  const {isLoader,bilan} = useSelector((state)=>{
-    return state.comptabiliteReducer
-   });
      console.log("corps:",bilan,id)
   return (
     <div className='z-10 absolute top-[150px] left-[400px] p-4 border bg-white border-gray-100 shadow-lg w-[400px] flex justify-center items-center flex-col'>
