@@ -2,11 +2,11 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { comptabiliteActions } from '../reducer/comptabilite'
 import { RingLoader } from 'react-spinners'
-import { useParams } from 'react-router-dom';
+import { useParams,useNavigate } from 'react-router-dom';
 export default function BilanById() {
   const {id}=useParams()
     const dispatch =useDispatch()
-
+   const navigate = useNavigate()
   useEffect(() => { 
       console.log("idUseEffect:",id)
     dispatch(comptabiliteActions.voirByIdBilan(id))
