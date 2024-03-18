@@ -1,6 +1,6 @@
 import {createSlice,createAsyncThunk} from '@reduxjs/toolkit'
 import { fetchWrapper } from '../helper/helper'
-const url = "https://astcomptabiliteserver.onrender.com//api/users"
+const url = "https://astcomptabiliteserver.onrender.com/api/users"
 
 const name = "users";
 const initialState = createInitialState();
