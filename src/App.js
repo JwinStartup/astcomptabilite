@@ -19,7 +19,7 @@ import InscriptionUser from "./pages/InscriptionUser.js";
 import ListeParents from "./pages/ListeParents.js";
 import ListePersonnel from "./pages/ListePersonnels.js";
 import PrivateRouter from "./context/PrivateRouter.js";
-import BilanById from "./page/bilanByid.js"
+import BilanById from "./pages/bilanById.js"
 function App() {
   return (
     <div className="App">
