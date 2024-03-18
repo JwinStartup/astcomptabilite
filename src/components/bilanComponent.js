@@ -6,11 +6,13 @@ import { RingLoader } from 'react-spinners'
 export default function BilanComponent({retour,id}) {
     const dispatch =useDispatch()
 
-  useEffect(() => { 
+ /* useEffect(() => { 
       console.log("idUseEffect:",id)
     dispatch(comptabiliteActions.voirByIdBilan(id))
-  },[])
-  
+  },[])*/
+     const onMAJ=(id)=>{
+    dispatch(comptabiliteActions.voirByIdBilan(id))
+     }
   const {isLoader,bilan} = useSelector((state)=>{
     return state.comptabiliteReducer
    });
@@ -24,34 +26,37 @@ export default function BilanComponent({retour,id}) {
         <div className='text-lg font-bold  '>
          Bilan financier
      </div>
-         <span className='tracking-wide text-sm text-gray-300 font-medium'>Mois: {bilan.periode?bilan.periode:0} </span>
-         <span className='tracking-wide text-sm text-green-400 font-medium mt-1'>{bilan.statut?bilan.statut:0} </span>
+         <span className='tracking-wide text-sm text-gray-300 font-medium'>Mois: {bilan.periode!==0?bilan.periode:0} </span>
+         <span className='tracking-wide text-sm text-green-400 font-medium mt-1'>{bilan.statut!==0?bilan.statut:0} </span>
      </div>
       <table className='w-full'>
        <tbody>
          <tr className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
            <td className='font-medium text-base text-gray-500 text-start'>Recettes</td>
-           <td className='font-medium text-base text-gray-500 text-center'>{bilan.recette?bilan.recette:0} </td>
+           <td className='font-medium text-base text-gray-500 text-center'>{bilan.recette!==0?bilan.recette:0} </td>
          </tr>
          <tr className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
            <td className='font-medium text-base text-gray-500 text-start'>Charges</td>
-           <td className='font-medium text-base text-gray-500 text-center'>{bilan.charge?bilan.charge:0}</td>
+           <td className='font-medium text-base text-gray-500 text-center'>{bilan.charge!==0?bilan.charge:0}</td>
          </tr>
          <tr className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
            <td className='font-medium text-base text-gray-500 text-start'>Commissions</td>
-           <td className='font-medium text-base text-gray-500 text-center'>{bilan.commission?bilan.commission:0}</td>
+           <td className='font-medium text-base text-gray-500 text-center'>{bilan.commission!==0?bilan.commission:0}</td>
          </tr>
        </tbody>
        <tfoot>
          <tr  className='  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
            <td className='font-bold text-base text-red-500 text-start'>Resultat</td>
-           <td className='font-medium text-base text-gray-500 text-center'>{bilan.resultat} </td>
+           <td className='font-medium text-base text-gray-500 text-center'>{bilan.resultat!==0} </td>
          </tr>
        </tfoot>
       </table>
-
+   <div className='flex flex-row space-x-4'></div>
    <button type="button" onClick={()=>retour()} class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
    retour
+   </button>
+   <button type="button" onClick={()=>onMAJ(id)} class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+   actualiser
    </button>
    </>}
       </div>

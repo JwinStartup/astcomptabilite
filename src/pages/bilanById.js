@@ -18,7 +18,7 @@ export default function BilanById() {
      console.log("corps:",bilan,id)
   return (
     <div className='z-10 absolute top-[150px] left-[400px] p-4 border bg-white border-gray-100 shadow-lg w-[400px] flex justify-center items-center flex-col'>
-       {isLoader===true?<RingLoader
+       {(isLoader===true||bilan===null)?<RingLoader
         color={"green"}
         size={60}
       />:<> <div  className='flex  flex-col justify-start w-full mb-3'>
