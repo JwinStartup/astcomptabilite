@@ -3,7 +3,7 @@ import { usePDF } from '@react-pdf/renderer';
 import {PDFRecu} from './PDFRecu'
 import ReactPDF, {PDFViewer,PDFDownloadLink, Page, Text,Image, View, Document, StyleSheet, renderToStream } from '@react-pdf/renderer';
  
-const MyDoc = (value)=>(
+const MyDoc = ({value})=>(
   <Document pageMode='fullScreen' title={`Reçue`}>
         <Page size="A7" style>
           <PDFRecu  value={value}/>
