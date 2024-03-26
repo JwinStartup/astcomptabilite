@@ -64,7 +64,7 @@ export default function VoirRecue({retour,value}) {
         Retour
         </button>
        
-         <PDFDownloadLink document={<MyDoc />} fileName="somename.pdf">
+         <PDFDownloadLink document={<MyDoc value={value} />} fileName="somename.pdf">
              {({ blob, url, loading, error }) =>
                  loading ? 'Loading document...' : 'Download now!'
               }
