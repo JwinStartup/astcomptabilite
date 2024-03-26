@@ -1,7 +1,7 @@
 import React from 'react'
 import { usePDF } from '@react-pdf/renderer';
 import PDFRecu from './PDFRecu'
-
+import ReactPDF, {PDFViewer, Page, Text,Image, View, Document, StyleSheet, renderToStream } from '@react-pdf/renderer';
 const MyDoc = (
   <Document>
     <Page>
