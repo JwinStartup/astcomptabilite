@@ -1,6 +1,8 @@
 import React from 'react'
-
+import PDFRecu from './PDFRecu'
+import { usePDF } from '@react-pdf/renderer';
 export default function VoirRecue({retour,value}) {
+  const [instance, updateInstance] = usePDF({ document: PDFRecu });
   return (
     <div className='w-[500px]  border p-3 bg-white border-gray-100 shadow-md rounded-3xl   z-10 absolute top-[125px] left-[400px]'>
       <div className='flex flex-row justify-between w-full'> 
@@ -50,8 +52,10 @@ export default function VoirRecue({retour,value}) {
         Retour
         </button>
        
-        <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        <button type="button"  className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        <a href={instance.url} download={`Reçue N° ${value._id.slice(value._id.length-6)}`}>
         Télecharger
+        </a>
         </button> </div>
         </div>
     </div>
