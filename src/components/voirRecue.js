@@ -1,8 +1,18 @@
 import React from 'react'
 import { usePDF } from '@react-pdf/renderer';
 import PDFRecu from './PDFRecu'
+
+const MyDoc = (
+  <Document>
+    <Page>
+      // My document data
+    </Page>
+  </Document>
+);
+
+
 export default function VoirRecue({retour,value}) {
-  const [instance, updateInstance] = usePDF({ document: PDFRecu });
+  const [instance, updateInstance] = usePDF({ document: MyDoc });
   console.log(instance)
   return (
     <div className='w-[500px]  border p-3 bg-white border-gray-100 shadow-md rounded-3xl   z-10 absolute top-[125px] left-[400px]'>
