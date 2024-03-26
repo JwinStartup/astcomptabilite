@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-//import PdfRecu from "../components/pdfRecu";
 import myIcon from '../assets/astraining.png'
 import { createTw } from "react-pdf-tailwind";
 import ReactPDF, {PDFViewer, Page, Text,Image, View, Document, StyleSheet, renderToStream } from '@react-pdf/renderer';
@@ -18,30 +17,9 @@ const tw = createTw({
       },
     },
   });
-const value={
-    _id:"AZE2130OP",
-    montant:"40000",
-    client:{
-        _id:"2133ETAYA",
-        nom:"AKOU",
-        prenoms:"jean paul",
-        cel:"67676768299",
-      },
-    enfant:{
-        _id:"2133ETAYA",
-        nom:"AKOU",
-        prenoms:"heleve",
-        classe:"Tle D",
-      },
-      periodeAjouter:"mars 2024",
-      modePaiement:"Espece",
-      refPaiement:"23451717TGY",
-      facture:{
-        _id:"EARAYB542662"
-      }
-}
 
-export  const PDFRecu=()=>{
+
+export  const PDFRecu=(value)=>{
     return(
       <View style={tw('bg-white px-5 pt-5')}>
       <View style={tw('flex flex-row  w-full mb-2   justify-center ')}>
@@ -63,7 +41,6 @@ export  const PDFRecu=()=>{
         <View style={tw(' ')}>
         <Text style={tw('text-sm font-medium text-gray-500')}>Client: {value.client.nom}  {value.client.prenoms}</Text>
         <Text style={tw('text-sm font-medium text-gray-500')}>Cel: {value.client.cel}</Text>
-        <Text style={tw('text-sm font-medium text-gray-500')}>Enfant: {value.enfant.nom}  {value.enfant.prenoms}</Text>
               <Text style={tw('text-sm font-medium text-gray-500')}>Classe: {value.enfant.classe}</Text>
         </View>
         <View style={tw('my-1  border-b border-b-black ')}>
