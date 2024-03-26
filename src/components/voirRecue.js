@@ -1,11 +1,9 @@
 import React from 'react'
 
 import PDFRecu from './PDFRecu'
-import { usePDF } from '@react-pdf/renderer';
 
 import { usePDF } from '@react-pdf/renderer';
 import PDFRecu from './PDFRecu'
->>>>>>> c2bb26296fe8f2cfa178e9672dcc515861c3f717
 export default function VoirRecue({retour,value}) {
   const [instance, updateInstance] = usePDF({ document: PDFRecu });
   return (
