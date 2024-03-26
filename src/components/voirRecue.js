@@ -2,12 +2,13 @@ import React from 'react'
 import { usePDF } from '@react-pdf/renderer';
 import PDFRecu from './PDFRecu'
 import ReactPDF, {PDFViewer, Page, Text,Image, View, Document, StyleSheet, renderToStream } from '@react-pdf/renderer';
+ 
 const MyDoc = (
-  <Document>
-    <Page>
-      // My document data
-    </Page>
-  </Document>
+  <Document pageMode='fullScreen' title={`Reçue`}>
+        <Page size="A7" style>
+          <PdfRecu value={value}/>
+          </Page>
+        </Document>
 );
 
 
