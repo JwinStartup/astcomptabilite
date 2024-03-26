@@ -13,7 +13,7 @@ const MyDoc = ({value})=>(
 
 
 export default function VoirRecue({retour,value}) {
-  const [instance, updateInstance] = usePDF({ document: PDFRecu });
+ 
   console.log(instance)
   return (
     <div className='w-[500px]  border p-3 bg-white border-gray-100 shadow-md rounded-3xl   z-10 absolute top-[125px] left-[400px]'>
