@@ -41,7 +41,7 @@ const value={
       }
 }
 
-export default const PDFRecu=()=>{
+export  const PDFRecu=()=>{
     return(
       <View style={tw('bg-white px-5 pt-5')}>
       <View style={tw('flex flex-row  w-full mb-2   justify-center ')}>
