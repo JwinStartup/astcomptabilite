@@ -1,7 +1,4 @@
 import React from 'react'
-
-import PDFRecu from './PDFRecu'
-
 import { usePDF } from '@react-pdf/renderer';
 import PDFRecu from './PDFRecu'
 export default function VoirRecue({retour,value}) {
