@@ -41,7 +41,6 @@ export  const PDFRecu=({value})=>{
         <View style={tw(' ')}>
         <Text style={tw('text-sm font-medium text-gray-500')}>Client: {value.client.nom}  {value.client.prenoms}</Text>
         <Text style={tw('text-sm font-medium text-gray-500')}>Cel: {value.client.cel}</Text>
-              <Text style={tw('text-sm font-medium text-gray-500')}>Classe: {value.enfant.classe}</Text>
         </View>
         <View style={tw('my-1  border-b border-b-black ')}>
       <Text style={tw('text-sm font-bold text-black')}>Information transaction</Text>
