@@ -41,7 +41,7 @@ const value={
       }
 }
 
-const PdfRecu=({value})=>{
+export default const PdfRecu=({value})=>{
     return(
       <View style={tw('bg-white px-5 pt-5')}>
       <View style={tw('flex flex-row  w-full mb-2   justify-center ')}>
@@ -97,7 +97,7 @@ const PdfRecu=({value})=>{
       
     )
 }
-export default function PDFRecu() {
+{/*  export default function PDFRecu() {
     const {numero} = useParams()
     const [data,setData]= useState(null)
     const dispatch = useDispatch();
@@ -121,4 +121,4 @@ export default function PDFRecu() {
 
 
   }
-
+*/}
