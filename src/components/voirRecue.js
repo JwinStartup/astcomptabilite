@@ -1,6 +1,11 @@
 import React from 'react'
+<<<<<<< HEAD
 import PDFRecu from './PDFRecu'
 import { usePDF } from '@react-pdf/renderer';
+=======
+import { usePDF } from '@react-pdf/renderer';
+import PDFRecu from './PDFRecu'
+>>>>>>> c2bb26296fe8f2cfa178e9672dcc515861c3f717
 export default function VoirRecue({retour,value}) {
   const [instance, updateInstance] = usePDF({ document: PDFRecu });
   return (
@@ -52,8 +57,13 @@ export default function VoirRecue({retour,value}) {
         Retour
         </button>
        
+<<<<<<< HEAD
         <button type="button"  className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
         <a href={instance.url} download={`Reçue N° ${value._id.slice(value._id.length-6)}`}>
+=======
+        <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+         <a href={instance.url} download={`Reçue N° ${value._id.slice(value._id.length-6)}`}>
+>>>>>>> c2bb26296fe8f2cfa178e9672dcc515861c3f717
         Télecharger
         </a>
         </button> </div>

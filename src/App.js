@@ -19,7 +19,6 @@ import InscriptionUser from "./pages/InscriptionUser.js";
 import ListeParents from "./pages/ListeParents.js";
 import ListePersonnel from "./pages/ListePersonnels.js";
 import PrivateRouter from "./context/PrivateRouter.js";
-
 function App() {
   return (
     <div className="App">
@@ -27,8 +26,8 @@ function App() {
       <Route path='*' element={<Navigate to='/' />} />
       
          <Route path="/login" element={<Login/>}/>
-         
-        <Route element={<PrivateRouter/>}>
+  {/*<Route element={<PrivateRouter/>}></Route>*/}
+        
         <Route path="/cp" element={<ClientsPersonnels/>}/>
         <Route path="/factures" element={<Factures/>}/>
         <Route path="/bilan" element={<Bilan/>}/>
@@ -40,7 +39,7 @@ function App() {
         <Route path="/inscription/parents" element={<Parents/>}/>
         <Route path="/inscription/personnels" element={<Personnels/>}/>
         <Route path="/factures/recues" element={<Recues/>}/>
-        </Route>
+        
         <Route path="/" element={<Home/>}/>
         <Route path="/inscriptionUser" element={<InscriptionUser/>}/>
         </Routes>

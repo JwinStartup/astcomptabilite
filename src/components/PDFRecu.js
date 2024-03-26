@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -108,7 +109,11 @@ export default function PDFRecu() {
       },[])*/
     return (
  
+<<<<<<< HEAD
             <Document pageMode='fullScreen' title={`Reçue N° ${value._id.slice(value._id.length-6)}`}>
+=======
+            <Document pageMode='fullScreen' title={`Reçue`}>
+>>>>>>> c2bb26296fe8f2cfa178e9672dcc515861c3f717
         <Page size="A7" style>
           <PdfRecu value={value}/>
           </Page>
@@ -116,4 +121,8 @@ export default function PDFRecu() {
 
       
     )
+<<<<<<< HEAD
   }
+=======
+  }
+>>>>>>> c2bb26296fe8f2cfa178e9672dcc515861c3f717
