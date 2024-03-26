@@ -19,7 +19,7 @@ const tw = createTw({
   });
 
 
-export  const PDFRecu=(value)=>{
+export  const PDFRecu=({value})=>{
     return(
       <View style={tw('bg-white px-5 pt-5')}>
       <View style={tw('flex flex-row  w-full mb-2   justify-center ')}>
