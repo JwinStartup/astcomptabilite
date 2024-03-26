@@ -108,7 +108,7 @@ export default function PDFRecu() {
       },[])*/
     return (
  
-            <Document pageMode='fullScreen' title={`Reçue N° ${value._id.slice(value._id.length-6)}`}>
+            <Document pageMode='fullScreen' title={`Reçue`}>
         <Page size="A7" style>
           <PdfRecu value={value}/>
           </Page>
