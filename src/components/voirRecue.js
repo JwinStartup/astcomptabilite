@@ -6,7 +6,7 @@ import ReactPDF, {PDFViewer, Page, Text,Image, View, Document, StyleSheet, rende
 const MyDoc = (
   <Document pageMode='fullScreen' title={`Reçue`}>
         <Page size="A7" style>
-          <PdfRecu />
+          <PDFRecu />
           </Page>
         </Document>
 );
