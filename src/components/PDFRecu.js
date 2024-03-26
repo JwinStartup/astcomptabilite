@@ -97,28 +97,4 @@ export  const PDFRecu=()=>{
       
     )
 }
-{/*  export default function PDFRecu() {
-    const {numero} = useParams()
-    const [data,setData]= useState(null)
-    const dispatch = useDispatch();
-  
-      // Create styles
-     /* const preinscritReducer = useSelector((state) => state);
-      useEffect(()=>{
-        dispatch(preinscritActions.decision(numero)).then((u)=>setData(u.payload))
-      },[])*/
-    return (
- 
 
-            <Document pageMode='fullScreen' title={`Reçue`}>
-        <Page size="A7" style>
-          <PdfRecu value={value}/>
-          </Page>
-        </Document>
-
-      
-    )
-
-
-  }
-*/}
