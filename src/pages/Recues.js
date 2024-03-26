@@ -69,7 +69,7 @@ export default function Recues() {
       <td className='font-medium text-base text-gray-500 text-center'>{value.modePaiement}</td>
       <td className='font-medium text-base text-gray-500 text-center'>{value.refPaiement}</td>
          <td className='font-medium text-base text-gray-500 text-center ' onClick={()=>setRub({nom:'VOIR',bol:true,value:value} )}>Voir </td>
-         <td className='font-medium text-base text-gray-500 text-center ' onClick={()=>setRub({nom:'TELECHARGER',bol:true} )}>Telecharger </td>
+         <td className='font-medium text-base text-gray-500 text-center ' >Telecharger </td>
     </tr>)}
   </tbody>
 </table>
