@@ -2,7 +2,7 @@ import React from 'react'
 import { usePDF } from '@react-pdf/renderer';
 import {PDFRecu} from './PDFRecu'
 import ReactPDF, {PDFViewer,PDFDownloadLink, Page, Text,Image, View, Document, StyleSheet, renderToStream } from '@react-pdf/renderer';
- 
+ import {FadeLoader}from 'react-spinners'
 const MyDoc = ({value})=>(
   <Document pageMode='fullScreen' title={`Reçue`}>
         <Page size="A7" style>
@@ -64,7 +64,8 @@ export default function VoirRecue({retour,value}) {
        
          <PDFDownloadLink document={<MyDoc value={value} />} fileName="somename.pdf">
              {({ blob, url, loading, error }) =>
-                 loading ? 'Loading document...' : 'Download now!'
+                 loading ? 
+<FadeLoader color="#36d7b7" height="10" width="5"/> :   <span  className="text-white bg-red-700 hover:bg-red-800   font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center>Telecharger</span>
               }
            </PDFDownloadLink>
        
