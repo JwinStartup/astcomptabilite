@@ -91,7 +91,7 @@ const download=async()=>{
         <div className='flex flex-row space-x-6'>  <button onClick={()=>retour()} type="button" className="text-white bg-red-700 hover:bg-red-800   font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center ">
         Retour
         </button>
-        <button type="button" className="text-white bg-bleu-700 hover:bg-bleu-800   font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" onClick={() => download()}>Telecharger</button>  
+        <button type="button" className="text-white bg-blue-700 hover:bg-bleu-800   font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" onClick={() => download()}>Telecharger</button>  
         <button type="button" className="text-white bg-green-700 hover:bg-bleu-800   font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" onClick={() => partager()}>Partager</button>
        
           </div>
