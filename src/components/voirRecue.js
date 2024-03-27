@@ -18,7 +18,13 @@ const download=async()=>{
  const blob = await pdf(
         <MyDoc value={value} />
     ).toBlob();
- console.log(blob)
+ const blobUrl = window.URL.createObjectURL(blob);
+ const anchor = window.document.createElement('a');
+ console.log(blobUrl)
+  anchor.download = filename;
+  anchor.href = blobUrl;
+  anchor.click();
+  window.URL.revokeObjectURL(blobUrl);
 }
   return (
     <div className='w-[500px]  border p-3 bg-white border-gray-100 shadow-md rounded-3xl   z-10 absolute top-[125px] left-[400px]'>
