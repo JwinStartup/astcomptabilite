@@ -3,6 +3,7 @@ import { usePDF } from '@react-pdf/renderer';
 import {PDFRecu} from './PDFRecu'
 import ReactPDF, {PDFViewer,PDFDownloadLink,pdf, Page, Text,Image, View, Document, StyleSheet, renderToStream } from '@react-pdf/renderer';
  import {FadeLoader}from 'react-spinners'
+import  Axios  from 'axios';
 const MyDoc = ({value})=>(
   <Document pageMode='fullScreen' title={`Reçue`}>
         <Page size="A7" style>
@@ -24,6 +25,22 @@ const download=async()=>{
   anchor.download = `Reçue N° ${value._id.slice(value._id.length-6)}`;
   anchor.href = blobUrl;
   anchor.click();
+  window.URL.revokeObjectURL(blobUrl);
+}
+ const partager=async()=>{
+ const blob = await pdf(
+        <MyDoc value={value} />
+    ).toBlob();
+ const blobUrl = window.URL.createObjectURL(blob);
+  const formdata = new FormData(),
+   formdata.append("blob", blobUrl)
+   formdata.append("upload_preset",`Reçue${value._id.slice(value._id.length-6)}`)
+     Axios.post(
+      "https://api.cloudinary.com/v1_1/cfcunadoc/image/upload",
+      formdata
+     ).then((response)=>{
+      console.log(response.data)
+      })
   window.URL.revokeObjectURL(blobUrl);
 }
   return (
@@ -74,10 +91,8 @@ const download=async()=>{
         <div className='flex flex-row space-x-6'>  <button onClick={()=>retour()} type="button" className="text-white bg-red-700 hover:bg-red-800   font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center ">
         Retour
         </button>
-       
-         
-                  <button type="button" className="text-white bg-red-700 hover:bg-bleu-800   font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" onClick={() => download()}>telecharger</button>  
-             
+        <button type="button" className="text-white bg-bleu-700 hover:bg-bleu-800   font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" onClick={() => download()}>Telecharger</button>  
+        <button type="button" className="text-white bg-green-700 hover:bg-bleu-800   font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" onClick={() => Partager()}>Partager</button>
        
           </div>
         </div>
