@@ -32,8 +32,8 @@ const download=async()=>{
         <MyDoc value={value} />
     ).toBlob();
  const blobUrl = window.URL.createObjectURL(blob);
-  const formdata = new FormData(),
-   formdata.append("blob", blobUrl)
+  const formdata = new FormData();
+   formdata.append("blob", blobUrl);
    formdata.append("upload_preset",`Reçue${value._id.slice(value._id.length-6)}`)
      Axios.post(
       "https://api.cloudinary.com/v1_1/cfcunadoc/image/upload",
