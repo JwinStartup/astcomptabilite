@@ -33,11 +33,17 @@ const download=async()=>{
     ).toBlob();
  const blobUrl = window.URL.createObjectURL(blob);
   const formdata = new FormData();
-   formdata.append("file", blobUrl);
+      console.log(blob)
+   formdata.append("blob", blob);
    formdata.append("upload_preset",`Reçue${value._id.slice(value._id.length-6)}`)
      Axios.post(
       "https://api.cloudinary.com/v1_1/cfcunadoc/image/upload",
-      formdata
+      formdata,
+      {
+           headers: {
+             'Content-Type': `multipart/form-data`,
+           },
+        }
      ).then((response)=>{
       console.log(response.data)
       })
