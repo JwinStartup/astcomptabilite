@@ -57,6 +57,12 @@ function createInitialState() {
             return await fetchWrapper.get(`${url}/voirByIdBilan/${body}`)
           }
           ),
+            partager:createAsyncThunk(`${name}/partager`,
+        async (body)=>{
+            console.log(body,`${url}/partager/${body}`)
+            return await fetchWrapper.get(`${url}/partager/${body}`)
+          }
+          ),
         listeFacture:createAsyncThunk(`${name}/listeFacture`,
         async ()=>{
             return await fetchWrapper.get(`${url}/listeFacture`)
@@ -101,6 +107,7 @@ function createInitialState() {
 function createExtraReducers() {
     return (builder) => {
         creerFacture();
+        partager();
         creerRecue();
         creerCharge();
         payerFacture();
@@ -155,6 +162,23 @@ function createExtraReducers() {
                const bilan = action.payload;
                console.log('le bilan:',bilan);
                 state.bilan=bilan;
+                state.isLoader = false;
+              })
+              .addCase(rejected, (state, action) => {
+                state.isLoader = false;
+                state.error = action.error;
+              });
+          }
+        function partager() {
+            var { pending, fulfilled, rejected } = extraActions.partager;
+            builder
+              .addCase(pending, (state) => {
+                state.error = null;
+                state.isLoader = true;
+              })
+              .addCase(fulfilled, (state, action) => {
+               const message = action.payload;
+               console.log('message',message);
                 state.isLoader = false;
               })
               .addCase(rejected, (state, action) => {
