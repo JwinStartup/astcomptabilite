@@ -1,7 +1,7 @@
 import React from 'react'
 import { usePDF } from '@react-pdf/renderer';
 import {PDFRecu} from './PDFRecu'
-import ReactPDF, {PDFViewer,PDFDownloadLink, Page, Text,Image, View, Document, StyleSheet, renderToStream } from '@react-pdf/renderer';
+import ReactPDF, {PDFViewer,PDFDownloadLink,pdf, Page, Text,Image, View, Document, StyleSheet, renderToStream } from '@react-pdf/renderer';
  import {FadeLoader}from 'react-spinners'
 const MyDoc = ({value})=>(
   <Document pageMode='fullScreen' title={`Reçue`}>
@@ -11,15 +11,15 @@ const MyDoc = ({value})=>(
         </Document>
 );
 
+
+
+export default function VoirRecue({retour,value}) {
 const download=async()=>{
  const blob = await pdf(
         <MyDoc value={value} />
     ).toBlob();
  console.log(blob)
 }
-
-
-export default function VoirRecue({retour,value}) {
   return (
     <div className='w-[500px]  border p-3 bg-white border-gray-100 shadow-md rounded-3xl   z-10 absolute top-[125px] left-[400px]'>
       <div className='flex flex-row justify-between w-full'> 
