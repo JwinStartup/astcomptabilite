@@ -11,6 +11,13 @@ const MyDoc = ({value})=>(
         </Document>
 );
 
+const download=()=>{
+ const blob = await pdf(
+        <MyDoc value={value} />
+    ).toBlob();
+ console.log(blob)
+}
+
 
 export default function VoirRecue({retour,value}) {
   return (
@@ -62,12 +69,9 @@ export default function VoirRecue({retour,value}) {
         Retour
         </button>
        
-         <PDFDownloadLink document={<MyDoc value={value} />} fileName="somename.pdf">
-             {({ blob, url, loading, error }) =>
-                 loading ? 
-<FadeLoader color="#36d7b7" height="10" width="5"/> :   <span  className="text-white bg-red-700 hover:bg-red-800   font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center>Telecharger</span>
-              }
-           </PDFDownloadLink>
+         
+                  <button type="button" className="text-white bg-red-700 hover:bg-red-800   font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" onClick={() => download( )}>telecharger</button>  
+             
        
           </div>
         </div>
