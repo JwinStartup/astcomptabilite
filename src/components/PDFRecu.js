@@ -55,7 +55,7 @@ export  const PDFRecu=({value})=>{
         </View>
 
       </View>
-        <View style={tw('flex justify-end pb-1 mt-2')}>
+        <View style={tw('flex justify-end pb-1 mt-6')}>
         <Text style={tw(' font-medium  tracking-tight text-[8px] text-black  ')}>crée le  11/03/2024 à 11:00</Text>
         </View>
 
