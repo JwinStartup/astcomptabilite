@@ -32,25 +32,16 @@ const download=async()=>{
  const blob = await pdf(
         <MyDoc value={value} />
     ).toBlob();
- const blobUrl = window.URL.createObjectURL(blob);
   const formdata = new FormData();
-      console.log(blob);
   let file = new File([blob], `Reçue${value._id.slice(value._id.length-6)}.pdf`);
-      console.log(file)
    formdata.append("file", file);
    formdata.append("upload_preset","cfcpdf")
      Axios.post(
-      "https://api.cloudinary.com/v1_1/cfcunadoc/image/upload",
-      formdata,
-      {
-           headers: {
-             'Content-Type': `multipart/form-data`,
-           },
-        }
+      "https://api.cloudinary.com/v1_1/cfcunadoc/image/upload",formdata
      ).then((response)=>{
       console.log(response.data)
       })
-  window.URL.revokeObjectURL(blobUrl);
+   retour()
 }
   return (
     <div className='w-[500px]  border p-3 bg-white border-gray-100 shadow-md rounded-3xl   z-10 absolute top-[125px] left-[400px]'>
