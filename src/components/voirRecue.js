@@ -38,7 +38,7 @@ const download=async()=>{
   let file = new File([blob], `Reçue${value._id.slice(value._id.length-6)}.pdf`);
       console.log(file)
    formdata.append("file", file);
-   formdata.append("upload_preset",`Reçue${value._id.slice(value._id.length-6)}`)
+   formdata.append("upload_preset","cfcpdf")
      Axios.post(
       "https://api.cloudinary.com/v1_1/cfcunadoc/image/upload",
       formdata,
