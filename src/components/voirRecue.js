@@ -26,6 +26,7 @@ const download=async()=>{
   anchor.href = blobUrl;
   anchor.click();
   window.URL.revokeObjectURL(blobUrl);
+ retour()
 }
  const partager=async()=>{
  const blob = await pdf(
@@ -33,8 +34,10 @@ const download=async()=>{
     ).toBlob();
  const blobUrl = window.URL.createObjectURL(blob);
   const formdata = new FormData();
-      console.log(blob)
-   formdata.append("blob", blob);
+      console.log(blob);
+  let file = new File([blob], `Reçue${value._id.slice(value._id.length-6)}.pdf`);
+      console.log(file)
+   formdata.append("file", file);
    formdata.append("upload_preset",`Reçue${value._id.slice(value._id.length-6)}`)
      Axios.post(
       "https://api.cloudinary.com/v1_1/cfcunadoc/image/upload",
