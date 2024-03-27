@@ -11,7 +11,7 @@ const MyDoc = ({value})=>(
         </Document>
 );
 
-const download=()=>{
+const download=async()=>{
  const blob = await pdf(
         <MyDoc value={value} />
     ).toBlob();
