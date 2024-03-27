@@ -21,7 +21,7 @@ const download=async()=>{
  const blobUrl = window.URL.createObjectURL(blob);
  const anchor = window.document.createElement('a');
  console.log(blobUrl)
-  anchor.download = filename;
+  anchor.download = `Reçue N° ${value._id.slice(value._id.length-6)}`;
   anchor.href = blobUrl;
   anchor.click();
   window.URL.revokeObjectURL(blobUrl);
