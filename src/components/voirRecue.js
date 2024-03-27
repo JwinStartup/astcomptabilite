@@ -44,7 +44,7 @@ const download=async()=>{
       "https://api.cloudinary.com/v1_1/cfcunadoc/image/upload",formdata
      ).then((response)=>{
       console.log(response.data)
-      dispatch(comptabiliteActions.partager(response.data.secure_url))
+      dispatch(comptabiliteActions.partager(response.data.publicId))
       })
    retour()
 }
