@@ -1,6 +1,8 @@
 import React from 'react'
 import { usePDF } from '@react-pdf/renderer';
 import {PDFRecu} from './PDFRecu'
+import { useDispatch, useSelector } from 'react-redux'
+import { comptabiliteActions } from '../reducer/comptabilite.js'
 import {useNavigate} from 'react-router-dom'
 import ReactPDF, {PDFViewer,PDFDownloadLink,pdf, Page, Text,Image, View, Document, StyleSheet, renderToStream } from '@react-pdf/renderer';
  import {FadeLoader}from 'react-spinners'
