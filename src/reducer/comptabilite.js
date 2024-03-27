@@ -60,7 +60,7 @@ function createInitialState() {
             partager:createAsyncThunk(`${name}/partager`,
         async (body)=>{
             console.log(body,`${url}/partager/${body}`)
-           // return await fetchWrapper.get(`${url}/partager/${body}`)
+            return await fetchWrapper.get(`${url}/partager/${body}`)
           }
           ),
         listeFacture:createAsyncThunk(`${name}/listeFacture`,
