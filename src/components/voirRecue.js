@@ -1,6 +1,7 @@
 import React from 'react'
 import { usePDF } from '@react-pdf/renderer';
 import {PDFRecu} from './PDFRecu'
+import {useNavigate} from 'react-router-dom'
 import ReactPDF, {PDFViewer,PDFDownloadLink,pdf, Page, Text,Image, View, Document, StyleSheet, renderToStream } from '@react-pdf/renderer';
  import {FadeLoader}from 'react-spinners'
 import  Axios  from 'axios';
@@ -15,6 +16,7 @@ const MyDoc = ({value})=>(
 
 
 export default function VoirRecue({retour,value}) {
+ const dispatch = useDispatch()
 const download=async()=>{
  const blob = await pdf(
         <MyDoc value={value} />
@@ -40,6 +42,7 @@ const download=async()=>{
       "https://api.cloudinary.com/v1_1/cfcunadoc/image/upload",formdata
      ).then((response)=>{
       console.log(response.data)
+      dispatch(comptabiliteActions.partager(response.data.secure_url))
       })
    retour()
 }
