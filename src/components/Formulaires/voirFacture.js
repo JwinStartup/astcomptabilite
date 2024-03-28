@@ -8,7 +8,7 @@ import ReactPDF, {PDFViewer,PDFDownloadLink,pdf, Page,Text,Image, View, Document
 const MyDoc = ({value})=>(
   <Document pageMode='fullScreen' title={`Reçue`}>
         <Page size="A7" style>
-          <PDFRecu  value={value}/>
+          <PDFfacture  value={value}/>
           </Page>
         </Document>
 );
