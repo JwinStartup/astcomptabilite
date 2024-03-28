@@ -8,7 +8,7 @@ import ReactPDF, {PDFViewer,PDFDownloadLink,pdf, Page, Text,Image, View, Documen
  import {FadeLoader}from 'react-spinners'
 import  Axios  from 'axios';
 const MyDoc = ({value})=>(
-  <Document pageMode='fullScreen' title={`Reçue`}>
+  <Document pageMode='fullScreen' title={`Reçue N° ${value._id.slice(value._id.length-6)}`}>
         <Page size="A7" style>
           <PDFRecu  value={value}/>
           </Page>
