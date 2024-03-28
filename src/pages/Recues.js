@@ -60,7 +60,7 @@ export default function Recues() {
     </tr>
   </thead>
   <tbody>
-  {recues.map((value,index)=><tr key={index} className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
+  {recues.map((value,index)=><tr onClick={()=>setRub({nom:'VOIR',bol:true,value:value} )} key={index} className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
       <td className='font-medium text-base text-gray-500 text-center'>{value._id.slice(value._id.length-6)}</td>
       <td className='font-medium text-base text-gray-500 text-center'>{value.client.nom} {value.client.prenoms}</td>      
       <td className='font-medium text-base text-gray-500 text-center'>{value.facture._id.slice(value.facture._id.length-6)}</td>
@@ -68,7 +68,6 @@ export default function Recues() {
       <td className='font-medium text-base text-gray-500 text-center'>{value.montant}</td>
       <td className='font-medium text-base text-gray-500 text-center'>{value.modePaiement}</td>
       <td className='font-medium text-base text-gray-500 text-center'>{value.refPaiement}</td>
-         <td className='font-medium text-base text-gray-500 text-center ' onClick={()=>setRub({nom:'VOIR',bol:true,value:value} )}>Voir </td>
     </tr>)}
   </tbody>
 </table>
