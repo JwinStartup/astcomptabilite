@@ -4,7 +4,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { comptabiliteActions } from '../../reducer/comptabilite.js'
 import  Axios  from 'axios';
 
-
+const MyDoc = ({value})=>(
+  <Document pageMode='fullScreen' title={`Reçue`}>
+        <Page size="A7" style>
+          <PDFRecu  value={value}/>
+          </Page>
+        </Document>
+);
+  
 export default function VoirFacture({retour,value}) {
   console.log(value)
 const dispatch = useDispatch()
