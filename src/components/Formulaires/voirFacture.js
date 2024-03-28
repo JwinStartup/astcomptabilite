@@ -3,7 +3,7 @@ import {PDFfacture} from '../PDFfacture'
 import { useDispatch, useSelector } from 'react-redux'
 import { comptabiliteActions } from '../../reducer/comptabilite.js'
 import  Axios  from 'axios';
-import ReactPDF, {PDFViewer,PDFDownloadLink,pdf, Page, Text,Image, View, Document, StyleSheet, renderToStream } from '@react-pdf/renderer';
+import ReactPDF, {PDFViewer,PDFDownloadLink,pdf, Page,Text,Image, View, Document, StyleSheet, renderToStream } from '@react-pdf/renderer';
  import {FadeLoader}from 'react-spinners'
 const MyDoc = ({value})=>(
   <Document pageMode='fullScreen' title={`Reçue`}>
