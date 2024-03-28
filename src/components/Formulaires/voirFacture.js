@@ -6,7 +6,7 @@ import  Axios  from 'axios';
 import ReactPDF, {PDFViewer,PDFDownloadLink,pdf, Page,Text,Image, View, Document, StyleSheet, renderToStream } from '@react-pdf/renderer';
  import {FadeLoader}from 'react-spinners'
 const MyDoc = ({value})=>(
-  <Document pageMode='fullScreen' title={`Reçue`}>
+  <Document pageMode='fullScreen' title={`Facture N° ${value._id.slice(value._id.length-6)}`}>
         <Page size="A7" style>
           <PDFfacture  value={value}/>
           </Page>
