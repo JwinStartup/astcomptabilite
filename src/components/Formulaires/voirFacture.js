@@ -15,6 +15,7 @@ const MyDoc = ({value})=>(
 export default function VoirFacture({retour,value}) {
   console.log(value)
 const dispatch = useDispatch()
+  
 const download=async()=>{
  const blob = await pdf(
         <MyDoc value={value} />
@@ -22,25 +23,26 @@ const download=async()=>{
  const blobUrl = window.URL.createObjectURL(blob);
  const anchor = window.document.createElement('a');
  console.log(blobUrl)
-  anchor.download = `Reçue N° ${value._id.slice(value._id.length-6)}`;
+  anchor.download = `Facture N° ${value._id.slice(value._id.length-6)}`;
   anchor.href = blobUrl;
   anchor.click();
   window.URL.revokeObjectURL(blobUrl);
  retour()
 }
+  
  const partager=async()=>{
  const blob = await pdf(
         <MyDoc value={value} />
     ).toBlob();
   const formdata = new FormData();
-  let file = new File([blob], `Reçue${value._id.slice(value._id.length-6)}.pdf`);
+  let file = new File([blob], `Facture${value._id.slice(value._id.length-6)}.pdf`);
    formdata.append("file", file);
    formdata.append("upload_preset","cfcpdf")
      Axios.post(
       "https://api.cloudinary.com/v1_1/cfcunadoc/image/upload",formdata
      ).then((response)=>{
       console.log(response.data)
-      dispatch(comptabiliteActions.partager({url:response.data.secure_url,filename:`Reçue${value._id.slice(value._id.length-6)}.pdf`}))
+      dispatch(comptabiliteActions.partager({url:response.data.secure_url,filename:`Facture${value._id.slice(value._id.length-6)}.pdf`}))
       })
    retour()
 }
@@ -90,9 +92,9 @@ const download=async()=>{
         <div className='flex flex-row space-x-6'>  <button onClick={()=>retour()} type="button" className="text-white bg-red-700 hover:bg-red-800   font-medium rounded-lg text-sm px-5 py-2.5 text-start inline-flex items-center ">
         Retour
         </button>
-        <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-start inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-        Télecharger
-        </button> </div>
+        <button type="button" className="text-white bg-blue-700 hover:bg-bleu-800   font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" onClick={() => download()}>Telecharger</button>  
+        <button type="button" className="text-white bg-green-700 hover:bg-bleu-800   font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" onClick={() => partager()}>Partager</button>
+        </div>
         </div>
     </div>
   )
