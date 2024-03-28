@@ -47,7 +47,7 @@ export  const PDFRecu=({value})=>{
       </View>
         <View style={tw('')}>
         <Text style={tw(' font-medium  tracking-tight text-sm text-gray-500 ')}>Periode : {value.periodeAjouter}</Text>
-        <Text style={tw(' font-medium  tracking-tight text-sm text-gray-500 ')}>N* Facture : {value.facture._id}</Text>
+        <Text style={tw(' font-medium  tracking-tight text-sm text-gray-500 ')}>N* Facture : {value.facture._id.slice(value.facture._id.length-6)}</Text>
             <Text style={tw(' font-medium  tracking-tight text-sm text-gray-500 ')}>Mode : {value.modePaiement}</Text>
             {value.refPaiement&&<Text style={tw(' font-medium  tracking-tight text-sm text-gray-500 ')}>Ref : {value.refPaiement}</Text>}
            
