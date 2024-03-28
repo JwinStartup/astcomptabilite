@@ -1,7 +1,42 @@
 import React from 'react'
+import {PDFfacture} from '../PDFfacture'
+import { useDispatch, useSelector } from 'react-redux'
+import { comptabiliteActions } from '../../reducer/comptabilite.js'
+import  Axios  from 'axios';
+
 
 export default function VoirFacture({retour,value}) {
   console.log(value)
+const dispatch = useDispatch()
+const download=async()=>{
+ const blob = await pdf(
+        <MyDoc value={value} />
+    ).toBlob();
+ const blobUrl = window.URL.createObjectURL(blob);
+ const anchor = window.document.createElement('a');
+ console.log(blobUrl)
+  anchor.download = `Reçue N° ${value._id.slice(value._id.length-6)}`;
+  anchor.href = blobUrl;
+  anchor.click();
+  window.URL.revokeObjectURL(blobUrl);
+ retour()
+}
+ const partager=async()=>{
+ const blob = await pdf(
+        <MyDoc value={value} />
+    ).toBlob();
+  const formdata = new FormData();
+  let file = new File([blob], `Reçue${value._id.slice(value._id.length-6)}.pdf`);
+   formdata.append("file", file);
+   formdata.append("upload_preset","cfcpdf")
+     Axios.post(
+      "https://api.cloudinary.com/v1_1/cfcunadoc/image/upload",formdata
+     ).then((response)=>{
+      console.log(response.data)
+      dispatch(comptabiliteActions.partager({url:response.data.secure_url,filename:`Reçue${value._id.slice(value._id.length-6)}.pdf`}))
+      })
+   retour()
+}
   return (
     <div className='w-[500px]  border p-3 bg-white border-gray-100 shadow-md rounded-3xl   z-10 absolute top-[125px] left-[400px]'>
       <div className='flex flex-row justify-between w-full'> 
