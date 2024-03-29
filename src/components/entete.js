@@ -5,11 +5,13 @@ import { useDispatch,useSelector } from 'react-redux';
 import {UserContext} from '../context/authContext'
 import {useNavigate}from  'react-router-dom'
 export default function Entete() {
+  const { login, user} = useContext(UserContext);
   const navigate = useNavigate
   const  dispatch = useDispatch()
   const me = useSelector((state)=>{
     return state.userReducer.user
    });
+  console.log(user)
   return (
     <div className=' w-full flex justify-between'>
           <h1 className='text-2xl m-3 text-green-300'>ASTComptable</h1>
