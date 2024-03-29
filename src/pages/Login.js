@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { userActions } from '../reducer/user';
 import {useNavigate}from 'react-router-dom';
-import {UserContext} from './context/authContext'
+import {UserContext} from '../context/authContext'
 export default function Login() {
   const { login } = useContext(UserContext);
   const navigate = useNavigate()
