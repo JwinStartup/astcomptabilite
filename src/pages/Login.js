@@ -18,6 +18,7 @@ export default function Login() {
     console.log(data)
     //setLoading(true)
    dispatch(userActions.login(data)).then((d)=>{
+     console.log(d.payload.user)
      login(d.payload.user)
     navigate('/')
     })
