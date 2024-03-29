@@ -6,10 +6,10 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState({ me:null, auth: true });
 
   // Login updates the user data with a name parameter
-  const login = (user) => {
-    console.log(user)
-    setUser((user) => ({
-      me: user,
+  const login = (p) => {
+    console.log(p)
+    setUser((p) => ({
+      me: p,
       auth: true,
     }));
   };
