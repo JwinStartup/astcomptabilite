@@ -1,6 +1,7 @@
 import React from 'react'
 import { usePDF } from '@react-pdf/renderer';
 import {PDFRecu} from './PDFRecu'
+import { MdWhatsapp } from "react-icons/md"
 import { useDispatch, useSelector } from 'react-redux'
 import { comptabiliteActions } from '../reducer/comptabilite.js'
 import {useNavigate} from 'react-router-dom'
@@ -97,7 +98,7 @@ const download=async()=>{
         Retour
         </button>
         <button type="button" className="text-white bg-blue-700 hover:bg-bleu-800   font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" onClick={() => download()}>Telecharger</button>  
-        <button type="button" className="text-white bg-green-700 hover:bg-bleu-800   font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" onClick={() => partager()}>Partager</button>
+        <button type="button" className="text-white bg-green-700 hover:bg-bleu-800   font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" onClick={() => partager()}> <MdWhatsapp color="ffffff" size="4px"/>   Partager</button>
        
           </div>
         </div>
