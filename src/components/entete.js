@@ -12,7 +12,7 @@ export default function Entete() {
     return state.userReducer.user
    });
   console.log('me:',user.me)
-console.log('auth:'user.auth)
+console.log('auth:',user.auth)
   return (
     <div className=' w-full flex justify-between'>
           <h1 className='text-2xl m-3 text-green-300'>ASTComptable</h1>
