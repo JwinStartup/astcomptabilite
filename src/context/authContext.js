@@ -8,7 +8,7 @@ export const UserProvider = ({ children }) => {
   // Login updates the user data with a name parameter
   const login = (p) => {
     console.log(p)
-    setUser((p) => ({
+    setUser(() => ({
       me: p,
       auth: true,
     }));
