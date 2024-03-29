@@ -6,7 +6,7 @@ import { userActions } from '../reducer/user';
 import {useNavigate}from 'react-router-dom';
 import {UserContext} from '../context/authContext'
 export default function Login() {
-  const { login } = useContext(UserContext);
+  const { login, user} = useContext(UserContext);
   const navigate = useNavigate()
   const { register, handleSubmit,
     // formState: { errors }
@@ -18,7 +18,8 @@ export default function Login() {
     console.log(data)
     //setLoading(true)
    dispatch(userActions.login(data)).then((d)=>{
-     console.log(d)
+     console.log(d.payload.user)
+     console.log(user)
     navigate('/')
     })
   }
