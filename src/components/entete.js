@@ -11,7 +11,7 @@ export default function Entete() {
   const me = useSelector((state)=>{
     return state.userReducer.user
    });
-  console.log('user:',user.me)
+  console.log('user:',user.me.auth)
   return (
     <div className=' w-full flex justify-between'>
           <h1 className='text-2xl m-3 text-green-300'>ASTComptable</h1>
