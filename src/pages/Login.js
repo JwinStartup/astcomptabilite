@@ -1,10 +1,12 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import Entete from '../components/entete'
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { userActions } from '../reducer/user';
-import {useNavigate}from 'react-router-dom'
+import {useNavigate}from 'react-router-dom';
+import {UserContext} from '../../context/authContext'
 export default function Login() {
+  const { login } = useContext(UserContext);
   const navigate = useNavigate()
   const { register, handleSubmit,
     // formState: { errors }
@@ -15,7 +17,8 @@ export default function Login() {
   const onSubmit = (data) => {
     console.log(data)
     //setLoading(true)
-   dispatch(userActions.login(data)).then(()=>{
+   dispatch(userActions.login(data)).then((d)=>{
+     console.log(d)
     navigate('/')
     })
   }
