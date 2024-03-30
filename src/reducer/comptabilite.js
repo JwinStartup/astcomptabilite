@@ -163,7 +163,7 @@ function createExtraReducers() {
                const bilan = action.payload;
                console.log('le bilan:',bilan);
                 state.bilan=bilan;
-                state.resultat=bilan.recettes-bilan.charges
+                state.resultat=bilan.recette-bilan.charge
                 state.isLoader = false;
               })
               .addCase(rejected, (state, action) => {
