@@ -5,20 +5,18 @@ export const UserContext =createContext({auth:false,user:null})
 export const UserProvider = ({ children }) => {
   // User is the name of the "data" that gets stored in context
   const [user, setUser] = useState({ me:null, auth: true });
-  
-      useEffect(()=>
-              {
-                localStorage.setItem('user',JSON.stringify(user))
-              },[user]
-              )
       useEffect(()=>
               {
                setUser(JSON.parse(localStorage.getItem('user')))
-              },[]
+              },[user]
               )
     
   const login = (p) => {
     console.log(p)
+     localStorage.setItem('user',JSON.stringify({
+      me: p,
+      auth: true,
+    }))
     setUser(() => ({
       me: p,
       auth: true,
