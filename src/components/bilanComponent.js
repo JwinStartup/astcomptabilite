@@ -32,17 +32,17 @@ export default function BilanComponent({retour,id}) {
      </div>
       <table className='w-full'>
        <tbody>
-         <tr className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
+         <tr className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full  cursor-pointer'>
            <td className='font-medium text-base text-gray-500 text-start'>Recettes</td>
            <td className='font-medium text-base text-gray-500 text-center'>{bilan.recette?bilan.recette:0} </td>
          </tr>
-         <tr className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
+         <tr className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full  cursor-pointer'>
            <td className='font-medium text-base text-gray-500 text-start'>Charges</td>
            <td className='font-medium text-base text-gray-500 text-center'>{bilan.charge?bilan.charge:0}</td>
          </tr>
        </tbody>
        <tfoot>
-         <tr  className='  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
+         <tr  className='bg-red-100 rounded-3xl h-14 m-2  items-center w-full  cursor-pointer'>
            <td className='font-bold text-base text-red-500 text-start'>Resultat</td>
            <td className='font-medium text-base text-gray-500 text-center'>{bilan.resultat||resultat} </td>
          </tr>
