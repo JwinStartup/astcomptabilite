@@ -6,7 +6,7 @@ export const UserProvider = ({ children }) => {
   // User is the name of the "data" that gets stored in context
   const [user, setUser] = useState({ me:null, auth: true });
   const [useur,dispatch]=useReducer(userReducer)
-   console.log(useur,dispatch)
+   console.log(useur)
   // Login updates the user data with a name parameter
   const login = (p) => {
     console.log(p)
