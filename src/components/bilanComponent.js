@@ -14,7 +14,7 @@ export default function BilanComponent({retour,id}) {
   const {isLoader,bilan,resultat} = useSelector((state)=>{
     return state.comptabiliteReducer
    });
-    const cloture=()=>{
+    const cloturer=()=>{
         console.log(resultat)
     }
      console.log("corps:",bilan,resultat)
