@@ -14,6 +14,9 @@ export default function BilanComponent({retour,id}) {
   const {isLoader,bilan,resultat} = useSelector((state)=>{
     return state.comptabiliteReducer
    });
+    const cloture=()=>{
+        console.log(resultat)
+    }
      console.log("corps:",bilan,resultat)
   return (
     <div className='z-10 absolute top-[150px] left-[400px] p-4 border bg-white border-gray-100 shadow-lg w-[400px] flex justify-center items-center flex-col'>
@@ -37,10 +40,6 @@ export default function BilanComponent({retour,id}) {
            <td className='font-medium text-base text-gray-500 text-start'>Charges</td>
            <td className='font-medium text-base text-gray-500 text-center'>{bilan.charge?bilan.charge:0}</td>
          </tr>
-         <tr className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
-           <td className='font-medium text-base text-gray-500 text-start'>Commissions</td>
-           <td className='font-medium text-base text-gray-500 text-center'>{bilan.commission?bilan.commission:0}</td>
-         </tr>
        </tbody>
        <tfoot>
          <tr  className='  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
@@ -49,10 +48,14 @@ export default function BilanComponent({retour,id}) {
          </tr>
        </tfoot>
       </table>
-
+ <div classeName='flex flex-col gap-3'>
    <button type="button" onClick={()=>retour()} class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
    retour
    </button>
+     <button type="button" onClick={()=>cloturer()} class="text-white bg-blue-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+   Cloturer
+   </button>
+     </div>
    </>}
       </div>
   )
