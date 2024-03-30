@@ -25,6 +25,10 @@ export const UserProvider = ({ children }) => {
 
   // Logout updates the user data to default
   const logout = () => {
+     localStorage.setItem('user',JSON.stringify({
+      me: null,
+      auth: false,
+    }))
     setUser(() => ({
       me: null,
       auth: false,
