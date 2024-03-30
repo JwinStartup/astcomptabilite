@@ -6,12 +6,12 @@ export const UserProvider = ({ children }) => {
   // User is the name of the "data" that gets stored in context
   const [user, setUser] = useState({ me:null, auth: true });
   
-    useEffecct(()=>
+      useEffect(()=>
               {
                 localStorage.setItem('user',JSON.stringify(user))
               },[user]
               )
-   useEffecct(()=>
+      useEffect(()=>
               {
                setUser(JSON.parse(localStorage.getItem('user')))
               },[]
