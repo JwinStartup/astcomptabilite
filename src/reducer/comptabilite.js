@@ -15,6 +15,7 @@ export const comptabiliteReducer = slice.reducer;
 function createInitialState() {
     return {
       facture: null,
+      resultat:0,
       factures:[],
       bilan: null,
       bilans:[],
@@ -162,6 +163,7 @@ function createExtraReducers() {
                const bilan = action.payload;
                console.log('le bilan:',bilan);
                 state.bilan=bilan;
+                state.resultat=bilan.recettes-bilan.charges
                 state.isLoader = false;
               })
               .addCase(rejected, (state, action) => {
