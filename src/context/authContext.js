@@ -1,13 +1,22 @@
-import react,{createContext,useState,useReducer} from 'react'
+import react,{createContext,useState,useReducer,useEffect} from 'react'
 import {userReducer} from '../reducer/user'
 export const UserContext =createContext({auth:false,user:null})
 
 export const UserProvider = ({ children }) => {
   // User is the name of the "data" that gets stored in context
   const [user, setUser] = useState({ me:null, auth: true });
-  const [useur,dispatch]=useReducer(userReducer)
-   console.log(useur)
-  // Login updates the user data with a name parameter
+  
+    useEffecct(()=>
+              {
+                localStorage.setItem('user',JSON.stringify(user))
+              },[user]
+              )
+   useEffecct(()=>
+              {
+               setUser(JSON.parse(localStorage.getItem('user')))
+              },[]
+              )
+    
   const login = (p) => {
     console.log(p)
     setUser(() => ({
