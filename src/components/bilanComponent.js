@@ -11,7 +11,7 @@ export default function BilanComponent({retour,id}) {
     dispatch(comptabiliteActions.voirByIdBilan(id))
   },[])
   
-  const {isLoader,bilan} = useSelector((state)=>{
+  const {isLoader,bilan,resultat} = useSelector((state)=>{
     return state.comptabiliteReducer
    });
      console.log("corps:",bilan,id)
