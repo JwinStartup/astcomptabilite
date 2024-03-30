@@ -45,7 +45,7 @@ export default function BilanComponent({retour,id}) {
        <tfoot>
          <tr  className='  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
            <td className='font-bold text-base text-red-500 text-start'>Resultat</td>
-           <td className='font-medium text-base text-gray-500 text-center'>{bilan.resultat} </td>
+           <td className='font-medium text-base text-gray-500 text-center'>{bilan.resultat||resultat} </td>
          </tr>
        </tfoot>
       </table>
