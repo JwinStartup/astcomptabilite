@@ -8,7 +8,7 @@ export const UserProvider = ({ children }) => {
       useEffect(()=>
               {
                setUser(JSON.parse(localStorage.getItem('user')))
-              },[user]
+              },[]
               )
     
   const login = (p) => {
