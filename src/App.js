@@ -37,7 +37,7 @@ function App() {
         <Route path="/factures/commissions" element={<FacturesCommissions/>}/>
         <Route path="/factures/impayes" element={<FacturesImpayes/>}/>
         <Route path="/cp/ListeParent" element={<ListeParents/>}/>
-           <Route path="/cp/ListeEnfant" element={<ListeEnfants/>}/>
+           <Route path="/cp/ListeEnfant" element={<ListeEnfant/>}/>
         <Route path="/cp/ListePersonnel" element={<ListePersonnel/>}/>
         <Route path="/inscription/parents" element={<Parents/>}/>
         <Route path="/inscription/personnels" element={<Personnels/>}/>
