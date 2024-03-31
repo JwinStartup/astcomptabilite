@@ -13,7 +13,7 @@ export default function ListeEnfant() {
     const [rub , setRub]=useState(false)
  
    useEffect(() => { 
-    dispatch(userActions.listeEnfants())
+    dispatch(userActions.listeEnfant())
   },[])
     const {isLoader,enfants}  = useSelector((state)=>{
       return state.userReducer
