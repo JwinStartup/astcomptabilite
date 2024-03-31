@@ -13,7 +13,7 @@ const dispatch =useDispatch()
 const onSubmit = (data) => {
  console.log(data)
  //setLoading(true)
-  [par,setPar]=useState([])
+ const [par,setPar] = useState([])
 dispatch(userActions.inscriptionEnfant(data)).then(()=>{
   navigate('/cp/ListeEnfant')
  })
