@@ -54,7 +54,12 @@ const {personnels} = useSelector((state)=>{
       Formateur:
      <select {...register("Formateur")}
              defaultValue=" " className='outline-none w-[400px] border-b-2 py-1 text-lg'>
-        {personnels.map((val,index)=> <option onClick=(()=>setPar([...par,val])) className=''  key={index}> {val.nom}  {val.prenoms}</option>)}
+        {personnels.map((val,index)=> <option 
+                                      onClick={()=> setPar([...par,val])} 
+                                      className=''  
+                                      key={index}>
+                                      {val.nom}  {val.prenoms}
+                                     </option>)}
         </select>  </label>
           <label> 
                {par.length!==0&& <div>{par.map((i)=><span classeName='bg-gray-300 p-2 text-black font-bold'>{i.nom} {i.prenoms} </spa>) </div>}
