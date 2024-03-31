@@ -17,6 +17,13 @@ dispatch(userActions.inscriptionEnfant(data)).then(()=>{
   navigate('/cp/ListeEnfant')
  })
 }
+  useEffect(() => { 
+    dispatch(userActions.listeParent())
+  },[])
+ 
+  const {isLoader,parents} = useSelector((state)=>{
+    return state.userReducer
+   });
   return (
     <div>
     <Entete />
