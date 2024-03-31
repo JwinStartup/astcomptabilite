@@ -5,6 +5,7 @@ import { useDispatch,useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { userActions } from '../reducer/user';
 export default function Enfants() {
+ const [par,setPar] = useState([])
   const navigate=useNavigate()
   const { register, handleSubmit,
   } = useForm(
@@ -13,7 +14,6 @@ const dispatch =useDispatch()
 const onSubmit = (data) => {
  console.log(data)
  //setLoading(true)
- const [par,setPar] = useState([])
 dispatch(userActions.inscriptionEnfant(data)).then(()=>{
   navigate('/cp/ListeEnfant')
  })
