@@ -7,7 +7,6 @@ export default function BilanComponent({retour,id}) {
     const dispatch =useDispatch()
 
   useEffect(() => { 
-      console.log("idUseEffect:",id)
     dispatch(comptabiliteActions.voirByIdBilan(id))
   },[])
   
@@ -15,7 +14,7 @@ export default function BilanComponent({retour,id}) {
     return state.comptabiliteReducer
    });
     const cloturer=()=>{
-        console.log(resultat)
+        dispatch(comptabiliteActions.cloturer(resultat))
     }
      console.log("corps:",bilan,resultat)
   return (
