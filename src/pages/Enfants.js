@@ -55,7 +55,7 @@ const {personnels} = useSelector((state)=>{
      <select {...register("Formateur")}
              defaultValue=" " className='outline-none w-[400px] border-b-2 py-1 text-lg'>
         {personnels.map((val,index)=> <option 
-                                      onClick={()=> setPar([...par,val])} 
+                                      onClick={()=> console.log(val)} 
                                       className=''  
                                       key={index}>
                                       {val.nom}  {val.prenoms}
