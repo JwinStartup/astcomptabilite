@@ -43,7 +43,12 @@ dispatch(userActions.inscriptionEnfant(data)).then(()=>{
       <input {...register("cel")}   type='text' placeholder='Cel' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
       <input {...register("ville")}   type='text' placeholder='ville' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
       <input {...register("commune")}   type='text' placeholder='commune' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
-      <select {...register("parent")}
+      <select {...register("Formateur")}
+             defaultValue=" " className='outline-none w-[400px] border-b-2 py-1 text-lg'>
+              <option className='text-gray-400' value=" " >Choisissez le personnel</option>
+        {personnels.map((val,index)=> <option className=''  key={index}> {val.nom}  {val.prenoms}</option>)}
+        </select>
+  <select {...register("parent")}
              defaultValue=" " className='outline-none w-[400px] border-b-2 py-1 text-lg'>
         {parents.map((val,index)=> <option className='' value={val._id} key={index}> {val.nom}  {val.prenoms}</option>)}
         </select>
