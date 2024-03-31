@@ -29,14 +29,18 @@ dispatch(userActions.inscriptionEnfant(data)).then(()=>{
          <form onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex justify-center h-full items-center flex-col space-y-4 p-9 ' >
          
      <div className='flex flex-col '>
-   <p className='text-2xl font-semibold text-black tracking-wider mb-3'>Formateur</p>             
+   <p className='text-2xl font-semibold text-black tracking-wider mb-3'>Enfant</p>             
       <div className='flex flex-col mx-4 space-y-4'>
       <input {...register("nom")}   type='text' placeholder='Nom' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
       <input {...register("prenoms")}   type='text' placeholder='Prenoms' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
       <input {...register("cel")}   type='text' placeholder='Cel' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
       <input {...register("ville")}   type='text' placeholder='ville' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
       <input {...register("commune")}   type='text' placeholder='commune' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
-      <select {...register("classe")} defaultValue='Science' className='outline-none w-[400px] border-b-2 py-1 text-lg'>
+      <select {...register("parent")}
+             defaultValue=" " className='outline-none w-[400px] border-b-2 py-1 text-lg'>
+        {parents.map((val,index)=> <option className='' value={val._id} key={index}> {val.nom}  {val.prenoms}</option>)}
+        </select>
+  <select {...register("classe")} defaultValue='Science' className='outline-none w-[400px] border-b-2 py-1 text-lg'>
             <option>cp1 </option>
             <option>cp2</option>
             <option>ce1</option>
