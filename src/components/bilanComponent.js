@@ -26,8 +26,8 @@ export default function BilanComponent({retour,id}) {
         <div className='text-lg font-bold  '>
          Bilan financier
      </div>
-         <span className='tracking-wide text-sm text-gray-300 font-medium'>Mois: {bilan.periode} </span>
-         <span className= `${bilan.statut==='cloturé'?text-red-400:text-green-400} tracking-wide text-sm  font-medium mt-1`>{bilan.statut} </span>
+         <span className='tracking-wide text-sm text-gray-300 font-medium'>Mois:{bilan.periode?bilan.periode:0} </span>
+         <span className= `${bilan.statut==='cloturé'?text-red-400:text-green-400} tracking-wide text-sm  font-medium mt-1`>{bilan.statut?bilan.statut:0} </span>
      </div>
       <table className='w-full'>
        <tbody>
