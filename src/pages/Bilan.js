@@ -46,7 +46,7 @@ export default function Bilan() {
           <div className='text-sm text-gray-400 font-medium'>
           Mois: {value.periode}
           </div>
-          <div className={`${bilan.statut==='cloturé'?'text-red-400':'text-green-400'}
+          <div className={`${value.statut==='cloturé'?'text-red-400':'text-green-400'}
                               tracking-wide text-sm  font-medium mt-1
                               `}>
           {value.statut}
