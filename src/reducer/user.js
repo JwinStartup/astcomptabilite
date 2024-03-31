@@ -16,8 +16,10 @@ function createInitialState() {
     return {
       user: null,
       parent:null,
+      enfant:null,
       personnel:null,
       parents:[],
+      enfants:[],
       personnels:[],
       isloader:false,
     };
@@ -63,9 +65,19 @@ function createInitialState() {
              return  await fetchWrapper.post(`${url}/inscriptionPersonnel`,body).then((r)=>console.log(r))
             }
             ),
-          listeParent:createAsyncThunk(`${name}/listeParent`,
+         inscriptionEnfant:createAsyncThunk(`${name}/inscriptionEnfant`,
+          async (body)=>{
+             return  await fetchWrapper.post(`${url}/inscriptionEnfant`,body).then((r)=>console.log(r))
+            }
+            ),
+            listeParent:createAsyncThunk(`${name}/listeParent`,
           async ()=>{
              return  await fetchWrapper.get(`${url}/listeParent`)
+            }
+            ),
+             listeEnfant:createAsyncThunk(`${name}/listeEnfant`,
+          async ()=>{
+             return  await fetchWrapper.get(`${url}/listeEnfant`)
             }
             ),
           listePersonnel:createAsyncThunk(`${name}/listePersonnel`,
@@ -84,6 +96,8 @@ function createExtraReducers() {
         inscriptionParent();
         inscriptionPersonnel();
         listeParent();
+        inscriptionEnfant();
+        listeEnfant();
         listePersonnel();
         login();
         deconnecte();
@@ -121,6 +135,23 @@ function createExtraReducers() {
                 state.error = action.error;
               });
           }
+         function inscriptionEnfant() {
+            var { pending, fulfilled, rejected } = extraActions.inscriptionEnfant;
+            builder
+              .addCase(pending, (state) => {
+                state.error = null;
+                state.isLoader = true;
+              })
+              .addCase(fulfilled, (state, action) => {
+               const enfant = action.payload;
+                state.enfant=enfant;
+                state.isLoader = false;
+              })
+              .addCase(rejected, (state, action) => {
+                state.isLoader = false;
+                state.error = action.error;
+              });
+          }
         function listePersonnel() {
             var { pending, fulfilled, rejected } = extraActions.listePersonnel;
             builder
@@ -137,6 +168,26 @@ function createExtraReducers() {
               .addCase(rejected, (state, action) => {
                 state.isLoader = false;
                 state.error = action.error;
+              });
+          }
+         function listeEnfant() {
+            var { pending, fulfilled, rejected } = extraActions.listeEnfant;
+            builder
+              .addCase(pending, (state) => {
+                state.error = null;
+                state.isLoader = true;
+    
+              })
+              .addCase(fulfilled, (state, action) => {
+               const enfant = action.payload;
+                state.enfants=enfant;
+                state.isLoader = false;
+
+              })
+              .addCase(rejected, (state, action) => {
+                state.isLoader = false;
+                state.error = action.error;
+
               });
           }
         function listeParent() {
