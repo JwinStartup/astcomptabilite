@@ -20,8 +20,14 @@ dispatch(userActions.inscriptionEnfant(data)).then(()=>{
   useEffect(() => { 
     dispatch(userActions.listeParent())
   },[])
- 
-  const {isLoader,parents} = useSelector((state)=>{
+ useEffect(() => { 
+  dispatch(userActions.listePersonnel())
+},[])
+
+const {personnels} = useSelector((state)=>{
+  return state.userReducer
+ });
+  const {parents} = useSelector((state)=>{
     return state.userReducer
    });
   return (
@@ -43,15 +49,19 @@ dispatch(userActions.inscriptionEnfant(data)).then(()=>{
       <input {...register("cel")}   type='text' placeholder='Cel' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
       <input {...register("ville")}   type='text' placeholder='ville' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
       <input {...register("commune")}   type='text' placeholder='commune' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
-      <select {...register("Formateur")}
+      <label> 
+      Choississez un formateur:
+     <select {...register("Formateur")}
              defaultValue=" " className='outline-none w-[400px] border-b-2 py-1 text-lg'>
               <option className='text-gray-400' value=" " >Choisissez le personnel</option>
         {personnels.map((val,index)=> <option className=''  key={index}> {val.nom}  {val.prenoms}</option>)}
-        </select>
+        </select>  </label>
+          <label> 
+      Choississez un parent:
   <select {...register("parent")}
              defaultValue=" " className='outline-none w-[400px] border-b-2 py-1 text-lg'>
         {parents.map((val,index)=> <option className='' value={val._id} key={index}> {val.nom}  {val.prenoms}</option>)}
-        </select>
+        </select> </label>
   <select {...register("classe")} defaultValue='Science' className='outline-none w-[400px] border-b-2 py-1 text-lg'>
             <option>cp1 </option>
             <option>cp2</option>
