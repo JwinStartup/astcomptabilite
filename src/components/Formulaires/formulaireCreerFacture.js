@@ -11,6 +11,7 @@ export default function FormulaireCreerFacture({retour}) {
   useEffect(() => { 
     dispatch(userActions.listeParent())
   },[])
+ 
   const onSubmit = (data) => {
     console.log(data)
     //setLoading(true)
@@ -19,7 +20,6 @@ export default function FormulaireCreerFacture({retour}) {
     })
    
   }
- 
   const {isLoader,parents} = useSelector((state)=>{
     return state.userReducer
    });
