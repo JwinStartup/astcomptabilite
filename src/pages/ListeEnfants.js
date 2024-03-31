@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Entete from '../components/entete'
 import { useNavigate } from 'react-router-dom'
 import Backdrop from '../components/backdrop'
-import SupprimerEnfant from '../components/supprimerEnfants.js'
+import SupprimerEnfants from '../components/supprimerEnfants.js'
 import { useDispatch,useSelector } from 'react-redux';
 import { userActions } from '../reducer/user.js'
 import { RingLoader } from 'react-spinners'
@@ -11,12 +11,12 @@ export default function ListePersonnel() {
     const navigate = useNavigate()
     const dispatch =useDispatch()
   useEffect(() => { 
-    dispatch(userActions.listePersonnel())
+    dispatch(userActions.listeEnfants())
   },[])
   
   
     const [rub , setRub]=useState(false)
-    const {isLoader,personnels}  = useSelector((state)=>{
+    const {isLoader,enfants}  = useSelector((state)=>{
       return state.userReducer
      });
 
@@ -27,7 +27,7 @@ export default function ListePersonnel() {
         <SupprimerEnfants retour={()=>setRub(false)} />
         </div>}
          <Entete />
-{console.log(personnels,isLoader)}
+{console.log(enfants,isLoader)}
 
          <div className='  flex justify-between  space-x-2 mx-4'>
          <button className='ml-10 bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center' onClick={()=>navigate("/cp")} > retour</button>
