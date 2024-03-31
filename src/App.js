@@ -14,10 +14,12 @@ import Bilan from './pages/Bilan.js'
 import ClientsPersonnels from './pages/clientspersonnels.js'
 import Parents from './pages/Parents.js'
 import Personnels from './pages/Personnels.js'
+import Enfants from './pages/Enfants.js'
 import Login from './pages/Login.js'
 import InscriptionUser from "./pages/InscriptionUser.js";
 import ListeParents from "./pages/ListeParents.js";
 import ListePersonnel from "./pages/ListePersonnels.js";
+import ListeEnfant from "./pages/ListeEnfants.js";
 import PrivateRouter from "./context/PrivateRouter.js";
 function App() {
   return (
@@ -35,9 +37,11 @@ function App() {
         <Route path="/factures/commissions" element={<FacturesCommissions/>}/>
         <Route path="/factures/impayes" element={<FacturesImpayes/>}/>
         <Route path="/cp/ListeParent" element={<ListeParents/>}/>
+           <Route path="/cp/ListeEnfant" element={<ListeEnfants/>}/>
         <Route path="/cp/ListePersonnel" element={<ListePersonnel/>}/>
         <Route path="/inscription/parents" element={<Parents/>}/>
         <Route path="/inscription/personnels" element={<Personnels/>}/>
+           <Route path="/inscription/enfants" element={<Enfants/>}/>
         <Route path="/factures/recues" element={<Recues/>}/>
         
         <Route path="/" element={<Home/>}/>
