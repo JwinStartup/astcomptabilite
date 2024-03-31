@@ -54,14 +54,17 @@ function createInitialState() {
           ),
           voirByIdBilan:createAsyncThunk(`${name}/voirByIdBilan`,
         async (body)=>{
-            console.log(body,`${url}/voirByIdBilan/${body}`)
             return await fetchWrapper.get(`${url}/voirByIdBilan/${body}`)
           }
           ),
             partager:createAsyncThunk(`${name}/partager`,
         async (body)=>{
-            console.log(body,`${url}/partager/${body}`)
             return await fetchWrapper.post(`${url}/partager`,body)
+          }
+          ),
+        cloturer:createAsyncThunk(`${name}/cloturer`,
+        async (body)=>{
+            return await fetchWrapper.post(`${url}/cloturer`,body)
           }
           ),
         listeFacture:createAsyncThunk(`${name}/listeFacture`,
@@ -118,6 +121,7 @@ function createExtraReducers() {
         listeBilan();
         voirByIdBilan();
         listeCommission();
+        cloturer();
         function creerCharge() {
             var { pending, fulfilled, rejected } = extraActions.creerCharge;
             builder
@@ -128,6 +132,23 @@ function createExtraReducers() {
               .addCase(fulfilled, (state, action) => {
                const charge = action.payload;
                 state.charge=charge
+                state.isLoader = false;
+              })
+              .addCase(rejected, (state, action) => {
+                state.isLoader = false;
+                state.error = action.error;
+              });
+          }
+        function cloturer() {
+            var { pending, fulfilled, rejected } = extraActions.cloturer;
+            builder
+              .addCase(pending, (state) => {
+                state.error = null;
+                state.isLoader = true;
+              })
+              .addCase(fulfilled, (state, action) => {
+               const bilan = action.payload;
+                state.bilan=bilan
                 state.isLoader = false;
               })
               .addCase(rejected, (state, action) => {
