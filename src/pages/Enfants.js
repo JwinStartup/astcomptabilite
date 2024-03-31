@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect,useState} from 'react'
 import Entete from '../components/entete'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch,useSelector } from 'react-redux';
@@ -13,6 +13,7 @@ const dispatch =useDispatch()
 const onSubmit = (data) => {
  console.log(data)
  //setLoading(true)
+  [par,setPar]=useState([])
 dispatch(userActions.inscriptionEnfant(data)).then(()=>{
   navigate('/cp/ListeEnfant')
  })
@@ -50,18 +51,19 @@ const {personnels} = useSelector((state)=>{
       <input {...register("ville")}   type='text' placeholder='ville' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
       <input {...register("commune")}   type='text' placeholder='commune' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
       <label> 
-      Choississez un formateur:
+      Formateur:
      <select {...register("Formateur")}
              defaultValue=" " className='outline-none w-[400px] border-b-2 py-1 text-lg'>
-              <option className='text-gray-400' value=" " >Choisissez le personnel</option>
-        {personnels.map((val,index)=> <option className=''  key={index}> {val.nom}  {val.prenoms}</option>)}
+        {personnels.map((val,index)=> <option onClick=(()=>setPar([...par,val])) className=''  key={index}> {val.nom}  {val.prenoms}</option>)}
         </select>  </label>
           <label> 
-      Choississez un parent:
+               {par.length!==0&& <div>{par.map((i)=><span classeName='bg-gray-300 p-2 text-black font-bold'>{i.nom} {i.prenoms} </spa>) </div>}
+      Parent:
   <select {...register("parent")}
              defaultValue=" " className='outline-none w-[400px] border-b-2 py-1 text-lg'>
         {parents.map((val,index)=> <option className='' value={val._id} key={index}> {val.nom}  {val.prenoms}</option>)}
         </select> </label>
+               
   <select {...register("classe")} defaultValue='Science' className='outline-none w-[400px] border-b-2 py-1 text-lg'>
             <option>cp1 </option>
             <option>cp2</option>
