@@ -11,9 +11,7 @@ export default function ListeEnfant() {
     const navigate = useNavigate()
     const dispatch =useDispatch()
     const [rub , setRub]=useState(false)
-  useEffect(() => { 
-    dispatch(userActions.listeEnfants())
-  },[])
+ 
   
     const {isLoader,enfants}  = useSelector((state)=>{
       return state.userReducer
