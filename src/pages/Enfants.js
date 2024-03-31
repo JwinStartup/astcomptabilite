@@ -62,7 +62,11 @@ const {personnels} = useSelector((state)=>{
                                      </option>)}
         </select>  </label>
           <label> 
-               {par.length!==0&& <div>{par.map((i)=><span classeName='bg-gray-300 p-2 text-black font-bold'>{i.nom} {i.prenoms} </spa>) </div>}
+               {par.length!==0&& 
+                  <div>{par.map((i)=>
+                                     <span classeName='bg-gray-300 p-2 text-black font-bold'>
+                                       {i.nom} {i.prenoms} </span>)}
+                  </div>}
       Parent:
   <select {...register("parent")}
              defaultValue=" " className='outline-none w-[400px] border-b-2 py-1 text-lg'>
