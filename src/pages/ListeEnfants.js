@@ -7,7 +7,7 @@ import { useDispatch,useSelector } from 'react-redux';
 import { userActions } from '../reducer/user.js'
 import { RingLoader } from 'react-spinners'
 
-export default function ListePersonnel() {
+export default function ListeEnfant() {
     const navigate = useNavigate()
     const dispatch =useDispatch()
   useEffect(() => { 
