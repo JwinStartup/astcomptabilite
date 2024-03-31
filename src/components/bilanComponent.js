@@ -2,10 +2,10 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { comptabiliteActions } from '../reducer/comptabilite'
 import { RingLoader } from 'react-spinners'
-
+import {useNavigate} from 'react-router-dom'
 export default function BilanComponent({retour,id}) {
     const dispatch =useDispatch()
-
+    const navigate =useNavigate()
   useEffect(() => { 
     dispatch(comptabiliteActions.voirByIdBilan(id))
   },[])
@@ -26,8 +26,8 @@ export default function BilanComponent({retour,id}) {
         <div className='text-lg font-bold  '>
          Bilan financier
      </div>
-         <span className='tracking-wide text-sm text-gray-300 font-medium'>Mois: {bilan.periode?bilan.periode:0} </span>
-         <span className='tracking-wide text-sm text-green-400 font-medium mt-1'>{bilan.statut?bilan.statut:0} </span>
+         <span className='tracking-wide text-sm text-gray-300 font-medium'>Mois: {bilan.periode} </span>
+         <span className= `${bilan.statut==='cloturé'?text-red-400:text-green-400 tracking-wide text-sm  font-medium mt-1`>{bilan.statut} </span>
      </div>
       <table className='w-full'>
        <tbody>
@@ -51,7 +51,7 @@ export default function BilanComponent({retour,id}) {
    <button type="button" onClick={()=>retour()} class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
    retour
    </button>
-     <button type="button" onClick={()=>cloturer()} class="text-white bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center ">
+      {bilan.statut!=='cloturé'&&<button type="button" onClick={()=>cloturer()} class="text-white bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center ">
    Cloturer
    </button>
      </div>
