@@ -14,7 +14,7 @@ export default function BilanComponent({retour,id}) {
     return state.comptabiliteReducer
    });
     const cloturer=()=>{
-        dispatch(comptabiliteActions.cloturer(resultat))
+        dispatch(comptabiliteActions.cloturer({id:id,resultat:resultat}))
     }
      console.log("corps:",bilan,resultat)
   return (
