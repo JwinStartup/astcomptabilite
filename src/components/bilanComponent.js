@@ -26,18 +26,18 @@ export default function BilanComponent({retour,id}) {
         <div className='text-lg font-bold  '>
          Bilan financier
      </div>
-         <span className='tracking-wide text-sm text-gray-300 font-medium'>Mois:{bilan.periode?bilan.periode:0} </span>
-         <span className= `tracking-wide text-sm  font-medium mt-1`>{bilan.statut?bilan.statut:0} </span>
+         <span className='tracking-wide text-sm text-gray-300 font-medium'>Mois:{bilan.periode} </span>
+         <span className=`${bilan.statut==='cloturé'?text-red-400:text-green-400} tracking-wide text-sm  font-medium mt-1`>{bilan.statut} </span>
      </div>
       <table className='w-full'>
        <tbody>
          <tr className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full  cursor-pointer'>
            <td className='font-medium text-base text-gray-500 text-start'>Recettes</td>
-           <td className='font-medium text-base text-gray-500 text-center'>{bilan.recette?bilan.recette:0} </td>
+           <td className='font-medium text-base text-gray-500 text-center'>{bilan.recette} </td>
          </tr>
          <tr className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full  cursor-pointer'>
            <td className='font-medium text-base text-gray-500 text-start'>Charges</td>
-           <td className='font-medium text-base text-gray-500 text-center'>{bilan.charge?bilan.charge:0}</td>
+           <td className='font-medium text-base text-gray-500 text-center'>{bilan.charge}</td>
          </tr>
        </tbody>
        <tfoot>
