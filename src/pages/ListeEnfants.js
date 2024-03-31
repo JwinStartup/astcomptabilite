@@ -57,7 +57,6 @@ export default function ListePersonnel() {
 <th  className='border-b-2 text-gray-400'>Commune</th>
 <th  className='border-b-2 text-gray-400'>Classe</th>
 <th  className='border-b-2 text-gray-400'>Cel</th>
-<th  className='border-b-2 text-gray-400'>Whatshapp</th>
 
 </tr>
 </thead>
