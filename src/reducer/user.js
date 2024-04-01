@@ -222,8 +222,8 @@ function createExtraReducers() {
                 state.isLoader = true;
               })
               .addCase(fulfilled, (state, action) => {
-               const message = action.payload;
-                state.message=message;
+               const personnel = action.payload;
+                state.personnel=personnel;
                 state.isLoader = false;
               })
               .addCase(rejected, (state, action) => {
@@ -256,8 +256,8 @@ function createExtraReducers() {
                 state.isLoader = true;
               })
               .addCase(fulfilled, (state, action) => {
-               const message = action.payload;
-                state.message=message;
+               const parent = action.payload;
+                state.parent=parent;
                 state.isLoader = false;
               })
               .addCase(rejected, (state, action) => {
@@ -307,8 +307,8 @@ function createExtraReducers() {
                 state.isLoader = true;
               })
               .addCase(fulfilled, (state, action) => {
-               const message = action.payload;
-                state.message=message;
+               const enfant = action.payload;
+                state.enfant=enfant;
                 state.isLoader = false;
               })
               .addCase(rejected, (state, action) => {
