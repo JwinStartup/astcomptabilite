@@ -4,7 +4,7 @@ import { userActions } from '../reducer/user.js'
 export default function SupprimerParent({retour,rub}) {
 const dispatch=useDispatch()
   const supprimer=()=>{
-    dispatch(userActions.supprimerParent(rub.valuue._id))
+    dispatch(userActions.supprimerParent(rub.value._id))
     retour()
   }
   return (
