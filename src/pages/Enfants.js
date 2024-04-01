@@ -98,9 +98,11 @@ const {personnels} = useSelector((state)=>{
         <div className="flex key={index} items-center p-2 rounded hover:bg-gray-100 ">
           <input id={index} 
                  type="checkbox" 
-                 value="" 
-                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 ">
-          <label htmlFor={index} className="w-full ms-2 text-sm font-medium text-gray-900 rounded "> {va.nom} {val.prenoms} - {val.discipline} </label>
+                 value={val._id} 
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 "/>
+                  <label htmlFor={index} className="w-full ms-2 text-sm font-medium text-gray-900 rounded "> 
+                  {va.nom} {val.prenoms} - {val.discipline} 
+                  </label>
         </div>
          </li>)}  
          </ul>        
