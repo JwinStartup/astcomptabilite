@@ -15,9 +15,7 @@ export default function ListeEnfant() {
    useEffect(() => { 
     dispatch(userActions.listeEnfant())
   },[])
-    const supprimer=(id)=> { 
-    dispatch(userActions.supprimerEnfant(id))
-  }
+   
     const {isLoader,enfants}  = useSelector((state)=>{
       return state.userReducer
      });
