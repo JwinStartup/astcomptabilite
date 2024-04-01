@@ -5,7 +5,7 @@ import { userActions } from '../reducer/user.js'
 export default function SupprimerEnfants({retour,rub}) {
   const dispatch=useDispatch()
   const supprimer=()=>{
-    consoe.log(rub.value)
+    console.log(rub.value)
     dispatch(userActions.supprimerEnfant(rub.value._id))
     retour()
   }
