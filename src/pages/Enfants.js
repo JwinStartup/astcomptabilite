@@ -101,7 +101,7 @@ const {personnels} = useSelector((state)=>{
                  value={val._id} 
                   className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 "/>
                   <label htmlFor={index} className="w-full ms-2 text-sm font-medium text-gray-900 rounded "> 
-                  {va.nom} {val.prenoms} - {val.discipline} 
+                  {val.nom} {val.prenoms} - {val.discipline} 
                   </label>
         </div>
          </li>)}  
