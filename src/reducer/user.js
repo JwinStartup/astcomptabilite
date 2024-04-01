@@ -60,14 +60,39 @@ function createInitialState() {
              return  await fetchWrapper.post(`${url}/inscriptionParent`,body).then((r)=>console.log(r))
             }
             ),
+          modifier:createAsyncThunk(`${name}/modifier`,
+          async (body)=>{
+             return  await fetchWrapper.post(`${url}/modifier`,body).then((r)=>console.log(r))
+            }
+            ),
           inscriptionPersonnel:createAsyncThunk(`${name}/inscriptionPersonnel`,
           async (body)=>{
              return  await fetchWrapper.post(`${url}/inscriptionPersonnel`,body).then((r)=>console.log(r))
             }
             ),
+          modifierPersonnel:createAsyncThunk(`${name}/modifierPersonnel`,
+          async (body)=>{
+             return  await fetchWrapper.post(`${url}/modifierPersonnel`,body).then((r)=>console.log(r))
+            }
+            ),
+          modifierParent:createAsyncThunk(`${name}/modifierParent`,
+          async (body)=>{
+             return  await fetchWrapper.post(`${url}/modifierParent`,body).then((r)=>console.log(r))
+            }
+            ),
          inscriptionEnfant:createAsyncThunk(`${name}/inscriptionEnfant`,
           async (body)=>{
              return  await fetchWrapper.post(`${url}/inscriptionEnfant`,body).then((r)=>console.log(r))
+            }
+            ),
+            modifierEnfant:createAsyncThunk(`${name}/modifierEnfant`,
+          async (body)=>{
+             return  await fetchWrapper.post(`${url}/modifierEnfant`,body).then((r)=>console.log(r))
+            }
+            ),
+            modifier:createAsyncThunk(`${name}/modifier`,
+          async (body)=>{
+             return  await fetchWrapper.post(`${url}/modifier`,body).then((r)=>console.log(r))
             }
             ),
             listeParent:createAsyncThunk(`${name}/listeParent`,
@@ -78,6 +103,26 @@ function createInitialState() {
              listeEnfant:createAsyncThunk(`${name}/listeEnfant`,
           async ()=>{
              return  await fetchWrapper.get(`${url}/listeEnfant`)
+            }
+            ),
+            supprimerEnfant:createAsyncThunk(`${name}/supprimerEnfant`,
+          async (body)=>{
+             return  await fetchWrapper.get(`${url}/supprimerEnfant/{body}`)
+            }
+            ),
+            supprimerParent:createAsyncThunk(`${name}/supprimerParent`,
+          async (body)=>{
+             return  await fetchWrapper.get(`${url}/supprimerParent/{body}`)
+            }
+            ),
+            supprimerPersonnel:createAsyncThunk(`${name}/supprimerPersonnel`,
+          async (body)=>{
+             return  await fetchWrapper.get(`${url}/supprimerPersonnel/{body}`)
+            }
+            ),
+            supprimer:createAsyncThunk(`${name}/supprimer`,
+          async (body)=>{
+             return  await fetchWrapper.get(`${url}/supprimer/{body}`)
             }
             ),
           listePersonnel:createAsyncThunk(`${name}/listePersonnel`,
@@ -93,16 +138,58 @@ function createInitialState() {
 function createExtraReducers() {
     return (builder) => {
         inscription();
+        supprimer();
+        modifier();
         inscriptionParent();
         inscriptionPersonnel();
         listeParent();
         inscriptionEnfant();
+        supprimerEnfant();
+        modifierEnfant();
+        supprimerParent();
+        modifierParent();
+        supprimerPersonnel();
+        modifierPersonnel();
         listeEnfant();
         listePersonnel();
         login();
         deconnecte();
         function inscriptionPersonnel() {
             var { pending, fulfilled, rejected } = extraActions.inscriptionPersonnel;
+            builder
+              .addCase(pending, (state) => {
+                state.error = null;
+                state.isLoader = true;
+              })
+              .addCase(fulfilled, (state, action) => {
+               const personnel = action.payload;
+                state.personnel=personnel
+                state.isLoader = false;
+              })
+              .addCase(rejected, (state, action) => {
+                state.isLoader = false;
+                state.error = action.error;
+              });
+          }
+        function modifiierPersonnel() {
+            var { pending, fulfilled, rejected } = extraActions.modifiierPersonnel;
+            builder
+              .addCase(pending, (state) => {
+                state.error = null;
+                state.isLoader = true;
+              })
+              .addCase(fulfilled, (state, action) => {
+               const personnel = action.payload;
+                state.personnel=personnel
+                state.isLoader = false;
+              })
+              .addCase(rejected, (state, action) => {
+                state.isLoader = false;
+                state.error = action.error;
+              });
+          }
+        function supprimerPersonnel() {
+            var { pending, fulfilled, rejected } = extraActions.supprimerPersonnel;
             builder
               .addCase(pending, (state) => {
                 state.error = null;
@@ -128,6 +215,74 @@ function createExtraReducers() {
               .addCase(fulfilled, (state, action) => {
                const parent = action.payload;
                 state.parent=parent;
+                state.isLoader = false;
+              })
+              .addCase(rejected, (state, action) => {
+                state.isLoader = false;
+                state.error = action.error;
+              });
+          }
+        function supprimerParent() {
+            var { pending, fulfilled, rejected } = extraActions.supprimerParent;
+            builder
+              .addCase(pending, (state) => {
+                state.error = null;
+                state.isLoader = true;
+              })
+              .addCase(fulfilled, (state, action) => {
+               const parent = action.payload;
+                state.parent=parent;
+                state.isLoader = false;
+              })
+              .addCase(rejected, (state, action) => {
+                state.isLoader = false;
+                state.error = action.error;
+              });
+          }
+        function modifierParent() {
+            var { pending, fulfilled, rejected } = extraActions.modifierParent;
+            builder
+              .addCase(pending, (state) => {
+                state.error = null;
+                state.isLoader = true;
+              })
+              .addCase(fulfilled, (state, action) => {
+               const parent = action.payload;
+                state.parent=parent;
+                state.isLoader = false;
+              })
+              .addCase(rejected, (state, action) => {
+                state.isLoader = false;
+                state.error = action.error;
+              });
+          }
+         function modifierEnfant() {
+            var { pending, fulfilled, rejected } = extraActions.modifierEnfant;
+            builder
+              .addCase(pending, (state) => {
+                state.error = null;
+                state.isLoader = true;
+              })
+              .addCase(fulfilled, (state, action) => {
+               const enfant = action.payload;
+                state.enfant=enfant;
+                state.isLoader = false;
+              })
+              .addCase(rejected, (state, action) => {
+                state.isLoader = false;
+                state.error = action.error;
+              });
+          }
+         function supprimerEnfant() {
+            var { pending, fulfilled, rejected } = extraActions.supprimerEnfant;
+            builder
+              .addCase(pending, (state) => {
+                state.error = null;
+                state.isLoader = true;
+              })
+              .addCase(fulfilled, (state, action) => {
+               const enfant = action.payload;
+                state.enfant=enfant;
                 state.isLoader = false;
               })
               .addCase(rejected, (state, action) => {
@@ -246,6 +401,40 @@ function createExtraReducers() {
           }
         function inscription() {
             var {pending,fulfilled,rejected}=extraActions.inscription
+            builder
+            .addCase(pending, (state) => {
+              state.error = null;
+              state.isLoader = true;
+            })
+            .addCase(fulfilled, (state, action) => {
+              const user = action.payload;
+              state.user = user;
+              state.isLoader = false;
+            })
+            .addCase(rejected, (state, action) => {
+              state.isLoader = false;
+              state.error = action.error;
+            });
+          }
+        function modifier() {
+            var {pending,fulfilled,rejected}=extraActions.modifier
+            builder
+            .addCase(pending, (state) => {
+              state.error = null;
+              state.isLoader = true;
+            })
+            .addCase(fulfilled, (state, action) => {
+              const user = action.payload;
+              state.user = user;
+              state.isLoader = false;
+            })
+            .addCase(rejected, (state, action) => {
+              state.isLoader = false;
+              state.error = action.error;
+            });
+          }
+        function supprimer() {
+            var {pending,fulfilled,rejected}=extraActions.supprimer
             builder
             .addCase(pending, (state) => {
               state.error = null;
