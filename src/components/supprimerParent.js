@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch,useSelector } from 'react-redux';
 import { userActions } from '../reducer/user.js'
 export default function SupprimerParent({retour,rub}) {
+  console.log(rub)
 const dispatch=useDispatch()
   const supprimer=()=>{
     dispatch(userActions.supprimerParent(rub.value._id))
