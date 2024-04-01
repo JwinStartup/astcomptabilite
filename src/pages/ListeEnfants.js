@@ -61,13 +61,17 @@ export default function ListeEnfant() {
 </thead>
 <tbody>
 
- {enfants.map((value,index)=><tr key={index} className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
+ {enfants.map((value,index)=><tr key={index} className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full '>
  <td className='font-medium text-base text-gray-500 text-center'>{value.nom}</td>
 <td className='font-medium text-base text-gray-500 text-center'> {value.prenoms}</td>
    <td className='font-medium text-base text-gray-500 text-center'>{value.ville}</td>
    <td className='font-medium text-base text-gray-500 text-center'>{value.commune}</td>
    <td className='font-medium text-base text-gray-500 text-center'>{value.classe}</td>
    <td className='font-medium text-base text-gray-500 text-center'>{value.cel}</td>
+   <td className='font-medium text-base text-gray-500 text-center'>{value.parent.nom} {value.parent.prenoms}</td>
+    <td className='font-medium text-base text-gray-500 text-center'>
+    {value.formateur.map((i,k)=> <> {i.nom} {i.prenoms} - {i.discipline}</>)}  
+    </td>        
    <td className='font-medium text-base text-gray-500 text-center ' onClick={()=>navigate('/inscription/enfants')}>Modifier </td>
 <td className='font-medium text-base text-gray-500 text-center 'onClick={()=>setRub(true)}>Supprimer </td>    
    </tr> )}
