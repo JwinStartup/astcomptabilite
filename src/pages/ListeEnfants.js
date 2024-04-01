@@ -83,7 +83,7 @@ export default function ListeEnfant() {
 </table>
     </div>
      }
-  </>Rub
+  </>
 }
     </div>
   )
