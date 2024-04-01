@@ -70,7 +70,7 @@ export default function ListeParents() {
    <td className='font-medium text-base text-gray-500 text-center'>{value.quartier}</td>
   {value.nombreEnfant&&<td className='font-medium text-base text-gray-500 text-center'>{value.nombreEnfant}</td>}
    <td className='font-medium text-base text-gray-500 text-center 'onClick={()=>navigate("/inscription/parents")}>Modifier </td>
-  <td className='font-medium text-base text-gray-500 text-center 'onClick={()=>setRub({nom:'SUPPRIMER',bol:true})}>Supprimer </td>   
+  <td className='font-medium text-base text-gray-500 text-center 'onClick={()=>setRub({bol:true,value:value})}>Supprimer </td>   
    </tr> )}
 </tbody>
 </table>
