@@ -15,6 +15,9 @@ export default function ListeEnfant() {
    useEffect(() => { 
     dispatch(userActions.listeEnfant())
   },[])
+    const supprimer=(id)=> { 
+    dispatch(userActions.supprimerEnfant(id))
+  }
     const {isLoader,enfants}  = useSelector((state)=>{
       return state.userReducer
      });
@@ -73,8 +76,8 @@ export default function ListeEnfant() {
     <td className='font-medium text-base text-gray-500 text-center'>
     {value.formateur.map((i,k)=> <> {i.nom} {i.prenoms} - {i.discipline} <br /> </>)}  
     </td>        
-   <td className='font-medium text-base text-gray-500 text-center ' onClick={()=>navigate('/inscription/enfants')}>Modifier </td>
-<td className='font-medium text-base text-gray-500 text-center 'onClick={()=>setRub(true)}>Supprimer </td>    
+   <td className='font-medium text-base text-gray-500 text-center cursor-pointer' onClick={()=>navigate('/inscription/enfants')}>Modifier </td>
+<td className='font-medium text-base text-gray-500 text-center cursor-pointer'onClick={()=>supprimer(value._id)}>Supprimer</td>    
    </tr> )}
 
   
