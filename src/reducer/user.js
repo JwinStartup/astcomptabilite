@@ -108,42 +108,42 @@ function createInitialState() {
             supprimerEnfant:createAsyncThunk(`${name}/supprimerEnfant`,
           async (body)=>{
               console.log(body)
-             return  await fetchWrapper.get(`${url}/supprimerEnfant/{body}`)
+             return  await fetchWrapper.get(`${url}/supprimerEnfant/${body}`)
             }
             ),
             voirEnfant:createAsyncThunk(`${name}/voirEnfant`,
           async (body)=>{
-             return  await fetchWrapper.get(`${url}/voirEnfant/{body}`)
+             return  await fetchWrapper.get(`${url}/voirEnfant/${body}`)
             }
             ),
             voirParent:createAsyncThunk(`${name}/voirParent`,
           async (body)=>{
-             return  await fetchWrapper.get(`${url}/voirParent/{body}`)
+             return  await fetchWrapper.get(`${url}/voirParent/${body}`)
             }
             ),
             voir:createAsyncThunk(`${name}/voir`,
           async (body)=>{
-             return  await fetchWrapper.get(`${url}/voir/{body}`)
+             return  await fetchWrapper.get(`${url}/voir/${body}`)
             }
             ),
             voirPersonnel:createAsyncThunk(`${name}/voirPersonnel`,
           async (body)=>{
-             return  await fetchWrapper.get(`${url}/voirPersonnel/{body}`)
+             return  await fetchWrapper.get(`${url}/voirPersonnel/${body}`)
             }
             ),
             supprimerParent:createAsyncThunk(`${name}/supprimerParent`,
           async (body)=>{
-             return  await fetchWrapper.get(`${url}/supprimerParent/{body}`)
+             return  await fetchWrapper.get(`${url}/supprimerParent/${body}`)
             }
             ),
             supprimerPersonnel:createAsyncThunk(`${name}/supprimerPersonnel`,
           async (body)=>{
-             return  await fetchWrapper.get(`${url}/supprimerPersonnel/{body}`)
+             return  await fetchWrapper.get(`${url}/supprimerPersonnel/${body}`)
             }
             ),
             supprimer:createAsyncThunk(`${name}/supprimer`,
           async (body)=>{
-             return  await fetchWrapper.get(`${url}/supprimer/{body}`)
+             return  await fetchWrapper.get(`${url}/supprimer/${body}`)
             }
             ),
           listePersonnel:createAsyncThunk(`${name}/listePersonnel`,
