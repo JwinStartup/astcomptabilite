@@ -83,17 +83,9 @@ const {personnels} = useSelector((state)=>{
             <option>TleA</option>
         </select>
       <div> 
-    <button 
-              id="dropdownSearchButton" 
-              data-dropdown-toggle="dropdownSearch" 
-               className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-gray-300 rounded-lg"
-               type="button">Selctionner formateur
-               <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-               </svg>
-               </button>
-      <div id="dropdownSearch" className="z-10 hidden bg-white rounded-lg shadow w-60 dark:bg-gray-700">
-       <ul className="h-48 px-3 pb-3 overflow-y-auto text-sm text-gray-700 " aria-labelledby="dropdownSearchButton">
+    
+      <div  className="z-10 hidden bg-white rounded-lg shadow w-60 dark:bg-gray-700">
+       <ul className="h-48 px-3 pb-3 overflow-y-auto text-sm text-gray-700 ">
               {personnels.map((val,index)=><li>
         <div className="flex key={index} items-center p-2 rounded hover:bg-gray-100 ">
           <input id={index} 
