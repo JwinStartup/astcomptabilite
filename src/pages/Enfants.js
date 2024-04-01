@@ -13,7 +13,6 @@ export default function Enfants() {
 const dispatch =useDispatch()
 const onSubmit = (data) => {
  console.log(data)
-setLoading(true)
 dispatch(userActions.inscriptionEnfant(data)).then(()=>{
   navigate('/cp/ListeEnfant')
  })
