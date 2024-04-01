@@ -8,39 +8,7 @@ import ModifierFormateur from '../components/modifierFormateur.js'
 import { useDispatch,useSelector } from 'react-redux';
 import { userActions } from '../reducer/user';
 import { RingLoader} from 'react-spinners';
-const SetComponent=({p,retour})=>{
-  console.log(p)
-  switch (p) {
-    case 'SUPPRIMER':
-      return(
-        <div>
-          <Backdrop/>
-        <SupprimerParent retour={retour} />
-        </div>
-      );
-   
-    case 'MODIFIERFORMATEUR':
-      return(
-        <div>
-          <Backdrop/>
-        <ModifierFormateur retour={retour} />
-        </div>
-      )
- 
-  
-    case 'VOIRENFANT':
-      return(
-        <div>
-          <Backdrop/>
-        <VoirEnfant retour={retour} />
-        </div>
-      )
-  
-  
-    default:
-      break;
-  }
-}
+
 
 export default function ListeParents() {
   const dispatch =useDispatch()
@@ -55,7 +23,10 @@ export default function ListeParents() {
     const [rub , setRub]=useState({nom:'',bol:false})
   return (
     <div>     
-       {rub.bol!==false&&<SetComponent p={rub.nom} retour={()=>setRub({bol:false,nom:''})}/>}
+     {rub.bol!==false&&<div>
+          <Backdrop/>
+        <SupprimerParent retour={()=>setRub({bol:false,value:null})} rub={rub} />
+        </div>}
          <Entete />
          <div className='  flex justify-between  space-x-2 mx-4'>
          <button className='ml-10 bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center' onClick={()=>navigate("/cp")} > retour</button>
