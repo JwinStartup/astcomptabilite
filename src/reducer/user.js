@@ -18,6 +18,7 @@ function createInitialState() {
       parent:null,
       enfant:null,
       personnel:null,
+        message:"",
       parents:[],
       enfants:[],
       personnels:[],
@@ -306,8 +307,8 @@ function createExtraReducers() {
                 state.isLoader = true;
               })
               .addCase(fulfilled, (state, action) => {
-               const enfant = action.payload;
-                state.enfant=enfant;
+               const message = action.payload;
+                state.message=message;
                 state.isLoader = false;
               })
               .addCase(rejected, (state, action) => {
