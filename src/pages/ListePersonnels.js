@@ -15,14 +15,14 @@ export default function ListePersonnel() {
   },[])
   
   
-    const [rub , setRub]=useState(false)
+    const [rub , setRub]=useState({bol:false,value:value})
     const {isLoader,personnels}  = useSelector((state)=>{
       return state.userReducer
      });
 
     return (
       <div>     
-      {rub!==false&&<div>
+      {rub.bol!==false&&<div>
           <Backdrop/>
         <SupprimerPersonnel retour={()=>setRub({bol:false,value:null})} rub={rub}} />
         </div>}
