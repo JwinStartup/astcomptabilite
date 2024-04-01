@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch,useSelector } from 'react-redux';
-import { userActions } from '../../reducer/user.js'
+import { userActions } from '../reducer/user.js'
   
 export default function supprimerEnfants({retour,rub}) {
   const dispatch=useDispatch()
