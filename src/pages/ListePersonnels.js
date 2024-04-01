@@ -24,7 +24,7 @@ export default function ListePersonnel() {
       <div>     
       {rub.bol!==false&&<div>
           <Backdrop/>
-        <SupprimerPersonnel retour={()=>setRub({bol:false,value:null})} rub={rub}} />
+        <SupprimerPersonnel retour={()=>setRub({bol:false,value:null})} rub={rub} />
         </div>}
          <Entete />
 {console.log(personnels,isLoader)}
