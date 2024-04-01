@@ -20,7 +20,7 @@ export default function ListeParents() {
     return state.userReducer
    });
     const navigate = useNavigate()
-    const [rub , setRub]=useState({nom:'',bol:false})
+    const [rub , setRub]=useState({bol:false,value:null})
   return (
     <div>     
      {rub.bol!==false&&<div>
