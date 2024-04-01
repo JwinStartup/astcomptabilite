@@ -171,8 +171,8 @@ function createExtraReducers() {
                 state.error = action.error;
               });
           }
-        function modifiierPersonnel() {
-            var { pending, fulfilled, rejected } = extraActions.modifiierPersonnel;
+        function modifierPersonnel() {
+            var { pending, fulfilled, rejected } = extraActions.modifierPersonnel;
             builder
               .addCase(pending, (state) => {
                 state.error = null;
