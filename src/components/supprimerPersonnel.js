@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch,useSelector } from 'react-redux';
 import { userActions } from '../reducer/user.js'
-export default function supprimerPersonnel({retour,rub}) {
+export default function SupprimerPersonnel({retour,rub}) {
 const dispatch=useDispatch()
   const supprimer=()=>{
     dispatch(userAction.supprimerPersonnel(rub.valuue._id))
