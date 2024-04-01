@@ -84,7 +84,7 @@ const {personnels} = useSelector((state)=>{
         </select>
       <div> 
     
-      <div  className="z-10 hidden bg-white rounded-lg shadow w-60 dark:bg-gray-700">
+      <div  className="z-10  bg-white rounded-lg shadow w-60 dark:bg-gray-700">
        <ul className="h-48 px-3 pb-3 overflow-y-auto text-sm text-gray-700 ">
               {personnels.map((val,index)=><li>
         <div className="flex key={index} items-center p-2 rounded hover:bg-gray-100 ">
