@@ -71,7 +71,7 @@ export default function ListeEnfant() {
    <td className='font-medium text-base text-gray-500 text-center'>{value.cel}</td>
    <td className='font-medium text-base text-gray-500 text-center'>{value.parent.nom} {value.parent.prenoms}</td>
     <td className='font-medium text-base text-gray-500 text-center'>
-    {value.formateur.map((i,k)=> <> {i.nom} {i.prenoms} - {i.discipline}</>)}  
+    {value.formateur.map((i,k)=> <> {i.nom} {i.prenoms} - {i.discipline} <br /> </>)}  
     </td>        
    <td className='font-medium text-base text-gray-500 text-center ' onClick={()=>navigate('/inscription/enfants')}>Modifier </td>
 <td className='font-medium text-base text-gray-500 text-center 'onClick={()=>setRub(true)}>Supprimer </td>    
