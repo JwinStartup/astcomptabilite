@@ -84,13 +84,15 @@ const {personnels} = useSelector((state)=>{
         </select>
       <div> 
     
-      <div  className="z-10  bg-white rounded-lg shadow w-60 dark:bg-gray-700">
-       <ul className="h-48 px-3 pb-3 overflow-y-auto text-sm text-gray-700 ">
+      <div  className="w-[400px] ">
+         <label className="w-[400px] text-md font-medium ">Selectionner  des formateurs</label>Selectionner  des formateurs     
+       <ul className="h-56 px-3 pb-3 overflow-y-auto text-sm text-gray-700 w-[400px] ">
               {personnels.map((val,index)=><li>
         <div className="flex key={index} items-center p-2 rounded hover:bg-gray-100 ">
           <input id={index} 
                  type="checkbox" 
                  value={val._id} 
+                 {...register("formateur")}
                   className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 "/>
                   <label htmlFor={index} className="w-full ms-2 text-sm font-medium text-gray-900 rounded "> 
                   {val.nom} {val.prenoms} - {val.discipline} 
