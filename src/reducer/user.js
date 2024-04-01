@@ -110,6 +110,21 @@ function createInitialState() {
              return  await fetchWrapper.get(`${url}/supprimerEnfant/{body}`)
             }
             ),
+            voirEnfant:createAsyncThunk(`${name}/voirEnfant`,
+          async (body)=>{
+             return  await fetchWrapper.get(`${url}/voirEnfant/{body}`)
+            }
+            ),
+            voirParent:createAsyncThunk(`${name}/voirParent`,
+          async (body)=>{
+             return  await fetchWrapper.get(`${url}/voirParent/{body}`)
+            }
+            ),
+            voirPersonnel:createAsyncThunk(`${name}/voirPersonnel`,
+          async (body)=>{
+             return  await fetchWrapper.get(`${url}/voirPersonnel/{body}`)
+            }
+            ),
             supprimerParent:createAsyncThunk(`${name}/supprimerParent`,
           async (body)=>{
              return  await fetchWrapper.get(`${url}/supprimerParent/{body}`)
@@ -145,6 +160,10 @@ function createExtraReducers() {
         listeParent();
         inscriptionEnfant();
         supprimerEnfant();
+        voirEnfant();
+        voir();
+        voirParent();
+        voirPersonnel();
         modifierEnfant();
         supprimerParent();
         modifierParent();
@@ -443,6 +462,74 @@ function createExtraReducers() {
             .addCase(fulfilled, (state, action) => {
               const user = action.payload;
               state.user = user;
+              state.isLoader = false;
+            })
+            .addCase(rejected, (state, action) => {
+              state.isLoader = false;
+              state.error = action.error;
+            });
+          }
+        function voir() {
+            var {pending,fulfilled,rejected}=extraActions.voir
+            builder
+            .addCase(pending, (state) => {
+              state.error = null;
+              state.isLoader = true;
+            })
+            .addCase(fulfilled, (state, action) => {
+              const user = action.payload;
+              state.user = user;
+              state.isLoader = false;
+            })
+            .addCase(rejected, (state, action) => {
+              state.isLoader = false;
+              state.error = action.error;
+            });
+          }
+        function voirEnfant() {
+            var {pending,fulfilled,rejected}=extraActions.voirEnfant
+            builder
+            .addCase(pending, (state) => {
+              state.error = null;
+              state.isLoader = true;
+            })
+            .addCase(fulfilled, (state, action) => {
+              const enfant = action.payload;
+              state.enfant = enfant;
+              state.isLoader = false;
+            })
+            .addCase(rejected, (state, action) => {
+              state.isLoader = false;
+              state.error = action.error;
+            });
+          }
+        function voirPersonnel() {
+            var {pending,fulfilled,rejected}=extraActions.voirPersonnel
+            builder
+            .addCase(pending, (state) => {
+              state.error = null;
+              state.isLoader = true;
+            })
+            .addCase(fulfilled, (state, action) => {
+              const personnel = action.payload;
+              state.personnel = personnel;
+              state.isLoader = false;
+            })
+            .addCase(rejected, (state, action) => {
+              state.isLoader = false;
+              state.error = action.error;
+            });
+          }
+        function voirParent() {
+            var {pending,fulfilled,rejected}=extraActions.voirParent
+            builder
+            .addCase(pending, (state) => {
+              state.error = null;
+              state.isLoader = true;
+            })
+            .addCase(fulfilled, (state, action) => {
+              const parent = action.payload;
+              state.parent = parent;
               state.isLoader = false;
             })
             .addCase(rejected, (state, action) => {
