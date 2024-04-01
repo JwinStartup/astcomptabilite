@@ -120,6 +120,11 @@ function createInitialState() {
              return  await fetchWrapper.get(`${url}/voirParent/{body}`)
             }
             ),
+            voir:createAsyncThunk(`${name}/voir`,
+          async (body)=>{
+             return  await fetchWrapper.get(`${url}/voir/{body}`)
+            }
+            ),
             voirPersonnel:createAsyncThunk(`${name}/voirPersonnel`,
           async (body)=>{
              return  await fetchWrapper.get(`${url}/voirPersonnel/{body}`)
