@@ -4,7 +4,7 @@ import { userActions } from '../reducer/user.js'
 export default function SupprimerPersonnel({retour,rub}) {
 const dispatch=useDispatch()
   const supprimer=()=>{
-    dispatch(userAction.supprimerPersonnel(rub.valuue._id))
+    dispatch(userActions.supprimerPersonnel(rub.valuue._id))
     retour()
   }
   return (
