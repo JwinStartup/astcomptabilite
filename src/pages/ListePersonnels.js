@@ -15,7 +15,7 @@ export default function ListePersonnel() {
   },[])
   
   
-    const [rub , setRub]=useState({bol:false,value:value})
+    const [rub , setRub]=useState({bol:false,value:null})
     const {isLoader,personnels}  = useSelector((state)=>{
       return state.userReducer
      });
