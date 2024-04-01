@@ -50,17 +50,6 @@ const {personnels} = useSelector((state)=>{
       <input {...register("cel")}   type='text' placeholder='Cel' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
       <input {...register("ville")}   type='text' placeholder='ville' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
       <input {...register("commune")}   type='text' placeholder='commune' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
-      <label> 
-      Formateur:
-     <select {...register("Formateur")}
-              onChange={(e)=> console.log(e.target.value)} 
-             defaultValue=" " className='outline-none w-[400px] border-b-2 py-1 text-lg'>
-             {personnels.map((val,index)=> <option 
-                                      value={val._id}  
-                                      key={index}>
-                                      {val.nom}  {val.prenoms}
-                                     </option>)}
-        </select>  </label>
           <label> 
                {par.length!==0&& 
                   <div>{par.map((i)=>
@@ -74,12 +63,12 @@ const {personnels} = useSelector((state)=>{
         </select> </label>
                
   <select {...register("classe")} defaultValue='Science' className='outline-none w-[400px] border-b-2 py-1 text-lg'>
-            <option>cp1 </option>
-            <option>cp2</option>
-            <option>ce1</option>
-            <option>ce2</option>
-            <option>cm1</option>
-            <option>cm2</option>
+            <option>Cp1 </option>
+            <option>Cp2</option>
+            <option>Ce1</option>
+            <option>Ce2</option>
+            <option>Cm1</option>
+            <option>Cm2</option>
             <option>6eme</option>
            <option>5eme</option>
             <option>4eme</option>
@@ -93,6 +82,32 @@ const {personnels} = useSelector((state)=>{
              <option>TleD</option>
             <option>TleA</option>
         </select>
+      <div> 
+    <button 
+              id="dropdownSearchButton" 
+              data-dropdown-toggle="dropdownSearch" 
+               className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-gray-300 rounded-lg"
+               type="button">Selctionner formateur
+               <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+               </svg>
+               </button>
+      <div id="dropdownSearch" className="z-10 hidden bg-white rounded-lg shadow w-60 dark:bg-gray-700">
+       <ul className="h-48 px-3 pb-3 overflow-y-auto text-sm text-gray-700 " aria-labelledby="dropdownSearchButton">
+              {personnels.map((val,index)=><li>
+        <div className="flex key={index} items-center p-2 rounded hover:bg-gray-100 ">
+          <input id={index} 
+                 type="checkbox" 
+                 value="" 
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 ">
+          <label htmlFor={index} className="w-full ms-2 text-sm font-medium text-gray-900 rounded "> {va.nom} {val.prenoms} - {val.discipline} </label>
+        </div>
+         </li>)}  
+         </ul>        
+      </div>
+    
+          
+         </div>
      </div> 
      </div>
      
