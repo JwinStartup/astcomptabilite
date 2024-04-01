@@ -10,7 +10,7 @@ import { RingLoader } from 'react-spinners'
 export default function ListeEnfant() {
     const navigate = useNavigate()
     const dispatch =useDispatch()
-    const [rub , setRub]=useState(false)
+    const [rub , setRub]=useState({bol:false,value:null})
  
    useEffect(() => { 
     dispatch(userActions.listeEnfant())
@@ -24,9 +24,9 @@ export default function ListeEnfant() {
 
     return (
       <div>     
-      {rub!==false&&<div>
+      {rub.bol!==false&&<div>
           <Backdrop/>
-        <SupprimerEnfants retour={()=>setRub(false)} />
+        <SupprimerEnfants retour={()=>setRub({bol:false,value:value})} rub={rub} />
         </div>}
          <Entete />
 {console.log(enfants,isLoader)}
@@ -77,7 +77,7 @@ export default function ListeEnfant() {
     {value.formateur.map((i,k)=> <> {i.nom} {i.prenoms} - {i.discipline} <br /> </>)}  
     </td>        
    <td className='font-medium text-base text-gray-500 text-center cursor-pointer' onClick={()=>navigate('/inscription/enfants')}>Modifier </td>
-<td className='font-medium text-base text-gray-500 text-center cursor-pointer'onClick={()=>supprimer(value._id)}>Supprimer</td>    
+<td className='font-medium text-base text-gray-500 text-center cursor-pointer'onClick={()=>setRub({bol:false,value:value})}>Supprimer</td>    
    </tr> )}
 
   
@@ -85,7 +85,7 @@ export default function ListeEnfant() {
 </table>
     </div>
      }
-  </>
+  </>Rub
 }
     </div>
   )
