@@ -14,9 +14,9 @@ const dispatch =useDispatch()
 const onSubmit = (data) => {
  console.log(data)
  //setLoading(true)
-dispatch(userActions.inscriptionEnfant(data)).then(()=>{
-  navigate('/cp/ListeEnfant')
- })
+//dispatch(userActions.inscriptionEnfant(data)).then(()=>{
+//  navigate('/cp/ListeEnfant')
+// })
 }
   useEffect(() => { 
     dispatch(userActions.listeParent())
