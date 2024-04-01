@@ -4,13 +4,13 @@ import { userActions } from '../reducer/user.js'
 export default function SupprimerPersonnel({retour,rub}) {
 const dispatch=useDispatch()
   const supprimer=()=>{
-    dispatch(userActions.supprimerPersonnel(rub.valuue._id))
+    dispatch(userActions.supprimerPersonnel(rub.value._id))
     retour()
   }
   return (
     <div className='w-[500px] space-y-4 h-[200px]  items-center justify-center  border p-3 bg-white border-gray-100 shadow-md rounded-3xl   z-10 absolute top-[125px] left-[400px]'>
     <div className='font-bold  tracking-tight text-[22px] text-black pl-1'>Supprimer un Personnel</div>
-    <p className='font-lg  tracking-tight text-[18px] text-center' >Souhaitez-vous supprimer le personnel  <span className='font-lg  tracking-tight text-[18px] text-green-400 pl-1'>{rub.valuue.nom} {rub.valuue.prenoms}</span> </p>
+    <p className='font-lg  tracking-tight text-[18px] text-center' >Souhaitez-vous supprimer le personnel  <span className='font-lg  tracking-tight text-[18px] text-green-400 pl-1'>{rub.value.nom} {rub.value.prenoms}</span> </p>
 
     <div className='flex flex-col items-center  w-full h-full'>
     <div className='flex flex-row space-x-6'>  <button onClick={()=>retour()} type="button" className="text-white bg-red-700 hover:bg-red-800   font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center ">
