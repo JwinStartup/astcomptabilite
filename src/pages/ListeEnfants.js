@@ -24,7 +24,7 @@ export default function ListeEnfant() {
       <div>     
       {rub.bol!==false&&<div>
           <Backdrop/>
-        <SupprimerEnfants retour={()=>setRub({bol:false,value:value})} rub={rub} />
+        <SupprimerEnfants retour={()=>setRub({bol:false,value:null})} rub={rub} />
         </div>}
          <Entete />
 {console.log(enfants,isLoader)}
@@ -75,7 +75,7 @@ export default function ListeEnfant() {
     {value.formateur.map((i,k)=> <> {i.nom} {i.prenoms} - {i.discipline} <br /> </>)}  
     </td>        
    <td className='font-medium text-base text-gray-500 text-center cursor-pointer' onClick={()=>navigate('/inscription/enfants')}>Modifier </td>
-<td className='font-medium text-base text-gray-500 text-center cursor-pointer'onClick={()=>setRub({bol:false,value:value})}>Supprimer</td>    
+<td className='font-medium text-base text-gray-500 text-center cursor-pointer'onClick={()=>setRub({bol:true,value:value})}>Supprimer</td>    
    </tr> )}
 
   
