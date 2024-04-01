@@ -24,7 +24,7 @@ export default function ListePersonnel() {
       <div>     
       {rub!==false&&<div>
           <Backdrop/>
-        <SupprimerPersonnel retour={()=>setRub(false)} />
+        <SupprimerPersonnel retour={()=>setRub({bol:false,value:null})} rub={rub}} />
         </div>}
          <Entete />
 {console.log(personnels,isLoader)}
@@ -76,9 +76,8 @@ export default function ListePersonnel() {
    <td className='font-medium text-base text-gray-500 text-center'>{value.cel}</td>
    <td className='font-medium text-base text-gray-500 text-center'>{value.whatshapp}</td>
    <td className='font-medium text-base text-gray-500 text-center ' onClick={()=>navigate('/inscription/personnels')}>Modifier </td>
-<td className='font-medium text-base text-gray-500 text-center 'onClick={()=>setRub(true)}>Supprimer </td>    
+<td className='font-medium text-base text-gray-500 text-center 'onClick={()=>setRub({bol:true,value:value})}>Supprimer </td>    
    </tr> )}
-
   
 </tbody>
 </table>
