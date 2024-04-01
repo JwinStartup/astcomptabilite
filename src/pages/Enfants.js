@@ -85,7 +85,7 @@ const {personnels} = useSelector((state)=>{
       <div> 
     
       <div  className="w-[400px] ">
-         <label className="w-[400px] text-md font-medium ">Selectionner  des formateurs</label>Selectionner  des formateurs     
+         <label className="w-[400px] text-md font-medium ">Selectionner  des formateurs</label>    
        <ul className="h-56 px-3 pb-3 overflow-y-auto text-sm text-gray-700 w-[400px] ">
               {personnels.map((val,index)=><li>
         <div className="flex key={index} items-center p-2 rounded hover:bg-gray-100 ">
