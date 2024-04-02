@@ -50,7 +50,7 @@ function createInitialState() {
         modifierFacture:createAsyncThunk(`${name}/modifierFacture,
         async (body)=>{
             console.log(body)
-            return await fetchWrapper.post(`${url}/modifierFacture,body)
+            return await fetchWrapper.post(`${url}/modifierFacture`,body)
           }
           ),
         creerCharge:createAsyncThunk(`${name}/creerCharge`,
