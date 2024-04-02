@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Entete from '../components/entete'
 import Backdrop from '../components/backdrop'
 import FormulaireCreerFacture from '../components/Formulaires/formulaireCreerFacture'
+import ModifierFacture from '../components/Formulaires/modifierFacture'
 import FormulairePayerFacture from '../components/Formulaires/formulairePayerFacture.js'
 import VoirFacture from '../components/Formulaires/voirFacture.js'
 import SupprimerFacture from '../components/Formulaires/supprimerFacture.js'
@@ -26,13 +27,6 @@ const SetComponent=({p,retour,value})=>{
         <VoirFacture retour={retour} value={value}/>
         </div>
       )
-    case 'MODIFIER':
-      return(
-        <div>
-          <Backdrop/>
-        <FormulaireCreerFacture retour={retour} />
-        </div>
-      )
     case 'SUPPRIMER':
       return(
         <div>
@@ -40,7 +34,13 @@ const SetComponent=({p,retour,value})=>{
         <SupprimerFacture retour={retour} value={value} />
         </div>
       )
-  
+     case 'MODIFIER':
+      return(
+        <div>
+          <Backdrop/>
+        <ModifierFacture retour={retour} value={value} />
+        </div>
+      )
     case 'PAYER':
       return(
         <div>
