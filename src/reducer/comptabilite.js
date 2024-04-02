@@ -17,6 +17,7 @@ function createInitialState() {
       facture: null,
       resultat:0,
       factures:[],
+        message:"",
       bilan: null,
       bilans:[],
       charge: null,
@@ -95,6 +96,7 @@ function createInitialState() {
           ),
              supprimerFacture:createAsyncThunk(`${name}/supprimerFacture`,
         async (body)=>{
+            console.log("reducer fact:",body)
             return await fetchWrapper.get(`${url}/supprimerFacture/${body}`)
           }
           ),
@@ -329,6 +331,7 @@ function createExtraReducers() {
               })
               .addCase(fulfilled, (state, action) => {
                const message = action.payload;
+                  console.log(message)
                 state.message=message;
                 state.isLoader = false;
               })
