@@ -6,8 +6,9 @@ export default function SupprimerEnfants({retour,rub}) {
   const dispatch=useDispatch()
   const supprimer=()=>{
     console.log(rub.value)
-    dispatch(userActions.supprimerEnfant(rub.value._id))
-    retour()
+    dispatch(userActions.supprimerEnfant(rub.value._id)).then(()=>{
+   retour()
+   })
   }
   return (
     <div className='w-[500px] space-y-4 h-[200px]  items-center justify-center  border p-3 bg-white border-gray-100 shadow-md rounded-3xl   z-10 absolute top-[125px] left-[400px]'>
