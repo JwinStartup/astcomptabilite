@@ -112,6 +112,7 @@ export default function FacturesImpayes() {
         {value.type==='impaye'&&<td className='font-medium text-base text-gray-500 text-center ' onClick={()=>setRub({nom:'PAYER',bol:true, value:value} )}>Payer </td>}
          <td className='font-medium text-base text-gray-500 text-center ' onClick={()=>setRub({nom:'VOIR',bol:true,value:value} )}>Voir </td>
          {value.type==='impaye'&& <td className='font-medium text-base text-gray-500 text-center 'onClick={()=>setRub({nom:'MODIFIER',bol:true} )}>Modifier </td>}
+           {value.type==='impaye'&& <td className='font-medium text-base text-gray-500 text-center 'onClick={()=>setRub({nom:'SUPPRIMER',bol:true} )}>Supprimer </td>}
     </tr>)}
   </tbody>
 </table>
