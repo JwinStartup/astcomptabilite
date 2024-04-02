@@ -320,6 +320,23 @@ function createExtraReducers() {
                 state.error = action.error;
               });
           }
+        function supprimerFacture() {
+            var { pending, fulfilled, rejected } = extraActions.supprimerFacture;
+            builder
+              .addCase(pending, (state) => {
+                state.error = null;
+                state.isLoader = true;
+              })
+              .addCase(fulfilled, (state, action) => {
+               const message = action.payload;
+                state.message=message;
+                state.isLoader = false;
+              })
+              .addCase(rejected, (state, action) => {
+                state.isLoader = false;
+                state.error = action.error;
+              });
+          }
         function listeRecue() {
             var { pending, fulfilled, rejected } = extraActions.listeRecue;
             builder
