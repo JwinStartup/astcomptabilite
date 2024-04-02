@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import { comptabiliteActions } from '../../reducer/comptabilite';
-export default function supprimerFacture({retour,value}) {
+export default function SupprimerFacture({retour,value}) {
    const dispatch=useDispatch()
    const supprimer=()=>{
     dispatch(comptabiliteActions.supprimerFacture(value._id)).then(()=>{
