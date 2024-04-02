@@ -37,7 +37,7 @@ const SetComponent=({p,retour,value})=>{
       return(
         <div>
           <Backdrop/>
-        <SupprimerFacture retour={retour} />
+        <SupprimerFacture retour={retour} value={value} />
         </div>
       )
   
