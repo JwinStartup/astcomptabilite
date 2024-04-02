@@ -189,7 +189,7 @@ function createExtraReducers() {
               });
           }
         function modifierFacture() {
-            var { pending, fulfilled, rejected } = extraActions.modifierFacture();
+            var { pending, fulfilled, rejected } = extraActions.modifierFacture;
             builder
               .addCase(pending, (state) => {
                 state.error = null;
