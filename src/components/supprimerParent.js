@@ -5,8 +5,8 @@ export default function SupprimerParent({retour,rub}) {
   console.log(rub)
 const dispatch=useDispatch()
   const supprimer=()=>{
-    dispatch(userActions.supprimerParent(rub.value._id))
-    retour()
+    dispatch(userActions.supprimerParent(rub.value._id)).then(()=>
+    retour() )
   }
   return (
     <div className='w-[500px] space-y-4 h-[200px]  items-center justify-center  border p-3 bg-white border-gray-100 shadow-md rounded-3xl   z-10 absolute top-[125px] left-[400px]'>
