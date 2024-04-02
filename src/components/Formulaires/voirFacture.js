@@ -51,7 +51,7 @@ const download=async()=>{
     <div className='w-[500px]  border p-3 bg-white border-gray-100 shadow-md rounded-3xl   z-10 absolute top-[125px] left-[400px]'>
       <div className='flex flex-row justify-between w-full'> 
         <div className='font-bold  tracking-tight text-[22px] text-black pl-1'>Détail facture</div>
-        <div className='font-medium  tracking-tight text-[14px] text-green-400 pl-1'>N° {value._id} </div>
+        <div className='font-medium  tracking-tight text-[14px] text-green-400 pl-1'>N° {value._id.slice(value._id.length-6)} </div>
       </div> 
       <div className='flex flex-row w-full  justify-between my-4'>
         <div className='ml-7'>
