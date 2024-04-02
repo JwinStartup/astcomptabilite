@@ -93,6 +93,11 @@ function createInitialState() {
             return await fetchWrapper.get(`${url}/listeRecue`)
           }
           ),
+             supprimerFacture:createAsyncThunk(`${name}/supprimerFacture`,
+        async (body)=>{
+            return await fetchWrapper.get(`${url}/supprimerFacture/${body}`)
+          }
+          ),
         listeCommission:createAsyncThunk(`${name}/listeComission`,
         async ()=>{
             return await fetchWrapper.get(`${url}/listeComission`)
@@ -114,6 +119,7 @@ function createExtraReducers() {
         partager();
         creerRecue();
         creerCharge();
+        supprimerFacture();
         payerFacture();
         listeFacture();
         listeRecue();
