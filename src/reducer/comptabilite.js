@@ -47,10 +47,10 @@ function createInitialState() {
             return await fetchWrapper.post(`${url}/creerFacture`,body)
           }
           ),
-        modifierFacture:createAsyncThunk(`${name}/modifierFacture,
+        modifierFacture:createAsyncThunk(`${name}/modifierFacture`,
         async (body)=>{
             console.log(body)
-             return await fetchWrapper.post(`https://astcomptabiliteserver.onrender.com/api/comptabilites`,body)
+             return await fetchWrapper.post(`${url}/modifierFacture`,body)
           }
           ),
         creerCharge:createAsyncThunk(`${name}/creerCharge`,
