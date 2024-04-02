@@ -11,16 +11,16 @@ import { RingLoader} from 'react-spinners';
 
 
 export default function ListeParents() {
+    const [rub , setRub]=useState({bol:false,value:null})
   const dispatch =useDispatch()
   useEffect(() => { 
     dispatch(userActions.listeParent())
-  },[])
+  },[rub])
   
   const {isLoader,parents} = useSelector((state)=>{
     return state.userReducer
    });
     const navigate = useNavigate()
-    const [rub , setRub]=useState({bol:false,value:null})
   return (
     <div>     
      {rub.bol!==false&&<div>
