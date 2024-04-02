@@ -8,14 +8,14 @@ import { userActions } from '../reducer/user.js'
 import { RingLoader } from 'react-spinners'
 
 export default function ListePersonnel() {
+    const [rub , setRub]=useState({bol:false,value:null})
     const navigate = useNavigate()
     const dispatch =useDispatch()
   useEffect(() => { 
     dispatch(userActions.listePersonnel())
-  },[])
+  },[rub])
   
   
-    const [rub , setRub]=useState({bol:false,value:null})
     const {isLoader,personnels}  = useSelector((state)=>{
       return state.userReducer
      });
