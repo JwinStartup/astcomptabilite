@@ -47,6 +47,12 @@ function createInitialState() {
             return await fetchWrapper.post(`${url}/creerFacture`,body)
           }
           ),
+        modifierFacture:createAsyncThunk(`${name}/modifierFacture,
+        async (body)=>{
+            console.log(body)
+            return await fetchWrapper.post(`${url}/modifierFacture,body)
+          }
+          ),
         creerCharge:createAsyncThunk(`${name}/creerCharge`,
         async (body)=>{
             console.log(body)
@@ -122,6 +128,7 @@ function createExtraReducers() {
         creerRecue();
         creerCharge();
         supprimerFacture();
+        modifierFacture();
         payerFacture();
         listeFacture();
         listeRecue();
@@ -166,6 +173,23 @@ function createExtraReducers() {
           }
         function creerFacture() {
             var { pending, fulfilled, rejected } = extraActions.creerFacture;
+            builder
+              .addCase(pending, (state) => {
+                state.error = null;
+                state.isLoader = true;
+              })
+              .addCase(fulfilled, (state, action) => {
+               const facture = action.payload;
+                state.facture=facture
+                state.isLoader = false;
+              })
+              .addCase(rejected, (state, action) => {
+                state.isLoader = false;
+                state.error = action.error;
+              });
+          }
+        function modifierFacture()() {
+            var { pending, fulfilled, rejected } = extraActions.modifierFacture();
             builder
               .addCase(pending, (state) => {
                 state.error = null;
