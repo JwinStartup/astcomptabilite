@@ -77,8 +77,8 @@ export default function FacturesImpayes() {
   {users.map((value,index)=><tr key={index} className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
       <td className='font-medium text-base text-gray-500 text-center'>{value.nom} </td>      
       <td className='font-medium text-base text-gray-500 text-center'>{value.email}</td>
-      <td className='font-medium text-base text-gray-500 text-center'>{value.zone}</td>
       <td className='font-medium text-base text-gray-500 text-center'>{value.cel}</td>
+      <td className='font-medium text-base text-gray-500 text-center'>{value.zone}</td>
       <td className='font-medium text-base text-gray-500 text-center'>{value.role}</td>
         <td className= {`font-medium text-base text-center ${value.type==='impaye'?'text-red-500':'text-green-500'}  `}>{value.type}</td>
           <td className='font-medium text-base text-gray-500 text-center 'onClick={()=>setRub({nom:'MODIFIER',bol:true,value:value} )}>Modifier </td>
