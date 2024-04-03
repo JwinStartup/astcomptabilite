@@ -2,7 +2,6 @@ import React from 'react'
 import { useDispatch,useSelector } from 'react-redux';
 import { comptabiliteActions } from '../reducer/comptabilite.js'
 export default function SupprimerCharge({retour,value}) {
-  console.log(rub)
 const dispatch=useDispatch()
   const supprimer=()=>{
     dispatch(comptabiliteActions.SupprimerCharge(value._id)).then(()=>
