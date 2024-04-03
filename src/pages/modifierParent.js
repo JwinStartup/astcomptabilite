@@ -9,6 +9,9 @@ export default function ModifierParents() {
   const navigate=useNavigate()
   const { register, handleSubmit,
      } = useForm(
+    {
+  defaultValues: async () => dispatch(userActions.voirParent(id)).then((d)=>return d.payload)
+}
    );
   const dispatch =useDispatch()
   const onSubmit = (data) => {
