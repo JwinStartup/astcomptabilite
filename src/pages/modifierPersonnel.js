@@ -1,90 +1,64 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Entete from '../components/entete'
-import { useNavigate } from 'react-router-dom'
-import Backdrop from '../components/backdrop'
-import SupprimerPersonnel from '../components/supprimerPersonnel.js'
-import { useDispatch,useSelector } from 'react-redux';
-import { userActions } from '../reducer/user.js'
-import { RingLoader } from 'react-spinners'
-
-export default function ListePersonnel() {
-    const [rub , setRub]=useState({bol:false,value:null})
-    const navigate = useNavigate()
-    const dispatch =useDispatch()
-  useEffect(() => { 
-    dispatch(userActions.listePersonnel())
-  },[rub])
-  
-  
-    const {isLoader,personnels}  = useSelector((state)=>{
-      return state.userReducer
-     });
-
-    return (
-      <div>     
-      {rub.bol!==false&&<div>
-          <Backdrop/>
-        <SupprimerPersonnel retour={()=>setRub({bol:false,value:null})} rub={rub} />
-        </div>}
-         <Entete />
-{console.log(personnels,isLoader)}
-
-         <div className='  flex justify-between  space-x-2 mx-4'>
-         <button className='ml-10 bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center' onClick={()=>navigate("/cp")} > retour</button>
-     <p className=' mb-3 p-0  tracking-tight text-[22px] text-black font-semibold '>Liste du personnel </p>
-    
-    
-     <div className='  flex justify-between  space-x-2'>
-        
-                <button onClick={()=>navigate('/inscription/personnels')} className='ml-10 bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center'>+ Ajouter un personnel</button>
-            </div>
-            </div>
-
-
-{isLoader===true?<RingLoader
-        color={"green"}
-        size={60}
-      />:
-  <> {personnels.length===0?<p className='text-center w-full'>Pas de personnel  inscrits </p>:
-         <div className='w-full flex justify-center mt-16 '>
-
-<table className="w-full mx-2">
-<thead>   
-<tr className="">
-<th  className='border-b-2 text-gray-400'>Nom</th>
-<th  className='border-b-2 text-gray-400'>Prenom</th>
-<th  className='border-b-2 text-gray-400'>Ville</th>
-<th  className='border-b-2 text-gray-400'>Commune</th>
-<th  className='border-b-2 text-gray-400'>Discipline</th>
-<th  className='border-b-2 text-gray-400'>Cel</th>
-<th  className='border-b-2 text-gray-400'>Whatshapp</th>
-
-
-
-
-
-</tr>
-</thead>
-<tbody>
-
- {personnels.map((value,index)=><tr key={index} className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
- <td className='font-medium text-base text-gray-500 text-center'>{value.nom}</td>
-<td className='font-medium text-base text-gray-500 text-center'> {value.prenoms}</td>
-   <td className='font-medium text-base text-gray-500 text-center'>{value.ville}</td>
-   <td className='font-medium text-base text-gray-500 text-center'>{value.commune}</td>
-   <td className='font-medium text-base text-gray-500 text-center'>{value.discipline}</td>
-   <td className='font-medium text-base text-gray-500 text-center'>{value.cel}</td>
-   <td className='font-medium text-base text-gray-500 text-center'>{value.whatshapp}</td>
-   <td className='font-medium text-base text-gray-500 text-center ' onClick={()=>navigate('/inscription/personnels')}>Modifier </td>
-<td className='font-medium text-base text-gray-500 text-center 'onClick={()=>setRub({bol:true,value:value})}>Supprimer </td>    
-   </tr> )}
-  
-</tbody>
-</table>
-    </div>
-     }
-  </>
+import { useNavigate, useParams } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { useForm } from 'react-hook-form';
+import { userActions } from '../reducer/user';
+export default function ModifierPersonnels() {
+    const {id}=useParams()
+  const navigate=useNavigate()
+  const { register, handleSubmit} = useForm(
+      { defaultValues: async () => dispatch(userActions.voirPersonnel(id)).then((d)=>{return d.payload })}
+);
+const dispatch =useDispatch()
+const onSubmit = (data) => {
+ console.log(data)
+ //setLoading(true)
+dispatch(userActions.modifierPersonnel(data)).then(()=>{
+  navigate('/cp/ListePersonnel')
+ })
 }
-    </div>
+  return (
+    <div>
+    <Entete />
+    <div className='flex items-cennter justify-between mx-5 w-[1150px]'>
+    <button className='ml-10 bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center' onClick={()=>navigate("/cp/ListePersonnel")} > retour</button>
+
+              <p className=' mb-3 p-0 ml-5  tracking-tight text-2xl text-black font-bold'>Inscription Personnel</p>
+             
+          </div>
+         <form onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex justify-center h-full items-center flex-col space-y-4 p-9 ' >
+         
+     <div className='flex flex-col '>
+   <p className='text-2xl font-semibold text-black tracking-wider mb-3'>Formateur</p>             
+      <div className='flex flex-col mx-4 space-y-4'>
+      <input {...register("nom")}   type='text' placeholder='Nom' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
+      <input {...register("prenoms")}   type='text' placeholder='Prenoms' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
+      <input {...register("cel")}   type='text' placeholder='Cel' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
+      <input {...register("email")}   type='email' placeholder='Email' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
+      <input {...register("whatshapp")}   type='text' placeholder='Whatshapp' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
+      <input {...register("ville")}   type='text' placeholder='ville' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
+      <input {...register("commune")}   type='text' placeholder='commune' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
+      <select {...register("discipline")} defaultValue='Science' className='outline-none w-[400px] border-b-2 py-1 text-lg'>
+            <option>Science </option>
+            <option>Litterature</option>
+            <option>Mathematique</option>
+            <option>Physique chimie</option>
+            <option>Histoire Geographie</option>
+            <option>Anglais</option>
+            <option>Philosophie</option>
+        </select>
+     </div> 
+     </div>
+     
+<button type='submit' className='outline-none flex flex-row items-center justify-center space-x-2  text-white bg-green-700 hover:bg-green-800  font-medium rounded-lg text-lg  px-5 py-2.5 mr-2 mb-2'>
+       <span>   S'inscrire</span>
+      </button>
+    </form>
+
+
+
+
+  </div>
   )
 }
