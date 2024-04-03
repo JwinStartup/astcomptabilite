@@ -11,7 +11,7 @@ export default function Enfants() {
   const { register, handleSubmit,
   } = useForm(
     {
-      defaultVlues: async () => dispatch(userActions.voirEnfant(id)).then((d)=>{return d.payload})
+      defaultValues: async () => dispatch(userActions.voirEnfant(id)).then((d)=>{return d.payload})
     }
 );
 const dispatch =useDispatch()
