@@ -4,11 +4,11 @@ import { comptabiliteActions } from '../reducer/comptabilite';
 import { useDispatch, useSelector } from 'react-redux';
 import { userActions } from '../reducer/user';
 
-export default function AjouterCharges({retour,rub}) {
+export default function AjouterCharges({retour,value}) {
   const { register, handleSubmit,
   } = useForm(
     {
-      defaultValues:rub
+      defaultValues:value
     }
 );
 const dispatch=useDispatch()
