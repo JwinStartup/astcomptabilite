@@ -52,15 +52,7 @@ export default function Charges() {
         <Entete />
      <div className='  flex justify-between  space-x-2 mx-4'>
      <div className=' mb-3 p-0 text-[22px] tracking-tight  text-black font-semibold '> <button className=' bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center ml-2' onClick={()=>navigate("/")} > retour</button>Les charges </div>
-     <div className='  flex justify-between  space-x-2'>
-                <select name="" id="">
-                    <option value="">Aujourd'hui</option>
-                    <option value="">Ce mois</option>
-                    <option value="">Tous les mois</option>
-                </select>
-            </div>
             <button className='ml-10 bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center' onClick={()=>setRub({bol:true,nom:'AJOUTER',value:null})}>+ Ajouter Charges</button>
-
             </div>
 
             {isLoader===true?<RingLoader
