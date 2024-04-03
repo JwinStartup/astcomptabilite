@@ -7,7 +7,7 @@ import SupprimerUser from '../components/supprimerUser.js'
 import {useNavigate} from 'react-router-dom'
 import { useDispatch,useSelector } from 'react-redux';
 import { RingLoader} from 'react-spinners';
-import { userActions } from '../reducer/comptabilite.js'
+import { userActions } from '../reducer/user.js'
 const SetComponent=({p,retour,value})=>{
   console.log(p)
   switch (p) {
