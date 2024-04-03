@@ -61,11 +61,11 @@ const {personnels} = useSelector((state)=>{
                   </div>}
       Parent:
   <select {...register("parent")}
-             defaultValue=" " className='outline-none w-[350px] border-b-2 py-1 text-lg'>
+              className='outline-none w-[350px] border-b-2 py-1 text-lg'>
         {parents.map((val,index)=> <option className='' value={val._id} key={index}> {val.nom}  {val.prenoms}</option>)}
         </select> </label>
                
-  <select {...register("classe")} defaultValue='Cp1' className='outline-none w-[400px] border-b-2 py-1 text-lg'>
+  <select {...register("classe")}  className='outline-none w-[400px] border-b-2 py-1 text-lg'>
             <option>Cp1 </option>
             <option>Cp2</option>
             <option>Ce1</option>
