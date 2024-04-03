@@ -30,7 +30,7 @@ export default function ModifierFacture({retour,value}) {
         <div className='font-bold  tracking-tight text-[22px] text-black pl-1'>Modifier la facture N*{value._id.slice(value._id.length-6)}</div>
         <form   onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex flex-col items-center mt-5  space-y-3 w-full h-full' >
         <select {...register("client")}
-             defaultValue={value._id} className='outline-none w-[400px] border-b-2 py-1 text-lg'>
+             defaultValue={`${value.nom}  ${value.prenoms}`} className='outline-none w-[400px] border-b-2 py-1 text-lg'>
         {parents.map((val,index)=> <option className='' value={val._id} key={index}> {val.nom}  {val.prenoms}</option>)}
         </select>
         <input {...register("montant")}  type="number"  className='w-[400px] h-10 border-b-2 py-1 text-lg pl-1 placeholder-gray-300' placeholder='Montant prestation' />
