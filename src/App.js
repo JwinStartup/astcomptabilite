@@ -13,6 +13,7 @@ import Charges from './pages/Charges.js'
 import Bilan from './pages/Bilan.js'
 import ClientsPersonnels from './pages/clientspersonnels.js'
 import Parents from './pages/Parents.js'
+import UserAdmin from './pages/UserAdmin.js'
 import ModifierParents from './pages/modifierParent.js'
 import Personnels from './pages/Personnels.js'
 import ModifierPersonnels from './pages/modifierPersonnel.js'
@@ -51,7 +52,8 @@ function App() {
         <Route path="/factures/recues" element={<Recues/>}/>
         
         <Route path="/" element={<Home/>}/>
-        <Route path="/inscriptionUser" element={<InscriptionUser/>}/>
+        <Route path="/userAdmin" element={<UserAdmin/>}/>
+        <Route path="/userAdmin/inscriptionUser" element={<InscriptionUser/>}/>
         </Routes>
     </div>
   );
