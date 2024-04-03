@@ -4,12 +4,12 @@ import { comptabiliteActions } from '../reducer/comptabilite.js'
 export default function SupprimerCharge({retour,value}) {
 const dispatch=useDispatch()
   const supprimer=()=>{
-    dispatch(comptabiliteActions.SupprimerCharge(value._id)).then(()=>
+    dispatch(comptabiliteActions.supprimerCharge(value._id)).then(()=>
     retour() )
   }
   return (
     <div className='w-[500px] space-y-4 h-[200px]  items-center justify-center  border p-3 bg-white border-gray-100 shadow-md rounded-3xl   z-10 absolute top-[125px] left-[400px]'>
-    <div className='font-bold  tracking-tight text-[22px] text-black pl-1'>Supprimer un Parent</div>
+    <div className='font-bold  tracking-tight text-[22px] text-black pl-1'>Supprimer une charge</div>
     <p className='font-lg  tracking-tight text-[18px] text-center' >Souhaitez-vous supprimer la  charge  <span className='font-lg  tracking-tight text-[18px] text-green-400 pl-1'>N*{value._id}  </span> </p>
 
     <div className='flex flex-col items-center  w-full h-full'>
