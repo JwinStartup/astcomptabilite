@@ -28,11 +28,11 @@ export default function ModifierUser({retour,value}) {
       <div className='flex flex-col mx-4 space-y-4'>
       <input {...register("nom")} type='text' placeholder='Nom utiilisateur' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
       <input {...register("cel")}  type='text' placeholder='Cel ' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
-      <select {...register("role")} defaultValue='Directeur' className='outline-none w-[400px] border-b-2 py-1 text-lg'>
+      <select {...register("role")}  className='outline-none w-[400px] border-b-2 py-1 text-lg'>
             <option>Directeur</option>
             <option>Administrateur</option>
         </select>
-      <select {...register("zone")} defaultValue='Directeur' className='outline-none w-[400px] border-b-2 py-1 text-lg'>
+      <select {...register("zone")}  className='outline-none w-[400px] border-b-2 py-1 text-lg'>
             <option>Cocody</option>
             <option>Bouake</option>
             <option>San pedro</option>
