@@ -28,7 +28,7 @@ export default function ModifierFacture({retour,value}) {
    });
   return (
     <div className='w-[500px] h-[300px] border p-3 bg-white border-gray-100 shadow-md rounded-3xl   z-10 absolute top-[150px] left-[400px]'>
-        <div className='font-bold  tracking-tight text-[22px] text-black pl-1'>Modifier la facture N°{value._id.slice(value._id.length-6)} de {value.nom}  {value.prenoms} </div>
+        <div className='font-bold  tracking-tight text-[22px] text-black pl-1'>Modifier la facture N°{value._id.slice(value._id.length-6)} de {value.client.nom}  {value.client.prenoms} </div>
         <form   onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex flex-col items-center mt-5  space-y-3 w-full h-full' >
         <input {...register("montant")}  type="number"  className='w-[400px] h-10 border-b-2 py-1 text-lg pl-1 placeholder-gray-300' placeholder='Montant prestation' />
         <select {...register("periodeAjouter")}  defaultValue='Janvier 2024' className='outline-none w-[400px] border-b-2 py-1 text-lg'>
