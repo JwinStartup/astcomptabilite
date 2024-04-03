@@ -24,7 +24,7 @@ export default function ModifierUser({retour,value}) {
   return (
          <form onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='bg-white border-gray-100 shadow-md rounded-3xl z-10 absolute top-[150px] left-[400px] flex justify-center w-[550px] mt-6 items-center flex-col space-y-4 p-9 border border-gray-400 rounded-lg shadow-lg' >
      <div className='flex flex-col '>
-   <p className='text-2xl font-semibold text-black tracking-wider mb-3'>Inscrivez un utilisateur</p>            E 
+   <p className='text-2xl font-semibold text-black tracking-wider mb-3'>Modifier un utilisateur</p>      
       <div className='flex flex-col mx-4 space-y-4'>
       <input {...register("nom")} type='text' placeholder='Nom utiilisateur' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
       <input {...register("cel")}  type='text' placeholder='Cel ' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
