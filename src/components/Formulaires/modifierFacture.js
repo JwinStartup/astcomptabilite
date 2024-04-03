@@ -4,6 +4,7 @@ import { comptabiliteActions } from '../../reducer/comptabilite';
 import { userActions } from '../../reducer/user';
 import { useForm } from 'react-hook-form';
 export default function ModifierFacture({retour,value}) {
+  console.log(value)
   const { register, handleSubmit,
   } = useForm({
     defaultValues:value
