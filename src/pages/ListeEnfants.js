@@ -74,7 +74,7 @@ export default function ListeEnfant() {
     <td className='font-medium text-base text-gray-500 text-center'>
     {value.formateur.map((i,k)=> <> {i.nom} {i.prenoms} - {i.discipline} <br /> </>)}  
     </td>        
-   <td className='font-medium text-base text-gray-500 text-center cursor-pointer' onClick={()=>navigate('/inscription/enfants')}>Modifier </td>
+   <td className='font-medium text-base text-gray-500 text-center cursor-pointer' onClick={()=>navigate(`/modifier/enfants/${value._id}`)}>Modifier </td>
 <td className='font-medium text-base text-gray-500 text-center cursor-pointer'onClick={()=>setRub({bol:true,value:value})}>Supprimer</td>    
    </tr> )}
 
