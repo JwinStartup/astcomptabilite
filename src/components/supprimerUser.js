@@ -4,7 +4,7 @@ import { userActions } from '../reducer/user.js'
 export default function SupprimerUser({retour,value}) {
 const dispatch=useDispatch()
   const supprimer=()=>{
-    dispatch(userActions.supprimerUser(value._id)).then(()=>retour())
+    dispatch(userActions.supprimer(value._id)).then(()=>retour())
   }
   return (
     <div className='w-[500px] space-y-4 h-[200px]  items-center justify-center  border p-3 bg-white border-gray-100 shadow-md rounded-3xl   z-10 absolute top-[125px] left-[400px]'>
