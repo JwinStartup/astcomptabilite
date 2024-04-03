@@ -17,7 +17,7 @@ export default function ModifierUser({retour,value}) {
   const onSubmit = (data) => {
     console.log(data)
     //setLoading(true)
-   dispatch(userActions.modifierUser(data)).then(()=>{
+   dispatch(userActions.modifier(data)).then(()=>{
      navigate('/UserAdmin')
     })
   }
