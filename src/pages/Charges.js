@@ -83,7 +83,10 @@ export default function Charges() {
                 <div>
                     <div className='font-bold  tracking-wide text-[22px] text-red-600 '>{value.montant}</div>
                     <div className='font-medium text-center tracking-tight text-[11px] text-gray-300 '>il y a 2 semaines</div>
-
+                   <div className='mb-3 p-0 text-[22px] tracking-tight  text-black font-semibold'>
+                  <button className=' bg-green-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center ml-2' onClick={()=>setRub({bol:true,nom:'MODIFIER',value:value})} > Modifier</button>
+                  <button className=' bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center ml-2' onClick={()=>setRub({bol:true,nom:'SUPPRIMER',value:value})} > Supprimer</button>
+                  </div>
                 </div>
 
                 </div>)}
