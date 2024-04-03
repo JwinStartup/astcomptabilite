@@ -10,7 +10,7 @@ export default function Charges() {
   const navigate=useNavigate()
   const [rub , setRub]=useState(false)
   const dispatch =useDispatch()
-  //const [rub , setRub]=useState({nom:'',bol:false,value:null})
+  const [rub , setRub]=useState({nom:'',bol:false,value:null})
   useEffect(() => { 
     dispatch(comptabiliteActions.listeCharge())
   },[rub])
@@ -19,7 +19,6 @@ export default function Charges() {
     return state.comptabiliteReducer
    });
   const SetComponent=({p,retour,value})=>{
-  console.log(p)
   switch (p) {
     case 'AJOUTER':
       return(
@@ -48,11 +47,7 @@ export default function Charges() {
 }
   return (
     <div>
-          
-          {rub!==false&&<div>
-          <Backdrop/>
-        <AjouterCharges retour={()=>setRub(false)} />
-        </div>}
+    {rub.bol!==false&&<SetComponent p={rub.nom} retour={()=>setRub({bol:false,nom:''})} value={rub.value} />}
         <Entete />
      <div className='  flex justify-between  space-x-2 mx-4'>
      <div className=' mb-3 p-0 text-[22px] tracking-tight  text-black font-semibold '> <button className=' bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center ml-2' onClick={()=>navigate("/")} > retour</button>Les charges </div>
