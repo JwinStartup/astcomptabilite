@@ -4,7 +4,7 @@ import { useNavigate,useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { userActions } from '../reducer/user';
-export default function Parents() {
+export default function ModifierParents() {
   const {id}=useParams()
   const navigate=useNavigate()
   const { register, handleSubmit,
