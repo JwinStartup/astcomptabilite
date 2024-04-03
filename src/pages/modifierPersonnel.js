@@ -5,12 +5,12 @@ import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { userActions } from '../reducer/user';
 export default function ModifierPersonnels() {
+const dispatch =useDispatch()
     const {id}=useParams()
   const navigate=useNavigate()
   const { register, handleSubmit} = useForm(
       { defaultValues: async () => dispatch(userActions.voirPersonnel(id)).then((d)=>{return d.payload })}
 );
-const dispatch =useDispatch()
 const onSubmit = (data) => {
  console.log(data)
  //setLoading(true)
