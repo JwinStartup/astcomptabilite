@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import Entete from '../components/entete'
 import  {useNavigate} from "react-router-dom"
 import AjouterCharges from "../components/ajouterCharges.js"
-import modifierCharges from "../components/modifierCharges.js"
-import supprimerCharges from "../components/supprimerCharges.js"
+import ModifierCharges from "../components/modifierCharges.js"
+import SupprimerCharges from "../components/supprimerCharges.js"
 import Backdrop from '../components/backdrop.js'
 import { useDispatch, useSelector } from 'react-redux'
 import { comptabiliteActions } from '../reducer/comptabilite.js'
