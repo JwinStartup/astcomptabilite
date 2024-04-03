@@ -16,7 +16,7 @@ export default function InscriptionUser({retour}) {
     console.log(data)
     //setLoading(true)
    dispatch(userActions.inscription(data)).then(()=>{
-     navigate('/UserAdmin')
+     retour()
     })
   }
   return (
