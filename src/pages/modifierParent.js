@@ -10,7 +10,7 @@ export default function ModifierParents() {
   const { register, handleSubmit,
      } = useForm(
     {
-  defaultValues: async () => dispatch(userActions.voirParent(id)).then((d)=>return d.payload)
+  defaultValues: async () => dispatch(userActions.voirParent(id)).then((d)=>{return d.payload})
 }
    );
   const dispatch =useDispatch()
