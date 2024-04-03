@@ -43,10 +43,13 @@ export default function InscriptionUser({retour}) {
         </select>
      </div> 
      </div>
-     
-<button type='submit' className='outline-none flex flex-row items-center justify-center mt-3 text-white bg-green-700 hover:bg-green-800  font-medium rounded-lg text-lg  px-5 py-2.5 mr-2 mb-2'>
-       <span>S'inscrire</span>
-      </button>
+     <div className='flex flex-row space-x-4'> <button type="button" onClick={()=>retour()} className="text-white bg-red-700  font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
+        Retour
+        </button>
+        <button type="submit" class="text-white bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center ">
+        Creer
+        </button>
+        </div>
     </form>
     </div>
   )
