@@ -40,7 +40,7 @@ export default function FacturesImpayes() {
   const dispatch =useDispatch()
   const [rub , setRub]=useState({nom:'',bol:false,value:null})
   useEffect(() => { 
-    dispatch(userActions.listeUser())
+    dispatch(userActions.liste())
   },[rub])
   
   const {isLoader,users} = useSelector((state)=>{
