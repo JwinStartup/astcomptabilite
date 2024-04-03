@@ -1,10 +1,11 @@
 import React from 'react'
 import Entete from '../components/entete'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate,useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { userActions } from '../reducer/user';
 export default function Parents() {
+  const {id}=useParams()
   const navigate=useNavigate()
   const { register, handleSubmit,
      } = useForm(
@@ -17,6 +18,10 @@ export default function Parents() {
      navigate('/cp/ListeParent')
     })
   }
+  useEffect(() => { 
+    dispatch(userActions.voirParent(id))
+  },[rub])
+  
   return (
     <div>
       <Entete />
