@@ -59,7 +59,7 @@ export default function Charges() {
                     <option value="">Tous les mois</option>
                 </select>
             </div>
-            <button className='ml-10 bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center' onClick={()=>setRub({bol:true,nom:'AJOUTER',value:value})}}>+ Ajouter Charges</button>
+            <button className='ml-10 bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center' onClick={()=>setRub({bol:true,nom:'AJOUTER',value:value})}>+ Ajouter Charges</button>
 
             </div>
 
