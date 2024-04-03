@@ -75,7 +75,7 @@ export default function ListePersonnel() {
    <td className='font-medium text-base text-gray-500 text-center'>{value.discipline}</td>
    <td className='font-medium text-base text-gray-500 text-center'>{value.cel}</td>
    <td className='font-medium text-base text-gray-500 text-center'>{value.whatshapp}</td>
-   <td className='font-medium text-base text-gray-500 text-center ' onClick={()=>navigate('/inscription/personnels')}>Modifier </td>
+   <td className='font-medium text-base text-gray-500 text-center ' onClick={()=>navigate('/modifier/personnels/:id')}>Modifier </td>
 <td className='font-medium text-base text-gray-500 text-center 'onClick={()=>setRub({bol:true,value:value})}>Supprimer </td>    
    </tr> )}
   
