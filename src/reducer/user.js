@@ -15,6 +15,7 @@ export const userReducer = slice.reducer;
 function createInitialState() {
     return {
       user: null,
+      users:[] ,
       parent:null,
       enfant:null,
       personnel:null,
@@ -61,12 +62,7 @@ function createInitialState() {
              return  await fetchWrapper.post(`${url}/inscriptionParent`,body).then((r)=>console.log(r))
             }
             ),
-          modifier:createAsyncThunk(`${name}/modifier`,
-          async (body)=>{
-             return  await fetchWrapper.post(`${url}/modifier`,body).then((r)=>console.log(r))
-            }
-            ),
-          inscriptionPersonnel:createAsyncThunk(`${name}/inscriptionPersonnel`,
+              inscriptionPersonnel:createAsyncThunk(`${name}/inscriptionPersonnel`,
           async (body)=>{
              return  await fetchWrapper.post(`${url}/inscriptionPersonnel`,body).then((r)=>console.log(r))
             }
@@ -122,9 +118,9 @@ function createInitialState() {
              return  await fetchWrapper.get(`${url}/voirParent/${body}`)
             }
             ),
-            voir:createAsyncThunk(`${name}/voir`,
+            liste:createAsyncThunk(`${name}/liste`,
           async (body)=>{
-             return  await fetchWrapper.get(`${url}/voir/${body}`)
+             return  await fetchWrapper.get(`${url}/liste`)
             }
             ),
             voirPersonnel:createAsyncThunk(`${name}/voirPersonnel`,
@@ -162,13 +158,13 @@ function createExtraReducers() {
         inscription();
         supprimer();
         modifier();
+        liste();
         inscriptionParent();
         inscriptionPersonnel();
         listeParent();
         inscriptionEnfant();
         supprimerEnfant();
         voirEnfant();
-        voir();
         voirParent();
         voirPersonnel();
         modifierEnfant();
@@ -442,6 +438,7 @@ function createExtraReducers() {
               state.error = action.error;
             });
           }
+      
         function modifier() {
             var {pending,fulfilled,rejected}=extraActions.modifier
             builder
@@ -467,8 +464,8 @@ function createExtraReducers() {
               state.isLoader = true;
             })
             .addCase(fulfilled, (state, action) => {
-              const user = action.payload;
-              state.user = user;
+              const message = action.payload;
+              state.message = message;
               state.isLoader = false;
             })
             .addCase(rejected, (state, action) => {
@@ -476,16 +473,16 @@ function createExtraReducers() {
               state.error = action.error;
             });
           }
-        function voir() {
-            var {pending,fulfilled,rejected}=extraActions.voir
+        function liste() {
+            var {pending,fulfilled,rejected}=extraActions.liste
             builder
             .addCase(pending, (state) => {
               state.error = null;
               state.isLoader = true;
             })
             .addCase(fulfilled, (state, action) => {
-              const user = action.payload;
-              state.user = user;
+              const users = action.payload;
+              state.users = users;
               state.isLoader = false;
             })
             .addCase(rejected, (state, action) => {
