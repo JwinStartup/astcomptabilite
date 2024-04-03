@@ -18,6 +18,34 @@ export default function Charges() {
   const {isLoader,charges} = useSelector((state)=>{
     return state.comptabiliteReducer
    });
+  const SetComponent=({p,retour,value})=>{
+  console.log(p)
+  switch (p) {
+    case 'AJOUTER':
+      return(
+        <div>
+          <Backdrop/>
+        <AjouterCharges retour={()=>setRub(false)} />
+        </div>
+      )
+    case 'SUPPRIMER':
+      return(
+        <div>
+          <Backdrop/>
+        <SupprimerCharge retour={retour} value={value} />
+        </div>
+      )
+     case 'MODIFIER':
+      return(
+        <div>
+          <Backdrop/>
+        <ModifierCharge retour={retour} value={value} />
+        </div>
+      )
+    default:
+      break;
+  }
+}
   return (
     <div>
           
