@@ -10,7 +10,6 @@ import { comptabiliteActions } from '../reducer/comptabilite.js'
 import { RingLoader } from 'react-spinners'
 export default function Charges() {
   const navigate=useNavigate()
-  const [rub , setRub]=useState(false)
   const dispatch =useDispatch()
   const [rub , setRub]=useState({nom:'',bol:false,value:null})
   useEffect(() => { 
