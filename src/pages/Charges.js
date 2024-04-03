@@ -59,7 +59,7 @@ export default function Charges() {
                     <option value="">Tous les mois</option>
                 </select>
             </div>
-            <button className='ml-10 bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center' onClick={()=>setRub({bol:true,nom:'AJOUTER',value:value})}>+ Ajouter Charges</button>
+            <button className='ml-10 bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center' onClick={()=>setRub({bol:true,nom:'AJOUTER',value:null})}>+ Ajouter Charges</button>
 
             </div>
 
@@ -73,7 +73,7 @@ export default function Charges() {
                 
                 {charges.map((value,index)=><div key={index} className='flex flex-row w-[800px] justify-between items-center bg-white border rounded-xl shadow mx-8  my-2 p-4'>
                 <div className='space-y-2'>
-                {value.nomCharge&& <div className='text-xl font-medium text-gray-500'>nom de la charge:  {value.nomCharge} </div>}
+                {value.nomCharge&& <div className='text-xl font-medium text-gray-500'>nom de la charge: {value.nomCharge} </div>}
                 <div className='text-md font-medium text-gray-500'>type:  {value.type} </div>
                 {value.type==="salaire"&&<div className='text-md font-medium text-gray-500'>salaire de  {value.personnel} </div>}
                 <div className='text-sm w-[600px] h-11 font-medium text-gray-500'>{value.observation} </div>
