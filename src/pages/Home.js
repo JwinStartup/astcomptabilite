@@ -21,9 +21,9 @@ export default function Home() {
         <Link to='/bilan' className="w-52 h-52 bg-red-100 tracking-tight  text-black font-semibold rounded-3xl text-center items-center flex justify-center">
           Bilan financier
         </Link>
-        <Link to='/userAdmin' className="w-52 h-52 bg-red-100 tracking-tight  text-black font-semibold rounded-3xl text-center items-center flex justify-center">
+  {user.me?.role==='Administrateur'&&<Link to='/userAdmin' className="w-52 h-52 bg-red-100 tracking-tight  text-black font-semibold rounded-3xl text-center items-center flex justify-center">
           Utilisateur
-        </Link>
+        </Link>}
          </div></div>
   )
 }   
