@@ -52,4 +52,5 @@ export default function ModifierUser({retour,value}) {
         </button>
         </div>
     </form>
-    </div>
+    </div>)
+  }
