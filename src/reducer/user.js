@@ -140,6 +140,7 @@ function createInitialState() {
             ),
             supprimer:createAsyncThunk(`${name}/supprimer`,
           async (body)=>{
+              console.log(body)
              return  await fetchWrapper.get(`${url}/supprimer/${body}`)
             }
             ),
