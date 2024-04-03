@@ -51,7 +51,7 @@ dispatch(userActions.modifierPersonnel(data)).then(()=>{
      </div> 
      </div>
      
-<button type='submit' className='outline-none flex flex-row items-center justify-center space-x-2  text-white bg-green-700 hover:bg-green-800  font-medium rounded-lg text-lg  px-5 py-2.5 mr-2 mb-2'>
+<button type='submit' className='outline-none flex flex-row items-center justify-center space-x-2  text-white bg-red-700 hover:bg-red-800  font-medium rounded-lg text-lg  px-5 py-2.5 mr-2 mb-2'>
        <span>   S'inscrire</span>
       </button>
     </form>
