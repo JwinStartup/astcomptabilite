@@ -4,7 +4,7 @@ import { comptabiliteActions } from '../reducer/comptabilite';
 import { useDispatch, useSelector } from 'react-redux';
 import { userActions } from '../reducer/user';
 
-export default function ModifierCharge({retour,value}) {
+export default function ModifierCharges({retour,value}) {
   const { register, handleSubmit,
   } = useForm(
     {
@@ -15,7 +15,7 @@ const dispatch=useDispatch()
 const [select, setSelect] = useState('salaire')
 const onSubmit = (data) => {
   console.log(data)
- dispatch(comptabiliteActions.modiifierCharge(data)).then(()=>{
+ dispatch(comptabiliteActions.modifierCharge(data)).then(()=>{
   retour()
   })
  
