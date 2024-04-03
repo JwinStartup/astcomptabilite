@@ -14,13 +14,13 @@ export default function Parents() {
   const onSubmit = (data) => {
     console.log(data)
     //setLoading(true)
-   dispatch(userActions.inscriptionParent(data)).then(()=>{
+   dispatch(userActions.modifierParent(data)).then(()=>{
      navigate('/cp/ListeParent')
     })
   }
   useEffect(() => { 
-    dispatch(userActions.voirParent(id))
-  },[rub])
+    dispatch(userActions.voirParent(id)).then((d)=>console.log(d))
+  },[])
   
   return (
     <div>
