@@ -9,7 +9,7 @@ const dispatch =useDispatch()
     const {id}=useParams()
   const navigate=useNavigate()
   const { register, handleSubmit} = useForm(
-      { defaultValues: async () => dispatch(userActions.voirPersonnel(id)).then((d)=>{return d.payload })}
+      { defaultValues: async () => dispatch(userActions.voirPersonnel(id)).then((d)=>{ console.log(d.payload) })}
 );
 const onSubmit = (data) => {
  console.log(data)
