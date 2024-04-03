@@ -29,8 +29,6 @@ export default function ModifierUser({retour,value}) {
    <p className='text-2xl font-semibold text-black tracking-wider mb-3'>Inscrivez un utilisateur</p>            E 
       <div className='flex flex-col mx-4 space-y-4'>
       <input {...register("nom")} type='text' placeholder='Nom utiilisateur' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
-      <input {...register("email")}  type='text' placeholder='Email' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
-      <input {...register("password")}  type='text' placeholder='Mot de passe' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
       <input {...register("cel")}  type='text' placeholder='Cel ' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
       <select {...register("role")} defaultValue='Directeur' className='outline-none w-[400px] border-b-2 py-1 text-lg'>
             <option>Directeur</option>
