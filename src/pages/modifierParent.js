@@ -44,7 +44,6 @@ export default function ModifierParents() {
         <input {...register("commune")}  type='text' placeholder='Commune' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
         <input {...register("quartier")}  type='text' placeholder='Quartier' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
         <input {...register("NombreEnfant")}  type='text' placeholder="Nombre d'enfant à inscrire" className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
-        <input {...register("eleveClasse")}  type='text' placeholder='Les classes' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
        </div>
        </div>
         
