@@ -22,7 +22,7 @@ export default function Entete() {
       </div>}
            {user.me==null?
              <Link to='/login'>connectez-vous</Link>:
-             <button onClick={()=> dispatch(userActions.deconnecte()).then(()=>logout()).then(()=>navigate('/connexion'))} type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+             <button onClick={()=> dispatch(userActions.deconnecte()).then(()=>logout()).then(()=>navigate('/login'))} type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
              deconnecte
              </button>}
         </div>
