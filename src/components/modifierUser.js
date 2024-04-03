@@ -18,7 +18,7 @@ export default function ModifierUser({retour,value}) {
     console.log(data)
     //setLoading(true)
    dispatch(userActions.modifier(data)).then(()=>{
-     navigate('/UserAdmin')
+     retour()
     })
   }
   return (
