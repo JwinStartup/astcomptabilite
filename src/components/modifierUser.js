@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { userActions } from '../reducer/user';
 import { useNavigate } from 'react-router-dom';
 export default function ModifierUser({retour,value}) {
+  console.log(value)
   const navigate=useNavigate()
   const { register, handleSubmit,
     // formState: { errors }
