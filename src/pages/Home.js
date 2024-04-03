@@ -1,7 +1,10 @@
 import React from 'react'
 import Entete from '../components/entete'
 import { Link } from 'react-router-dom'
+import {UserContext} from '../context/authContext'
 export default function Home() {
+  const { user } = useContext(UserContext);
+    console.log(user)
     return (
       <div>
         <Entete />
