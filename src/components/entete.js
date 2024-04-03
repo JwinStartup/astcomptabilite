@@ -8,11 +8,7 @@ export default function Entete() {
   const { login,logout, user } = useContext(UserContext);
   const navigate = useNavigate
   const  dispatch = useDispatch()
-  const me = useSelector((state)=>{
-    return state.userReducer.user
-   });
-  console.log('me:',user.me)
-console.log('auth:',user.auth)
+ 
 
   return (
     <div className=' w-full flex justify-between'>
