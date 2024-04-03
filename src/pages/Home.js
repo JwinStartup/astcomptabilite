@@ -8,7 +8,7 @@ export default function Home() {
     return (
       <div>
         <Entete />
-      <div className='w-full flex justify-center items-center mt-20 gap-4'>
+      <div className='w-full flex flex-wrap  justify-center items-center mt-20 gap-4'>
         <Link to='/cp' className="w-52 h-52 bg-red-100 tracking-tight  text-black font-semibold rounded-3xl text-center items-center flex justify-center">
           clients & personnels
         </Link>
