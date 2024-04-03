@@ -1,4 +1,4 @@
-import React from 'react'
+import React , {useEffect} from 'react'
 import Entete from '../components/entete'
 import { useNavigate,useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
