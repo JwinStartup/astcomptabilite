@@ -4,7 +4,7 @@ import { comptabiliteActions } from '../reducer/comptabilite';
 import { useDispatch, useSelector } from 'react-redux';
 import { userActions } from '../reducer/user';
 
-export default function ModifierCharges({retour,value}) {
+export default function ModifierCharge({retour,value}) {
   const { register, handleSubmit,
   } = useForm(
     {
