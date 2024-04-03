@@ -13,6 +13,7 @@ import Charges from './pages/Charges.js'
 import Bilan from './pages/Bilan.js'
 import ClientsPersonnels from './pages/clientspersonnels.js'
 import Parents from './pages/Parents.js'
+import ModifierParents from './pages/ModifierParent.js'
 import Personnels from './pages/Personnels.js'
 import Enfants from './pages/Enfants.js'
 import Login from './pages/Login.js'
@@ -40,6 +41,7 @@ function App() {
            <Route path="/cp/ListeEnfant" element={<ListeEnfant/>}/>
         <Route path="/cp/ListePersonnel" element={<ListePersonnel/>}/>
         <Route path="/inscription/parents" element={<Parents/>}/>
+          <Route path="/modifier/parents/:id" element={<ModifierParents/>}/>
         <Route path="/inscription/personnels" element={<Personnels/>}/>
            <Route path="/inscription/enfants" element={<Enfants/>}/>
         <Route path="/factures/recues" element={<Recues/>}/>
