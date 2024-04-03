@@ -59,6 +59,18 @@ function createInitialState() {
             return await fetchWrapper.post(`${url}/creerCharge`,body)
           }
           ),
+        modifierCharge:createAsyncThunk(`${name}/modifierCharge`,
+        async (body)=>{
+            console.log(body)
+            return await fetchWrapper.post(`${url}/modifierCharge`,body)
+          }
+          ),
+        supprimerCharge:createAsyncThunk(`${name}/supprimerCharge`,
+        async (body)=>{
+            console.log(body)
+            return await fetchWrapper.get(`${url}/supprimerCharge/${body}`)
+          }
+          ),
           voirByIdBilan:createAsyncThunk(`${name}/voirByIdBilan`,
         async (body)=>{
             return await fetchWrapper.get(`${url}/voirByIdBilan/${body}`)
@@ -127,6 +139,8 @@ function createExtraReducers() {
         partager();
         creerRecue();
         creerCharge();
+        modifierCharge();
+        supprimerCharge();
         supprimerFacture();
         modifierFacture();
         payerFacture();
@@ -139,6 +153,23 @@ function createExtraReducers() {
         cloturer();
         function creerCharge() {
             var { pending, fulfilled, rejected } = extraActions.creerCharge;
+            builder
+              .addCase(pending, (state) => {
+                state.error = null;
+                state.isLoader = true;
+              })
+              .addCase(fulfilled, (state, action) => {
+               const charge = action.payload;
+                state.charge=charge
+                state.isLoader = false;
+              })
+              .addCase(rejected, (state, action) => {
+                state.isLoader = false;
+                state.error = action.error;
+              });
+          }
+        function modifierCharge() {
+            var { pending, fulfilled, rejected } = extraActions.modifierCharge;
             builder
               .addCase(pending, (state) => {
                 state.error = null;
@@ -348,6 +379,24 @@ function createExtraReducers() {
           }
         function supprimerFacture() {
             var { pending, fulfilled, rejected } = extraActions.supprimerFacture;
+            builder
+              .addCase(pending, (state) => {
+                state.error = null;
+                state.isLoader = true;
+              })
+              .addCase(fulfilled, (state, action) => {
+               const message = action.payload;
+                  console.log(message)
+                state.message=message;
+                state.isLoader = false;
+              })
+              .addCase(rejected, (state, action) => {
+                state.isLoader = false;
+                state.error = action.error;
+              });
+          }
+        function supprimerCharge() {
+            var { pending, fulfilled, rejected } = extraActions.supprimerCharge;
             builder
               .addCase(pending, (state) => {
                 state.error = null;
