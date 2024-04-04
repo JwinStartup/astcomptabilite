@@ -37,8 +37,8 @@ export default function Parents() {
         <input {...register("whatshapp")}  type='text' placeholder='Whatshapp' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
         <input {...register("ville")}  type='text' placeholder='Ville' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
         <input {...register("commune")}  type='text' placeholder='Commune' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
-        <input {...register("MontantCours")}  type='text' placeholder='Montant du cours à domicile' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
-        <input {...register("Commission")}  type='text' placeholder='Commission sur le Montant' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
+        <input {...register("montantCours")}  type='text' placeholder='Montant du cours à domicile' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
+        <input {...register("commission")}  type='text' placeholder='Commission sur le Montant' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
         <input {...register("NombreEnfant")}  type='text' placeholder="Nombre d'enfant à inscrire" className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
        </div>
        </div>
