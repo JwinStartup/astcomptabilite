@@ -32,20 +32,16 @@ export default function FormulaireCreerFacture({retour}) {
     <div className='w-[500px] h-[300px] border p-3 bg-white border-gray-100 shadow-md rounded-3xl   z-10 absolute top-[150px] left-[400px]'>
         <div className='font-bold  tracking-tight text-[22px] text-black pl-1'>Créer une facture</div>
         <form   onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex flex-col items-center mt-5  space-y-3 w-full h-full' >
-      <label className=''>
-          Le parent
+      
+         
         <select {...register("client")}
               onChange={(e)=>onChangeParent(e.target.value)}  className='outline-none w-[400px] border-b-2 py-1 text-lg'>
              <option className='text-gray-200' value=" " >Choississez un parent </option>     
          {parents.map((val,index)=> <option className='' value={val._id} key={index}> {val.nom}  {val.prenoms}</option>)}
         </select>
-          </label>
-           <label className=''>
-          Le montant de facture:
+        
         <input {...register("montant")} disabled value={montant} type="number"  className='w-[400px] h-10 border-b-2 py-1 text-lg pl-1 placeholder-gray-300' placeholder='Montant prestation' />
-        </label>
-           <label className=''>
-          Mois concerné:
+        
            <select {...register("periodeAjouter")}  defaultValue='Janvier 2024' className='outline-none w-[400px] border-b-2 py-1 text-lg'>
             <option>Janvier 2024</option>
             <option>Fevrier 2024</option>
@@ -60,7 +56,6 @@ export default function FormulaireCreerFacture({retour}) {
             <option>Novembre 2024</option>
             <option>Decembre 2024</option>
         </select>
-           </label>
        <div className='flex flex-row space-x-4'> <button type="button" onClick={()=>retour()} class="text-white bg-red-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
         Retour
         </button>
