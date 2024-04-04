@@ -24,9 +24,8 @@ export default function FormulaireCreerFacture({retour}) {
   const {isLoader,parents} = useSelector((state)=>{
     return state.userReducer
    });
-  const  onChangeParent=(e)=>
-    {
-     const p= parents.find((d)=>d._id===e)
+  const  onChangeParent=(e)=>{
+        const p= parents.find((d)=>d._id===e)
       setMontant(p.montantCours)
     }
   return (
