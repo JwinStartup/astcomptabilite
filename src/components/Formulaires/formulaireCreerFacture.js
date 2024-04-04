@@ -16,7 +16,11 @@ export default function FormulaireCreerFacture({retour}) {
   const onSubmit = (data) => {
     console.log(data)
     //setLoading(true)
-   dispatch(comptabiliteActions.creerFacture(data)).then(()=>{
+   dispatch(comptabiliteActions.creerFacture({
+     client:data.client,
+     montant:montant,
+     periodeAjouter:data.periodeAjouter
+   }    )).then(()=>{
     retour()
     })
    
