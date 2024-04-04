@@ -67,6 +67,7 @@ export default function FacturesImpayes() {
     return state.comptabiliteReducer
    });
   const navigate=useNavigate()
+  const facturesArray = useMemo(() => factures.filter(job => job.startsWith(filter), [filter])
   return (
     <div>
          {rub.bol!==false&&<SetComponent p={rub.nom} retour={()=>setRub({bol:false,nom:''})} value={rub.value} />}
