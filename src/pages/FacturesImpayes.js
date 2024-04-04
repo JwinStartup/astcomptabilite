@@ -69,12 +69,12 @@ export default function FacturesImpayes() {
    });
   const navigate=useNavigate()
   const facturesArray = useMemo(() => 
-        { return  factures.filter((u)=>u)
-       /*   if(fact!==" "){
+        { 
+          if(fact!==" "){
           return factures.filter((u)=>u._id.match(fact))
         }else{
-          return factures
-        }*/
+          return  factures.filter((u)=>u)
+        }
         }
     ,[fact])
   
