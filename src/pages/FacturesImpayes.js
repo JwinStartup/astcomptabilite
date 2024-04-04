@@ -74,7 +74,7 @@ export default function FacturesImpayes() {
      <div className='  flex justify-between  space-x-2 mx-4'>
      <div className=' mb-3 p-0  tracking-tight text-[22px] text-black font-semibold '><button className=' bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center ml-2' onClick={()=>navigate("/factures")} > retour</button>Factures </div>
      <div className='  flex justify-between  space-x-2'>
-                  <div className=' border rounded-full justify-center items-center flex my-3 p-2 w-[400px]'>
+                  <div className=' border rounded-full justify-start items-center flex my-3 p-1 w-[400px]'>
                    <FaSearch size={20} color='black' />
                     <input onChange={(e)=>console.log(e.target.value)} type='search' placeholder='Numero ...' className='py-2 bg-transparent ml-3 outline-none placeholder:font-medium   '/>
                   </div>
