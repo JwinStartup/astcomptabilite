@@ -10,6 +10,8 @@ import {useNavigate} from 'react-router-dom'
 import { useDispatch,useSelector } from 'react-redux';
 import { RingLoader} from 'react-spinners';
 import { comptabiliteActions } from '../reducer/comptabilite.js'
+import { PropagateLoader } from 'react-spinners';
+import { FaSearch } from 'react-icons/fa';
 const SetComponent=({p,retour,value})=>{
   console.log(p)
   switch (p) {
@@ -72,7 +74,10 @@ export default function FacturesImpayes() {
      <div className='  flex justify-between  space-x-2 mx-4'>
      <div className=' mb-3 p-0  tracking-tight text-[22px] text-black font-semibold '><button className=' bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center ml-2' onClick={()=>navigate("/factures")} > retour</button>Factures </div>
      <div className='  flex justify-between  space-x-2'>
-                  <input type="search" className='w-[500px] bg-slate-400 rounded-3xl  pl-1 placeholder-white' placeholder='Numero de facture' />
+                  <div className=' border rounded-full justify-center items-center flex my-3'>
+                   <FaSearch size={20} color='black' />
+                    <input onChange={(e)=>connsole.log(e.target.value)} type='search' placeholder='Numero ...' className='py-2 bg-transparent ml-3 outline-none placeholder:font-medium   '/>
+                  </div>
                 <select name="" id="">
                     <option value="">Aujourd'hui</option>
                     <option value="">Ce mois</option>
