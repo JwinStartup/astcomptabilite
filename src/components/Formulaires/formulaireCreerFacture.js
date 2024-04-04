@@ -39,7 +39,7 @@ export default function FormulaireCreerFacture({retour}) {
              <option className='text-gray-200' value=" " >Choississez un parent </option>     
          {parents.map((val,index)=> <option className='' value={val._id} key={index}> {val.nom}  {val.prenoms}</option>)}
         </select>
-          
+          </label>
            <label className=''>
           Le montant de facture:
         <input {...register("montant")} disabled value={montant} type="number"  className='w-[400px] h-10 border-b-2 py-1 text-lg pl-1 placeholder-gray-300' placeholder='Montant prestation' />
