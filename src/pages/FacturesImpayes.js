@@ -68,7 +68,7 @@ export default function FacturesImpayes() {
     return state.comptabiliteReducer
    });
   const navigate=useNavigate()
-  const facturesArray = useMemo(() => 
+/*  const facturesArray = useMemo(() => 
         { 
           if(fact!==" "){
           return factures.filter((u)=>u._id.match(fact))
@@ -76,7 +76,7 @@ export default function FacturesImpayes() {
           return  factures.filter((u)=>u)
         }
         }
-    ,[fact])
+    ,[fact])*/
   
   return (
     <div>
@@ -101,7 +101,7 @@ export default function FacturesImpayes() {
         color={"green"}
         size={60}
       />:
-  <> {facturesArray.length===0?<p className='text-center w-full'>Pas de facture </p>:
+  <> {factures.length===0?<p className='text-center w-full'>Pas de facture </p>:
             <div className='w-full flex justify-center mt-16 '>
 
             <table className="w-full mx-2">
@@ -115,7 +115,7 @@ export default function FacturesImpayes() {
     </tr>
   </thead>
   <tbody>
-  {facturesArray.map((value,index)=><tr key={index} className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
+  {factures.map((value,index)=><tr key={index} className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
       <td className='font-medium text-base text-gray-500 text-center'>{value._id.slice(value._id.length-6)}</td>
       <td className='font-medium text-base text-gray-500 text-center'>{value.client.nom} {value.client.prenoms}</td>      
       <td className='font-medium text-base text-gray-500 text-center'>{value.periodeAjouter}</td>
