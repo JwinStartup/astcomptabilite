@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import myIcon from '../assets/astraining.png'
+import myIcon from '../assets/ASTRAINING_LOGO_PNG.png'
 import { createTw } from "react-pdf-tailwind";
 import ReactPDF, {PDFViewer, Page, Text,Image, View, Document, StyleSheet, renderToStream } from '@react-pdf/renderer';
 const tw = createTw({
