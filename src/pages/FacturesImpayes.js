@@ -68,7 +68,13 @@ export default function FacturesImpayes() {
     return state.comptabiliteReducer
    });
   const navigate=useNavigate()
-  const facturesArray = useMemo(() => factures.filter((u)=>u._id.match(fact)),[fact])||factures
+  const facturesArray = useMemo(() => 
+        {fact!==""?
+          factures.filter((u)=>u._id.match(fact))
+          :
+          factures
+        }
+    ,[fact])
   
   return (
     <div>
