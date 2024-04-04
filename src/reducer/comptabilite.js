@@ -17,7 +17,7 @@ function createInitialState() {
       facture: null,
       resultat:0,
       factures:[],
-        message:"",
+      message:"",
       bilan: null,
       bilans:[],
       charge: null,
@@ -33,8 +33,7 @@ function createInitialState() {
         recherche,
     };
       function recherche(state,action){
-          console.log(state)
-          console.log(action)
+        state.factures=state.factures.filter((u)=>u.numero.match(action.payload))
       }
     
     function logout(state) {
