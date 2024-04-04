@@ -70,9 +70,9 @@ export default function FacturesImpayes() {
   const navigate=useNavigate()
   const facturesArray = useMemo(() => 
         {fact!==""?
-          factures.filter((u)=>u._id.match(fact))
+          return factures.filter((u)=>u._id.match(fact))
           :
-          factures
+          return factures
         }
     ,[fact])
   
