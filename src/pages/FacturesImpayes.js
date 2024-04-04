@@ -59,7 +59,7 @@ const SetComponent=({p,retour,value})=>{
 export default function FacturesImpayes() {
   const dispatch =useDispatch()
   const [rub , setRub]=useState({nom:'',bol:false,value:null})
-  const [fact , setFact]=useState("")
+  const [fact , setFact]=useState(" ")
   useEffect(() => { 
     dispatch(comptabiliteActions.listeFacture())
   },[rub])
@@ -70,11 +70,9 @@ export default function FacturesImpayes() {
   const navigate=useNavigate()
   const facturesArray = useMemo(() => 
         { 
-          if(fact!==""){
+          if(fact!==" "){
           return factures.filter((u)=>u._id.match(fact))
-          
         }else{
-            
           return factures
         }
         }
