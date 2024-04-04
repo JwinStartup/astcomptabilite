@@ -3,6 +3,7 @@ import Entete from '../components/entete'
 import { Link } from 'react-router-dom'
 import {UserContext} from '../context/authContext'
 import { GiCheckMark } from "react-icons/gi";
+import { FaFileInvoice } from "react-icons/fa";
 export default function Home() {
   const { user } = useContext(UserContext);
     console.log(user)
@@ -11,8 +12,9 @@ export default function Home() {
         <Entete />
       <div className='w-full flex flex-wrap  h-full  justify-center items-center mt-20 gap-4 '>
       <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-    <div className>
-        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Facture</h5>
+    <div className="flex">
+        <FaFileInvoice  size={22} color="green"/>
+        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Facture & Reçue </h5>
     </div>
     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex  "> <GiCheckMark size={18} color="green" />Créer une facture ou reçue</p>
     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex"><GiCheckMark size={18} color="green" />Modifier une facture ou reçue</p>
