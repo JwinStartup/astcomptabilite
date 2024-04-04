@@ -33,7 +33,7 @@ function createInitialState() {
         recherche,
     };
       function recherche(state,action){
-        state.factures=state.factures.filter((u)=>u.numero.match(action.payload))
+        state.factures=state.factures.filter((u)=>u._id.match(action.payload))
       }
     
     function logout(state) {
