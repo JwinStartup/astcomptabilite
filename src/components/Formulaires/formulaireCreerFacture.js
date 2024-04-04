@@ -33,11 +33,11 @@ export default function FormulaireCreerFacture({retour}) {
         <div className='font-bold  tracking-tight text-[22px] text-black pl-1'>Créer une facture</div>
         <form   onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex flex-col items-center mt-5  space-y-3 w-full h-full' >
         <select {...register("client")}
-              onChange={(e)=>onChangeParent(e.target.value)} className='outline-none w-[400px] border-b-2 py-1 text-lg'>
+              onChange={(e)=>onChangeParent(e.target.value)}  className='outline-none w-[400px] border-b-2 py-1 text-lg'>
              <option className='text-gray-200' value=" " >Choississez un parent </option>     
          {parents.map((val,index)=> <option className='' value={val._id} key={index}> {val.nom}  {val.prenoms}</option>)}
         </select>
-        <input {...register("montant")} value={montant} type="number"  className='w-[400px] h-10 border-b-2 py-1 text-lg pl-1 placeholder-gray-300' placeholder='Montant prestation' />
+        <input {...register("montant")} disabled value={montant} type="number"  className='w-[400px] h-10 border-b-2 py-1 text-lg pl-1 placeholder-gray-300' placeholder='Montant prestation' />
         <select {...register("periodeAjouter")}  defaultValue='Janvier 2024' className='outline-none w-[400px] border-b-2 py-1 text-lg'>
             <option>Janvier 2024</option>
             <option>Fevrier 2024</option>
