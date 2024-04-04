@@ -6,7 +6,7 @@ export default function Home() {
   const { user } = useContext(UserContext);
     console.log(user)
     return (
-      <div className='bg-home bg-right-bottom bg-no-repeat w-full h-full'>
+      <div className=''>
         <Entete />
       <div className='w-full flex flex-wrap  h-full  justify-center items-center mt-20 gap-4 '>
         <Link to='/cp' className="w-52 h-52 bg-red-100 tracking-tight  text-black font-semibold rounded-3xl text-center items-center flex justify-center">
