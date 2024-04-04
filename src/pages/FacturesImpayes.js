@@ -76,7 +76,7 @@ export default function FacturesImpayes() {
      <div className='  flex justify-between  space-x-2'>
                   <div className=' border rounded-full justify-center items-center flex my-3'>
                    <FaSearch size={20} color='black' />
-                    <input onChange={(e)=>connsole.log(e.target.value)} type='search' placeholder='Numero ...' className='py-2 bg-transparent ml-3 outline-none placeholder:font-medium   '/>
+                    <input onChange={(e)=>console.log(e.target.value)} type='search' placeholder='Numero ...' className='py-2 bg-transparent ml-3 outline-none placeholder:font-medium   '/>
                   </div>
                 <select name="" id="">
                     <option value="">Aujourd'hui</option>
