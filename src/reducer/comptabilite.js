@@ -33,12 +33,13 @@ function createInitialState() {
         recherche,
     };
       function recherche(state,action){
-          const fact= state.factures
+          console.log(action.payload)
+         /* const fact= state.factures
           if(action.payload===' '){
               state.factures=fact
           }else{
         state.factures=state.factures.filter((u)=>u._id.match(action.payload))
-          }
+          }*/
       }
     
     function logout(state) {
