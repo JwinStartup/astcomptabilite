@@ -12,9 +12,9 @@ export default function Home() {
         <Entete />
       <div className='w-full flex flex-wrap  h-full  justify-center items-center mt-20 gap-4 '>
       <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-    <div className="flex items-center">
+    <div className="flex items-center mb-3">
         <FaFileInvoice  size={40} color="green"/>
-        <h5 className="mb-2 text-2xl font-bold ml-1 tracking-tight text-gray-900 dark:text-white">Facture & Reçue </h5>
+        <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900 dark:text-white">Facture & Reçue </h5>
     </div>
     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg  "> <GiCheckMark size={18} color="green" />Créer une facture ou reçue</p>
     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="green" />Modifier une facture ou reçue</p>
