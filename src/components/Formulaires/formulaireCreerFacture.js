@@ -12,7 +12,7 @@ export default function FormulaireCreerFacture({retour}) {
   useEffect(() => { 
     dispatch(userActions.listeParent())
   },[])
- 
+   
   const onSubmit = (data) => {
     console.log(data)
     //setLoading(true)
@@ -24,10 +24,7 @@ export default function FormulaireCreerFacture({retour}) {
   const {isLoader,parents} = useSelector((state)=>{
     return state.userReducer
    });
-  const  onChangeParent=(e)=>{
-        const p= parents.find((d)=>d._id===e)
-      setMontant(p.montantCours)
-    }
+ 
   return (
     <div className='w-[500px] h-[300px] border p-3 bg-white border-gray-100 shadow-md rounded-3xl   z-10 absolute top-[150px] left-[400px]'>
         <div className='font-bold  tracking-tight text-[22px] text-black pl-1'>Créer une facture</div>
