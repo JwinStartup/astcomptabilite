@@ -23,8 +23,8 @@ export default function Entete() {
       </div>}
            {user.me==null?
              <Link to='/login'>connectez-vous</Link>:
-             <button onClick={()=> dispatch(userActions.deconnecte()).then(()=>logout()).then(()=>navigate('/login'))} type="button" className="text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 ">
-                <AiOutlineLogout size={8} color="red"/>
+             <button onClick={()=> dispatch(userActions.deconnecte()).then(()=>logout()).then(()=>navigate('/login'))} type="button" className=" h-11 text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 ">
+                <AiOutlineLogout size={25} color="red"/>
                 Deconnecte
               </button>
            }
