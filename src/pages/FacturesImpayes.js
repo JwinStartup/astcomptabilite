@@ -59,6 +59,7 @@ const SetComponent=({p,retour,value})=>{
 export default function FacturesImpayes() {
   const dispatch =useDispatch()
   const [rub , setRub]=useState({nom:'',bol:false,value:null})
+  const [fact , setFact]=useState("")
   useEffect(() => { 
     dispatch(comptabiliteActions.listeFacture())
   },[rub])
@@ -67,7 +68,7 @@ export default function FacturesImpayes() {
     return state.comptabiliteReducer
    });
   const navigate=useNavigate()
-  const facturesArray = useMemo(() => factures.filter(job => job.startsWith(filter), [filter])
+  const facturesArray = useMemo(() => factures.filter((u)=>u._id.match(fact)),[fact])
   return (
     <div>
          {rub.bol!==false&&<SetComponent p={rub.nom} retour={()=>setRub({bol:false,nom:''})} value={rub.value} />}
@@ -91,7 +92,7 @@ export default function FacturesImpayes() {
         color={"green"}
         size={60}
       />:
-  <> {factures.length===0?<p className='text-center w-full'>Pas de facture </p>:
+  <> {facturesArray.length===0?<p className='text-center w-full'>Pas de facture </p>:
             <div className='w-full flex justify-center mt-16 '>
 
             <table className="w-full mx-2">
@@ -105,7 +106,7 @@ export default function FacturesImpayes() {
     </tr>
   </thead>
   <tbody>
-  {factures.map((value,index)=><tr key={index} className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
+  {facturesArray.map((value,index)=><tr key={index} className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
       <td className='font-medium text-base text-gray-500 text-center'>{value._id.slice(value._id.length-6)}</td>
       <td className='font-medium text-base text-gray-500 text-center'>{value.client.nom} {value.client.prenoms}</td>      
       <td className='font-medium text-base text-gray-500 text-center'>{value.periodeAjouter}</td>
