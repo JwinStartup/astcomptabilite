@@ -30,7 +30,12 @@ function createInitialState() {
   function createReducers() {
     return {
       logout,
+        recherche,
     };
+      function recherche(state,action){
+          console.log(state)
+          console.log(action)
+      }
     
     function logout(state) {
       //  state.comptabilite = null;
