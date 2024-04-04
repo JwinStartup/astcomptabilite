@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'home': "url('../public/logo192.png')"
+        'home': "url('../public/assets/homeCarreaux.png')"
       }
     },
   },
