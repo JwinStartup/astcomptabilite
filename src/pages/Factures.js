@@ -31,8 +31,22 @@ export default function Factures() {
       </Link>
       </div>
          {/* les 3 premieres factures crées  ou modifiés*/}
+        <div className='border rounded-md '>
+           <div className='flex flex-row justify-between w-full'> 
+        <div className='font-bold  tracking-tight text-[22px] text-black pl-1'>Facture</div>
+        <div className='font-medium  tracking-tight text-[14px] text-green-400 pl-1'>N° 123 </div>
+      </div> 
+      <div className='flex flex-row w-full  justify-between my-4'>
+        <div className='ml-7'>
+        <div className='text-lg font-medium text-gray-500'>{value.client.nom} {value.client.prenoms}</div>
+        </div>
         <div>
-          
+             <div className='font-bold  tracking-wide text-[22px] text-black '>{value.montant} FCFA</div>
+            <div className='font-medium text-center tracking-tight text-[11px] text-red-400 '>Montant impayé </div>
+        </div>
+
+      </div>
+            <div className='mx-7 font-bold  tracking-tight text-xs text-black '>facture du mois de  <span className='text-gray-400'> janvier 2025  </span></div>
           </div>
        
       </div>
