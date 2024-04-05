@@ -29,7 +29,7 @@ export default function Login() {
           <h1 className='text-2xl m-1 font-bold'>ASTComptable</h1>
         </div>
    
-         <form autoComplete='off' onSubmit={handleSubmit(onSubmit)}  className='flex justify-center w-[350px] mt-6 items-center flex-col space-y-4 p-9 border border-gray-400 rounded-lg shadow-lg' >
+         <form autoComplete='off' onSubmit={handleSubmit(onSubmit)}  className='flex justify-center  mt-6 items-center flex-col space-y-4 p-9 border border-gray-400 rounded-lg shadow-lg max-w-sm' >
          
      <div className='flex flex-col '>
    <p className='text-2xl font-semibold text-black tracking-wider mb-3'>Connectez-vous</p>             
