@@ -57,7 +57,7 @@ export default function Factures() {
     
      </div>
          <div>
-           <span className='text-sm text-gray-400 w-full justify-center '>
+           <span className='text-xs text-gray-400 w-full justify-center '>
            (c) 2024 Astraining  by jwin technology
         </span>
         
