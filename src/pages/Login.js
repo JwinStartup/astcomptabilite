@@ -26,13 +26,13 @@ export default function Login() {
   return (
     <div className='w-full flex flex-col  items-center justify-center '>
    
-         <form autoComplete='off' onSubmit={handleSubmit(onSubmit)}  className='flex justify-center w-[550px] mt-6 items-center flex-col space-y-4 p-9 border border-gray-400 rounded-lg shadow-lg' >
+         <form autoComplete='off' onSubmit={handleSubmit(onSubmit)}  className='flex justify-center w-[350px] mt-6 items-center flex-col space-y-4 p-9 border border-gray-400 rounded-lg shadow-lg' >
          
      <div className='flex flex-col '>
    <p className='text-2xl font-semibold text-black tracking-wider mb-3'>Connectez-vous</p>             
       <div className='flex flex-col mx-4 space-y-4'>
-      <input {...register("nom")}  type='text' placeholder='Nom utilisateur' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
-      <input {...register("password")} type='text' placeholder='Mot de passe' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
+      <input {...register("nom")}  type='text' placeholder='Nom utilisateur' className='outline-none w-full border-b-2 py-1 text-lg'/>
+      <input {...register("password")} type='text' placeholder='Mot de passe' className='outline-none w-full border-b-2 py-1 text-lg'/>
      </div> 
      </div>
     <div className='flex flex-row '>
