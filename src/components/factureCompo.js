@@ -13,7 +13,7 @@ export default function FactureComponent({facture}){
         </div>
         <div className='ml-2 flex flex-col justify-center'>
             <div className='font-bold  tracking-wide text-md text-black '>{facture.montant} FCFA</div>
-            <div className= {`${facture.type==="paye"?"text-green-400:"text-red-400"} font-medium text-start tracking-tight text-[11px] `} >{facture.type==="paye"?"Montant payé":"Montant impayé"} </div>
+            {facture.type==="paye"?<div className= {`text-green-400 font-medium text-start tracking-tight text-[11px] `} >Montant payé </div>:<div className= {`text-red-400 font-medium text-start tracking-tight text-[11px] `} >Montant impayé</div>}
         </div>
 
       </div>
