@@ -1,6 +1,7 @@
 import React from 'react'
 import Entete from '../components/entete'
 import FactureComponent from '../components/factureCompo'
+import RecuesComponent from '../components/recuesCompo'
 import { Link, useNavigate } from 'react-router-dom'
 import { IoArrowBackCircleSharp } from "react-icons/io5"
 import { FaUserTie } from "react-icons/fa6"
@@ -48,9 +49,9 @@ export default function Factures() {
       </div>
          {/* les 3 premieres factures crées  ou modifiés*/}
       <div className="flex flex-row gap-2 overflow-x-auto w-full" >
-          <FactureComponent/>
-          <FactureComponent/>
-          <FactureComponent/>
+          <RecuesComponent/>
+          <RecuesComponent/>
+          <RecuesComponent/>
         </div>
        
       </div>
