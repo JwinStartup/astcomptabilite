@@ -38,7 +38,7 @@ export const UserProvider = ({ children }) => {
 
   return (
     <UserContext.Provider value={{ user, login, logout }}>
-  {user.me===null?<Navigate to='/login'/>: <Outlet/> }
+  {user.me===null?<Navigate to='/login'/>:{Children}  }
     </UserContext.Provider>
   );
 }
