@@ -25,7 +25,16 @@ export default function Login() {
   }
   return (
     <div className='w-full flex flex-col  items-center justify-center '>
-    E
+    <div className='flex m-2 items-center gap-1 '>
+             <p className=''>{user.me.nom} </p>
+             <div className='bg-gray-600 rounded-full w-2 h-2'/>
+             <p className='text-sm tracking-widest text-green-300 pb-0.5'>{user.me.role}</p>
+           <Link 
+             className="me-3 inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-red-400 " 
+             >
+             Deconnetez-vous
+      </Link>
+      </div>
          <form autoComplete='off' onSubmit={handleSubmit(onSubmit)}  className='flex justify-center w-[550px] mt-6 items-center flex-col space-y-4 p-9 border border-gray-400 rounded-lg shadow-lg' >
          
      <div className='flex flex-col '>
