@@ -16,7 +16,7 @@ console.log(useur)
           <h1 className='text-2xl m-1 font-bold'>ASTComptable</h1>
 {useur.me===null?
         <Link 
-             className="me-3 inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary hover:text-primary-600" 
+             className="me-3 inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium  leading-normal text-primary hover:text-primary-600" 
              to='/login'>
              Connectez-vous
       </Link>
