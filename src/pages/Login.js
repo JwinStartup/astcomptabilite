@@ -25,16 +25,7 @@ export default function Login() {
   }
   return (
     <div className='w-full flex flex-col  items-center justify-center '>
-    <div className='flex m-2 items-center gap-1 '>
-             <p className=''>{user.me.nom} </p>
-             <div className='bg-gray-600 rounded-full w-2 h-2'/>
-             <p className='text-sm tracking-widest text-green-300 pb-0.5'>{user.me.role}</p>
-           <Link 
-             className="me-3 inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-red-400 " 
-             >
-             Deconnetez-vous
-      </Link>
-      </div>
+   
          <form autoComplete='off' onSubmit={handleSubmit(onSubmit)}  className='flex justify-center w-[550px] mt-6 items-center flex-col space-y-4 p-9 border border-gray-400 rounded-lg shadow-lg' >
          
      <div className='flex flex-col '>
@@ -44,10 +35,14 @@ export default function Login() {
       <input {...register("password")} type='text' placeholder='Mot de passe' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
      </div> 
      </div>
-     
-<button type='submit' className='outline-none flex flex-row items-center justify-center mt-3 text-white bg-green-700 hover:bg-green-800  font-medium rounded-lg text-lg  px-5 py-2.5 mr-2 mb-2'>
-       <span>   Se connecter</span>
+    <div>
+      <button onClick={()=>navigate('/')} className='outline-none flex flex-row items-center justify-center mt-3 text-white bg-red-700 hover:bg-red-800  font-medium rounded-lg text-lg  px-5 py-2.5 mr-2 mb-2'>
+       <span>retour</span>
       </button>
+      <button type='submit' className='outline-none flex flex-row items-center justify-center mt-3 text-white bg-green-700 hover:bg-green-800  font-medium rounded-lg text-lg  px-5 py-2.5 mr-2 mb-2'>
+       <span>Se connecter</span>
+      </button>
+    </div>
     </form>
     </div>
   )
