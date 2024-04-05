@@ -31,7 +31,7 @@ export default function Login() {
          <form autoComplete='off' onSubmit={handleSubmit(onSubmit)}  className='flex justify-center  mt-6 items-center flex-col space-y-4 p-9 border border-gray-400 rounded-lg shadow-lg w-[300px]' >
      <div className='flex flex-col '>
    <p className='text-2xl font-semibold text-black tracking-wider mb-3'>Connectez-vous</p>             
-      <div className='flex flex-col mx-4 space-y-4'>
+      <div className='flex flex-col mx-1 space-y-4'>
       <input {...register("nom")}  type='text' placeholder='Nom utilisateur' className='outline-none w-full border-b-2 py-1 text-lg'/>
       <input {...register("password")} type='text' placeholder='Mot de passe' className='outline-none w-full border-b-2 py-1 text-lg'/>
      </div> 
