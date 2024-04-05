@@ -10,7 +10,7 @@ export default function Entete() {
   const navigate = useNavigate()
   const  dispatch = useDispatch()
  
-
+console.log(user)
 const UserConst=({p})=> { 
   if(p==null){
     return(
@@ -23,6 +23,7 @@ const UserConst=({p})=> {
   }else{
   return ( 
     <div className='flex m-2 items-center gap-1 '>
+    {console.log(user)}
              <p className=''>{p.nom} </p>
              <div className='bg-gray-600 rounded-full w-2 h-2'/>
              <p className='text-sm tracking-widest text-green-300 pb-0.5'>{p.role}</p>
