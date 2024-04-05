@@ -52,7 +52,7 @@ export default function Factures() {
       </div>
     
      </div>
-         {/* les 3 premieres factures crées  ou modifiés*/}
+         {/* les 3 premieres factures crées  ou modifiés
    <div className='w-full flex justify-center items-center mt-8 ml-3 mr-2 '>
  
       <div className='flex flex-col w-full'>
@@ -71,7 +71,7 @@ export default function Factures() {
           <RecuesComponent/>
         </div>
        
-      </div>
+      </div>*/}
     
      </div>
          
