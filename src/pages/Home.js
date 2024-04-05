@@ -15,7 +15,7 @@ export default function Home() {
         <div className=' w-full flex justify-between'>
           <h1 className='text-2xl m-1 font-bold'>ASTComptable</h1>
            <Link 
-             className="me-3 inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary hover:text-primary-600" 
+             className="me-3 inline-block text-bleu-400 px-2 pb-2 pt-2.5 text-xs font-medium  leading-normal text-primary" 
              to='/login'>
              Connectez-vous
            </Link>
