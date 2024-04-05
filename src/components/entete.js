@@ -11,23 +11,28 @@ export default function Entete() {
   const  dispatch = useDispatch()
  
 
+const UserConst=({p})=> { 
+  if(p==null){
+    return(
+       <Link 
+             className="me-3 inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary hover:text-primary-600" 
+             to='/login'>
+             Connectez-vous
+      </Link>
+    )
+  }else{
+  return ( 
+    <div className='flex m-2 items-center gap-1 '>
+             <p className=''>{p.nom} </p>
+             <div className='bg-gray-600 rounded-full w-2 h-2'/>
+             <p className='text-sm tracking-widest text-green-300 pb-0.5'>{p.role}</p>
+      </div>)
+  }
+}
   return (
     <div className=' w-full flex justify-between'>
           <h1 className='text-2xl m-1 font-bold'>ASTComptable</h1>
-            <div className='flex m-2 items-center gap-1 '>
-             <p className=''>{user.me?.nom} </p>
-             <div className='bg-gray-600 rounded-full w-2 h-2'/>
-             <p className='text-sm tracking-widest text-green-300 pb-0.5'>{user.me?.role}</p>
-      
-      </div>
-           
-             <Link 
-             classNName="me-3 inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary hover:text-primary-600" 
-             to='/login'>
-             Connectez-vous
-               </Link>
-             
-           
+             <UserConst p={user.me} />
         </div>
   )
 }
