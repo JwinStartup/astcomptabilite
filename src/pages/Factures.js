@@ -6,6 +6,13 @@ import { Link, useNavigate } from 'react-router-dom'
 import { IoArrowBackCircleSharp } from "react-icons/io5"
 import { FaUserTie } from "react-icons/fa6"
 export default function Factures() {
+   useEffect(() => { 
+    dispatch(comptabiliteActions.listeFacture())
+  },[rub])
+  
+  const {isLoader,factures} = useSelector((state)=>{
+    return state.comptabiliteReducer
+   });
   const navigate=useNavigate()
   return (
     <div className='w-full'>
