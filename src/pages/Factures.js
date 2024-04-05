@@ -8,10 +8,10 @@ export default function Factures() {
     <div>
     <Entete />
     <div className='flex items-cennter justify-start mx-2 '>
-    <IoArrowBackCircleSharp  color='red' size={18} onClick={()=>navigate("/")} />
-    <p className='font-bold rounded-lg text-xl px-5 py-2.5'> Factures & Reçues </p>
+    <IoArrowBackCircleSharp  color='red' size={32} onClick={()=>navigate("/")} />
+    <p className='font-bold rounded-lg text-xl '> Factures & Reçues </p>
             </div>
-  <div className='w-full flex justify-center items-center mt-20 '>
+  <div className='w-full flex justify-center items-center mt-2 '>
   {/* <Link to='/factures/commissions' className="w-52 h-52 tracking-tight  text-black font-semibold bg-slate-200 rounded-3xl text-center items-center flex justify-center shadow-lg cursor-pointer">
       Commissions
     </Link>
@@ -22,7 +22,7 @@ export default function Factures() {
       Reçues
     </Link>*/}
       <div className='flex flex-col '>
-        <div className='flex items-center justify-between mb-2'>
+        <div className='flex items-center justify-between mb-2 w-full'>
        <p className='text-lg font-bold text-gray-400'>
         Factures recentes
       </p>
