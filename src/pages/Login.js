@@ -25,7 +25,7 @@ export default function Login() {
   }
   return (
     <div className='w-full flex flex-col  items-center justify-center '>
-        <Entete />
+    E
          <form autoComplete='off' onSubmit={handleSubmit(onSubmit)}  className='flex justify-center w-[550px] mt-6 items-center flex-col space-y-4 p-9 border border-gray-400 rounded-lg shadow-lg' >
          
      <div className='flex flex-col '>
