@@ -30,12 +30,13 @@ function App() {
     <div className="App">
       <Routes>
       <Route path='*' element={<Navigate to='/' />} />
-      
          <Route path="/login" element={<Login/>}/>
-  {/*<Route element={<PrivateRouter/>}></Route>*/}
-        
-        <Route path="/cp" element={<ClientsPersonnels/>}/>
+  
+        <Route element={<PrivateRouter/>}>
         <Route path="/factures" element={<Factures/>}/>
+        </Route>
+  
+        <Route path="/cp" element={<ClientsPersonnels/>}/>
         <Route path="/bilan" element={<Bilan/>}/>
         <Route path="/charges" element={<Charges/>}/>
         <Route path="/factures/commissions" element={<FacturesCommissions/>}/>
