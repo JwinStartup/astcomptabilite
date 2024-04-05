@@ -34,8 +34,6 @@ function App() {
   
         <Route element={<PrivateRouter/>}>
         <Route path="/factures" element={<Factures/>}/>
-        </Route>
-  
         <Route path="/cp" element={<ClientsPersonnels/>}/>
         <Route path="/bilan" element={<Bilan/>}/>
         <Route path="/charges" element={<Charges/>}/>
@@ -51,7 +49,7 @@ function App() {
         <Route path="/inscription/personnels" element={<Personnels/>}/>
            <Route path="/inscription/enfants" element={<Enfants/>}/>
         <Route path="/factures/recues" element={<Recues/>}/>
-        
+        </Route>
         <Route path="/" element={<Home/>}/>
         <Route path="/userAdmin" element={<UserAdmin/>}/>
         <Route path="/userAdmin/inscriptionUser" element={<InscriptionUser/>}/>
