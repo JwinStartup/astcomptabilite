@@ -5,7 +5,7 @@ import { IoArrowBackCircleSharp } from "react-icons/io5"
 export default function Factures() {
   const navigate=useNavigate()
   return (
-    <div>
+    <div className='w-full'>
     <Entete />
     <div className='flex items-cennter justify-start mx-2 '>
     <IoArrowBackCircleSharp  color='red' size={32} onClick={()=>navigate("/")} />
@@ -21,7 +21,7 @@ export default function Factures() {
     <Link to='/factures/recues' className="w-52 h-52 tracking-tight  text-black font-semibold bg-red-100 rounded-3xl text-center items-center flex justify-center">
       Reçues
     </Link>*/}
-      <div className='flex flex-col '>
+      <div className='flex flex-col w-full'>
         <div className='flex items-center justify-between mb-2 w-full'>
        <p className='text-lg font-bold text-gray-400'>
         Factures recentes
