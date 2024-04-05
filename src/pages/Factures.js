@@ -39,10 +39,10 @@ export default function Factures() {
       </div> 
       <div className='flex flex-col w-full'>
         <div className='ml-7'>
-        <div className='text-lg font-medium text-gray-500'><FaUserTie size={25} color="gray" />kou jean paul</div>
+        <div className='text-md font-medium text-gray-500'><FaUserTie size={25} color="gray" />kou jean paul</div>
         </div>
         <div>
-            <div className='font-bold  tracking-wide text-[22px] text-black '>100000 FCFA</div>
+            <div className='font-bold  tracking-wide text-md text-black '>100000 FCFA</div>
             <div className='font-medium text-center tracking-tight text-[11px] text-red-400 '>Montant impayé </div>
         </div>
 
