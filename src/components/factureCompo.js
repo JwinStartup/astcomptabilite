@@ -1,5 +1,5 @@
- import React from "react"
-
+import React from "react"
+import { FaUserTie } from "react-icons/fa6"
 export default function FactureComponent(){
   return(
       <div className='border rounded-md w-[170px] '>
