@@ -13,7 +13,7 @@ export default function Entete() {
 console.log(user)
 const UserConst=({p})=> { 
   console.log(p)
-  if(p==null){
+  if(p===null){
     return(
        <Link 
              className="me-3 inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary hover:text-primary-600" 
