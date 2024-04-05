@@ -26,7 +26,7 @@ export default function Factures() {
        <p className='text-lg font-bold text-gray-400'>
         Factures recentes
       </p>
-       <Link to='/factures/impayes' className=' cursor-pointer bg-red-200 p-2 text-xs font-bold text-red-400'>
+       <Link to='/factures/impayes' className=' cursor-pointer bg-red-200 p-2 rounded-md mr-5 text-xs font-bold text-red-400'>
         Voir plus
       </Link>
       </div>
