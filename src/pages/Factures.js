@@ -2,6 +2,7 @@ import React from 'react'
 import Entete from '../components/entete'
 import { Link, useNavigate } from 'react-router-dom'
 import { IoArrowBackCircleSharp } from "react-icons/io5"
+import { FaUserTie } from "react-icons/fa6"
 export default function Factures() {
   const navigate=useNavigate()
   return (
@@ -31,17 +32,17 @@ export default function Factures() {
       </Link>
       </div>
          {/* les 3 premieres factures crées  ou modifiés*/}
-        <div className='border rounded-md '>
-           <div className='flex flex-row justify-between w-full'> 
-        <div className='font-bold  tracking-tight text-[22px] text-black pl-1'>Facture</div>
+        <div className='border rounded-md w-[200px] '>
+           <div className='flex flex-row justify-between w-full mx-2'> 
+        <div className='font-bold  tracking-tight text-[18px] text-black pl-1'>Facture</div>
         <div className='font-medium  tracking-tight text-[14px] text-green-400 pl-1'>N° 123 </div>
       </div> 
-      <div className='flex flex-row w-full  justify-between my-4'>
+      <div className='flex flex-col w-full'>
         <div className='ml-7'>
-        <div className='text-lg font-medium text-gray-500'>kou jean paul</div>
+        <div className='text-lg font-medium text-gray-500'><FaUserTie size={25} color="gray" />kou jean paul</div>
         </div>
         <div>
-             <div className='font-bold  tracking-wide text-[22px] text-black '>100000 FCFA</div>
+            <div className='font-bold  tracking-wide text-[22px] text-black '>100000 FCFA</div>
             <div className='font-medium text-center tracking-tight text-[11px] text-red-400 '>Montant impayé </div>
         </div>
 
