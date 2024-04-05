@@ -1,5 +1,6 @@
 import React from 'react'
 import Entete from '../components/entete'
+import FactureComponent from '../components/factureCompo'
 import { Link, useNavigate } from 'react-router-dom'
 import { IoArrowBackCircleSharp } from "react-icons/io5"
 import { FaUserTie } from "react-icons/fa6"
@@ -24,7 +25,7 @@ export default function Factures() {
       </Link>
       </div>
          {/* les 3 premieres factures crées  ou modifiés*/}
-      
+          <FactureComponent/>
        
       </div>
     
