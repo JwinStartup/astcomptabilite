@@ -46,7 +46,7 @@ export default function Factures() {
             </div>
             </div> :<div className="flex flex-row gap-2 overflow-x-auto w-full">
                         {factures.map((i,j)=><FactureComponent facture={i} />
-                        </div>}
+                        </div>)}
          </div>
        
       </div>
