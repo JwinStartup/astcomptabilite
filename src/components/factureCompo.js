@@ -2,7 +2,7 @@ import React from "react"
 import { FaUserTie } from "react-icons/fa6"
 export default function FactureComponent(){
   return(
-      <div className='border rounded-md w-[170px] '>
+      <div className='border rounded-md w-[170px] px-2'>
            <div className='flex items-center mx-2'> 
         <div className='font-bold  tracking-tight text-[18px] text-black pl-1'>Facture</div>
         <div className='font-medium  tracking-tight text-[14px] text-green-400 pl-1'>N° 123 </div>
