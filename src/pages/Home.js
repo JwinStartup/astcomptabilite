@@ -84,7 +84,7 @@ export default function Home() {
         </svg>
     </Link>
 </div>
-     {user?.me?.role==='Administrateur'&&  <div className="w-[300px] p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      <div className="w-[300px] p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
     <div className="flex items-center mb-3">
         <FaCircleUser  size={30} color="#C0C2C9"/>
         <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900 dark:text-white"> Gestion des utilisateurs </h5>
@@ -100,7 +100,7 @@ export default function Home() {
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
         </svg>
     </Link>
-</div>}
+</div>
        
          </div></div>
   )
