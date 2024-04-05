@@ -43,7 +43,7 @@ export default function Home() {
     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="gray" />  Ajouter le montant de la formation</p>
     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="gray" /> Suppprimer </p>
     <Link to='/cp' className className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-400 rounded-lg hover:bg-green-800">
-        voir la liste
+        Voir la liste
         <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
         </svg>
@@ -61,7 +61,7 @@ export default function Home() {
     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="blue" /> Modifier les charges </p>
     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="blue" /> Supprimer les charges </p>
     <Link to='/charges' className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-emerald-400 rounded-lg ">
-        voir  les charges
+        Voir  les charges
         <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
         </svg>
@@ -77,7 +77,7 @@ export default function Home() {
     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="green" /> Cloturer le bilan du mois </p>
     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="green" />  Voir le resultat à la cloture de chaque bilan</p>
     <Link to='/bilan' className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-["#f01e2c"] rounded-lg ">
-        voir 
+        Voir 
         <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
         </svg>
@@ -94,7 +94,7 @@ export default function Home() {
     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="red" /> Modifier les utilisateurs </p>
     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="red" /> Supprimer les utilisateurs</p>
     <Link to='/userAdmin' className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-["#C0C2C9"] rounded-lg ">
-        voir les utilisteurs
+        Voir les utilisteurs
         <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
         </svg>
