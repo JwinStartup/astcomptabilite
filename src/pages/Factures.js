@@ -25,7 +25,7 @@ export default function Factures() {
       </Link>
       </div>
          {/* les 3 premieres factures crées  ou modifiés*/}
-      <div className="flex flex-row gap-2 overflow-x-scroll w-full" >
+      <div className="flex flex-row gap-2 overflow-x-auto w-full" >
           <FactureComponent/>
           <FactureComponent/>
           <FactureComponent/>
@@ -47,7 +47,7 @@ export default function Factures() {
       </Link>
       </div>
          {/* les 3 premieres factures crées  ou modifiés*/}
-      <div className="flex flex-row gap-2 overflow-x-scroll w-full" >
+      <div className="flex flex-row gap-2 overflow-x-auto w-full" >
           <FactureComponent/>
           <FactureComponent/>
           <FactureComponent/>
