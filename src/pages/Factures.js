@@ -11,7 +11,7 @@ export default function Factures() {
     <IoArrowBackCircleSharp  color='red' size={40}  />
     <p className='font-bold rounded-lg text-xl '> Factures & Reçues </p>
             </div>
-  <div className='w-full flex justify-center items-center mt-2 ml-3 mr-2 '>
+  <div className='w-full flex justify-center items-center mt-8 ml-3 mr-2 '>
   {/* <Link to='/factures/commissions' className="w-52 h-52 tracking-tight  text-black font-semibold bg-slate-200 rounded-3xl text-center items-center flex justify-center shadow-lg cursor-pointer">
       Commissions
     </Link>
