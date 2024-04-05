@@ -6,7 +6,6 @@ import { GiCheckMark } from "react-icons/gi";
 import { FaFileInvoice,FaIndent } from "react-icons/fa";
 import { FaUsers,FaCircleUser } from "react-icons/fa6";
 import { BsFileEarmarkSpreadsheetFill } from "react-icons/bs";
-// {user?.me?.role==='Administrateur'&&
 export default function Home() {
   const { user } = useContext(UserContext);
     console.log(user)
@@ -15,7 +14,7 @@ export default function Home() {
         <div className=' w-full flex justify-between'>
           <h1 className='text-2xl m-1 font-bold'>ASTComptable</h1>
            <Link 
-             className="me-3 inline-block text-blue-400 px-2 pb-2 pt-2.5 text-xs font-medium  leading-normal text-primary" 
+             className="me-3 inline-block text-blue-400 px-2 pb-2 pt-2.5 text-sm  font-medium  leading-normal text-primary sm:text-xs" 
              to='/login'>
              Connectez-vous
            </Link>
