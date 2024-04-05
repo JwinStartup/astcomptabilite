@@ -13,21 +13,21 @@ export default function Entete() {
 
   return (
     <div className=' w-full flex justify-between'>
-          <h1 className='text-2xl m-3 text-green-300'>ASTComptable</h1>
-           {user.me!==null&&<div className='flex m-2 items-center gap-1 '>
-            <div className='bg-gray-400 rounded-full w-14 h-14'/>
+          <h1 className='text-2xl m-1 font-bold'>ASTComptable</h1>
+            <div className='flex m-2 items-center gap-1 '>
              <p className=''>{user.me.nom} </p>
              <div className='bg-gray-600 rounded-full w-2 h-2'/>
              <p className='text-sm tracking-widest text-green-300 pb-0.5'>{user.me.role}</p>
       
-      </div>}
-           {user.me==null?
-             <Link to='/login'>connectez-vous</Link>:
-             <button onClick={()=> dispatch(userActions.deconnecte()).then(()=>logout()).then(()=>navigate('/login'))} type="button" className=" h-11 text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 ">
-                <AiOutlineLogout size={25} color="red"/>
-                Deconnecte
-              </button>
-           }
+      </div>
+           
+             <Link 
+             classNName="me-3 inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary hover:text-primary-600" 
+             to='/login'>
+             Connectez-vous
+               </Link>
+             
+           
         </div>
   )
 }
