@@ -24,7 +24,7 @@ export default function Factures() {
       </Link>
       </div>
          {/* les 3 premieres factures crées  ou modifiés*/}
-        <div className='border rounded-md w-[200px] '>
+        <div className='border rounded-md w-[170px] '>
            <div className='flex items-center mx-2'> 
         <div className='font-bold  tracking-tight text-[18px] text-black pl-1'>Facture</div>
         <div className='font-medium  tracking-tight text-[14px] text-green-400 pl-1'>N° 123 </div>
