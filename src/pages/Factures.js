@@ -7,8 +7,8 @@ export default function Factures() {
   return (
     <div className='w-full'>
     <Entete />
-    <div className='flex items-cennter justify-start mx-2 cursor-pointer' onClick={()=>navigate("/")>
-    <IoArrowBackCircleSharp  color='red' size={40} } />
+    <div className='flex items-cennter justify-start mx-2 cursor-pointer' onClick={()=>navigate("/")}>
+    <IoArrowBackCircleSharp  color='red' size={40}  />
     <p className='font-bold rounded-lg text-xl '> Factures & Reçues </p>
             </div>
   <div className='w-full flex justify-center items-center mt-2 '>
