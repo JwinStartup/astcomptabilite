@@ -1,5 +1,6 @@
 import react,{createContext,useState,useReducer,useEffect} from 'react'
 import {userReducer} from '../reducer/user'
+import {Outlet,Navigate} from 'react-router-dom'
 export const UserContext =createContext({auth:false,user:null})
 
 export const UserProvider = ({ children }) => {
@@ -37,7 +38,7 @@ export const UserProvider = ({ children }) => {
 
   return (
     <UserContext.Provider value={{ user, login, logout }}>
-      {children}
+  {user.me===null?<Navigate to='/login'/>: <Outlet/> }
     </UserContext.Provider>
   );
 }
