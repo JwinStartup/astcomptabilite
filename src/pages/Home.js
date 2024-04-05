@@ -76,7 +76,7 @@ export default function Home() {
     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="green" /> Voir la liste les bilan mensuel</p>
     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="green" /> Cloturer le bilan du mois </p>
     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="green" />  Voir le resultat à la cloture de chaque bilan</p>
-    <Link to='/bilan' className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-["#f01e2c"] rounded-lg ">
+    <Link to='/bilan' className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-[#f01e2c] rounded-lg ">
         Voir 
         <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
@@ -93,7 +93,7 @@ export default function Home() {
     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="red" /> Changer de  mot de passe </p>
     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="red" /> Modifier les utilisateurs </p>
     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="red" /> Supprimer les utilisateurs</p>
-    <Link to='/userAdmin' className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-["#C0C2C9"] rounded-lg ">
+    <Link to='/userAdmin' className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-[#C0C2C9] rounded-lg ">
         Voir les utilisteurs
         <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
