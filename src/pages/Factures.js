@@ -15,13 +15,11 @@ export default function Factures() {
     dispatch(comptabiliteActions.listeFacture())
     dispatch(comptabiliteActions.listeRecue())
   },[])
-  const [fact,setFact]=useState(factures)
-  const [rec,setRec]=useState(recues)
   const {isLoader,factures,recues} = useSelector((state)=>{
     return state.comptabiliteReducer
    });
   const navigate=useNavigate()
-   console.log(fact,rec)
+   console.log(factures,recues)
   return (
     <div className='w-full'>
     <Entete />
