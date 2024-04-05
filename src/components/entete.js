@@ -12,6 +12,7 @@ export default function Entete() {
  
 console.log(user)
 const UserConst=({p})=> { 
+  console.log(p)
   if(p==null){
     return(
        <Link 
