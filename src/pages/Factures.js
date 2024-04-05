@@ -34,6 +34,28 @@ export default function Factures() {
       </div>
     
      </div>
+         {/* les 3 premieres factures crées  ou modifiés*/}
+   <div className='w-full flex justify-center items-center mt-8 ml-3 mr-2 '>
+ 
+      <div className='flex flex-col w-full'>
+        <div className='flex items-center justify-between mb-2 w-full'>
+       <p className='text-lg font-bold text-gray-400'>
+        Reçues recentes
+      </p>
+       <Link to='/factures/impayes' className=' cursor-pointer bg-red-200 p-2 rounded-md mr-5 text-xs font-bold text-red-400'>
+        Voir plus
+      </Link>
+      </div>
+         {/* les 3 premieres factures crées  ou modifiés*/}
+      <div className="flex flex-row gap-2 overflow-x-scroll w-full" >
+          <FactureComponent/>
+          <FactureComponent/>
+          <FactureComponent/>
+        </div>
+       
+      </div>
+    
+     </div>
   </div>
   )
 }
