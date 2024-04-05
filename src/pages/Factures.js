@@ -40,7 +40,8 @@ export default function Factures() {
       </div>
          {/* les 3 premieres factures crées  ou modifiés*/}
       <div className="flex flex-row gap-2 overflow-x-auto w-full" >
-          <FactureComponent/>
+         {isLoader?<div class="animate-pulse flex space-x-4">
+            </div> :<FactureComponent/>}
           <FactureComponent/>
           <FactureComponent/>
         </div>
