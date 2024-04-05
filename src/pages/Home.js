@@ -12,7 +12,6 @@ export default function Home() {
       <div className=''>
         <div className=' w-full flex justify-between'>
           <Entete/>
-          <h1 className='text-2xl m-1 font-bold'>ASTComptable</h1>
         </div>
       <div className='w-full flex flex-wrap  h-full  justify-center items-center mt-20 gap-4 sm:flex w-full justify-center items-center '>
       <div className="w-[300px] p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
