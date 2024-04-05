@@ -56,6 +56,12 @@ export default function Factures() {
       </div>
     
      </div>
+         <div>
+           <span className='text-sm text-gray-400'>
+           (c) 2024 Astraining  by jwin technology
+        </span>
+        
+        </div>
   </div>
   )
 }
