@@ -13,15 +13,7 @@ export default function Factures() {
     <p className='font-bold rounded-lg text-xl '> Factures & Reçues </p>
             </div>
   <div className='w-full flex justify-center items-center mt-8 ml-3 mr-2 '>
-  {/* <Link to='/factures/commissions' className="w-52 h-52 tracking-tight  text-black font-semibold bg-slate-200 rounded-3xl text-center items-center flex justify-center shadow-lg cursor-pointer">
-      Commissions
-    </Link>
-    <Link to='/factures/impayes' className="w-52 h-52 tracking-tight  text-black font-semibold bg-red-100 rounded-3xl text-center items-center flex justify-center">
-      Factures 
-    </Link>
-    <Link to='/factures/recues' className="w-52 h-52 tracking-tight  text-black font-semibold bg-red-100 rounded-3xl text-center items-center flex justify-center">
-      Reçues
-    </Link>*/}
+ 
       <div className='flex flex-col w-full'>
         <div className='flex items-center justify-between mb-2 w-full'>
        <p className='text-lg font-bold text-gray-400'>
@@ -38,12 +30,12 @@ export default function Factures() {
         <div className='font-medium  tracking-tight text-[14px] text-green-400 pl-1'>N° 123 </div>
       </div> 
       <div className='flex flex-col w-full'>
-        <div className=''>
+        <div className='ml-2'>
         <div className='text-md font-medium text-gray-500 flex flex-row'><FaUserTie size={20} color="gray" />kou jean paul</div>
         </div>
-        <div className=' flex flex-col justify-center'>
+        <div className='ml-2 flex flex-col justify-center'>
             <div className='font-bold  tracking-wide text-md text-black '>100000 FCFA</div>
-            <div className='font-medium text-center tracking-tight text-[11px] text-red-400 '>Montant impayé </div>
+            <div className='font-medium text-start tracking-tight text-[11px] text-red-400 '>Montant impayé </div>
         </div>
 
       </div>
