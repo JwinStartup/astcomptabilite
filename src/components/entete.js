@@ -26,6 +26,11 @@ const UserConst=({p})=> {
              <p className=''>{p.nom} </p>
              <div className='bg-gray-600 rounded-full w-2 h-2'/>
              <p className='text-sm tracking-widest text-green-300 pb-0.5'>{p.role}</p>
+           <Link 
+             className="me-3 inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-red-400 " 
+             >
+             Deconnetez-vous
+      </Link>
       </div>)
   }
 }
