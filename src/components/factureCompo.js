@@ -5,11 +5,11 @@ export default function FactureComponent({facture}){
       <div className='border rounded-md w-[170px] px-2'>
            <div className='flex items-center mx-2'> 
         <div className='font-bold  tracking-tight text-[18px] text-black pl-1'>Facture</div>
-        <div className='font-medium  tracking-tight text-[14px] text-green-400 pl-1'>N°{facture._id.slice(facture._id.length-3)} </div>
+        <div className='font-medium  tracking-tight text-[11px] text-green-400 pl-1'>N°{facture._id.slice(facture._id.length-3)} </div>
       </div> 
       <div className='flex flex-col w-full'>
         <div className='ml-2'>
-        <div className='text-md font-medium text-gray-500 flex flex-row'><FaUserTie size={20} color="gray" />{facture.nom} {facture.prenoms} </div>
+        <div className='text-md font-medium text-gray-500 flex flex-row'><FaUserTie size={20} color="gray" />{facture.client.nom} {facture.client.prenoms} </div>
         </div>
         <div className='ml-2 flex flex-col justify-center'>
             <div className='font-bold  tracking-wide text-md text-black '>{facture.montant} FCFA</div>
