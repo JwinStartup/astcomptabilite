@@ -72,11 +72,11 @@ export default function Home() {
         <BsFileEarmarkSpreadsheetFill  size={30} color="#f01e2c"/>
         <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900 dark:text-white"> Bilan financier </h5>
     </div>
-    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg  "> <GiCheckMark size={18} color="green" />{"   "} Suivre l'evolution des recettes   mensuel </p>
-    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg  "> <GiCheckMark size={18} color="green" />{"   "} Suivre l'evolution des charges  mensuel </p>
-    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="green" />{"   "} Voir la liste les bilan </p>
-    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="green" />{"   "} Cloturer les bilan  </p>
-    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="green" />{"   "}  Voir le resultat net</p>
+    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg  "> <GiCheckMark size={18} color="#764929" />{"   "} Suivre l'evolution des recettes   mensuel </p>
+    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg  "> <GiCheckMark size={18} color="#764929" />{"   "} Suivre l'evolution des charges  mensuel </p>
+    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="#764929" />{"   "} Voir la liste les bilan </p>
+    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="#764929" />{"   "} Cloturer les bilan  </p>
+    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="#764929" />{"   "}  Voir le resultat net</p>
     <Link to='/bilan' className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-[#f01e2c] rounded-lg ">
        Commençer
         <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
