@@ -1,6 +1,6 @@
  import React from "react"
 
-export default const FactureComponent=()=>{
+export default function FactureComponent(){
   return(
       <div className='border rounded-md w-[170px] '>
            <div className='flex items-center mx-2'> 
