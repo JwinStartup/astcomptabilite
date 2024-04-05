@@ -52,7 +52,7 @@ export default function Factures() {
       </div>
     
      </div>
-         {/* les 3 premieres factures crées  ou modifiés
+       
    <div className='w-full flex justify-center items-center mt-8 ml-3 mr-2 '>
  
       <div className='flex flex-col w-full'>
@@ -66,12 +66,16 @@ export default function Factures() {
       </div>
          {/* les 3 premieres factures crées  ou modifiés*/}
       <div className="flex flex-row gap-2 overflow-x-auto w-full" >
-          <RecuesComponent/>
-          <RecuesComponent/>
-          <RecuesComponent/>
+         {isLoader?
+            <div className="flex flex-row gap-2 overflow-x-auto w-full">
+            { [1,2,3].map((i,j)=><div key={j} className="animate-pulse flex space-x-4 border rounded-md w-[170px] px-2 bg-gray-100">
+            </div>)}
+            </div> :<div className="flex flex-row gap-2 overflow-x-auto w-full">
+                        {recues.map((i,j)=><RecuesComponent recue={i} />)}
+                        </div>}
         </div>
        
-      </div>*/}
+      </div>
     
      </div>
          
