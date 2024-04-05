@@ -1,9 +1,11 @@
-import React from 'react'
+import React,{useContext,useState} from 'react'
 import {Navigate,Outlet} from 'react-router-dom'
-import cookie from 'react-cookies'
+
 const PrivateRouter =()=>{
-const cookies = cookie.load('userId')
-return(cookies?<Outlet/>:<Navigate to="/login"  />
+const { login,logout, user } = useContext(UserContext);
+const  [useur,setUseur] =useState(user)
+return(
+  useur.me!==null?<Outlet/>:<Navigate to="/login"  />
 )
 }
 export default PrivateRouter
