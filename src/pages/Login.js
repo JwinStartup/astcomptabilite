@@ -37,10 +37,10 @@ export default function Login() {
      </div> 
      </div>
     <div className='flex flex-row '>
-      <button onClick={()=>navigate('/')} className='outline-none flex flex-row items-center justify-center mt-3 text-white bg-red-700 hover:bg-red-800  font-medium rounded-lg text-lg  px-5 py-2.5 mx-2 mb-2'>
+      <button onClick={()=>navigate('/')} className='inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-400 rounded-lg hover:bg-green-800 mx-2'>
        <span>retour</span>
       </button>
-      <button type='submit' className='outline-none flex flex-row items-center justify-center mt-3 text-white bg-green-700 hover:bg-green-800  font-medium rounded-lg text-lg  px-5 py-2.5 mx-2 mb-2'>
+      <button type='submit' className='inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-400 rounded-lg hover:bg-green-800 mx-2'>
        <span>Se connecter</span>
       </button>
     </div>
