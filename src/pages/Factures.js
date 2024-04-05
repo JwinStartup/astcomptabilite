@@ -1,19 +1,25 @@
-import React from 'react'
+import React, {useEffect,useState} from 'react'
 import Entete from '../components/entete'
 import FactureComponent from '../components/factureCompo'
 import RecuesComponent from '../components/recuesCompo'
 import { Link, useNavigate } from 'react-router-dom'
 import { IoArrowBackCircleSharp } from "react-icons/io5"
 import { FaUserTie } from "react-icons/fa6"
+import { useDispatch,useSelector } from 'react-redux';
+import { RingLoader} from 'react-spinners';
+import { comptabiliteActions } from '../reducer/comptabilite.js'
 export default function Factures() {
    useEffect(() => { 
     dispatch(comptabiliteActions.listeFacture())
+    dispatch(comptabiliteActions.listeRecue())
   },[rub])
-  
-  const {isLoader,factures} = useSelector((state)=>{
+  const [fact,setFact]=useState(factures)
+  const [rec,setRec]=useState(recues)
+  const {isLoader,factures,recues} = useSelector((state)=>{
     return state.comptabiliteReducer
    });
   const navigate=useNavigate()
+   console.log(fact,rec)
   return (
     <div className='w-full'>
     <Entete />
