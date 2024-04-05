@@ -1,4 +1,4 @@
-import React,{useContext} from 'react'
+import React,{useContext,useEffect,useState} from 'react'
 import {Link} from 'react-router-dom'
 import { userActions } from '../reducer/user';
 import { useDispatch,useSelector } from 'react-redux';
@@ -9,7 +9,10 @@ export default function Entete() {
   const { login,logout, user } = useContext(UserContext);
   const navigate = useNavigate()
   const  dispatch = useDispatch()
- 
+  const  [useur,setUseur] =useState(user)
+    useEffect(() => {
+      
+  });
 console.log(user)
 const UserConst=({p})=> { 
   console.log(p)
@@ -39,7 +42,7 @@ const UserConst=({p})=> {
   return (
     <div className=' w-full flex justify-between'>
           <h1 className='text-2xl m-1 font-bold'>ASTComptable</h1>
-             <UserConst p={user.me} />
+             <UserConst p={useur} />
         </div>
   )
 }
