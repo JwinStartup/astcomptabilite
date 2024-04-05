@@ -6,13 +6,15 @@ import { Link, useNavigate } from 'react-router-dom'
 import { IoArrowBackCircleSharp } from "react-icons/io5"
 import { FaUserTie } from "react-icons/fa6"
 import { useDispatch,useSelector } from 'react-redux';
+
 import { RingLoader} from 'react-spinners';
 import { comptabiliteActions } from '../reducer/comptabilite.js'
 export default function Factures() {
+   const dispatch=useDispatch()
    useEffect(() => { 
     dispatch(comptabiliteActions.listeFacture())
     dispatch(comptabiliteActions.listeRecue())
-  },[rub])
+  },[])
   const [fact,setFact]=useState(factures)
   const [rec,setRec]=useState(recues)
   const {isLoader,factures,recues} = useSelector((state)=>{
