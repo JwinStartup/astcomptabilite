@@ -12,7 +12,7 @@ export default function Home() {
     console.log(user)
     return (
       <div className=''>
-      {/* <Entete /> */}
+       <Entete />
       <div className='w-full flex flex-wrap  h-full  justify-center items-center mt-20 gap-4 sm:flex w-full justify-center items-center '>
       <div className="w-[300px] p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
     <div className="flex items-center mb-3">
