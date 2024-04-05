@@ -38,10 +38,10 @@ export default function Factures() {
       </div> 
       <div className='flex flex-row w-full  justify-between my-4'>
         <div className='ml-7'>
-        <div className='text-lg font-medium text-gray-500'>{value.client.nom} {value.client.prenoms}</div>
+        <div className='text-lg font-medium text-gray-500'>kou jean paul</div>
         </div>
         <div>
-             <div className='font-bold  tracking-wide text-[22px] text-black '>{value.montant} FCFA</div>
+             <div className='font-bold  tracking-wide text-[22px] text-black '>100000 FCFA</div>
             <div className='font-medium text-center tracking-tight text-[11px] text-red-400 '>Montant impayé </div>
         </div>
 
