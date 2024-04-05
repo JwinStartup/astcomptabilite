@@ -7,11 +7,11 @@ export default function Factures() {
   return (
     <div className='w-full'>
     <Entete />
-    <div className='flex items-cennter justify-start mx-2 cursor-pointer' onClick={()=>navigate("/")}>
+    <div className='flex items-center justify-start mx-2 cursor-pointer' onClick={()=>navigate("/")}>
     <IoArrowBackCircleSharp  color='red' size={40}  />
     <p className='font-bold rounded-lg text-xl '> Factures & Reçues </p>
             </div>
-  <div className='w-full flex justify-center items-center mt-2 '>
+  <div className='w-full flex justify-center items-center mt-2 ml-3 mr-2 '>
   {/* <Link to='/factures/commissions' className="w-52 h-52 tracking-tight  text-black font-semibold bg-slate-200 rounded-3xl text-center items-center flex justify-center shadow-lg cursor-pointer">
       Commissions
     </Link>
@@ -26,7 +26,7 @@ export default function Factures() {
        <p className='text-lg font-bold text-gray-400'>
         Factures recentes
       </p>
-       <Link to='/factures/impayes' className='text-xs font-bold text-red-400'>
+       <Link to='/factures/impayes' className=' cursor-pointer bg-red-200 p-2 text-xs font-bold text-red-400'>
         Voir plus
       </Link>
       </div>
