@@ -15,9 +15,9 @@ export default function Entete() {
     <div className=' w-full flex justify-between'>
           <h1 className='text-2xl m-1 font-bold'>ASTComptable</h1>
             <div className='flex m-2 items-center gap-1 '>
-             <p className=''>{user.me.nom} </p>
+             <p className=''>{user.me?.nom} </p>
              <div className='bg-gray-600 rounded-full w-2 h-2'/>
-             <p className='text-sm tracking-widest text-green-300 pb-0.5'>{user.me.role}</p>
+             <p className='text-sm tracking-widest text-green-300 pb-0.5'>{user.me?.role}</p>
       
       </div>
            
