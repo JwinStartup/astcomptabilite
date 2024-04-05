@@ -6,12 +6,13 @@ import { GiCheckMark } from "react-icons/gi";
 import { FaFileInvoice,FaIndent } from "react-icons/fa";
 import { FaUsers,FaCircleUser } from "react-icons/fa6";
 import { BsFileEarmarkSpreadsheetFill } from "react-icons/bs";
+// {user?.me?.role==='Administrateur'&&
 export default function Home() {
   const { user } = useContext(UserContext);
     console.log(user)
     return (
       <div className=''>
-        <Entete />
+      {/* <Entete /> */}
       <div className='w-full flex flex-wrap  h-full  justify-center items-center mt-20 gap-4 sm:flex w-full justify-center items-center '>
       <div className="w-[300px] p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
     <div className="flex items-center mb-3">
