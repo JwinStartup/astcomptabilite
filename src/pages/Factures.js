@@ -1,14 +1,15 @@
 import React from 'react'
 import Entete from '../components/entete'
 import { Link, useNavigate } from 'react-router-dom'
-
+import { IoArrowBackCircleSharp } from "react-icons/io5"
 export default function Factures() {
   const navigate=useNavigate()
   return (
     <div>
     <Entete />
-    <div className='flex items-cennter justify-between mx-5 '>
-    <button className='ml-10 bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center' onClick={()=>navigate("/")} > retour</button>
+    <div className='flex items-cennter justify-start mx-2 '>
+    <IoArrowBackCircleSharp  color='red' size={18} onClick={()=>navigate("/")} />
+    <p className='font-bold rounded-lg text-xl px-5 py-2.5'> Factures & Reçues </p>
             </div>
   <div className='w-full flex justify-center items-center mt-20 '>
   {/* <Link to='/factures/commissions' className="w-52 h-52 tracking-tight  text-black font-semibold bg-slate-200 rounded-3xl text-center items-center flex justify-center shadow-lg cursor-pointer">
@@ -21,8 +22,8 @@ export default function Factures() {
       Reçues
     </Link>*/}
       <div className='flex flex-col '>
-        <div className='flex items-center justify-center mb-2'>
-       <p className='text-sm font-bold text-gray-400'>
+        <div className='flex items-center justify-between mb-2'>
+       <p className='text-lg font-bold text-gray-400'>
         Factures recentes
       </p>
        <Link to='/factures/impayes' className='text-xs font-bold text-red-400'>
