@@ -10,39 +10,28 @@ export default function Entete() {
   const navigate = useNavigate()
   const  dispatch = useDispatch()
   const  [useur,setUseur] =useState(user)
-    useEffect(() => {
-      
-  });
-console.log(user)
-const UserConst=({p})=> { 
-  console.log(p)
-  if(p===null){
-    return(
-       <Link 
+console.log(useur)
+  return (
+    <div className=' w-full flex justify-between'>
+          <h1 className='text-2xl m-1 font-bold'>ASTComptable</h1>
+{useur.me===null?
+        <Link 
              className="me-3 inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary hover:text-primary-600" 
              to='/login'>
              Connectez-vous
       </Link>
-    )
-  }else{
-  return ( 
-    <div className='flex m-2 items-center gap-1 '>
-    {console.log(user)}
-             <p className=''>{p.nom} </p>
+       :
+      <div className='flex m-2 items-center gap-1 '>
+             <p className=''>{useur.me.nom} </p>
              <div className='bg-gray-600 rounded-full w-2 h-2'/>
-             <p className='text-sm tracking-widest text-green-300 pb-0.5'>{p.role}</p>
-           <Link 
-             className="me-3 inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-red-400 " 
+             <p className='text-sm tracking-widest text-green-300 pb-0.5'>{useur.me.role}</p>
+           <Link  onClick=(()=dispatch(userActions.logout()).then(()=>.logout()))
+             className="me-3 inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium  leading-normal text-red-400 " 
              >
              Deconnetez-vous
       </Link>
-      </div>)
+      </div>
   }
-}
-  return (
-    <div className=' w-full flex justify-between'>
-          <h1 className='text-2xl m-1 font-bold'>ASTComptable</h1>
-             <UserConst p={useur} />
         </div>
   )
 }
