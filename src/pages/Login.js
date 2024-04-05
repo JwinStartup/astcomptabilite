@@ -25,6 +25,9 @@ export default function Login() {
   }
   return (
     <div className='w-full flex flex-col  items-center justify-center '>
+      <div className=' w-full flex mb-3'>
+          <h1 className='text-2xl m-1 font-bold'>ASTComptable</h1>
+        </div>
    
          <form autoComplete='off' onSubmit={handleSubmit(onSubmit)}  className='flex justify-center w-[350px] mt-6 items-center flex-col space-y-4 p-9 border border-gray-400 rounded-lg shadow-lg' >
          
