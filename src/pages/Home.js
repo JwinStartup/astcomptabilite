@@ -13,7 +13,7 @@ export default function Home() {
       <div className=''>
         <Entete />
       <div className='w-full flex flex-wrap  h-full  justify-center items-center mt-20 gap-4 sm:flex justify-center items-center '>
-      <div className="w-["300px"] p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      <div className="w-[300px] p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
     <div className="flex items-center mb-3">
         <FaFileInvoice  size={30} color="#1D4ED8"/>
         <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900 ">Facture & Reçue </h5>
@@ -32,7 +32,7 @@ export default function Home() {
 </div>
 
 
-       <div className="w-["300px"] p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+       <div className="w-[300px] p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
     <div className="flex items-center mb-3">
         <FaUsers  size={30} color="green"/>
         <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900 dark:text-white">Parents & Personnels </h5>
@@ -50,7 +50,7 @@ export default function Home() {
     </Link>
 </div>
 
-       <div className="w-["300px"] p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+       <div className="w-[300px] p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
     <div className="flex items-center mb-3">
         <FaIndent  size={30} color="#764929"/>
         <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900 dark:text-white">Charges</h5>
@@ -67,7 +67,7 @@ export default function Home() {
         </svg>
     </Link>
 </div>
-       <div className="w-["300px"] p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+       <div className="w-[300px] p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
     <div className="flex items-center mb-3">
         <BsFileEarmarkSpreadsheetFill  size={30} color="#f01e2c"/>
         <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900 dark:text-white"> Bilan financier </h5>
@@ -84,7 +84,7 @@ export default function Home() {
         </svg>
     </Link>
 </div>
-     {user?.me?.role==='Administrateur'&&  <div className="w-["300px"] p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+     {user?.me?.role==='Administrateur'&&  <div className="w-[300px] p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
     <div className="flex items-center mb-3">
         <FaCircleUser  size={30} color="#C0C2C9"/>
         <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900 dark:text-white"> Gestion des utilisateurs </h5>
