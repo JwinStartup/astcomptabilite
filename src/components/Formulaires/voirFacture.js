@@ -17,7 +17,7 @@ const dispatch = useDispatch()
            </div> 
       <div className='flex flex-row justify-between w-full'> 
         <div className='font-bold  tracking-tight text-[22px] text-black pl-1'>Facture</div>
-        <div className='font-medium  tracking-tight text-[14px] text-green-400 pl-1'>N° {value._id.slice(value._id.length-3)} </div>
+        <div className='font-medium mt-2  tracking-tight text-[14px] text-green-400 pl-1'>N° {value._id.slice(value._id.length-3)} </div>
       </div> 
       <div className='flex flex-row w-full  justify-between my-2'>
         <div className='ml-2'>
