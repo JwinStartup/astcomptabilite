@@ -2,8 +2,11 @@ import React,{useEffect,useState,} from 'react'
 import { useDispatch } from 'react-redux';
 import { comptabiliteActions } from '../../reducer/comptabilite';
 import {PDFfacture} from '../PDFfacture';
- import {WhatsappShareButton} from "react-share";
- import {WhatsappIcon} from "react-share";
+import {WhatsappShareButton} from "react-share";
+import  Axios  from 'axios';
+import ReactPDF, {PDFViewer,PDFDownloadLink,pdf, Page,Text,Image, View, Document, StyleSheet, renderToStream } from '@react-pdf/renderer';
+import {FadeLoader}from 'react-spinners'
+import {WhatsappIcon} from "react-share";
 export default function PartagerFacture({retour,value}) {
    const [ficher,setFicher]=useState(null)
    const dispatch=useDispatch()
