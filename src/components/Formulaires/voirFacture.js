@@ -48,9 +48,9 @@ const download=async()=>{
       })
 }
   return (
-    <div className='w-[500px]  border p-3 bg-white border-gray-100 shadow-md rounded-3xl   z-10 absolute top-[125px] left-[400px]'>
+    <div className='w-[300px]  border p-3 bg-white border-gray-100  rounded-3xl '>
       <div className='flex flex-row justify-between w-full'> 
-        <div className='font-bold  tracking-tight text-[22px] text-black pl-1'>Détail facture</div>
+        <div className='font-bold  tracking-tight text-[22px] text-black pl-1'>facture</div>
         <div className='font-medium  tracking-tight text-[14px] text-green-400 pl-1'>N° {value._id.slice(value._id.length-6)} </div>
       </div> 
       <div className='flex flex-row w-full  justify-between my-4'>
@@ -82,7 +82,7 @@ const download=async()=>{
   </thead>
   <tbody>
   <tr className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
-      <td className='font-medium text-base text-gray-500 text-start'>Cours à domicile   CM1 </td>      
+      <td className='font-medium text-base text-gray-500 text-start'>Cours à domicile </td>      
       <td className='font-medium text-base text-gray-500 text-start'>{value.montant}</td>
       <td className= { `font-medium text-base text-gray-500 text-start ${value.type==='impaye'?'text-red-500':'text-green-500'}`}>{value.type}</td>
     </tr>
