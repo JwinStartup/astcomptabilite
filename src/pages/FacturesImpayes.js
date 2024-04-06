@@ -83,20 +83,23 @@ export default function FacturesImpayes() {
     <div>
          {rub.bol!==false&&<SetComponent p={rub.nom} retour={()=>setRub({bol:false,nom:''})} value={rub.value} />}
         <Entete />
-     <div className='  flex justify-between  space-x-2 mx-4'>
-     <div className=' mb-3 p-0  tracking-tight text-[22px] text-black font-semibold '>
-     <div className='  flex justify-between  space-x-2'>
+     <div className='  flex flex-col justify-center items-center  space-x-2 mx-4'>
+     <div className=' mb-3 p-0    '>
+     <div className='  flex justify-between  space-x-2 items-center w-full'>
     <div className="flex items-center mb-3">
         <FaFileInvoice  size={30} color="#1D4ED8"/>
-        <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900 ">Facture  </h5>
+        <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900  ">Facture  </h5>
     </div>
+          <div>
                 <select className='text-sm font-medium'>
                     <option value="">Aujourd'hui</option>
                     <option value="">Ce mois</option>
                     <option value="">Tous les mois</option>
                 </select>
                  <FaPlusCircle color="gray" size={30}  onClick={()=>setRub({nom:'CREER',bol:true})}/>
+             </div>
             </div>
+  
             </div>
        {isLoader?
             <div className="flex flex-col gap-2  w-full">
