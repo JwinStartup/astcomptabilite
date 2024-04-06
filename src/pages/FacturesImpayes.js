@@ -112,6 +112,7 @@ export default function FacturesImpayes() {
                      supprimer={()=>setRub({nom:'SUPPRIMER',bol:true, value:value})} 
                      payer={()=>setRub({nom:'PAYER',bol:true, value:value} )} value={value}
                      partager={()=>setRub({nom:'PARTAGER',bol:true, value:value} )} value={value}
+                     modifier={()=>setRub({nom:'MODIFIER',bol:true, value:value} )} value={value}
                 />)}
       </div>}
 
