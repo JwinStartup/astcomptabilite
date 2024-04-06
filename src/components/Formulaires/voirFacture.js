@@ -5,6 +5,7 @@ import { comptabiliteActions } from '../../reducer/comptabilite.js'
 import  Axios  from 'axios';
 import ReactPDF, {PDFViewer,PDFDownloadLink,pdf, Page,Text,Image, View, Document, StyleSheet, renderToStream } from '@react-pdf/renderer';
  import {FadeLoader}from 'react-spinners'
+import { AiFillCloseCircle } from "react-icons/ai";
 const MyDoc = ({value})=>(
   <Document pageMode='fullScreen' title={`Facture N° ${value._id.slice(value._id.length-6)}`}>
         <Page size="A7" style>
@@ -47,7 +48,10 @@ const download=async()=>{
       })
 }
   return (
-    <div className='mx-3 bg-slate-50 w-[300px]  border p-3  border-gray-100  rounded-md '>
+    <div className='mx-3 bg-slate-100 w-[300px]  border p-3  border-gray-100  rounded-md '>
+           <div className='absolute right-0 top-0 m-1'>    
+            <AiFillCloseCircle color="gray" size={25} />
+           </div> 
       <div className='flex flex-row justify-between w-full'> 
         <div className='font-bold  tracking-tight text-[22px] text-black pl-1'>Facture</div>
         <div className='font-medium  tracking-tight text-[14px] text-green-400 pl-1'>N° {value._id.slice(value._id.length-3)} </div>
