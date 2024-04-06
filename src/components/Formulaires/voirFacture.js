@@ -56,7 +56,7 @@ const dispatch = useDispatch()
        payer
         </button>}
         <button type="button" className="text-blue-400  hover:text-bleu-600 border-r  font-medium  text-sm px-5 py-2.5 text-center inline-flex items-center" onClick={() => modifier()}>Modifier</button>  
-        <button type="button" className="text-green-400  hover:bg-green-600   font-medium  text-sm px-5 py-2.5 text-center inline-flex items-center" onClick={() => partager()}>Partager</button>
+        <button type="button" className="text-green-400  hover:text-green-600   font-medium  text-sm px-5 py-2.5 text-center inline-flex items-center" onClick={() => partager()}>Partager</button>
         </div>
         </div>
     </div>
