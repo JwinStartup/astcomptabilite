@@ -20,7 +20,7 @@ export default function FormulairePayerFacture({retour,value}) {
  }
   console.log(value)
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className='w-[500px]  border p-3 bg-white border-gray-100 shadow-md rounded-3xl   z-10 absolute top-[125px] left-[400px]'>
+    <form onSubmit={handleSubmit(onSubmit)} className='w-[300px]  border p-3 bg-white border-gray-100 shadow-md rounded-3xl   z-10 absolute top-[125px] left-[400px]'>
       <div className='flex flex-row justify-between w-full'> 
         <div className='font-bold  tracking-tight text-[22px] text-black pl-1'>Payer une facture</div>
         <div className='font-medium  tracking-tight text-[14px] text-green-400 pl-1'>N°  {value._id} </div>
@@ -54,13 +54,13 @@ export default function FormulairePayerFacture({retour,value}) {
         </select>
         </div>
         <div className='mx-7 mt-3'>
-       {(select==='orangemoney'||select==='mmtnmoney'||select==='moovnmoney'||select==='wave')&&<input type="text" {...register("ref")}  className='w-[400px] h-10 border-b-2 mb-2 text-lg pl-1 placeholder-gray-300' placeholder='id transaction' />}
+       {(select==='orangemoney'||select==='mmtnmoney'||select==='moovnmoney'||select==='wave')&&<input type="text" {...register("ref")}  className='w-[200px] h-10 border-b-2 mb-2 text-lg pl-1 placeholder-gray-300' placeholder='id transaction' />}
         </div>
         <div className='flex flex-col items-center my-2  space-y-3 w-full h-full'>
-        <div className='flex flex-row space-x-6'>  <button onClick={()=>retour()} type="button" className="text-white bg-red-700 hover:bg-red-800   font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center ">
+        <div className='flex flex-row space-x-6'>  <button onClick={()=>retour()} type="button" className="text-blue-400 border-r  hover:text-blue-700   font-medium  text-sm px-5 py-2.5 text-center inline-flex items-center ">
         Retour
         </button>
-        <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        <button type="submit" className="text-white text-red-400 hover:text-red-700  font-medium  text-sm px-5 py-2.5 text-center inline-flex items-center ">
         Payer
         </button> </div>
         </div>
