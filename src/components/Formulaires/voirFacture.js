@@ -28,7 +28,7 @@ const download=async()=>{
   anchor.href = blobUrl;
   anchor.click();
   window.URL.revokeObjectURL(blobUrl);
- retour()
+
 }
   
  const partager=async()=>{
@@ -44,7 +44,7 @@ const download=async()=>{
      ).then((response)=>{
       console.log(response.data)
       dispatch(comptabiliteActions.partager({url:response.data.secure_url,filename:`Facture${value._id.slice(value._id.length-6)}.pdf`})).then(()=>
-   retour())
+   )
       })
 }
   return (
