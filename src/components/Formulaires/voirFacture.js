@@ -14,7 +14,7 @@ const MyDoc = ({value})=>(
         </Document>
 );
   
-export default function VoirFacture({payer,value}) {
+export default function VoirFacture({payer,value,modifier}) {
   console.log(value)
 const dispatch = useDispatch()
   
@@ -32,21 +32,7 @@ const download=async()=>{
 
 }
   
- const partager=async()=>{
- const blob = await pdf(
-        <MyDoc value={value} />
-    ).toBlob();
-  const formdata = new FormData();
-  let file = new File([blob], `Facture${value._id.slice(value._id.length-6)}.pdf`);
-   formdata.append("file", file);
-   formdata.append("upload_preset","cfcpdf")
-     Axios.post(
-      "https://api.cloudinary.com/v1_1/cfcunadoc/image/upload",formdata
-     ).then((response)=>{
-      console.log(response.data)
-      dispatch(comptabiliteActions.partager({url:response.data.secure_url,filename:`Facture${value._id.slice(value._id.length-6)}.pdf`}))
-      })
-}
+ 
   return (
     <div className='mx-3 bg-slate-100 w-[300px]  border p-3  border-gray-100  rounded-md '>
            <div className='absolute right-0 top-0 m-1'>    
@@ -60,18 +46,14 @@ const download=async()=>{
         <div className='ml-2'>
         <div className='text-sm font-bold text-gray-500'>{value.client.nom} {value.client.prenoms}</div>
         <div className='text-sm font-medium text-gray-500'>{value.client.cel}</div>
-
         </div>
         <div>
              <div className='font-bold  tracking-wide text-sm text-black '>{value.montant} FCFA</div>
             <div className='font-medium text-center tracking-tight text-[11px] text-gray-400 '>Montant</div>
-
         </div>
 
       </div>
             <div className='mx-2 font-medium  tracking-tight text-sm text-black '>Periode : {value.periodeAjouter}</div>
-       
-     
         <div className='  mt-2'>
         <table className="w-full ">
   <thead>
@@ -96,8 +78,8 @@ const download=async()=>{
  {value.type!=="paye"&&<button onClick={()=>payer()} type="button" className="text-red-600  border-r hover:text-red-500   font-medium  text-sm px-5 py-2.5 text-start inline-flex items-center ">
        payer
         </button>}
-        <button type="button" className="text-black  hover:bg-bleu-400 border-r  font-medium  text-sm px-5 py-2.5 text-center inline-flex items-center" onClick={() => download()}>Telecharger</button>  
-        <button type="button" className="text-black  hover:bg-green-400   font-medium  text-sm px-5 py-2.5 text-center inline-flex items-center" onClick={() => partager()}>Partager</button>
+        <button type="button" className="text-blue-400  hover:text-bleu-600 border-r  font-medium  text-sm px-5 py-2.5 text-center inline-flex items-center" onClick={() => modifier()}>Modifier</button>  
+        <button type="button" className="text-green-400  hover:bg-green-600   font-medium  text-sm px-5 py-2.5 text-center inline-flex items-center" onClick={() => partager()}>Partager</button>
         </div>
         </div>
     </div>
