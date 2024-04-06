@@ -13,7 +13,7 @@ const MyDoc = ({value})=>(
         </Document>
 );
   
-export default function VoirFacture({retour,value}) {
+export default function VoirFacture({payer,value}) {
   console.log(value)
 const dispatch = useDispatch()
   
@@ -80,7 +80,7 @@ const download=async()=>{
     </tr>
   </thead>
   <tbody>
-  <tr className='odd:bg-gray-400  bg-white rounded-3xl h-14 m-2  items-center w-full cursor-pointer'>
+  <tr className='odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full cursor-pointer'>
       <td className='font-medium text-base text-gray-500 text-start'>Cours à domicile </td>      
       <td className='font-medium text-base text-gray-500 text-start'>{value.montant}</td>
       <td className= { `font-medium text-base text-gray-500 text-start ${value.type==='impaye'?'text-red-500':'text-green-500'}`}>{value.type}</td>
@@ -90,8 +90,8 @@ const download=async()=>{
         </div>
         <div className='flex flex-col items-center my-2  w-full'>
         <div className='flex flex-row '>  
-        <button onClick={()=>retour()} type="button" className="text-black  border-r hover:text-red-500   font-medium  text-sm px-5 py-2.5 text-start inline-flex items-center ">
-        Retour
+        <button onClick={()=>payer()} type="button" className="text-red-600  border-r hover:text-red-500   font-medium  text-sm px-5 py-2.5 text-start inline-flex items-center ">
+       payer
         </button>
         <button type="button" className="text-black  hover:bg-bleu-400 border-r  font-medium  text-sm px-5 py-2.5 text-center inline-flex items-center" onClick={() => download()}>Telecharger</button>  
         <button type="button" className="text-black  hover:bg-green-400   font-medium  text-sm px-5 py-2.5 text-center inline-flex items-center" onClick={() => partager()}>Partager</button>
