@@ -3,40 +3,17 @@ import {PDFfacture} from '../PDFfacture'
 import { useDispatch, useSelector } from 'react-redux'
 import { comptabiliteActions } from '../../reducer/comptabilite.js'
 import  Axios  from 'axios';
-import ReactPDF, {PDFViewer,PDFDownloadLink,pdf, Page,Text,Image, View, Document, StyleSheet, renderToStream } from '@react-pdf/renderer';
  import {FadeLoader}from 'react-spinners'
 import { AiFillCloseCircle } from "react-icons/ai";
-const MyDoc = ({value})=>(
-  <Document pageMode='fullScreen' title={`Facture N° ${value._id.slice(value._id.length-6)}`}>
-        <Page size="A7" style>
-          <PDFfacture  value={value}/>
-          </Page>
-        </Document>
-);
-  
-export default function VoirFacture({payer,value,modifier}) {
-  console.log(value)
-const dispatch = useDispatch()
-  
-const download=async()=>{
- const blob = await pdf(
-        <MyDoc value={value} />
-    ).toBlob();
- const blobUrl = window.URL.createObjectURL(blob);
- const anchor = window.document.createElement('a');
- console.log(blobUrl)
-  anchor.download = `Facture N° ${value._id.slice(value._id.length-6)}`;
-  anchor.href = blobUrl;
-  anchor.click();
-  window.URL.revokeObjectURL(blobUrl);
 
-}
+export default function VoirFacture({payer,value,modifier,partager,supprimer}) {
+const dispatch = useDispatch()
   
  
   return (
     <div className='mx-3 bg-slate-100 w-[300px]  border p-3  border-gray-100  rounded-md '>
-           <div className='absolute right-0 top-0 m-1'>    
-            <AiFillCloseCircle color="gray" size={25} />
+           <div className='absolute right-0 top-0 m-1 cursor-pointer '>    
+            <AiFillCloseCircle color="gray" size={25} onClick={()=>supprimer()} />
            </div> 
       <div className='flex flex-row justify-between w-full'> 
         <div className='font-bold  tracking-tight text-[22px] text-black pl-1'>Facture</div>
