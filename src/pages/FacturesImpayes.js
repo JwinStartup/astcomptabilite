@@ -98,9 +98,13 @@ export default function FacturesImpayes() {
                  <FaPlusCircle color="gray" size={30}  onClick={()=>setRub({nom:'CREER',bol:true})}/>
             </div>
             </div>
-        <div className='flex flex-col gap-3 w-full justify-center items-center'>
+       {isLoader?
+            <div className="flex flex-col gap-2  w-full">
+            { [1,2,3].map((i,j)=><div key={j} className="animate-pulse flex space-x-4 border rounded-md w-[250px] h-[200px] px-2 bg-gray-100">
+            </div>)}
+            </div>: <div className='flex flex-col gap-3 justify-center items-center'>
        {factures.map((value,index)=><VoirFacture retour={()=>setRub({nom:'',bol:false,value:null})} value={value}/>)}
-      </div>
+      </div>}
   {/*factures.map((value,index)=><tr key={index} className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
       <td className='font-medium text-base text-gray-500 text-center'>{value._id.slice(value._id.length-6)}</td>
       <td className='font-medium text-base text-gray-500 text-center'>{value.client.nom} {value.client.prenoms}</td>      
