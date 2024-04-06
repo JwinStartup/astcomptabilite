@@ -47,7 +47,7 @@ const download=async()=>{
       })
 }
   return (
-    <div className='mx-3 bg-slate-50  border p-3  border-gray-100  rounded-md '>
+    <div className='mx-3 bg-slate-50 w-[300px]  border p-3  border-gray-100  rounded-md '>
       <div className='flex flex-row justify-between w-full'> 
         <div className='font-bold  tracking-tight text-[22px] text-black pl-1'>Facture</div>
         <div className='font-medium  tracking-tight text-[14px] text-green-400 pl-1'>N° {value._id.slice(value._id.length-3)} </div>
@@ -68,7 +68,7 @@ const download=async()=>{
             <div className='mx-2 font-medium  tracking-tight text-sm text-black '>Periode : {value.periodeAjouter}</div>
        
      
-        <div className='mx2  mt-2'>
+        <div className='  mt-2'>
         <table className="w-full ">
   <thead>
     <tr className="">
