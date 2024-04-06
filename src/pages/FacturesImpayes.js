@@ -12,6 +12,7 @@ import { RingLoader} from 'react-spinners';
 import { comptabiliteActions } from '../reducer/comptabilite.js'
 import { PropagateLoader } from 'react-spinners';
 import { FaSearch } from 'react-icons/fa';
+import { FaPlusCircle } from "react-icons/fa"
 const SetComponent=({p,retour,value})=>{
   console.log(p)
   switch (p) {
@@ -85,34 +86,22 @@ export default function FacturesImpayes() {
      <div className='  flex justify-between  space-x-2 mx-4'>
      <div className=' mb-3 p-0  tracking-tight text-[22px] text-black font-semibold '>
      <div className='  flex justify-between  space-x-2'>
-                 
-                <select className=''>
+    <div className="flex items-center mb-3">
+        <FaFileInvoice  size={30} color="#1D4ED8"/>
+        <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900 ">Facture  </h5>
+    </div>
+                <select className='text-sm font-medium'>
                     <option value="">Aujourd'hui</option>
                     <option value="">Ce mois</option>
                     <option value="">Tous les mois</option>
                 </select>
-                <button onClick={()=>setRub({nom:'CREER',bol:true})} className='ml-10 bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center'>+ Creer une facture</button>
+                 <FaPlusCircle color="gray" size={30}  onClick={()=>setRub({nom:'CREER',bol:true})}/>
             </div>
             </div>
-            {isLoader===true?<RingLoader
-        color={"green"}
-        size={60}
-      />:
-  <> {factures.length===0?<p className='text-center w-full'>Pas de facture </p>:
-            <div className='w-full flex justify-center mt-16 '>
-
-            <table className="w-full mx-2">
-  <thead>
-    <tr className="">
-      <th  className='border-b-2 text-gray-400'>Numeros</th>
-      <th  className='border-b-2 text-gray-400'>Clients</th>
-      <th  className='border-b-2 text-gray-400'>Periode</th>
-     <th  className='border-b-2 text-gray-400'>Montants</th>
-     <th  className='border-b-2 text-gray-400'>type</th>
-    </tr>
-  </thead>
-  <tbody>
-  {factures.map((value,index)=><tr key={index} className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
+        <div className='flex flex-col gap-3 w-full justify-center items-center'>
+       {factures.map((value,index)=><VoirFacture retour={()=>setRub({nom:'',bol:false,value:null})} value={value}/>)}
+      </div>
+  {/*factures.map((value,index)=><tr key={index} className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
       <td className='font-medium text-base text-gray-500 text-center'>{value._id.slice(value._id.length-6)}</td>
       <td className='font-medium text-base text-gray-500 text-center'>{value.client.nom} {value.client.prenoms}</td>      
       <td className='font-medium text-base text-gray-500 text-center'>{value.periodeAjouter}</td>
@@ -122,13 +111,8 @@ export default function FacturesImpayes() {
          <td className='font-medium text-base text-gray-500 text-center ' onClick={()=>setRub({nom:'VOIR',bol:true,value:value} )}>Voir </td>
          {value.type==='impaye'&& <td className='font-medium text-base text-gray-500 text-center 'onClick={()=>setRub({nom:'MODIFIER',bol:true,value:value} )}>Modifier </td>}
            {value.type==='impaye'&& <td className='font-medium text-base text-gray-500 text-center 'onClick={()=>setRub({nom:'SUPPRIMER',bol:true,value:value} )}>Supprimer </td>}
-    </tr>)}
-  </tbody>
-</table>
+    </tr>)*/}
 </div>
-}
-</>
-}
     
     </div>
   )
