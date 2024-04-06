@@ -82,7 +82,7 @@ export default function FacturesImpayes() {
         <FaFileInvoice  size={30} color="#1D4ED8"/>
         <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900  ">Facture  </h5>
     </div>
-          <div classNamme='flex items-center flex-row justify-center '>
+          <div classNamme='flex items-center flex-col justify-center '>
                 <select className='text-sm font-medium'>
                     <option value="">Aujourd'hui</option>
                     <option value="">Ce mois</option>
