@@ -48,7 +48,7 @@ const download=async()=>{
       })
 }
   return (
-    <div className='w-[300px] bg-slate-200  border p-3  border-gray-100  rounded-md '>
+    <div className='mx-3 bg-slate-50  border p-3  border-gray-100  rounded-md '>
       <div className='flex flex-row justify-between w-full'> 
         <div className='font-bold  tracking-tight text-[22px] text-black pl-1'>Facture</div>
         <div className='font-medium  tracking-tight text-[14px] text-green-400 pl-1'>N° {value._id.slice(value._id.length-3)} </div>
@@ -90,11 +90,11 @@ const download=async()=>{
         </div>
         <div className='flex flex-col items-center my-2  w-full'>
         <div className='flex flex-row '>  
-        <button onClick={()=>retour()} type="button" className="text-black bg-white border-r hover:text-red-500   font-medium  text-sm px-5 py-2.5 text-start inline-flex items-center ">
+        <button onClick={()=>retour()} type="button" className="text-black  border-r hover:text-red-500   font-medium  text-sm px-5 py-2.5 text-start inline-flex items-center ">
         Retour
         </button>
-        <button type="button" className="text-black bg-white hover:bg-bleu-400 border-r  font-medium  text-sm px-5 py-2.5 text-center inline-flex items-center" onClick={() => download()}>Telecharger</button>  
-        <button type="button" className="text-black bg-white hover:bg-green-400   font-medium  text-sm px-5 py-2.5 text-center inline-flex items-center" onClick={() => partager()}>Partager</button>
+        <button type="button" className="text-black  hover:bg-bleu-400 border-r  font-medium  text-sm px-5 py-2.5 text-center inline-flex items-center" onClick={() => download()}>Telecharger</button>  
+        <button type="button" className="text-black  hover:bg-green-400   font-medium  text-sm px-5 py-2.5 text-center inline-flex items-center" onClick={() => partager()}>Partager</button>
         </div>
         </div>
     </div>
