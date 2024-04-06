@@ -80,17 +80,17 @@ export default function FacturesImpayes() {
     ,[fact])*/
   
   return (
-    <div>
+    <div className=' w-full'>
          {rub.bol!==false&&<SetComponent p={rub.nom} retour={()=>setRub({bol:false,nom:''})} value={rub.value} />}
         <Entete />
-     <div className='  flex flex-col justify-center items-center  space-x-2 mx-4'>
+     <div className='  w-full  flex flex-col justify-center items-center  space-x-2 mx-4'>
      <div className=' mb-3 p-0    '>
      <div className='  flex justify-between  space-x-2 items-center w-full'>
     <div className="flex items-center mb-3">
         <FaFileInvoice  size={30} color="#1D4ED8"/>
         <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900  ">Facture  </h5>
     </div>
-          <div>
+          <div classNamme='flex items-center  justify-center '>
                 <select className='text-sm font-medium'>
                     <option value="">Aujourd'hui</option>
                     <option value="">Ce mois</option>
@@ -106,19 +106,9 @@ export default function FacturesImpayes() {
             { [1,2,3].map((i,j)=><div key={j} className="animate-pulse flex space-x-4 border rounded-md w-[250px] h-[200px] px-2 bg-gray-100">
             </div>)}
             </div>: <div className='flex flex-col gap-3 justify-center items-center'>
-       {factures.map((value,index)=><VoirFacture retour={()=>setRub({nom:'',bol:false,value:null})} value={value}/>)}
+       {factures.map((value,index)=><VoirFacture payer={()=>setRub({nom:'PAYER',bol:true, value:value} )} value={value}/>)}
       </div>}
-  {/*factures.map((value,index)=><tr key={index} className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
-      <td className='font-medium text-base text-gray-500 text-center'>{value._id.slice(value._id.length-6)}</td>
-      <td className='font-medium text-base text-gray-500 text-center'>{value.client.nom} {value.client.prenoms}</td>      
-      <td className='font-medium text-base text-gray-500 text-center'>{value.periodeAjouter}</td>
-      <td className='font-medium text-base text-gray-500 text-center'>{value.montant}</td>
-        <td className= {`font-medium text-base text-center ${value.type==='impaye'?'text-red-500':'text-green-500'}  `}>{value.type}</td>
-        {value.type==='impaye'&&<td className='font-medium text-base text-gray-500 text-center ' onClick={()=>setRub({nom:'PAYER',bol:true, value:value} )}>Payer </td>}
-         <td className='font-medium text-base text-gray-500 text-center ' onClick={()=>setRub({nom:'VOIR',bol:true,value:value} )}>Voir </td>
-         {value.type==='impaye'&& <td className='font-medium text-base text-gray-500 text-center 'onClick={()=>setRub({nom:'MODIFIER',bol:true,value:value} )}>Modifier </td>}
-           {value.type==='impaye'&& <td className='font-medium text-base text-gray-500 text-center 'onClick={()=>setRub({nom:'SUPPRIMER',bol:true,value:value} )}>Supprimer </td>}
-    </tr>)*/}
+
 </div>
     
     </div>
