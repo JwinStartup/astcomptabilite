@@ -86,24 +86,24 @@ export default function FacturesImpayes() {
         <Entete />
      <div className='  w-full  flex flex-col justify-center items-center  space-x-2 mx-4'>
      <div className=' mb-3 p-0    '>
-     <div className='  flex justify-between  space-x-2 items-center w-full'>
-    <div className="flex items-center mb-3">
+     <div className='  flex justify-between  space-x-2 items-center w-[400px]'>
+    <div className="flex items-center ">
         <FaFileInvoice  size={30} color="#1D4ED8"/>
         <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900  ">Facture  </h5>
     </div>
-          <div classNamme='flex items-center flex-col justify-center '>
+          <div classNamme='flex items-center flex-row justify-center '>
                 <select className='text-sm font-medium'>
                     <option value="">Aujourd'hui</option>
                     <option value="">Ce mois</option>
                     <option value="">Tous les mois</option>
                 </select>
-                 <FaPlusCircle color="gray" size={30}  onClick={()=>setRub({nom:'CREER',bol:true})}/>
+                 <FaPlusCircle color="gray" size={25}  onClick={()=>setRub({nom:'CREER',bol:true})}/>
              </div>
             </div>
   
             </div>
        {isLoader?
-            <div className="flex flex-col gap-2  w-full">
+            <div className="flex flex-col gap-2 justify-center items-center w-full">
             { [1,2,3].map((i,j)=><div key={j} className="animate-pulse flex space-x-4 border rounded-md w-[250px] h-[200px] px-2 bg-gray-100">
             </div>)}
             </div>: <div className='flex flex-col gap-3 justify-center items-center'>
