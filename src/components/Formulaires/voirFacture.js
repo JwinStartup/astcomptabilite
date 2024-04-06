@@ -48,40 +48,39 @@ const download=async()=>{
       })
 }
   return (
-    <div className='w-[300px]  border p-3 bg-white border-gray-100  rounded-3xl '>
+    <div className='w-[300px] bg-slate-400  border p-3 bg-white border-gray-100  rounded-3xl '>
       <div className='flex flex-row justify-between w-full'> 
-        <div className='font-bold  tracking-tight text-[22px] text-black pl-1'>facture</div>
-        <div className='font-medium  tracking-tight text-[14px] text-green-400 pl-1'>N° {value._id.slice(value._id.length-6)} </div>
+        <div className='font-bold  tracking-tight text-[22px] text-black pl-1'>Facture</div>
+        <div className='font-medium  tracking-tight text-[14px] text-green-400 pl-1'>N° {value._id.slice(value._id.length-3)} </div>
       </div> 
-      <div className='flex flex-row w-full  justify-between my-4'>
-        <div className='ml-7'>
-        <div className='text-sm font-medium text-gray-500'>id : {value.client._id} </div>
-        <div className='text-lg font-medium text-gray-500'>{value.client.nom} {value.client.prenoms}</div>
+      <div className='flex flex-row w-full  justify-between my-2'>
+        <div className='ml-2'>
+        <div className='text-sm font-bold text-gray-500'>{value.client.nom} {value.client.prenoms}</div>
         <div className='text-sm font-medium text-gray-500'>{value.client.cel}</div>
 
         </div>
         <div>
-             <div className='font-bold  tracking-wide text-[22px] text-black '>{value.montant} FCFA</div>
+             <div className='font-bold  tracking-wide text-sm text-black '>{value.montant} FCFA</div>
             <div className='font-medium text-center tracking-tight text-[11px] text-gray-400 '>Montant</div>
 
         </div>
 
       </div>
-            <div className='mx-7 font-bold  tracking-tight text-lg text-black '>Periode : {value.periodeAjouter}</div>
+            <div className='mx-2 font-medium  tracking-tight text-sm text-black '>Periode : {value.periodeAjouter}</div>
        
      
-        <div className='mx-7  my-4'>
-        <table className="w-full mx-2">
+        <div className='mx2  mt-2'>
+        <table className="w-full ">
   <thead>
     <tr className="">
-      <th  className='border-b-2 text-gray-400 text-start'>Designation</th>
-      <th  className='border-b-2 text-gray-400 text-start'>Montant</th>
-      <th  className='border-b-2 text-gray-400 text-start'>Type</th>
+      <th  className='border-b-2 text-gray-400 text-start  text-xs '>Designation</th>
+      <th  className='border-b-2 text-gray-400 text-start  text-xs'>Montant</th>
+      <th  className='border-b-2 text-gray-400 text-start  text-xs'>Type</th>
       
     </tr>
   </thead>
   <tbody>
-  <tr className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
+  <tr className=' bg-gray-400  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
       <td className='font-medium text-base text-gray-500 text-start'>Cours à domicile </td>      
       <td className='font-medium text-base text-gray-500 text-start'>{value.montant}</td>
       <td className= { `font-medium text-base text-gray-500 text-start ${value.type==='impaye'?'text-red-500':'text-green-500'}`}>{value.type}</td>
@@ -90,11 +89,12 @@ const download=async()=>{
 </table>
         </div>
         <div className='flex flex-col items-center my-2  space-y-3 w-full h-full'>
-        <div className='flex flex-row space-x-6'>  <button onClick={()=>retour()} type="button" className="text-white bg-red-700 hover:bg-red-800   font-medium rounded-lg text-sm px-5 py-2.5 text-start inline-flex items-center ">
+        <div className='flex flex-row '>  
+        <button onClick={()=>retour()} type="button" className="text-white bg-white border-r hover:bg-red-800   font-medium rounded-lg text-sm px-5 py-2.5 text-start inline-flex items-center ">
         Retour
         </button>
-        <button type="button" className="text-white bg-blue-700 hover:bg-bleu-800   font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" onClick={() => download()}>Telecharger</button>  
-        <button type="button" className="text-white bg-green-700 hover:bg-bleu-800   font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" onClick={() => partager()}>Partager</button>
+        <button type="button" className="text-white bg-white hover:bg-bleu-400 border-r  font-medium  text-sm px-5 py-2.5 text-center inline-flex items-center" onClick={() => download()}>Telecharger</button>  
+        <button type="button" className="text-white bg-white hover:bg-green-400   font-medium  text-sm px-5 py-2.5 text-center inline-flex items-center" onClick={() => partager()}>Partager</button>
         </div>
         </div>
     </div>
