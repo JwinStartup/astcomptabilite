@@ -61,7 +61,7 @@ useEffect(()=>{
        type="button" onClick={()=>download()} className=" text-bleu-700    font-medium border-r text-sm px-5 py-2.5 text-center inline-flex items-center">
         Telecharger
         </button>
-      {fichier!==null&&
+      {ficher!==null&&
          <WhatsappShareButton 
          url={ficher}
             title={`Votre facture N° ${value._id.slice(value._id.length-6)} a étè par ASTRAINIG BUSINESS`}
