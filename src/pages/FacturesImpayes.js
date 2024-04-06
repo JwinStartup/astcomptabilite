@@ -11,7 +11,7 @@ import { useDispatch,useSelector } from 'react-redux';
 import { RingLoader} from 'react-spinners';
 import { comptabiliteActions } from '../reducer/comptabilite.js'
 import { PropagateLoader } from 'react-spinners';
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch,FaFileInvoice } from 'react-icons/fa';
 import { FaPlusCircle } from "react-icons/fa"
 const SetComponent=({p,retour,value})=>{
   console.log(p)
