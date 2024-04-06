@@ -9,6 +9,21 @@ export default function PartagerFacture({retour,value}) {
    const dispatch=useDispatch()
  
   }
+   {/*   const partager=async()=>{
+ const blob = await pdf(
+        <MyDoc value={value} />
+    ).toBlob();
+  const formdata = new FormData();
+  let file = new File([blob], `Facture${value._id.slice(value._id.length-6)}.pdf`);
+   formdata.append("file", file);
+   formdata.append("upload_preset","cfcpdf")
+     Axios.post(
+      "https://api.cloudinary.com/v1_1/cfcunadoc/image/upload",formdata
+     ).then((response)=>{
+      console.log(response.data)
+      dispatch(comptabiliteActions.partager({url:response.data.secure_url,filename:`Facture${value._id.slice(value._id.length-6)}.pdf`}))
+      })
+} */}
   return (
     <div className='w-[400px] space-y-4   items-center justify-center  border p-3 bg-white border-gray-100 shadow-md rounded-3xl   z-10 absolute top-[50% ] left-[50%]'>
         <div className='font-bold  tracking-tight text-[22px] text-black pl-1'>Supprimer une facture</div>
