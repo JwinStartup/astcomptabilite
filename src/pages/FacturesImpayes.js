@@ -70,15 +70,6 @@ export default function FacturesImpayes() {
     return state.comptabiliteReducer
    });
   const navigate=useNavigate()
-/*  const facturesArray = useMemo(() => 
-        { 
-          if(fact!==" "){
-          return factures.filter((u)=>u._id.match(fact))
-        }else{
-          return  factures.filter((u)=>u)
-        }
-        }
-    ,[fact])*/
   
   return (
     <div className=' w-full'>
