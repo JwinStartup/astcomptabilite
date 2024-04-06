@@ -11,8 +11,8 @@ const dispatch = useDispatch()
   
  
   return (
-    <div className='mx-3 bg-slate-100 w-[300px]  border p-3  border-gray-100  rounded-md '>
-           <div className='relative right-0 top-0 m-1 cursor-pointer '>    
+    <div className='relative mx-3 bg-slate-100 w-[300px]  border p-3  border-gray-100  rounded-md '>
+           <div className='absolute right-0 top-0 m-1 cursor-pointer '>    
             <AiFillCloseCircle color="white" size={25} onClick={()=>supprimer()} />
            </div> 
       <div className='flex flex-row justify-between w-full'> 
@@ -53,10 +53,10 @@ const dispatch = useDispatch()
         <div className='flex flex-col items-center my-2  w-full'>
         <div className='flex flex-row '>  
  {value.type!=="paye"&&<button onClick={()=>payer()} type="button" className="text-red-600  border-r hover:text-red-500   font-medium  text-sm px-5 py-2.5 text-start inline-flex items-center ">
-       payer
+       Payer
         </button>}
-        <button type="button" className="text-blue-400  hover:text-bleu-600 border-r  font-medium  text-sm px-5 py-2.5 text-center inline-flex items-center" onClick={() => modifier()}>Modifier</button>  
-        <button type="button" className="text-green-400  hover:text-green-600   font-medium  text-sm px-5 py-2.5 text-center inline-flex items-center" onClick={() => partager()}>Partager</button>
+        <button type="button" className="text-blue-400  hover:text-bleu-600 border-r  font-medium  text-sm px-5 py-2 text-center inline-flex items-center" onClick={() => modifier()}>Modifier</button>  
+        <button type="button" className="text-green-400  hover:text-green-600   font-medium  text-sm px-5 py-2 text-center inline-flex items-center" onClick={() => partager()}>Partager</button>
         </div>
         </div>
     </div>
