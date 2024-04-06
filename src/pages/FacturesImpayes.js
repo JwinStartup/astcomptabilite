@@ -77,7 +77,7 @@ export default function FacturesImpayes() {
         <Entete />
      <div className='  w-full  flex   space-x-2 mx-4'>
      <div className=' mb-3 p-0    '>
-     <div className='  flex justify-between  space-x-2 items-center w-[400px]'>
+     <div className='  flex justify-between flex-row space-x-2 items-center w-[400px]'>
     <div className="flex items-center ">
         <FaFileInvoice  size={30} color="#1D4ED8"/>
         <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900  ">Facture  </h5>
