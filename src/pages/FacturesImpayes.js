@@ -5,6 +5,7 @@ import FormulaireCreerFacture from '../components/Formulaires/formulaireCreerFac
 import ModifierFacture from '../components/Formulaires/modifierFacture'
 import FormulairePayerFacture from '../components/Formulaires/formulairePayerFacture.js'
 import VoirFacture from '../components/Formulaires/voirFacture.js'
+import PartagerFacture from '../components/Formulaires/partagerFacture.js'
 import SupprimerFacture from '../components/Formulaires/supprimerFacture.js'
 import {useNavigate} from 'react-router-dom'
 import { useDispatch,useSelector } from 'react-redux';
@@ -23,11 +24,11 @@ const SetComponent=({p,retour,value})=>{
         <FormulaireCreerFacture retour={retour}  />
         </div>
       );
-    case 'VOIR':
+    case 'PARTAGER':
       return(
         <div>
           <Backdrop/>
-        <VoirFacture retour={retour} value={value}/>
+        <PartagerFacture retour={retour} value={value}/>
         </div>
       )
     case 'SUPPRIMER':
@@ -106,7 +107,12 @@ export default function FacturesImpayes() {
             { [1,2,3].map((i,j)=><div key={j} className="animate-pulse flex space-x-4 border rounded-md w-[250px] h-[200px] px-2 bg-gray-100">
             </div>)}
             </div>: <div className='flex flex-col gap-3 justify-center items-center'>
-       {factures.map((value,index)=><VoirFacture payer={()=>setRub({nom:'PAYER',bol:true, value:value} )} value={value}/>)}
+       {factures.map((value,index)=>
+            <VoirFacture 
+                     supprimer={()=>setRub({nom:'SUPPRIMER',bol:true, value:value})} 
+                     payer={()=>setRub({nom:'PAYER',bol:true, value:value} )} value={value}
+                     partager={()=>setRub({nom:'PARTAGER',bol:true, value:value} )} value={value}
+                />)}
       </div>}
 
 </div>
