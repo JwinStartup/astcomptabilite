@@ -59,8 +59,8 @@ const download=async()=>{
  
 useEffect(()=>{
  dispatch(comptabiliteActions.voirRecueByid(value._id))
-  partager()
-})
+},[])
+
   
  console.log(value,ficher)
   return ( <div>
