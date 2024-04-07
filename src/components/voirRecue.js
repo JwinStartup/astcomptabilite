@@ -30,12 +30,12 @@ export default function VoirRecue({retour,value}) {
   
 const download=async()=>{
  const blob = await pdf(
-        <MyDoc value={value.recue} />
+        <MyDoc value={recue} />
     ).toBlob();
  const blobUrl = window.URL.createObjectURL(blob);
  const anchor = window.document.createElement('a');
  console.log(blobUrl)
-  anchor.download = `Reçue N° ${value.recue._id.slice(value.recue._id.length-6)}`;
+  anchor.download = `Reçue N° ${recue._id.slice(recue._id.length-6)}`;
   anchor.href = blobUrl;
   anchor.click();
   window.URL.revokeObjectURL(blobUrl);
@@ -43,10 +43,10 @@ const download=async()=>{
 }
    const partager=async()=>{
  const blob = await pdf(
-        <MyDoc value={value.recue} />
+        <MyDoc value={recue} />
     ).toBlob();
   const formdata = new FormData();
-  let file = new File([blob], `Reçue${value.recue._id.slice(value.recue._id.length-6)}.pdf`);
+  let file = new File([blob], `Reçue${recue._id.slice(recue._id.length-6)}.pdf`);
    formdata.append("file", file);
    formdata.append("upload_preset","cfcpdf")
      Axios.post(
@@ -67,24 +67,24 @@ useEffect(()=>{
    {isLoader? <div>Chargement... </div>:<div> 
        <div className='flex flex-row justify-between w-full'> 
         <div className='font-bold  tracking-tight text-lg text-black pl-1'>Reçue</div>
-        <div className='font-medium  tracking-tight text-sm text-green-400 pl-1'>N° {value.recue._id.slice(value.recue._id.length-3)} </div>
+        <div className='font-medium  tracking-tight text-sm text-green-400 pl-1'>N° {recue._id.slice(recue._id.length-3)} </div>
       </div> 
       <div className='flex flex-row w-full  justify-between my-4'>
         <div className='ml-7'>
-        <div className='text-sm font-medium text-gray-500'>{value.client.nom}  {value.client.prenoms}</div>
-        <div className='text-sm font-medium text-gray-500'>{value.client.cel}</div>
+        <div className='text-sm font-medium text-gray-500'>{client.nom}  {client.prenoms}</div>
+        <div className='text-sm font-medium text-gray-500'>{client.cel}</div>
 
         </div>
         <div>
-            <div className='font-bold  tracking-wide text-lg text-black '>{value.recue.montant} FCFA</div>
+            <div className='font-bold  tracking-wide text-lg text-black '>{recue.montant} FCFA</div>
             <div className='font-medium text-center tracking-tight text-xs text-red-400 '>Montant payé</div>
 
         </div>
 
       </div>
-            <div className='mx-7 font-bold  tracking-tight text-md text-black '>Periode : {value.recue.periodeAjouter}</div>
-            <div className='mx-7 font-bold  tracking-tight text-md text-black '>Mode : {value.recue.modePaiement}</div>
-            {value.recue.refPaiement&&<div className='mx-7 font-bold  tracking-tight text-md text-black '>Ref : {value.recue.refPaiement}</div>}
+            <div className='mx-7 font-bold  tracking-tight text-md text-black '>Periode : {recue.periodeAjouter}</div>
+            <div className='mx-7 font-bold  tracking-tight text-md text-black '>Mode : {recue.modePaiement}</div>
+            {recue.refPaiement&&<div className='mx-7 font-bold  tracking-tight text-md text-black '>Ref : {recue.refPaiement}</div>}
        
      
         <div className='mx-7  my-4'>
@@ -98,8 +98,8 @@ useEffect(()=>{
   </thead>
   <tbody>
   <tr className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
-      <td className='font-medium text-base text-gray-500 text-center'>{value._id.slice(value._id.length - 3)}</td>
-      <td className='font-medium text-base text-gray-500 text-center'>{value.recue.montant}</td>
+      <td className='font-medium text-base text-gray-500 text-center'>{_id.slice(_id.length - 3)}</td>
+      <td className='font-medium text-base text-gray-500 text-center'>{recue.montant}</td>
     </tr>
   </tbody>
 </table>
@@ -118,7 +118,7 @@ useEffect(()=>{
       {ficher!==null&&
          <WhatsappShareButton 
          url={ficher}
-            title={`Votre facture N° ${value.recue._id.slice(value.recue._id.length-3)} a étè par ASTRAINIG BUSINESS`}
+            title={`Votre facture N° ${recue._id.slice(recue._id.length-3)} a étè par ASTRAINIG BUSINESS`}
             >
               <button type="button"   className=" text-green-700 gap-2 font-medium text-sm px-3 py-2 text-center inline-flex items-center">
                      <WhatsappIcon logoFillColor='white' size={30} round={true}> 
