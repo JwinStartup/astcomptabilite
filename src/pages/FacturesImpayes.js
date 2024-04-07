@@ -108,10 +108,10 @@ export default function FacturesImpayes() {
             <div className="flex flex-col gap-2 justify-center items-center ">
             { [1,2,3].map((i,j)=><div key={j} className="animate-pulse flex space-x-4 border rounded-md w-[250px] h-[200px] px-2 bg-gray-100">
             </div>)}
-            </div>: <div className='flex flex-col gap-3 justify-center items-center'>
+            </div>: <div >
           {factures.length===0?
          <div className='w-full flex justify-center items-center'> Pas de facture</div>
-                          :<div>
+                          :<div className='flex flex-col gap-3 justify-center items-center'>
        {factures.map((value,index)=>
             <VoirFacture 
                      voirRecue={()=>setRub({nom:'VOIRRECUE',bol:true, value:value})}
