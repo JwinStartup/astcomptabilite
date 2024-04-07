@@ -33,7 +33,7 @@ function App() {
          <Route path="/login" element={<Login/>}/>
   
         <Route element={<PrivateRouter/>}>
-        <Route path="/factures" element={<Factures/>}/>
+        <Route path="/factures" element={<FacturesImpayes/>}/>
         <Route path="/cp" element={<ClientsPersonnels/>}/>
         <Route path="/bilan" element={<Bilan/>}/>
         <Route path="/charges" element={<Charges/>}/>
