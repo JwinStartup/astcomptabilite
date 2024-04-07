@@ -2,6 +2,7 @@ import React, { useEffect, useState,useMemo } from 'react'
 import Entete from '../components/entete'
 import Backdrop from '../components/backdrop'
 import FormulaireCreerFacture from '../components/Formulaires/formulaireCreerFacture'
+import VoirRecue from '../components/voirRecue.js'
 import ModifierFacture from '../components/Formulaires/modifierFacture'
 import FormulairePayerFacture from '../components/Formulaires/formulairePayerFacture.js'
 import { IoIosArrowDropleftCircle } from "react-icons/io";
@@ -45,6 +46,13 @@ const SetComponent=({p,retour,value})=>{
         <div>
           <Backdrop/>
         <ModifierFacture retour={retour} value={value} />
+        </div>
+      )
+     case 'VOIRRECUE':
+      return(
+        <div>
+          <Backdrop/>
+        <VoirRecue retour={retour} value={value} />
         </div>
       )
     case 'PAYER':
@@ -103,6 +111,7 @@ export default function FacturesImpayes() {
             </div>: <div className='flex flex-col gap-3 justify-center items-center'>
        {factures.map((value,index)=>
             <VoirFacture 
+                     voirRecue={()=>setRub({nom:'VOIRRECUE',bol:true, value:value})}
                      supprimer={()=>setRub({nom:'SUPPRIMER',bol:true, value:value})} 
                      payer={()=>setRub({nom:'PAYER',bol:true, value:value} )} value={value}
                      partager={()=>setRub({nom:'PARTAGER',bol:true, value:value} )} value={value}
