@@ -1,6 +1,6 @@
 import React,{useEffect,useState,} from 'react'
 import { usePDF } from '@react-pdf/renderer';
-import {WhatsappIcon} from "react-share";
+import {WhatsappIcon,WhatsappShareButton} from "react-share";
 
 import {PDFRecu} from './PDFRecu'
 import { MdWhatsapp } from "react-icons/md"
@@ -26,6 +26,7 @@ export default function VoirRecue({retour,value}) {
    });
    const [ficher,setFicher]=useState(null)
  const dispatch = useDispatch()
+ 
 const download=async()=>{
  const blob = await pdf(
         <MyDoc value={value} />
@@ -116,7 +117,7 @@ useEffect(()=>{
       {ficher!==null&&
          <WhatsappShareButton 
          url={ficher}
-            title={`Votre facture N° ${value._id.slice(value._id.length-6)} a étè par ASTRAINIG BUSINESS`}
+            title={`Votre facture N° ${value._id.slice(value._id.length-3)`} a étè par ASTRAINIG BUSINESS`}
             >
               <button type="button"   className=" text-green-700 gap-2 font-medium text-sm px-3 py-2 text-center inline-flex items-center">
                      <WhatsappIcon logoFillColor='white' size={30} round={true}> 
