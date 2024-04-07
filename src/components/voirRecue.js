@@ -21,7 +21,9 @@ const MyDoc = ({value})=>(
 
 
 export default function VoirRecue({retour,value}) {
-  
+   const {isLoader,recue} = useSelector((state)=>{
+    return state.comptabiliteReducer
+   });
    const [ficher,setFicher]=useState(null)
  const dispatch = useDispatch()
 const download=async()=>{
