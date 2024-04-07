@@ -71,8 +71,8 @@ useEffect(()=>{
       </div> 
       <div className='flex flex-row w-full  justify-between my-4'>
         <div className='ml-7'>
-        <div className='text-sm font-medium text-gray-500'>{client.nom}  {client.prenoms}</div>
-        <div className='text-sm font-medium text-gray-500'>{client.cel}</div>
+        <div className='text-sm font-medium text-gray-500'>{recue.client.nom}  {recue.client.prenoms}</div>
+        <div className='text-sm font-medium text-gray-500'>{recue.client.cel}</div>
 
         </div>
         <div>
@@ -98,7 +98,7 @@ useEffect(()=>{
   </thead>
   <tbody>
   <tr className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
-      <td className='font-medium text-base text-gray-500 text-center'>{_id.slice(_id.length - 3)}</td>
+      <td className='font-medium text-base text-gray-500 text-center'>{recue.facture._id.slice(recue.facture._id.length - 3)}</td>
       <td className='font-medium text-base text-gray-500 text-center'>{recue.montant}</td>
     </tr>
   </tbody>
