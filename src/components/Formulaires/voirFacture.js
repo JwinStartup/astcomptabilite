@@ -62,15 +62,15 @@ const dispatch = useDispatch()
        type="button" className=" text-red-400    font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center ">
         Payer
         </button>: <button onClick={()=>voirRecue()} 
-       type="button" className=" text-red-800    font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center ">
+       type="button" className=" text-red-800    font-medium border-r text-sm px-1 py-2 text-center inline-flex items-center ">
         Voir reçue
         </button>}
         <button 
-       type="button" onClick={()=>modifier()} className=" text-blue-700    font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center">
+       type="button" onClick={()=>modifier()} className=" text-blue-700    font-medium border-r text-sm px-2 py-2 text-center inline-flex items-center">
         Modifier
         </button>
         <button 
-       type="button" onClick={()=>partager()} className=" text-green-700    font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center">
+       type="button" onClick={()=>partager()} className=" text-green-700    font-medium border-r text-sm px-2 py-2 text-center inline-flex items-center">
         Partager
         </button>
       
