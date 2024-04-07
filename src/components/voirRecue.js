@@ -60,6 +60,7 @@ useEffect(()=>{
 useEffect(()=>{
    dispatch(comptabiliteActions.voirRecueByid(value._id))
 })
+ console.log(recue)
   return (
     <div className='w-[300px]  border p-3 bg-white border-gray-100 shadow-md rounded-md   z-10 absolute top-[200px] left-[50px]'>
    {isLoader?<div className='flex w-full h-full justify-center items-center'>Loading... </div> :<div className='flex flex-row justify-between w-full'> 
