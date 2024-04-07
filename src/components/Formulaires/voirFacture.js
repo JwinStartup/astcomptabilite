@@ -6,10 +6,17 @@ import  Axios  from 'axios';
  import {FadeLoader}from 'react-spinners'
 import { AiFillCloseCircle } from "react-icons/ai";
 
-export default function VoirFacture({payer,value,modifier,partager,supprimer}) {
+import React,{useEffect,useState,} from 'react'
+
+import {useNavigate} from 'react-router-dom'
+
+
+
+
+
+export default function VoirFacture({payer,voirRecue,value,modifier,partager,supprimer}) {
 const dispatch = useDispatch()
-  
- 
+
   return (
     <div className='relative mx-3 bg-slate-100 w-[300px]  border p-3  border-gray-100  rounded-md '>
            <div className='absolute right-0 top-0 m-1 cursor-pointer '>    
@@ -52,26 +59,22 @@ const dispatch = useDispatch()
         </div>
         <div className='flex flex-col items-center my-2  w-full'>
 <div className='flex flex-row space-x-6'> 
-       <button onClick={()=>retour()} 
-       type="button" className=" text-red-700    font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center ">
-        Retour
+     {value.type==='impaye'?  <button onClick={()=>payer()} 
+       type="button" className=" text-red-400    font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center ">
+        Payer
+        </button>: <button onClick={()=>voirRecue()} 
+       type="button" className=" text-red-800    font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center ">
+        Voir reçue
+        </button>}
+        <button 
+       type="button" onClick={()=>modifier()} className=" text-blue-700    font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center">
+        Modifier
         </button>
         <button 
-       type="button" onClick={()=>download()} className=" text-blue-700    font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center">
-        Telecharger
+       type="button" onClick={()=>partager()} className=" text-green-700    font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center">
+        Partager
         </button>
-      {ficher!==null&&
-         <WhatsappShareButton 
-         url={ficher}
-            title={`Votre facture N° ${value._id.slice(value._id.length-6)} a étè par ASTRAINIG BUSINESS`}
-            >
-              <button type="button"   className=" text-green-700 gap-2 font-medium text-sm px-3 py-2 text-center inline-flex items-center">
-                     <WhatsappIcon logoFillColor='white' size={30} round={true}> 
-                     </WhatsappIcon> 
-                     Partager 
-              </button>
-           </WhatsappShareButton>
-         }
+      
          </div>
         </div>
     </div>
