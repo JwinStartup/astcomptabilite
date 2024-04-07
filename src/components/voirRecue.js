@@ -61,7 +61,7 @@ useEffect(()=>{
 },[])
 
   
- console.log(ficherRecue)
+ console.log(recue)
   return ( <div>
  <div className='w-[300px]  border p-3 bg-white border-gray-100 shadow-md rounded-md   z-10 absolute top-[200px] left-[50px]'>
    {isLoader? <div>Chargement... </div>:<div> 
