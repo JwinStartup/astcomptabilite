@@ -27,11 +27,11 @@ export default function ModifierFacture({retour,value}) {
     return state.userReducer
    });
   return (
-    <div className='w-[400px] my-5 border p-3 bg-white border-gray-100 shadow-md rounded-lg   z-10 absolute top-[125px] left-[350px]'>
-        <div className='font-medium text-center  tracking-tight text-[18px] text-black pl-1'>Modifier la facture N°{value._id.slice(value._id.length-3)} de {value.client.nom}  {value.client.prenoms} </div>
+    <div className='w-[300px] my-5 border p-3 bg-white border-gray-100 shadow-md rounded-lg   z-10 absolute top-[200px] left-[50px]'>
+        <div className='font-medium text-center  tracking-tight text-lg text-black pl-1'>Modifier la facture N°{value._id.slice(value._id.length-3)} de {value.client.nom}  {value.client.prenoms} </div>
         <form   onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex flex-col items-center mt-5  space-y-3 w-full h-full' >
-        <input {...register("montant")}  type="number"  className='w-[300px] h-10 border-b-2 py-1 text-lg pl-1 placeholder-gray-300' placeholder='Montant prestation' />
-        <select {...register("periodeAjouter")}  defaultValue='Janvier 2024' className='outline-none w-[300px] border-b-2 py-1 text-lg'>
+        <input {...register("montant")}  type="number"  className='w-[300px] h-10 border-b-2 py-1 text-sm pl-1 placeholder-gray-300' placeholder='Montant prestation' />
+        <select {...register("periodeAjouter")}  defaultValue='Janvier 2024' className='outline-none w-[300px] border-b-2 py-1 text-sm'>
             <option>Janvier 2024</option>
             <option>Fevrier 2024</option>
             <option>Mars 2024</option>
