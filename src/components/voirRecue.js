@@ -57,7 +57,7 @@ const download=async()=>{
 } 
  
 useEffect(()=>{
- dispatch(comptabiliteActions.voirRecueByid(value._id))
+ dispatch(comptabiliteActions.voirRecueByid(value._id)).then(()=>partager() )
 },[value._id])
 
   
