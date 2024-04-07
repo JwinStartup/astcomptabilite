@@ -26,11 +26,12 @@ export default function VoirRecue({retour,value}) {
     return state.comptabiliteReducer
    });
    const [ficher,setFicher]=useState(null)
+   const [ficherRecue,setFicherRecue]=useState(recue)
  const dispatch = useDispatch()
- 
-const download=async(val)=>{
+  
+const download=async()=>{
  const blob = await pdf(
-        <MyDoc value={val} />
+        <MyDoc value={value.} />
     ).toBlob();
  const blobUrl = window.URL.createObjectURL(blob);
  const anchor = window.document.createElement('a');
@@ -57,11 +58,11 @@ const download=async(val)=>{
 } 
  
 useEffect(()=>{
- console.log(value)
+ dispatch(comptabiliteActions.voirRecueByid(value.recue._id))
   partager()
 })
-
- console.log(value)
+  
+ console.log(value,ficher)
   return ( <div>
  <div className='w-[300px]  border p-3 bg-white border-gray-100 shadow-md rounded-md   z-10 absolute top-[200px] left-[50px]'>
    <div className='flex flex-row justify-between w-full'> 
@@ -111,7 +112,7 @@ useEffect(()=>{
         Retour
         </button>
         <button 
-       type="button" onClick={()=>download(value.recue)} className=" text-blue-700    font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center">
+       type="button" onClick={()=>download()} className=" text-blue-700    font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center">
         Telecharger
         </button>
       {ficher!==null&&
