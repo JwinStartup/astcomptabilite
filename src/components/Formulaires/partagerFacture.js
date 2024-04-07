@@ -49,7 +49,7 @@ useEffect(()=>{
    partager()
 })
   return (
-    <div className='w-[300px]  space-y-4   items-center justify-center  border p-3 bg-white border-gray-100 shadow-md rounded-md z-10 absolute top-[200px] left-[200px]'>
+    <div className='w-[400px]  space-y-4   items-center justify-center  border p-3 bg-white border-gray-100 shadow-md rounded-lg z-10 absolute top-[200px] left-[300px]'>
         <div className='font-bold  tracking-tight text-[22px] text-black pl-1'>Partager une facture</div>
         <p className='font-lg  tracking-tight text-[18px] text-center' > Voulez-vous partager cette facture  <span className='font-lg  tracking-tight text-[18px] text-green-400 pl-1'>N* {value._id.slice(value._id.length-3)} </span> </p>
 
@@ -68,7 +68,7 @@ useEffect(()=>{
          url={ficher}
             title={`Votre facture N° ${value._id.slice(value._id.length-6)} a étè par ASTRAINIG BUSINESS`}
             >
-              <button type="button"   className=" text-green-700 font-medium text-sm px-3 py-2 text-center inline-flex items-center">
+              <button type="button"   className=" text-green-700 gap-2 font-medium text-sm px-3 py-2 text-center inline-flex items-center">
                      <WhatsappIcon logoFillColor='white' size={30} round={true}> 
                      </WhatsappIcon> 
                      Partager 
