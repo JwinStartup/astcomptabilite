@@ -82,7 +82,7 @@ export default function FacturesImpayes() {
      <div className='  flex w-full justify-between flex-row space-x-2 items-center w-[400px]'>
     <div className="flex  items-center "  onClick={()=>navigate('/')} >
         <IoIosArrowDropleftCircle size={30} color="black" />
-        <FaFileInvoice  size={30} color="#1D4ED8"/>
+        <FaFileInvoice  size={30} color="#1D4ED8" style={{paddingRigth:"5px"}}/>
         <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900  ">Facture  </h5>
     </div>
           <div classNamme='flex items-center flex-col justify-center '>
