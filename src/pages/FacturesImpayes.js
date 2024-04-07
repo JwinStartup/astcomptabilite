@@ -1,6 +1,6 @@
 import React, { useEffect, useState,useMemo } from 'react'
 import Entete from '../components/entete'
-import {useNaavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 import Backdrop from '../components/backdrop'
 import FormulaireCreerFacture from '../components/Formulaires/formulaireCreerFacture'
 import ModifierFacture from '../components/Formulaires/modifierFacture'
@@ -62,6 +62,7 @@ const SetComponent=({p,retour,value})=>{
 }
 export default function FacturesImpayes() {
   const dispatch =useDispatch()
+  const navigate=useNavigate()
   const [rub , setRub]=useState({nom:'',bol:false,value:null})
   const navigate=useNavigate()
   const [fact , setFact]=useState(" ")
@@ -72,7 +73,6 @@ export default function FacturesImpayes() {
   const {isLoader,factures} = useSelector((state)=>{
     return state.comptabiliteReducer
    });
-  const navigate=useNavigate()
   
   return (
     <div className=' w-full'>
