@@ -11,7 +11,7 @@ import ReactPDF, {PDFViewer,PDFDownloadLink,pdf, Page, Text,Image, View, Documen
  import {FadeLoader}from 'react-spinners'
 import  Axios  from 'axios';
 const MyDoc = ({value})=>(
-  <Document pageMode='fullScreen' title={`Reçue N° ${value._id.slice(value._id.length-6)}`}>
+  <Document pageMode='fullScreen' title={`Reçue N° ${value._id.slice(value._id.length-3)}`}>
         <Page size="A7" style>
           <PDFRecu  value={value}/>
           </Page>
@@ -35,18 +35,18 @@ const download=async()=>{
  const blobUrl = window.URL.createObjectURL(blob);
  const anchor = window.document.createElement('a');
  console.log(blobUrl)
-  anchor.download = `Reçue N° ${recue._id.slice(recue._id.length-6)}`;
+  anchor.download = `Reçue N° ${recue._id.slice(recue._id.length-3)}`;
   anchor.href = blobUrl;
   anchor.click();
   window.URL.revokeObjectURL(blobUrl);
  retour()
 }
-   const partager=async()=>{
+   const partager=async(recue)=>{
  const blob = await pdf(
         <MyDoc value={recue} />
     ).toBlob();
   const formdata = new FormData();
-  let file = new File([blob], `Reçue${recue._id.slice(recue._id.length-6)}.pdf`);
+  let file = new File([blob], `Reçue${recue._id.slice(recue._id.length-3)}.pdf`);
    formdata.append("file", file);
    formdata.append("upload_preset","cfcpdf")
      Axios.post(
@@ -57,7 +57,7 @@ const download=async()=>{
 } 
  
 useEffect(()=>{
- dispatch(comptabiliteActions.voirRecueByid(value._id)).then(()=>partager() )
+ dispatch(comptabiliteActions.voirRecueByid(value._id)).then((d)=>partager(d.payload) )
 },[value._id])
 
   
