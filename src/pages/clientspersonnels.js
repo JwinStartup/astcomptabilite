@@ -8,7 +8,7 @@ export default function ClientsPersonnels() {
     <div>
         <Entete />
          <div className='w-[400px] flex border-b mx-2 py-2 justify-center items-center mt-5'>
-          <IoIosArrowDropleftCircle size={60} color="red" onClick={()=>navigate('/')} />
+          <IoIosArrowDropleftCircle size={60} color="black" onClick={()=>navigate('/')} />
            <Link to='/cp/ListeParent' className="tracking-tight w-full text-black font-semibold   text-center items-center border-r px-4 flex justify-center  cursor-pointer">
           Parents 
         </Link>
