@@ -13,7 +13,7 @@ export default function Home() {
         <div className=' w-full flex justify-between'>
           <Entete/>
         </div>
-      <div className='w-full flex flex-wrap  h-full  justify-center items-center mt-20 gap-4 sm:flex w-full justify-center items-center '>
+      <div className='w-full flex flex-wrap  h-full  justify-center items-center mt-8 gap-4 sm:flex w-full justify-center items-center '>
       <div className="w-[300px] p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
     <div className="flex items-center mb-3">
         <FaFileInvoice  size={30} color="#1D4ED8"/>
