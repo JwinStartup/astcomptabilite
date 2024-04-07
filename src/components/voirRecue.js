@@ -62,7 +62,7 @@ useEffect(()=>{
 },[])
 
   
- console.log(value,ficher)
+ console.log(value,recue)
   return ( <div>
  <div className='w-[300px]  border p-3 bg-white border-gray-100 shadow-md rounded-md   z-10 absolute top-[200px] left-[50px]'>
    <div className='flex flex-row justify-between w-full'> 
