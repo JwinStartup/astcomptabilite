@@ -28,10 +28,6 @@ export default function VoirRecue({retour,value}) {
    const [ficher,setFicher]=useState(null)
  const dispatch = useDispatch()
  
-useEffect(()=>{
- console.log(value)
-  partage()
-})
 const download=async(val)=>{
  const blob = await pdf(
         <MyDoc value={val} />
@@ -50,7 +46,7 @@ const download=async(val)=>{
         <MyDoc value={value.recue} />
     ).toBlob();
   const formdata = new FormData();
-  let file = new File([blob], `Reçue${val.recue._id.slice(val.recue._id.length-6)}.pdf`);
+  let file = new File([blob], `Reçue${value.recue._id.slice(value.recue._id.length-6)}.pdf`);
    formdata.append("file", file);
    formdata.append("upload_preset","cfcpdf")
      Axios.post(
@@ -60,6 +56,10 @@ const download=async(val)=>{
       })
 } 
  
+useEffect(()=>{
+ console.log(value)
+  partager()
+})
 
  console.log(value)
   return ( <div>
