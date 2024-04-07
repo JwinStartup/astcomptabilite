@@ -50,21 +50,20 @@ const download=async()=>{
       })
 }
   return (
-    <div className='w-[500px]  border p-3 bg-white border-gray-100 shadow-md rounded-3xl   z-10 absolute top-[125px] left-[400px]'>
+    <div className='w-[300px]  border p-3 bg-white border-gray-100 shadow-md rounded-md   z-10 absolute top-[200px] left-[50px]'>
       <div className='flex flex-row justify-between w-full'> 
-        <div className='font-bold  tracking-tight text-[22px] text-black pl-1'>Reçue</div>
-        <div className='font-medium  tracking-tight text-[14px] text-green-400 pl-1'>N° {value._id.slice(value._id.length-6)} </div>
+        <div className='font-bold  tracking-tight text-lg text-black pl-1'>Reçue</div>
+        <div className='font-medium  tracking-tight text-sm text-green-400 pl-1'>N° {value._id.slice(value._id.length-6)} </div>
       </div> 
       <div className='flex flex-row w-full  justify-between my-4'>
         <div className='ml-7'>
-        <div className='text-sm font-medium text-gray-500'>id : {value.client._id.slice(value.client._id.length-6)}</div>
-        <div className='text-lg font-medium text-gray-500'>{value.client.nom}  {value.client.prenoms}</div>
+        <div className='text-sm font-medium text-gray-500'>{value.client.nom}  {value.client.prenoms}</div>
         <div className='text-sm font-medium text-gray-500'>{value.client.cel}</div>
 
         </div>
         <div>
-            <div className='font-bold  tracking-wide text-[18px] text-black '>{value.montant} FCFA</div>
-            <div className='font-medium text-center tracking-tight text-[11px] text-red-400 '>Montant payé</div>
+            <div className='font-bold  tracking-wide text-lg text-black '>{value.montant} FCFA</div>
+            <div className='font-medium text-center tracking-tight text-xs text-red-400 '>Montant payé</div>
 
         </div>
 
@@ -79,15 +78,13 @@ const download=async()=>{
   <thead>
     <tr className="">
       <th  className='border-b-2 text-gray-400'>N* Facture</th>
-      <th  className='border-b-2 text-gray-400'>Designation</th>
       <th  className='border-b-2 text-gray-400'>Montant</th>
       
     </tr>
   </thead>
   <tbody>
   <tr className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
-      <td className='font-medium text-base text-gray-500 text-center'>{value.facture._id.slice(value.facture._id.length - 6)}</td>
-      <td className='font-medium text-base text-gray-500 text-center'>Cours à domicile - CM1</td>      
+      <td className='font-medium text-base text-gray-500 text-center'>{value.facture._id.slice(value.facture._id.length - 3)}</td>
       <td className='font-medium text-base text-gray-500 text-center'>{value.montant}</td>
     </tr>
   </tbody>
