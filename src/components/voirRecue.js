@@ -58,7 +58,7 @@ const download=async()=>{
  
 useEffect(()=>{
  dispatch(comptabiliteActions.voirRecueByid(value._id))
-},[])
+},[value._id])
 
   
  console.log(recue)
