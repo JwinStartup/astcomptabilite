@@ -9,7 +9,7 @@ export default function SupprimerFacture({retour,value}) {
    })
   }
   return (
-    <div className='w-[300px] space-y-4   items-center justify-center  border p-3 bg-white border-gray-100 shadow-md rounded-lg   z-10 absolute top-[125px] left-[150px]'>
+    <div className='w-[300px] space-y-4   items-center justify-center  border p-3 bg-white border-gray-100 shadow-md rounded-lg   z-10 absolute top-[200px] left-[50px]'>
         <div className='font-bold  tracking-tight text-lg text-black pl-1'>Supprimer une facture</div>
         <p className='font-medium  tracking-tight text-sm text-center' >Souhaitez-vous supprimer la facture  <span className='text-green-400 pl-1'>N* {value._id.slice(value._id.length-6)} </span> </p>
 
