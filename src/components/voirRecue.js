@@ -117,7 +117,7 @@ useEffect(()=>{
         </button>
       {ficher!==null?<span    className=" text-green-700 gap-2 font-medium text-sm px-3 py-2 text-center inline-flex items-center">
        loading...
-       </span>
+       </span>:
          <WhatsappShareButton 
          url={ficher}
             title={`Votre facture N° ${recue._id.slice(recue._id.length-3)} a étè par ASTRAINIG BUSINESS`}
