@@ -61,10 +61,10 @@ useEffect(()=>{
 },[value._id])
 
   
- console.log(recue)
+ console.log(recue,value._id)
   return ( <div>
  <div className='w-[300px]  border p-3 bg-white border-gray-100 shadow-md rounded-md   z-10 absolute top-[200px] left-[50px]'>
-   {isLoader? <div>Chargement... </div>:<div> 
+   {isLoader? <div>Chargement... </div>:<div> {recue===null?<div> Pas de recue</div>:<div>
        <div className='flex flex-row justify-between w-full'> 
         <div className='font-bold  tracking-tight text-lg text-black pl-1'>Reçue</div>
         <div className='font-medium  tracking-tight text-sm text-green-400 pl-1'>N° {recue._id.slice(recue._id.length-3)} </div>
@@ -129,7 +129,7 @@ useEffect(()=>{
          }
         </div>
         </div>
-          
+          </div>}
           </div>}
          </div>
     </div>
