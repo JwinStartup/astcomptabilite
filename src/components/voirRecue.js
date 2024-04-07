@@ -106,7 +106,7 @@ useEffect(()=>{
         </div>
              
         <div className='flex flex-col items-center my-2  space-y-3 w-full h-full'>
-       <div className='flex flex-row space-x-6'> 
+       <div className='flex flex-row '> 
        <button onClick={()=>retour()} 
        type="button" className=" text-red-700    font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center ">
         Retour
@@ -115,7 +115,9 @@ useEffect(()=>{
        type="button" onClick={()=>download()} className=" text-blue-700    font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center">
         Telecharger
         </button>
-      {ficher!==null&&
+      {ficher!==null?<span    className=" text-green-700 gap-2 font-medium text-sm px-3 py-2 text-center inline-flex items-center">
+       loading...
+       </span>
          <WhatsappShareButton 
          url={ficher}
             title={`Votre facture N° ${recue._id.slice(recue._id.length-3)} a étè par ASTRAINIG BUSINESS`}
