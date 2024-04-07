@@ -8,14 +8,14 @@ export default function ClientsPersonnels() {
     <div>
         <Entete />
        <button className='ml-10 bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center' onClick={()=>navigate("/")} > retour</button>
-      <div className='w-full flex justify-center items-center mt-20 gap-4'>
-           <Link to='/cp/ListeParent' className="w-52 h-52 tracking-tight  text-black font-semibold bg-slate-200 rounded-3xl text-center items-center flex justify-center shadow-lg cursor-pointer">
+      <div className='w-[400px] flex border-b mx-2 py-2 justify-center items-center mt-5'>
+           <Link to='/cp/ListeParent' className="tracking-tight w-full text-black font-semibold   text-center items-center border-r px-4 flex justify-center  cursor-pointer">
           Parents 
         </Link>
-        <Link to='/cp/ListePersonnel' className="w-52 h-52 tracking-tight  text-black font-semibold bg-red-100 rounded-3xl text-center items-center flex justify-center">
+        <Link to='/cp/ListePersonnel' className="tracking-tight w-full text-black font-semibold   text-center items-center border-r px-4 flex justify-center  cursor-pointer">
           Personnels
         </Link>
-        <Link to='/cp/ListeEnfant' className="w-52 h-52 tracking-tight  text-black font-semibold bg-slate-200 rounded-3xl text-center items-center flex justify-center shadow-lg cursor-pointer">
+        <Link to='/cp/ListeEnfant' className="tracking-tight w-full text-black font-semibold   text-center items-center border-r px-4 flex justify-center  cursor-pointer">
            Eleves 
         </Link>
       </div>
