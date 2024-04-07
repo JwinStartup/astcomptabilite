@@ -70,8 +70,8 @@ const download=async(val)=>{
       </div> 
       <div className='flex flex-row w-full  justify-between my-4'>
         <div className='ml-7'>
-        <div className='text-sm font-medium text-gray-500'>{value.recue.client.nom}  {value.recue.client.prenoms}</div>
-        <div className='text-sm font-medium text-gray-500'>{value.recue.client.cel}</div>
+        <div className='text-sm font-medium text-gray-500'>{value.client.nom}  {value.client.prenoms}</div>
+        <div className='text-sm font-medium text-gray-500'>{value.client.cel}</div>
 
         </div>
         <div>
