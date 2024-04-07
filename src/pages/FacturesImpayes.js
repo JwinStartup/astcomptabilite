@@ -75,7 +75,7 @@ export default function FacturesImpayes() {
     <div className=' w-full'>
          {rub.bol!==false&&<SetComponent p={rub.nom} retour={()=>setRub({bol:false,nom:''})} value={rub.value} />}
         <Entete />
-     <div className='  w-full  flex flex-col  space-x-2 mx-4'>
+     <div className='  w-full  flex flex-col  space-x-2'>
      <div className=' mb-3 p-0 w-full   '>
      <div className='  flex w-full justify-between flex-row space-x-2 items-center w-[400px]'>
     <div className="flex  items-center ">
