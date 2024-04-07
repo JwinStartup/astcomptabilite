@@ -81,7 +81,7 @@ export default function FacturesImpayes() {
      <div className='  w-full  flex flex-col  space-x-2'>
      <div className=' mb-3 p-0 w-full   '>
      <div className='  flex w-full justify-between flex-row space-x-2 items-center w-[400px]'>
-    <div className="flex  items-center ">
+    <div className="flex  items-center "  onClick={()=>navigate('/')} >
         <MdOutlineArrowBackIos size={30} color="black" />
         <FaFileInvoice  size={30} color="#1D4ED8"/>
         <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900  ">Facture  </h5>
