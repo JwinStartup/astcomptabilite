@@ -4,6 +4,7 @@ import Backdrop from '../components/backdrop'
 import FormulaireCreerFacture from '../components/Formulaires/formulaireCreerFacture'
 import ModifierFacture from '../components/Formulaires/modifierFacture'
 import FormulairePayerFacture from '../components/Formulaires/formulairePayerFacture.js'
+import { IoIosArrowDropleftCircle } from "react-icons/io";
 import VoirFacture from '../components/Formulaires/voirFacture.js'
 import PartagerFacture from '../components/Formulaires/partagerFacture.js'
 import SupprimerFacture from '../components/Formulaires/supprimerFacture.js'
@@ -80,7 +81,7 @@ export default function FacturesImpayes() {
      <div className=' mb-3 p-0 w-full   '>
      <div className='  flex w-full justify-between flex-row space-x-2 items-center w-[400px]'>
     <div className="flex  items-center "  onClick={()=>navigate('/')} >
-        <MdOutlineArrowBackIos size={30} color="black" />
+        <IoIosArrowDropleftCircle size={30} color="black" />
         <FaFileInvoice  size={30} color="#1D4ED8"/>
         <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900  ">Facture  </h5>
     </div>
