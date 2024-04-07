@@ -1,5 +1,6 @@
 import React, { useEffect, useState,useMemo } from 'react'
 import Entete from '../components/entete'
+import {useNaavigate} from "react-router-dom"
 import Backdrop from '../components/backdrop'
 import FormulaireCreerFacture from '../components/Formulaires/formulaireCreerFacture'
 import ModifierFacture from '../components/Formulaires/modifierFacture'
@@ -62,6 +63,7 @@ const SetComponent=({p,retour,value})=>{
 export default function FacturesImpayes() {
   const dispatch =useDispatch()
   const [rub , setRub]=useState({nom:'',bol:false,value:null})
+  const navigate=useNavigate()
   const [fact , setFact]=useState(" ")
   useEffect(() => { 
     dispatch(comptabiliteActions.listeFacture())
