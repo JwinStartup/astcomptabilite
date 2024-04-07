@@ -97,8 +97,8 @@ useEffect(()=>{
   </thead>
   <tbody>
   <tr className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
-      <td className='font-medium text-base text-gray-500 text-center'>{value.facture._id.slice(value.facture._id.length - 3)}</td>
-      <td className='font-medium text-base text-gray-500 text-center'>{recue.montant}</td>
+      <td className='font-medium text-base text-gray-500 text-center'>{value._id.slice(value._id.length - 3)}</td>
+      <td className='font-medium text-base text-gray-500 text-center'>{value.recue.montant}</td>
     </tr>
   </tbody>
 </table>
