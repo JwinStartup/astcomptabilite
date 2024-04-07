@@ -27,25 +27,25 @@ export default function VoirRecue({retour,value}) {
    const [ficher,setFicher]=useState(null)
  const dispatch = useDispatch()
  
-const download=async()=>{
+const download=async(val)=>{
  const blob = await pdf(
-        <MyDoc value={value} />
+        <MyDoc value={val} />
     ).toBlob();
  const blobUrl = window.URL.createObjectURL(blob);
  const anchor = window.document.createElement('a');
  console.log(blobUrl)
-  anchor.download = `Reçue N° ${value._id.slice(value._id.length-6)}`;
+  anchor.download = `Reçue N° ${val._id.slice(val._id.length-6)}`;
   anchor.href = blobUrl;
   anchor.click();
   window.URL.revokeObjectURL(blobUrl);
  retour()
 }
-   const partager=async()=>{
+   const partager=async(val)=>{
  const blob = await pdf(
         <MyDoc value={value} />
     ).toBlob();
   const formdata = new FormData();
-  let file = new File([blob], `Facture${value._id.slice(value._id.length-6)}.pdf`);
+  let file = new File([blob], `Reçue${val._id.slice(val._id.length-6)}.pdf`);
    formdata.append("file", file);
    formdata.append("upload_preset","cfcpdf")
      Axios.post(
@@ -55,11 +55,9 @@ const download=async()=>{
       })
 } 
  
+
 useEffect(()=>{
-   partager()
-})
-useEffect(()=>{
-   dispatch(comptabiliteActions.voirRecueByid(value._id))
+   dispatch(comptabiliteActions.voirRecueByid(value._id)).then((d)=> partager(d.payload))
 })
  console.log(recue)
   return ( <div>
@@ -111,13 +109,13 @@ useEffect(()=>{
         Retour
         </button>
         <button 
-       type="button" onClick={()=>download()} className=" text-blue-700    font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center">
+       type="button" onClick={()=>download(recue._id)} className=" text-blue-700    font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center">
         Telecharger
         </button>
       {ficher!==null&&
          <WhatsappShareButton 
          url={ficher}
-            title={`Votre facture N° ${value._id.slice(value._id.length-3)} a étè par ASTRAINIG BUSINESS`}
+            title={`Votre facture N° ${recue._id.slice(recue._id.length-3)} a étè par ASTRAINIG BUSINESS`}
             >
               <button type="button"   className=" text-green-700 gap-2 font-medium text-sm px-3 py-2 text-center inline-flex items-center">
                      <WhatsappIcon logoFillColor='white' size={30} round={true}> 
