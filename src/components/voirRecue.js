@@ -31,7 +31,7 @@ export default function VoirRecue({retour,value}) {
   
 const download=async()=>{
  const blob = await pdf(
-        <MyDoc value={value.} />
+        <MyDoc value={value.recue} />
     ).toBlob();
  const blobUrl = window.URL.createObjectURL(blob);
  const anchor = window.document.createElement('a');
@@ -58,7 +58,7 @@ const download=async()=>{
 } 
  
 useEffect(()=>{
- dispatch(comptabiliteActions.voirRecueByid(value.recue._id))
+ dispatch(comptabiliteActions.voirRecueByid(value._id))
   partager()
 })
   
