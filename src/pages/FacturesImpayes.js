@@ -14,6 +14,7 @@ import { comptabiliteActions } from '../reducer/comptabilite.js'
 import { PropagateLoader } from 'react-spinners';
 import { FaSearch,FaFileInvoice } from 'react-icons/fa';
 import { FaPlusCircle } from "react-icons/fa"
+import { MdOutlineArrowBackIos } from "react-icons/md";
 const SetComponent=({p,retour,value})=>{
   console.log(p)
   switch (p) {
@@ -79,6 +80,7 @@ export default function FacturesImpayes() {
      <div className=' mb-3 p-0 w-full   '>
      <div className='  flex w-full justify-between flex-row space-x-2 items-center w-[400px]'>
     <div className="flex  items-center ">
+        <MdOutlineArrowBackIos size={30} color="black" />
         <FaFileInvoice  size={30} color="#1D4ED8"/>
         <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900  ">Facture  </h5>
     </div>
