@@ -115,7 +115,7 @@ useEffect(()=>{
        type="button" onClick={()=>download()} className=" text-blue-700    font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center">
         Telecharger
         </button>
-      {ficher!==null?<span    className=" text-green-700 gap-2 font-medium text-sm px-3 py-2 text-center inline-flex items-center">
+      {ficher==null?<span    className=" text-green-700 gap-2 font-medium text-sm px-3 py-2 text-center inline-flex items-center">
        loading...
        </span>:
          <WhatsappShareButton 
