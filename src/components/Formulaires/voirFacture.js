@@ -57,7 +57,7 @@ const dispatch = useDispatch()
 </table>
         </div>
         <div className='flex flex-col items-center my-2  w-full'>
-<div className='flex flex-row space-x-6'> 
+<div className='flex flex-row '> 
      {value.type==='impaye'?  <button onClick={()=>payer()} 
        type="button" className=" text-red-400    font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center ">
         Payer
@@ -66,11 +66,11 @@ const dispatch = useDispatch()
         Voir reçue
         </button>}
         <button 
-       type="button" onClick={()=>modifier()} className=" text-blue-700    font-medium border-r text-sm px-2 py-2 text-center inline-flex items-center">
+       type="button" onClick={()=>modifier()} className=" text-blue-700 font-medium border-r text-sm px-2 py-2 text-center inline-flex items-center">
         Modifier
         </button>
         <button 
-       type="button" onClick={()=>partager()} className=" text-green-700    font-medium border-r text-sm px-2 py-2 text-center inline-flex items-center">
+       type="button" onClick={()=>partager()} className=" text-green-700  font-medium  text-sm px-2 py-2 text-center inline-flex items-center">
         Partager
         </button>
       
