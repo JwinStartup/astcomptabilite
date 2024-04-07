@@ -21,6 +21,7 @@ const MyDoc = ({value})=>(
 
 
 export default function VoirRecue({retour,value}) {
+ console.log(value)
    const {isLoader,recue} = useSelector((state)=>{
     return state.comptabiliteReducer
    });
