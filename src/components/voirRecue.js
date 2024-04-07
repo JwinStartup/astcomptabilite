@@ -117,7 +117,7 @@ useEffect(()=>{
       {ficher!==null&&
          <WhatsappShareButton 
          url={ficher}
-            title={`Votre facture N° ${value._id.slice(value._id.length-3)`} a étè par ASTRAINIG BUSINESS`}
+            title={`Votre facture N° ${value._id.slice(value._id.length-3)} a étè par ASTRAINIG BUSINESS`}
             >
               <button type="button"   className=" text-green-700 gap-2 font-medium text-sm px-3 py-2 text-center inline-flex items-center">
                      <WhatsappIcon logoFillColor='white' size={30} round={true}> 
