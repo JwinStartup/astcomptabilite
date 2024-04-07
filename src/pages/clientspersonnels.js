@@ -7,7 +7,7 @@ export default function ClientsPersonnels() {
   return (
     <div>
         <Entete />
-        <div className=' flex mx-2 py-2 justify-center items-center mt-2'>
+        <div className=' flex mx-2 py-2 justify-center items-center mt-1'>
          <div>
           <IoIosArrowDropleftCircle size={30} color="black" onClick={()=>navigate('/')} />
          </div>
