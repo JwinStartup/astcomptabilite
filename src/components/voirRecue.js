@@ -91,13 +91,28 @@ const download=async()=>{
 </table>
         </div>
         <div className='flex flex-col items-center my-2  space-y-3 w-full h-full'>
-        <div className='flex flex-row space-x-6'>  <button onClick={()=>retour()} type="button" className="text-white bg-red-700 hover:bg-red-800   font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center ">
+       <div className='flex flex-row space-x-6'> 
+       <button onClick={()=>retour()} 
+       type="button" className=" text-red-700    font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center ">
         Retour
         </button>
-        <button type="button" className="text-white bg-blue-700 hover:bg-bleu-800   font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" onClick={() => download()}>Telecharger</button>  
-        <button type="button" className="text-white bg-green-700 hover:bg-bleu-800   font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" onClick={() => partager()}> <MdWhatsapp color="ffffff" size="4px"/>   Partager</button>
-       
-          </div>
+        <button 
+       type="button" onClick={()=>download()} className=" text-blue-700    font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center">
+        Telecharger
+        </button>
+      {ficher!==null&&
+         <WhatsappShareButton 
+         url={ficher}
+            title={`Votre facture N° ${value._id.slice(value._id.length-6)} a étè par ASTRAINIG BUSINESS`}
+            >
+              <button type="button"   className=" text-green-700 gap-2 font-medium text-sm px-3 py-2 text-center inline-flex items-center">
+                     <WhatsappIcon logoFillColor='white' size={30} round={true}> 
+                     </WhatsappIcon> 
+                     Partager 
+              </button>
+           </WhatsappShareButton>
+         }
+         </div>
         </div>
     </div>
   )
