@@ -60,7 +60,7 @@ export default function FormulaireCreerFacture({retour}) {
             <option>Novembre 2024</option>
             <option>Decembre 2024</option>
         </select>
-       <div className='flex flex-row space-x-4 pb-3'> <button type="button" onClick={()=>retour()} className="text-blue-700 hover:text-blue-800  font-medium  text-sm px-5 py-2.5 text-center inline-flex items-center ">
+       <div className='flex flex-row space-x-4 pb-3'> <button type="button" onClick={()=>retour()} className="text-blue-700 hover:text-blue-800 border-r  font-medium  text-sm px-5 py-2.5 text-center inline-flex items-center ">
         Retour
         </button>
         <button type='submit' className=" bg-blue-700 hover:bg-blue-800  font-medium  text-sm px-5 py-2.5 text-center inline-flex items-center ">
