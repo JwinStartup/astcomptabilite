@@ -64,7 +64,7 @@ useEffect(()=>{
  console.log(ficherRecue)
   return ( <div>
  <div className='w-[300px]  border p-3 bg-white border-gray-100 shadow-md rounded-md   z-10 absolute top-[200px] left-[50px]'>
-   <div className='flex flex-row justify-between w-full'> 
+   {isLoader? <div>Chargement... </div>: <div className='flex flex-row justify-between w-full'> 
         <div className='font-bold  tracking-tight text-lg text-black pl-1'>Reçue</div>
         <div className='font-medium  tracking-tight text-sm text-green-400 pl-1'>N° {value.recue._id.slice(value.recue._id.length-3)} </div>
       </div> 
@@ -129,7 +129,7 @@ useEffect(()=>{
         </div>
         </div>
           
-          </div>
+          </div>}
     </div>
   )
 }
