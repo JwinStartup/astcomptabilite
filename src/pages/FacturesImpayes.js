@@ -61,7 +61,6 @@ const SetComponent=({p,retour,value})=>{
 }
 export default function FacturesImpayes() {
   const dispatch =useDispatch()
-  const navigate=useNavigate()
   const [rub , setRub]=useState({nom:'',bol:false,value:null})
   const navigate=useNavigate()
   const [fact , setFact]=useState(" ")
