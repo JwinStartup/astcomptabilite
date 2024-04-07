@@ -51,13 +51,28 @@ const dispatch = useDispatch()
 </table>
         </div>
         <div className='flex flex-col items-center my-2  w-full'>
-        <div className='flex flex-row '>  
- {value.type!=="paye"&&<button onClick={()=>payer()} type="button" className="text-red-600  border-r hover:text-red-500   font-medium  text-sm px-5 py-2.5 text-start inline-flex items-center ">
-       Payer
-        </button>}
-        <button type="button" className="text-blue-400  hover:text-bleu-600 border-r  font-medium  text-sm px-5 py-2 text-center inline-flex items-center" onClick={() => modifier()}>Modifier</button>  
-        <button type="button" className="text-green-400  hover:text-green-600   font-medium  text-sm px-5 py-2 text-center inline-flex items-center" onClick={() => partager()}>Partager</button>
-        </div>
+<div className='flex flex-row space-x-6'> 
+       <button onClick={()=>retour()} 
+       type="button" className=" text-red-700    font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center ">
+        Retour
+        </button>
+        <button 
+       type="button" onClick={()=>download()} className=" text-blue-700    font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center">
+        Telecharger
+        </button>
+      {ficher!==null&&
+         <WhatsappShareButton 
+         url={ficher}
+            title={`Votre facture N° ${value._id.slice(value._id.length-6)} a étè par ASTRAINIG BUSINESS`}
+            >
+              <button type="button"   className=" text-green-700 gap-2 font-medium text-sm px-3 py-2 text-center inline-flex items-center">
+                     <WhatsappIcon logoFillColor='white' size={30} round={true}> 
+                     </WhatsappIcon> 
+                     Partager 
+              </button>
+           </WhatsappShareButton>
+         }
+         </div>
         </div>
     </div>
   )
