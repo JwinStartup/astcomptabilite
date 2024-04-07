@@ -21,7 +21,6 @@ const MyDoc = ({value})=>(
 
 
 export default function VoirRecue({retour,value}) {
- console.log(value)
    const {isLoader,recue} = useSelector((state)=>{
     return state.comptabiliteReducer
    });
@@ -62,7 +61,7 @@ useEffect(()=>{
 },[])
 
   
- console.log(value,recue)
+ console.log(recue)
   return ( <div>
  <div className='w-[300px]  border p-3 bg-white border-gray-100 shadow-md rounded-md   z-10 absolute top-[200px] left-[50px]'>
    <div className='flex flex-row justify-between w-full'> 
