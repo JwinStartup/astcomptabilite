@@ -1,5 +1,7 @@
-import React from 'react'
+import React,{useEffect,useState,} from 'react'
 import { usePDF } from '@react-pdf/renderer';
+import {WhatsappIcon} from "react-share";
+
 import {PDFRecu} from './PDFRecu'
 import { MdWhatsapp } from "react-icons/md"
 import { useDispatch, useSelector } from 'react-redux'
@@ -19,6 +21,8 @@ const MyDoc = ({value})=>(
 
 
 export default function VoirRecue({retour,value}) {
+  
+   const [ficher,setFicher]=useState(null)
  const dispatch = useDispatch()
 const download=async()=>{
  const blob = await pdf(
@@ -33,44 +37,49 @@ const download=async()=>{
   window.URL.revokeObjectURL(blobUrl);
  retour()
 }
- const partager=async()=>{
+   const partager=async()=>{
  const blob = await pdf(
         <MyDoc value={value} />
     ).toBlob();
   const formdata = new FormData();
-  let file = new File([blob], `Reçue${value._id.slice(value._id.length-6)}.pdf`);
+  let file = new File([blob], `Facture${value._id.slice(value._id.length-6)}.pdf`);
    formdata.append("file", file);
    formdata.append("upload_preset","cfcpdf")
      Axios.post(
       "https://api.cloudinary.com/v1_1/cfcunadoc/image/upload",formdata
      ).then((response)=>{
-      console.log(response.data)
-      dispatch(comptabiliteActions.partager({url:response.data.secure_url,filename:`Reçue${value._id.slice(value._id.length-6)}.pdf`})).then(()=>
-   retour())
+      setFicher(response.data.secure_url)
       })
-}
+} 
+ 
+useEffect(()=>{
+   partager()
+})
+useEffect(()=>{
+   dispatch(comptabiliteActions.voirRecueByid(value._id))
+})
   return (
     <div className='w-[300px]  border p-3 bg-white border-gray-100 shadow-md rounded-md   z-10 absolute top-[200px] left-[50px]'>
       <div className='flex flex-row justify-between w-full'> 
         <div className='font-bold  tracking-tight text-lg text-black pl-1'>Reçue</div>
-        <div className='font-medium  tracking-tight text-sm text-green-400 pl-1'>N° {value._id.slice(value._id.length-6)} </div>
+        <div className='font-medium  tracking-tight text-sm text-green-400 pl-1'>N° {recue._id.slice(recue._id.length-6)} </div>
       </div> 
       <div className='flex flex-row w-full  justify-between my-4'>
         <div className='ml-7'>
-        <div className='text-sm font-medium text-gray-500'>{value.client.nom}  {value.client.prenoms}</div>
-        <div className='text-sm font-medium text-gray-500'>{value.client.cel}</div>
+        <div className='text-sm font-medium text-gray-500'>{recue.client.nom}  {recue.client.prenoms}</div>
+        <div className='text-sm font-medium text-gray-500'>{recue.client.cel}</div>
 
         </div>
         <div>
-            <div className='font-bold  tracking-wide text-lg text-black '>{value.montant} FCFA</div>
+            <div className='font-bold  tracking-wide text-lg text-black '>{recue.montant} FCFA</div>
             <div className='font-medium text-center tracking-tight text-xs text-red-400 '>Montant payé</div>
 
         </div>
 
       </div>
-            <div className='mx-7 font-bold  tracking-tight text-md text-black '>Periode : {value.periodeAjouter}</div>
-            <div className='mx-7 font-bold  tracking-tight text-md text-black '>Mode : {value.modePaiement}</div>
-            {value.refPaiement&&<div className='mx-7 font-bold  tracking-tight text-md text-black '>Ref : {value.refPaiement}</div>}
+            <div className='mx-7 font-bold  tracking-tight text-md text-black '>Periode : {recue.periodeAjouter}</div>
+            <div className='mx-7 font-bold  tracking-tight text-md text-black '>Mode : {recue.modePaiement}</div>
+            {recue.refPaiement&&<div className='mx-7 font-bold  tracking-tight text-md text-black '>Ref : {recue.refPaiement}</div>}
        
      
         <div className='mx-7  my-4'>
@@ -84,8 +93,8 @@ const download=async()=>{
   </thead>
   <tbody>
   <tr className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
-      <td className='font-medium text-base text-gray-500 text-center'>{value.facture._id.slice(value.facture._id.length - 3)}</td>
-      <td className='font-medium text-base text-gray-500 text-center'>{value.montant}</td>
+      <td className='font-medium text-base text-gray-500 text-center'>{recue.facture._id.slice(recue.facture._id.length - 3)}</td>
+      <td className='font-medium text-base text-gray-500 text-center'>{recue.montant}</td>
     </tr>
   </tbody>
 </table>
