@@ -28,6 +28,10 @@ export default function VoirRecue({retour,value}) {
    const [ficher,setFicher]=useState(null)
  const dispatch = useDispatch()
  
+useEffect(()=>{
+ console.log(value)
+   dispatch(comptabiliteActions.voirRecueByid(value._id)).then((d)=> partager(d.payload))
+})
 const download=async(val)=>{
  const blob = await pdf(
         <MyDoc value={val} />
@@ -57,9 +61,6 @@ const download=async(val)=>{
 } 
  
 
-useEffect(()=>{
-   dispatch(comptabiliteActions.voirRecueByid(value._id)).then((d)=> partager(d.payload))
-})
  console.log(recue)
   return ( <div>
    {isLoader?<div className='flex w-full h-full justify-center items-center'>Loading... </div> : <div className='w-[300px]  border p-3 bg-white border-gray-100 shadow-md rounded-md   z-10 absolute top-[200px] left-[50px]'>
