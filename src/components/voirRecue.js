@@ -30,7 +30,7 @@ export default function VoirRecue({retour,value}) {
  
 useEffect(()=>{
  console.log(value)
-   dispatch(comptabiliteActions.voirRecueByid(value._id)).then((d)=> partager(d.payload))
+  partage()
 })
 const download=async(val)=>{
  const blob = await pdf(
@@ -45,12 +45,12 @@ const download=async(val)=>{
   window.URL.revokeObjectURL(blobUrl);
  retour()
 }
-   const partager=async(val)=>{
+   const partager=async()=>{
  const blob = await pdf(
-        <MyDoc value={value} />
+        <MyDoc value={value.recue} />
     ).toBlob();
   const formdata = new FormData();
-  let file = new File([blob], `Reçue${val._id.slice(val._id.length-6)}.pdf`);
+  let file = new File([blob], `Reçue${val.recue._id.slice(val.recue._id.length-6)}.pdf`);
    formdata.append("file", file);
    formdata.append("upload_preset","cfcpdf")
      Axios.post(
@@ -61,29 +61,29 @@ const download=async(val)=>{
 } 
  
 
- console.log(recue)
+ console.log(value)
   return ( <div>
-   {isLoader?<div className='flex w-full h-full justify-center items-center'>Loading... </div> : <div className='w-[300px]  border p-3 bg-white border-gray-100 shadow-md rounded-md   z-10 absolute top-[200px] left-[50px]'>
+ <div className='w-[300px]  border p-3 bg-white border-gray-100 shadow-md rounded-md   z-10 absolute top-[200px] left-[50px]'>
    <div className='flex flex-row justify-between w-full'> 
         <div className='font-bold  tracking-tight text-lg text-black pl-1'>Reçue</div>
-        <div className='font-medium  tracking-tight text-sm text-green-400 pl-1'>N° {recue._id.slice(recue._id.length-3)} </div>
+        <div className='font-medium  tracking-tight text-sm text-green-400 pl-1'>N° {value.recue._id.slice(value.recue._id.length-3)} </div>
       </div> 
       <div className='flex flex-row w-full  justify-between my-4'>
         <div className='ml-7'>
-        <div className='text-sm font-medium text-gray-500'>{recue.client.nom}  {recue.client.prenoms}</div>
-        <div className='text-sm font-medium text-gray-500'>{recue.client.cel}</div>
+        <div className='text-sm font-medium text-gray-500'>{value.recue.client.nom}  {value.recue.client.prenoms}</div>
+        <div className='text-sm font-medium text-gray-500'>{value.recue.client.cel}</div>
 
         </div>
         <div>
-            <div className='font-bold  tracking-wide text-lg text-black '>{recue.montant} FCFA</div>
+            <div className='font-bold  tracking-wide text-lg text-black '>{value.recue.montant} FCFA</div>
             <div className='font-medium text-center tracking-tight text-xs text-red-400 '>Montant payé</div>
 
         </div>
 
       </div>
-            <div className='mx-7 font-bold  tracking-tight text-md text-black '>Periode : {recue.periodeAjouter}</div>
-            <div className='mx-7 font-bold  tracking-tight text-md text-black '>Mode : {recue.modePaiement}</div>
-            {recue.refPaiement&&<div className='mx-7 font-bold  tracking-tight text-md text-black '>Ref : {recue.refPaiement}</div>}
+            <div className='mx-7 font-bold  tracking-tight text-md text-black '>Periode : {value.recue.periodeAjouter}</div>
+            <div className='mx-7 font-bold  tracking-tight text-md text-black '>Mode : {value.recue.modePaiement}</div>
+            {value.recue.refPaiement&&<div className='mx-7 font-bold  tracking-tight text-md text-black '>Ref : {value.recue.refPaiement}</div>}
        
      
         <div className='mx-7  my-4'>
@@ -97,7 +97,7 @@ const download=async(val)=>{
   </thead>
   <tbody>
   <tr className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
-      <td className='font-medium text-base text-gray-500 text-center'>{recue.facture._id.slice(recue.facture._id.length - 3)}</td>
+      <td className='font-medium text-base text-gray-500 text-center'>{value.facture._id.slice(value.facture._id.length - 3)}</td>
       <td className='font-medium text-base text-gray-500 text-center'>{recue.montant}</td>
     </tr>
   </tbody>
@@ -111,13 +111,13 @@ const download=async(val)=>{
         Retour
         </button>
         <button 
-       type="button" onClick={()=>download(recue._id)} className=" text-blue-700    font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center">
+       type="button" onClick={()=>download(value.recue)} className=" text-blue-700    font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center">
         Telecharger
         </button>
       {ficher!==null&&
          <WhatsappShareButton 
          url={ficher}
-            title={`Votre facture N° ${recue._id.slice(recue._id.length-3)} a étè par ASTRAINIG BUSINESS`}
+            title={`Votre facture N° ${value.recue._id.slice(value.recue._id.length-3)} a étè par ASTRAINIG BUSINESS`}
             >
               <button type="button"   className=" text-green-700 gap-2 font-medium text-sm px-3 py-2 text-center inline-flex items-center">
                      <WhatsappIcon logoFillColor='white' size={30} round={true}> 
@@ -129,7 +129,7 @@ const download=async(val)=>{
         </div>
         </div>
           
-          </div>}
+          </div>
     </div>
   )
 }
