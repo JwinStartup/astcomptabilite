@@ -1,7 +1,48 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Entete from '../components/entete'
+import ParentListe from '../components/parentListe'
+import PersonnelListe from '../components/personnelListe'
+import EleveListe from '../components/eleveListe'
 import { IoIosArrowDropleftCircle } from "react-icons/io";
+
+const SetComponent=({p})=>{
+  console.log(p)
+  const [switchChange,setSwitchChange]=useState("PARENT")
+  switch (p) {
+     case 'PARENT':
+      return(
+        <div>
+        <ParentListe   />
+        </div>
+      )
+     case 'PERSONNEL':
+      return(
+        <div>
+        <PersonnelListe  />
+        </div>
+      )
+    case 'ELEVE':
+      return(
+        <div>
+        <EleveListe  />
+        </div>
+      )
+  
+    default:
+      case 'PARENT':
+      return(
+        <div>
+        <ParentListe   />
+        </div>
+      )
+      break;
+  }
+}
+
+
+
+
 export default function ClientsPersonnels() {
   const navigate= useNavigate() 
   return (
@@ -12,17 +53,18 @@ export default function ClientsPersonnels() {
           <IoIosArrowDropleftCircle size={30} color="black" onClick={()=>navigate('/')} />
          </div>
          <div className='w-[400px] flex  justify-center items-center  '>
-           <Link to='/cp/ListeParent' className="tracking-tight w-full text-black font-semibold   text-center items-center border-r px-4 flex justify-center  cursor-pointer">
+           <Link  onClick={()=>setSwitchChange('PARENT')} className="tracking-tight w-full text-black font-semibold   text-center items-center border-r px-4 flex justify-center  cursor-pointer">
           Parents 
         </Link>
-        <Link to='/cp/ListePersonnel' className="tracking-tight w-full text-black font-semibold   text-center items-center border-r px-4 flex justify-center  cursor-pointer">
+        <Link onClick={()=>setSwitchChange('PERSONNEL')}  className="tracking-tight w-full text-black font-semibold   text-center items-center border-r px-4 flex justify-center  cursor-pointer">
           Personnels
         </Link>
-        <Link to='/cp/ListeEnfant' className="tracking-tight w-full text-black font-semibold   text-center items-center px-4 flex justify-center  cursor-pointer">
+        <Link onClick={()=>setSwitchChange('ELEVE')}  className="tracking-tight w-full text-black font-semibold   text-center items-center px-4 flex justify-center  cursor-pointer">
            Eleves 
         </Link>
       </div>
     </div>
+  <SetComponent p={switchChange}/>
 </div>
   )
 }
