@@ -4,6 +4,7 @@ import { userActions } from '../reducer/user';
 import { useDispatch,useSelector } from 'react-redux';
 import {UserContext} from '../context/authContext'
 import {useNavigate}from  'react-router-dom'
+import Avatar from 'react-avatar'
 import { AiOutlineLogout } from "react-icons/ai"
 export default function Entete() {
   const { login,logout, user } = useContext(UserContext);
@@ -22,6 +23,7 @@ console.log(useur)
       </Link>
        :
       <div className='flex m-2 items-center gap-1 '>
+        <Avatar name={useur.me.nom} size="60" round={true} />
         {/* <p className=''>{useur.me.nom} </p>
              <div className='bg-gray-600 rounded-full w-2 h-2'/>
              <p className='text-sm tracking-widest text-green-300 pb-0.5'>{useur.me.role}</p>
