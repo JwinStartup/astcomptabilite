@@ -26,7 +26,7 @@ export default function PersonnelListe() {
   <div>
      {personnels.map((i,j)=>
         
-        <div className="flex px-2 w-full  items-center">
+        <div className="flex px-2 w-full  items-center border-b">
     <div> 
       <Avatar name={`${i.nom} ${i.prenoms}`}  size="60" round={true} /> 
     </div>
