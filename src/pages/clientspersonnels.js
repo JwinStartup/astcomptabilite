@@ -63,6 +63,9 @@ export default function ClientsPersonnels() {
            Eleves 
         </Link>
       </div>
+        <div>
+       <FaFileInvoice  size={30} color="#1D4ED8" style={{paddingRigth:"5px"}}/>
+       </div>
     </div>
   <SetComponent p={switchChange}/>
 </div>
