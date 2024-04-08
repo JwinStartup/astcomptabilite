@@ -7,10 +7,10 @@ export default function EleveListe() {
    const dispatch=useDispatch()
    
    useEffect(() => { 
-    dispatch(userActions.listeParent())
+    dispatch(userActions.listeEnfant())
   },[])
   
-    const {isLoader,eleves}  = useSelector((state)=>{
+    const {isLoader,enfants}  = useSelector((state)=>{
       return state.userReducer
      })
   console.log(parents)
@@ -24,7 +24,7 @@ export default function EleveListe() {
     </svg>
 </div>:
   <div>
-     {eleves.map((i,j)=>
+     {enfants.map((i,j)=>
         
         <div className="flex px-2 w-full  items-center">
     <div> 
