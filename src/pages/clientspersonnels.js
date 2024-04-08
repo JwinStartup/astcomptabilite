@@ -53,13 +53,13 @@ export default function ClientsPersonnels() {
           <IoIosArrowDropleftCircle size={30} color="black" onClick={()=>navigate('/')} />
          </div>
          <div className='w-[400px] flex  justify-center items-center  '>
-           <Link  onClick={()=>setSwitchChange('PARENT')} className={`tracking-wider border-r w-full text-center items-center  px-4 flex justify-center  cursor-pointer  ${switchChange==="PARENT"?'font-bold text-green-500 border-green-500 ':'font-semibold text-black  '}`} >
+           <Link  onClick={()=>setSwitchChange('PARENT')} className={`tracking-wider border-r w-full text-center items-center  px-4 flex justify-center  cursor-pointer  ${switchChange==="PARENT"?'font-bold text-green-500  ':'font-semibold text-black  '}`} >
           Parents 
         </Link>
-        <Link onClick={()=>setSwitchChange('PERSONNEL')}  className={`tracking-wider border-r w-full text-center items-center  px-4 flex justify-center  cursor-pointer  ${switchChange==="PERSONNEL"?'font-bold text-green-500 border-green-500 ':'font-semibold text-black  '}`}>
+        <Link onClick={()=>setSwitchChange('PERSONNEL')}  className={`tracking-wider border-r w-full text-center items-center  px-4 flex justify-center  cursor-pointer  ${switchChange==="PERSONNEL"?'font-bold text-green-500  ':'font-semibold text-black  '}`}>
           Personnels
         </Link>
-        <Link onClick={()=>setSwitchChange('ELEVE')}  className={`tracking-wider  w-full text-center items-center  px-4 flex justify-center  cursor-pointer  ${switchChange==="ELEVE"?'font-bold text-green-500 border-green-500 ':'font-semibold text-black  '}`}>
+        <Link onClick={()=>setSwitchChange('ELEVE')}  className={`tracking-wider  w-full text-center items-center  px-4 flex justify-center  cursor-pointer  ${switchChange==="ELEVE"?'font-bold text-green-500  ':'font-semibold text-black  '}`}>
            Eleves 
         </Link>
       </div>
