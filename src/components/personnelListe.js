@@ -17,7 +17,7 @@ export default function PersonnelListe() {
     </div>
     
     
-      <div className="flex flex-col p-2 w-4/5">
+      <div className="flex flex-col p-2 w-1/2">
     
        <div className="text-xl font-bold ">AKOU JEAN PAUL </div>
        <div className="text-gray-300 text-md font-bold ">0908070602</div>
@@ -27,7 +27,7 @@ export default function PersonnelListe() {
     
       <div className="flex p-4 flex-col items-center justify-center">
          <div className="text-black font-medium text-md">Anglais - Français</div>
-         <div className="text-red-400 font-bold text-sm">personnel</div>
+         <div className="text-green-400 font-bold text-sm">personnel</div>
       </div>
     
     </div>
