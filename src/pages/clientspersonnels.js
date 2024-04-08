@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Entete from '../components/entete'
 import ParentListe from '../components/parentListe'
@@ -8,7 +8,6 @@ import { IoIosArrowDropleftCircle } from "react-icons/io";
 
 const SetComponent=({p})=>{
   console.log(p)
-  const [switchChange,setSwitchChange]=useState("PARENT")
   switch (p) {
      case 'PARENT':
       return(
@@ -45,6 +44,7 @@ const SetComponent=({p})=>{
 
 export default function ClientsPersonnels() {
   const navigate= useNavigate() 
+  const [switchChange,setSwitchChange]=useState("PARENT")
   return (
     <div>
         <Entete />
