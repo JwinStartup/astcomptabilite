@@ -7,11 +7,11 @@ export default function ClientsPersonnels() {
   return (
     <div>
         <Entete />
-        <div className=' flex mx-2 py-2 justify-center items-center mt-1'>
+        <div className='  flex  py-2 border-b justify-center items-center mt-2'>
          <div>
           <IoIosArrowDropleftCircle size={30} color="black" onClick={()=>navigate('/')} />
          </div>
-         <div className='w-[350px] flex border-b mx-2 py-2 justify-center items-center '>
+         <div className='w-[400px] flex  justify-center items-center  '>
            <Link to='/cp/ListeParent' className="tracking-tight w-full text-black font-semibold   text-center items-center border-r px-4 flex justify-center  cursor-pointer">
           Parents 
         </Link>
