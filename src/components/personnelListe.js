@@ -2,6 +2,14 @@ import { ImUserTie } from "react-icons/im";
 import React from 'react'
 import Avatar from 'react-avatar'
 export default function PersonnelListe() {
+   useEffect(() => { 
+    dispatch(userActions.listePersonnel())
+  },[])
+  
+    const {isLoader,personnels}  = useSelector((state)=>{
+      return state.userReducer
+     })
+  
   return(
      <div  className='w-full justify-center items-center '>
     <div className='w-full justify-center items-center mt-10 '> 
