@@ -40,7 +40,8 @@ export default function EleveListe() {
    
     </div>
     
-      <div className="flex ml-3 p-4 flex-col items-center justify-center">
+     <div className="flex ml-3 p-4 flex-col items-center justify-center">
+         <div className="text-black font-medium text-md">{i.classe}</div>
          <div className="text-green-400 font-bold text-sm">élève</div>
       </div>
     
