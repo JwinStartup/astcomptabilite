@@ -5,7 +5,7 @@ import ParentListe from '../components/parentListe'
 import PersonnelListe from '../components/personnelListe'
 import EleveListe from '../components/eleveListe'
 import { IoIosArrowDropleftCircle } from "react-icons/io";
-
+import { FaPlusCircle } from "react-icons/fa"
 const SetComponent=({p})=>{
   console.log(p)
   switch (p) {
