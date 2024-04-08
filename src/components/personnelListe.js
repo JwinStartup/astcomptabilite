@@ -28,7 +28,7 @@ export default function PersonnelListe() {
         
         <div className="flex px-2 w-full  items-center">
     <div> 
-      <Avatar name={`{i.nom} {i.prenoms} `}  size="60" round={true} /> 
+      <Avatar name={`${i.nom} ${i.prenoms}`}  size="60" round={true} /> 
     </div>
     
     
