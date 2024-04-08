@@ -64,7 +64,7 @@ export default function ClientsPersonnels() {
         </Link>
       </div>
         <div>
-       <FaFileInvoice  size={30} color="#1D4ED8" style={{paddingRigth:"5px"}}/>
+        <FaPlusCircle color="gray" size={25}  />
        </div>
     </div>
   <SetComponent p={switchChange}/>
