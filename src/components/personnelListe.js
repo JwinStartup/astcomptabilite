@@ -1,6 +1,6 @@
 import { ImUserTie } from "react-icons/im";
 import React from 'react'
-
+import Avatar from 'react-avatar'
 export default function PersonnelListe() {
   return(
      <div  className='w-full justify-center items-center '>
@@ -11,13 +11,37 @@ export default function PersonnelListe() {
     </svg>
 
      
-    <div> 
-       <ImUserTie size={22} />
-     <div>
-       AKOu JEAN PAUL
-     </div>
+    <div className='flex'> 
     
-     </div>
+     <div> 
+      <Avatar name="AKOU JEAN PAUL" size="60" round={true} /> 
+    </div>
+    
+     <div className='flex'> 
+    
+      <div className='flex'> 
+      AKOU JEAN PAUL
+    </div>
+    <div className='flex'> 
+      cel:0908070602
+    </div>
+    <div className='flex'> 
+      Abidjan <div className='w-4 h-4 rounded-full bg-black'/> Cocody
+    </div>
+    </div>
+       
+     <div className=''> 
+      <div className=''> 
+      Anglais
+    </div>
+    <div className=''> 
+      personnel
+    </div>
+    </div>
+    
+    </div>
+    
+    
     
     </div>
   )
