@@ -53,13 +53,13 @@ export default function ClientsPersonnels() {
           <IoIosArrowDropleftCircle size={30} color="black" onClick={()=>navigate('/')} />
          </div>
          <div className='w-[400px] flex  justify-center items-center  '>
-           <Link  onClick={()=>setSwitchChange('PARENT')} className={`tracking-wider w-full text-black text-center items-center  px-4 flex justify-center  cursor-pointer  ${switchChange==="PARENT"?'font-bold border-green-500 border-r-2':'font-semibold  border-r'}`} >
+           <Link  onClick={()=>setSwitchChange('PARENT')} className={`tracking-wider w-full text-center items-center  px-4 flex justify-center  cursor-pointer  ${switchChange==="PARENT"?'font-bold text-green-500 border-green-500 border-r-2':'font-semibold text-black  border-b'}`} >
           Parents 
         </Link>
-        <Link onClick={()=>setSwitchChange('PERSONNEL')}  className={`tracking-wider w-full text-black text-center items-center  px-4 flex justify-center  cursor-pointer  ${switchChange==="PERSONNEL"?'font-bold border-green-500 border-r-2':'font-semibold  border-r'}`}>
+        <Link onClick={()=>setSwitchChange('PERSONNEL')}  className={`tracking-wider w-full text-center items-center  px-4 flex justify-center  cursor-pointer  ${switchChange==="PERSONNEL"?'font-bold text-green-500 border-green-500 border-b-2':'font-semibold text-black  border-b'}`}>
           Personnels
         </Link>
-        <Link onClick={()=>setSwitchChange('ELEVE')}  className={`tracking-wider w-full text-black text-center items-center  px-4 flex justify-center  cursor-pointer  ${switchChange==="ELEVE"?'font-bold border-green-500 border-r-2':'font-semibold  border-r'}`}>
+        <Link onClick={()=>setSwitchChange('ELEVE')}  className={`tracking-wider w-full text-center items-center  px-4 flex justify-center  cursor-pointer  ${switchChange==="ELEVE"?'font-bold text-green-500 border-green-500 border-r-2':'font-semibold text-black  border-b'}`}>
            Eleves 
         </Link>
       </div>
