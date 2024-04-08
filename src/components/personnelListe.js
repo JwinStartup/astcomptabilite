@@ -1,7 +1,11 @@
-import { ImUserTie } from "react-icons/im";
-import React from 'react'
+import React, {useEffect} from 'react'
 import Avatar from 'react-avatar'
+import { useDispatch,useSelector } from 'react-redux';
+import { userActions } from '../reducer/user.js'
+
 export default function PersonnelListe() {
+   const dispatch=useDispatch()
+   
    useEffect(() => { 
     dispatch(userActions.listePersonnel())
   },[])
@@ -9,7 +13,7 @@ export default function PersonnelListe() {
     const {isLoader,personnels}  = useSelector((state)=>{
       return state.userReducer
      })
-  
+  console.log(personnels)
   return(
      <div  className='w-full justify-center items-center '>
     <div className='w-full justify-center items-center mt-10 '> 
