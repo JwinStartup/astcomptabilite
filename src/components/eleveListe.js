@@ -13,7 +13,7 @@ export default function EleveListe() {
     const {isLoader,enfants}  = useSelector((state)=>{
       return state.userReducer
      })
-  console.log(eleves)
+  console.log(enfants)
   return(
      <div  className='w-full justify-center items-center '>
    
