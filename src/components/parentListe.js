@@ -26,7 +26,7 @@ export default function ParentListe() {
   <div>
      {parents.map((i,j)=>
         
-        <div className="flex px-2 w-full  items-center border-b">
+        <div className="flex px-2 w-full  items-center border-b hover:bg-gray-200">
     <div> 
       <Avatar name={`${i.nom} ${i.prenoms}`}  size="60" round={true} /> 
     </div>
