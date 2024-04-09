@@ -63,7 +63,7 @@ export default function ClientsPersonnels() {
            Eleves 
         </Link>
       </div>
-        <div>
+        <div classNname='pr-4'>
         <FaPlusCircle color="gray" size={25}  />
        </div>
     </div>
