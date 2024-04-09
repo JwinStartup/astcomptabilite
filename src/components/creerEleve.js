@@ -20,7 +20,7 @@ const supprimer=()=>{
   console.log('supprimer')
 }
   return (
-  <form  className='w-[300px]  border p-3 bg-white border-gray-100 shadow-md rounded-lg   z-10 absolute top-[200px] left-[50px]'>
+  <form  className='w-[300px]  border p-3 bg-white border-gray-100 shadow-md rounded-lg   z-10 absolute top-[200px] left-[20px]'>
             
         <div className='flex flex-col items-center my-2  w-full'>
       <div className='flex flex-row '> 
