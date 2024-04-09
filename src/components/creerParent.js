@@ -48,7 +48,7 @@ const creer=()=>{
         <div className='flex flex-col items-center my-2  w-full'>
     
         <button 
-       type="button" onClick={()=>creer()} className=" text-green-700  font-medium  text-sm px-3 py-2 text-center inline-flex items-center">
+       type="button" onClick={()=>creer()} className=" text-green-700  font-medium  text-md px-3 py-2 text-center inline-flex items-center">
        Inscrire
         </button>
        
