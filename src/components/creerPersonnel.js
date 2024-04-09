@@ -4,7 +4,7 @@ import  Axios  from 'axios';
  import {FadeLoader}from 'react-spinners'
 import { AiFillCloseCircle } from "react-icons/ai";
 import { useForm } from 'react-hook-form';
-
+import { userActions } from '../reducer/user';
 import {useNavigate} from 'react-router-dom'
 
 
