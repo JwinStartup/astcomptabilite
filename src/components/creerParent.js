@@ -6,7 +6,7 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import { useForm } from 'react-hook-form';
 import {useNavigate} from 'react-router-dom'
   
- 
+ import { userActions } from '../reducer/user';
 
 
 export default function CreerParent({retour,value}) {
