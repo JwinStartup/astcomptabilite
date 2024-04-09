@@ -22,6 +22,13 @@ const modifier=()=>{
 const supprimer=()=>{
   console.log('supprimer')
 }
+ const onSubmit = (data) => {
+ console.log(data)
+ //setLoading(true)
+dispatch(userActions.inscriptionPersonnel(data)).then(()=>{
+  retour()
+ })
+}
   return (
    <form  className='w-[300px] onSubmit={handleSubmit(onSubmit)} border p-3 bg-white border-gray-100 shadow-md rounded-lg   z-10 absolute top-[70px] left-[20px]'>
              <div className='absolute right-0 top-0 m-1 cursor-pointer  z-50 '>    
