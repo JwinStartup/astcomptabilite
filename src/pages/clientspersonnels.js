@@ -96,6 +96,7 @@ const SetComponentPEP=({p,retour,value})=>{
 
 export default function ClientsPersonnels() {
   const navigate= useNavigate() 
+  const [rub , setRub]=useState({nom:'',bol:false,value:null})
   const [switchChange,setSwitchChange]=useState("PARENT")
   return (
     <div>
