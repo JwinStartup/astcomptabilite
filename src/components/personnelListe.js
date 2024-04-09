@@ -33,7 +33,7 @@ export default function PersonnelListe() {
     
     
     
-     <div className="flex flex-col px-2 ">
+     <div className="flex flex-col px-2 py-5">
     
        <div className="text-md font-semibold ">{i.nom} {i.prenoms} </div>
    
