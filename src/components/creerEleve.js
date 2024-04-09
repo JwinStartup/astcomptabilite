@@ -106,7 +106,7 @@ const {personnels} = useSelector((state)=>{
      </div>
      
       <button type='submit' className=" text-green-700  font-medium  text-sm px-3 py-2 text-center inline-flex items-center">
-       <span>  Inscrire</span>
+                   {isSubmitting===false? <span>  Inscrire</span>: <span> Inscrire ...</span>}
       </button>
     </form>
   )
