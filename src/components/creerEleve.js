@@ -10,6 +10,10 @@ import { userActions } from '../reducer/user';
 
 
 export default function CreerEleve({retour,value}) {
+  const { register, handleSubmit,
+         formState:{isSubmitting}
+     } = useForm(
+   );
 const dispatch = useDispatch()
 const modifier=()=>{
   console.log('modifier')
