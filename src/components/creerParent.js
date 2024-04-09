@@ -13,6 +13,9 @@ import {useNavigate} from 'react-router-dom'
 
 export default function CreerParent({retour,value}) {
 const dispatch = useDispatch()
+  const { register, handleSubmit,
+     } = useForm(
+   );
 const modifier=()=>{
   console.log('modifier')
 }
