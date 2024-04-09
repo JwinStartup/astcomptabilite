@@ -4,23 +4,30 @@ import  Axios  from 'axios';
  import {FadeLoader}from 'react-spinners'
 import { AiFillCloseCircle } from "react-icons/ai";
 import { useForm } from 'react-hook-form';
-
 import {useNavigate} from 'react-router-dom'
-
-
-
+import { useDispatch } from 'react-redux';
+import { userActions } from '../reducer/user';
+  
+ 
 
 
 export default function CreerParent({retour,value}) {
 const dispatch = useDispatch()
   const { register, handleSubmit,
+         formState:{isSubmitting}
      } = useForm(
    );
+  const onSubmit = (data) => {
+    console.log(data)
+   dispatch(userActions.inscriptionParent(data)).then(()=>{
+     retour()
+    })
+  }
 const creer=()=>{
   console.log('modifier')
 }
   return (
-   <form  className='w-[300px]  border p-3 bg-white border-gray-100 shadow-md rounded-lg   z-10 absolute top-[70px] left-[50px]'>
+   <form  className='w-[300px] onClick={()=>handleSubmit(onSubmit())}  border p-3 bg-white border-gray-100 shadow-md rounded-lg   z-10 absolute top-[70px] left-[50px]'>
       <div className='absolute right-0 top-0 m-1 cursor-pointer  z-50 '>    
             <AiFillCloseCircle color="gray" size={25} onClick={()=>retour()} />
            </div> 
@@ -49,7 +56,7 @@ const creer=()=>{
     
         <button 
        type="button" onClick={()=>creer()} className=" text-green-700  font-medium  text-md px-3 py-2 text-center inline-flex items-center">
-       Inscrire
+ {isSubmitting===false? 'Inscrire': 'loading...'}
         </button>
        
       
