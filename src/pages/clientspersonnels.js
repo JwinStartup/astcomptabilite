@@ -19,7 +19,7 @@ import ModifierEleve from '../components/modifierEleve'
 import { IoIosArrowDropleftCircle } from "react-icons/io";
 import { FaPlusCircle } from "react-icons/fa";
 import Backdrop from '../components/backdrop'
-const SetComponent=({p,voir,voirPe,voirEl})=>{
+const SetComponent=({p,voir,voirPer,voirEl})=>{
   console.log(p)
   switch (p) {
      case 'PARENT':
