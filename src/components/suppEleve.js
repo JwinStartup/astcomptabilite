@@ -13,7 +13,7 @@ import {useNavigate} from 'react-router-dom'
 
 
 
-export default function SuppEleve({retour,value}) {
+export default function SupprimerEleve({retour,value}) {
 const dispatch = useDispatch()
 const modifier=()=>{
   console.log('modifier')
