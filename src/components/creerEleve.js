@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import  Axios  from 'axios';
  import {FadeLoader}from 'react-spinners'
 import { AiFillCloseCircle } from "react-icons/ai";
-
-
 import {useNavigate} from 'react-router-dom'
 import { useForm } from 'react-hook-form';
 
@@ -19,6 +17,26 @@ const modifier=()=>{
 const supprimer=()=>{
   console.log('supprimer')
 }
+ const dispatch =useDispatch()
+const onSubmit = (data) => {
+ console.log(data)
+dispatch(userActions.inscriptionEnfant(data)).then(()=>{
+  retour()
+ })
+}
+  useEffect(() => { 
+    dispatch(userActions.listeParent())
+  },[])
+ useEffect(() => { 
+  dispatch(userActions.listePersonnel())
+},[])
+
+const {personnels} = useSelector((state)=>{
+  return state.userReducer
+ });
+  const {parents} = useSelector((state)=>{
+    return state.userReducer
+   });
   return (
   <form  className='w-[300px] onSubmit={handleSubmit(onSubmit)}  border p-3 bg-white border-gray-100 shadow-md rounded-lg   z-10 absolute top-[200px] left-[20px]'>
             
