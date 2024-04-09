@@ -31,29 +31,23 @@ const SetComponent=({p,voir})=>{
      case 'PERSONNEL':
       return(
         <div>
-        <PersonnelListe  />
+        <PersonnelListe voir={voir} />
         </div>
       )
      case 'PERSONNEL':
       return(
         <div>
-        <PersonnelListe  />
+        <PersonnelListe  voir={voir}/>
         </div>
       )
     case 'ELEVE':
       return(
         <div>
-        <EleveListe  />
+        <EleveListe voir={voir} />
         </div>
       )
   
     default:
-      case 'PARENT':
-      return(
-        <div>
-        <ParentListe   />
-        </div>
-      )
       break;
   }
 }
