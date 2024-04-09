@@ -3,7 +3,7 @@ import Avatar from 'react-avatar'
 import { useDispatch,useSelector } from 'react-redux';
 import { userActions } from '../reducer/user.js'
 
-export default function EleveListe() {
+export default function EleveListe({voirEl}) {
    const dispatch=useDispatch()
    
    useEffect(() => { 
@@ -26,7 +26,7 @@ export default function EleveListe() {
   <div>
      {enfants.map((i,j)=>
         
-        <div className="flex px-2 py-5 w-full  items-center border-b hover:bg-gray-200">
+        <div onClick={()=>voirEl(i)} className="flex px-2 py-5 w-full  items-center border-b hover:bg-gray-200">
     <div> 
       <Avatar name={`${i.nom} ${i.prenoms}`}  size="60" round={true} /> 
     </div>
