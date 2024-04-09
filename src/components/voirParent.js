@@ -21,6 +21,13 @@ const supprimer=()=>{
 }
   return (
     <div className='relative mx-3 bg-slate-100 w-[300px]  border p-3  border-gray-100  rounded-md '>
+
+   <div className='absolute right-0 top-0 m-1 cursor-pointer  z-50 '>    
+            <AiFillCloseCircle color="gray" size={25} onClick={()=>retour()} />
+           </div> 
+      <div className='flex  '>
+       
+       </div>
             
         <div className='flex flex-col items-center my-2  w-full'>
       <div className='flex flex-row '> 
