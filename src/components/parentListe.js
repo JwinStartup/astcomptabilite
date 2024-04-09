@@ -32,7 +32,7 @@ export default function ParentListe({voir}) {
     </div>
     
     
-      <div className="flex flex-col px-2 py-5 ">
+      <div className="flex flex-col px-2 ">
     
        <div className="text-xl font-bold ">{i.nom} {i.prenoms} </div>
    
