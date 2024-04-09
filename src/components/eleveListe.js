@@ -26,7 +26,7 @@ export default function EleveListe() {
   <div>
      {enfants.map((i,j)=>
         
-        <div className="flex px-2 w-full  items-center border-b hover:bg-gray-200">
+        <div className="flex px-2 py-5 w-full  items-center border-b hover:bg-gray-200">
     <div> 
       <Avatar name={`${i.nom} ${i.prenoms}`}  size="60" round={true} /> 
     </div>
