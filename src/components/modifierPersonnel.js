@@ -11,7 +11,7 @@ import {useNavigate} from 'react-router-dom'
 
 
 
-export default function modifierPersonnnel({retour,value}) {
+export default function ModifierPersonnnel({retour,value}) {
 const dispatch = useDispatch()
 const modifier=()=>{
   console.log('modifier')
