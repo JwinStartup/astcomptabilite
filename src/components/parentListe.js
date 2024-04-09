@@ -3,7 +3,7 @@ import Avatar from 'react-avatar'
 import { useDispatch,useSelector } from 'react-redux';
 import { userActions } from '../reducer/user.js'
 
-export default function ParentListe() {
+export default function ParentListe(voir) {
    const dispatch=useDispatch()
    
    useEffect(() => { 
@@ -26,7 +26,7 @@ export default function ParentListe() {
   <div>
      {parents.map((i,j)=>
         
-        <div className="flex px-2 w-full  items-center border-b hover:bg-gray-200">
+        <div key={j} onClick={()=>voir(i)} className="flex px-2 w-full  items-center border-b hover:bg-gray-200">
     <div> 
       <Avatar name={`${i.nom} ${i.prenoms}`}  size="60" round={true} /> 
     </div>
