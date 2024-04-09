@@ -75,7 +75,7 @@ export default function FacturesImpayes() {
   const [fact , setFact]=useState(" ")
   useEffect(() => { 
     dispatch(comptabiliteActions.listeFacture())
-  },[])
+  },[rub])
   
   const {isLoader,factures} = useSelector((state)=>{
     return state.comptabiliteReducer
