@@ -26,7 +26,10 @@ const supprimer=()=>{
             <AiFillCloseCircle color="gray" size={25} onClick={()=>retour()} />
            </div> 
       <div className='flex  '>
-       
+            <Avatar name={`${value.nom} ${value.prenoms}`}  size="100" round={true} /> 
+           <div className='flex  '>
+             {value.nom} {value.prenoms}
+          </div>
        </div>
             
         <div className='flex flex-col items-center my-2  w-full'>
