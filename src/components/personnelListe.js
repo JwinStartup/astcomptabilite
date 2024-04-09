@@ -40,10 +40,11 @@ export default function PersonnelListe() {
    
     </div>
     
-      <div className="flex ml-3 p-4 flex-col items-center justify-center">
-         <div className="text-black font-medium text-md">{i.discipline}</div>
-         <div className="text-green-400 font-bold text-sm">personnel</div>
-      </div>
+     <div className="flex flex-col px-2 ">
+    
+       <div className="text-md font-semibold ">{i.nom} {i.prenoms} </div>
+   
+    </div>
     
     </div>
                     )}
