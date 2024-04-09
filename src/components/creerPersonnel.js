@@ -29,7 +29,7 @@ const supprimer=()=>{
            </div> 
        <div className='flex flex-col '>
    <p className='text-2xl font-semibold text-black tracking-wider mb-3'>Inscription Personnel</p>             
-      <div className='flex flex-col mx-4 space-y-4'>
+      <div className='flex flex-col mx-4 space-y-2'>
       <input {...register("nom")}   type='text' placeholder='Nom' className='outline-none w-[250px] border-b-2 py-1 text-lg'/>
       <input {...register("prenoms")}   type='text' placeholder='Prenoms' className='outline-none w-[250px] border-b-2 py-1 text-lg'/>
       <input {...register("cel")}   type='text' placeholder='Cel' className='outline-none w-[250px] border-b-2 py-1 text-lg'/>
