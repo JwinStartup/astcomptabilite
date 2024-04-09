@@ -20,7 +20,7 @@ const supprimer=()=>{
   console.log('supprimer')
 }
   return (
-    <div className='z-10 absolute top-[100px] left-[50px] mx-3 bg-slate-100 w-[300px]  border p-3  border-gray-100  rounded-md '>
+    <div className='z-10 absolute top-[100px] left-[30px] mx-3 bg-slate-100 w-[300px]  border p-3  border-gray-100  rounded-md '>
    <div className='absolute right-0 top-0 m-1 cursor-pointer  z-50 '>    
             <AiFillCloseCircle color="gray" size={25} onClick={()=>retour()} />
            </div> 
