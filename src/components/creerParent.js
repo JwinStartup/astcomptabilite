@@ -21,7 +21,9 @@ const creer=()=>{
 }
   return (
    <form  className='w-[300px]  border p-3 bg-white border-gray-100 shadow-md rounded-lg   z-10 absolute top-[100px] left-[50px]'>
-
+      <div className='absolute right-0 top-0 m-1 cursor-pointer  z-50 '>    
+            <AiFillCloseCircle color="gray" size={25} onClick={()=>supprimer()} />
+           </div> 
       <div className='flex flex-col '>
      <p className='text-lg font-semibold text-black tracking-wider mb-3'>Inscription parent</p>             
         <div className='flex flex-col mx-4 space-y-2'>
@@ -44,18 +46,14 @@ const creer=()=>{
 
    
         <div className='flex flex-col items-center my-2  w-full'>
-      <div className='flex flex-row '> 
-        <button 
-       type="button" onClick={()=>retour()} className=" text-blue-700 font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center">
-        Retour
-        </button>
+    
         <button 
        type="button" onClick={()=>creer()} className=" text-green-700  font-medium  text-sm px-3 py-2 text-center inline-flex items-center">
         S'inscrire
         </button>
        
       
-         </div>
+       
         </div>
     </form>
   )
