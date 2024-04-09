@@ -22,7 +22,7 @@ const creer=()=>{
   return (
    <form  className='w-[300px]  border p-3 bg-white border-gray-100 shadow-md rounded-lg   z-10 absolute top-[100px] left-[50px]'>
       <div className='absolute right-0 top-0 m-1 cursor-pointer  z-50 '>    
-            <AiFillCloseCircle color="gray" size={25} onClick={()=>supprimer()} />
+            <AiFillCloseCircle color="gray" size={25} onClick={()=>retour()} />
            </div> 
       <div className='flex flex-col '>
      <p className='text-lg font-semibold text-black tracking-wider mb-3'>Inscription parent</p>             
