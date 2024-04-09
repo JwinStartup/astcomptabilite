@@ -9,6 +9,7 @@ import { userActions } from '../reducer/user';
 
 
 export default function CreerEleve({retour,value}) {
+ const [par,setPar] = useState([])
   const { register, handleSubmit,
          formState:{isSubmitting}
      } = useForm(
