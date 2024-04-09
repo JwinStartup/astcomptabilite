@@ -43,6 +43,9 @@ const {personnels} = useSelector((state)=>{
   return (
 <form className='w-[300px] onSubmit={handleSubmit(onSubmit)}  border p-3 bg-white border-gray-100 shadow-md rounded-lg   z-10 absolute top-[200px] left-[20px]' >
      <div className='flex flex-col '>
+   <div className='absolute right-0 top-0 m-1 cursor-pointer  z-50 '>    
+            <AiFillCloseCircle color="gray" size={25} onClick={()=>retour()} />
+           </div>
    <p className='text-2xl font-semibold text-black tracking-wider mb-3'>Enfant</p>             
       <div className='flex flex-col mx-4 space-y-2'>
       <input {...register("nom")}   type='text' placeholder='Nom' className='outline-none w-[250px] border-b-2 py-1 text-lg'/>
