@@ -29,6 +29,12 @@ const supprimer=()=>{
            <div className='flex  text-lg font-bold tracking-wider text-center w-full justify-center items-center '>
             {value.nom}  {value.prenoms}
           </div>
+           <div className='flex  text-md font-bold tracking-wider text-center w-full justify-center items-center '>
+            {value.cel}  
+          </div>
+           <div className='flex  text-md font-bold tracking-wider text-center w-full justify-center items-center '>
+            {value.ville} 
+          </div>
        </div>
             
         <div className='flex flex-col items-center my-2  w-full'>
