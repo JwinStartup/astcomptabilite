@@ -28,15 +28,13 @@ export default function ParentListe({voir}) {
         
         <div key={j} onClick={()=>voir(i)} className="flex px-2 w-full  items-center border-b hover:bg-gray-200">
     <div> 
-      <Avatar name={`${i.nom} ${i.prenoms}`}  size="60" round={true} /> 
+      <Avatar name={`${i.nom} ${i.prenoms}`}  size="40" round={true} /> 
     </div>
     
     
       <div className="flex flex-col p-2 ">
     
        <div className="text-xl font-bold ">{i.nom} {i.prenoms} </div>
-       <div className="text-gray-300 text-md font-bold ">{i.cel} </div>
-       <div className="flex justify-start text-red-300 font-medium text-sm items-center gap-1">{i.ville}<div className="w-2 h-2 rounded-full bg-black"/>{i.commune} </div>
    
     </div>
     
