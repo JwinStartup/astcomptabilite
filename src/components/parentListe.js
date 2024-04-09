@@ -26,13 +26,13 @@ export default function ParentListe({voir}) {
   <div>
      {parents.map((i,j)=>
         
-        <div key={j} onClick={()=>voir(i)} className="flex px-2 w-full  items-center border-b hover:bg-gray-200">
+        <div key={j} onClick={()=>voir(i)} className="flex px-2 py-5 w-full  items-center border-b hover:bg-gray-200">
     <div> 
-      <Avatar name={`${i.nom} ${i.prenoms}`}  size="40" round={true} /> 
+      <Avatar name={`${i.nom} ${i.prenoms}`}  size="55" round={true} /> 
     </div>
     
     
-      <div className="flex flex-col p-2 ">
+      <div className="flex flex-col px-2 py-5 ">
     
        <div className="text-xl font-bold ">{i.nom} {i.prenoms} </div>
    
