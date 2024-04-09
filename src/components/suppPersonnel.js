@@ -29,11 +29,11 @@ const supprimer=()=>{
         Retour
         </button>
         <button 
-       type="button" onClick={()=>Modifier()} className=" text-green-700  font-medium  text-sm px-3 py-2 text-center inline-flex items-center">
+       type="button" onClick={()=>modifier()} className=" text-green-700  font-medium  text-sm px-3 py-2 text-center inline-flex items-center">
         Modifier
         </button>
         <button 
-       type="button" onClick={()=>Supprime()} className=" text-green-700  font-medium  text-sm px-3 py-2 text-center inline-flex items-center">
+       type="button" onClick={()=>supprime()} className=" text-green-700  font-medium  text-sm px-3 py-2 text-center inline-flex items-center">
         Supprimer
         </button>
       
