@@ -49,7 +49,7 @@ const creer=()=>{
     
         <button 
        type="button" onClick={()=>creer()} className=" text-green-700  font-medium  text-sm px-3 py-2 text-center inline-flex items-center">
-        S'inscrire
+       Inscrire
         </button>
        
       
