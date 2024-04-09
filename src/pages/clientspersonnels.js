@@ -100,7 +100,7 @@ export default function ClientsPersonnels() {
   const [switchChange,setSwitchChange]=useState("PARENT")
   return (
     <div>
-        {rub.bol!==false&&<SetComponentPEP p={rub.nom} retour={()=>setRub({bol:false,nom:''})} value={rub.value} />}
+        {rub.bol!==false&&<SetComponentPEP p={rub.nom} retour={()=>setRub({bol:false,nom:'',value:null})} value={rub.value} />}
         <Entete />
         <div className='  flex  py-2 border-b justify-center items-center '>
          <div>
