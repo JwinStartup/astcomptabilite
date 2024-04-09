@@ -3,7 +3,7 @@ import Avatar from 'react-avatar'
 import { useDispatch,useSelector } from 'react-redux';
 import { userActions } from '../reducer/user.js'
 
-export default function PersonnelListe() {
+export default function PersonnelListe({voirPe}) {
    const dispatch=useDispatch()
    
    useEffect(() => { 
@@ -26,7 +26,7 @@ export default function PersonnelListe() {
   <div>
      {personnels.map((i,j)=>
         
-        <div className="flex px-2 w-full py-5  items-center border-b hover:bg-gray-200">
+        <div onClick={()=>voirPe(i)} className="flex px-2 w-full py-5  items-center border-b hover:bg-gray-200">
     <div> 
       <Avatar name={`${i.nom} ${i.prenoms}`}  size="60" round={true} /> 
     </div>
