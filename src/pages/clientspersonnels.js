@@ -25,7 +25,7 @@ const SetComponent=({p,voir})=>{
      case 'PARENT':
       return(
         <div>
-        <ParentListe  voir={(e)=>console.log(e)} />
+        <ParentListe  voir={voir} />
         </div>
       )
      case 'PERSONNEL':
