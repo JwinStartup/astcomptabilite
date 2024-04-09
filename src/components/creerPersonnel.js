@@ -61,7 +61,7 @@ dispatch(userActions.inscriptionPersonnel(data)).then(()=>{
         <div className='flex flex-col items-center my-2  w-full'>
       <div className='flex flex-row '> 
         <button 
-       type='submit' onClick={()=>modifier()} className=" text-green-700  font-medium  text-md px-3 py-2 text-center inline-flex items-center">
+       type='submit'  className=" text-green-700  font-medium  text-md px-3 py-2 text-center inline-flex items-center">
         {isSubmitting===false? <span>  Inscrire</span>: <span> Inscrire ...</span>}
         </button>
      
