@@ -4,6 +4,15 @@ import Entete from '../components/entete'
 import ParentListe from '../components/parentListe'
 import PersonnelListe from '../components/personnelListe'
 import EleveListe from '../components/eleveListe'
+import VoirParent from '../components/voirParent'
+import SupprimerParent from '../components/supprimerParent'
+import ModifierParent from '../components/modifierParent'
+import VoirPersonnel from '../components/voirPersonnel'
+import SupprimerPersonnel from '../components/supprimerPersonnel'
+import ModifierPersonnel from '../components/modifierPersonnel'
+import VoirEleve from '../components/voirEleve'
+import SupprimerEleve from '../components/supprimerEleve'
+import ModifierEleve from '../components/modifierEleve'
 import { IoIosArrowDropleftCircle } from "react-icons/io";
 import { FaPlusCircle } from "react-icons/fa";
 import Backdrop from '../components/backdrop'
@@ -14,6 +23,12 @@ const SetComponent=({p})=>{
       return(
         <div>
         <ParentListe   />
+        </div>
+      )
+     case 'PERSONNEL':
+      return(
+        <div>
+        <PersonnelListe  />
         </div>
       )
      case 'PERSONNEL':
@@ -45,50 +60,91 @@ const SetComponent=({p})=>{
 const SetComponentPEP=({p,retour,value})=>{
   console.log(p)
   switch (p) {
-    case 'CREER':
+    case 'CREERPERSONNEL':
       return(
         <div>
           <Backdrop/>
-        <FormulaireCreerFacture retour={retour}  />
-        </div>
-      );
-    case 'PARTAGER':
-      return(
-        <div>
-          <Backdrop/>
-        <PartagerFacture retour={retour} value={value}/>
+        <CreerPersonnel retour={retour} value={value}/>
         </div>
       )
-    case 'SUPPRIMER':
+    case 'MODIFIERPERSONNEL':
       return(
         <div>
           <Backdrop/>
-        <SupprimerFacture retour={retour} value={value} />
+        <ModifierPersonnel retour={retour} value={value}/>
         </div>
       )
-     case 'MODIFIER':
+    case 'VOIRPERSONNEL':
       return(
         <div>
           <Backdrop/>
-        <ModifierFacture retour={retour} value={value} />
+        <VoirPersonnel retour={retour} value={value}/>
         </div>
       )
-     case 'VOIRRECUE':
+    case 'SUPPRIMERPERSONNEL':
       return(
         <div>
           <Backdrop/>
-        <VoirRecue retour={retour} value={value} />
+        <SupprimerPersonnel retour={retour} value={value}/>
         </div>
       )
-    case 'PAYER':
+    case 'CREERPARENT':
       return(
         <div>
           <Backdrop/>
-        <FormulairePayerFacture retour={retour} value={value} />
+        <CreerParent retour={retour} value={value}/>
         </div>
       )
-  
-  
+    case 'MODIFIERPARENT':
+      return(
+        <div>
+          <Backdrop/>
+        <ModifierParent retour={retour} value={value}/>
+        </div>
+      )
+    case 'VOIRPARENT':
+      return(
+        <div>
+          <Backdrop/>
+        <VoirParent retour={retour} value={value}/>
+        </div>
+      )
+    case 'SUPPRIMERPARENT':
+      return(
+        <div>
+          <Backdrop/>
+        <SupprimerParent retour={retour} value={value}/>
+        </div>
+      )
+    case 'CREERELEVE':
+      return(
+        <div>
+          <Backdrop/>
+        <CreerEleve retour={retour} value={value}/>
+        </div>
+      )
+    case 'MODIFIERELEVE':
+      return(
+        <div>
+          <Backdrop/>
+        <ModifierEleve retour={retour} value={value}/>
+        </div>
+      )
+    case 'VOIRELEVE':
+      return(
+        <div>
+          <Backdrop/>
+        <VoirEleve retour={retour} value={value}/>
+        </div>
+      )
+    case 'SUPPRIMERELEVE':
+      return(
+        <div>
+          <Backdrop/>
+        <SupprimerEleve retour={retour} value={value}/>
+        </div>
+      )
+
     default:
       break;
   }
@@ -99,6 +155,16 @@ export default function ClientsPersonnels() {
   const navigate= useNavigate() 
   const [rub , setRub]=useState({nom:'',bol:false,value:null})
   const [switchChange,setSwitchChange]=useState("PARENT")
+
+  const changeCreer=(p)=>{
+    if(p==='PARENT'){
+      setRub({bol:true,nom:'CREERPARENT',value:null})
+    }else if(p==='PERSONNEL'){
+      setRub({bol:true,nom:'CREERPERSONNEL',value:null})
+    }else{
+      setRub({bol:true,nom:'CREERELEVE',value:null})
+    }
+  }
   return (
     <div>
         {rub.bol!==false&&<SetComponentPEP p={rub.nom} retour={()=>setRub({bol:false,nom:'',value:null})} value={rub.value} />}
@@ -119,7 +185,7 @@ export default function ClientsPersonnels() {
         </Link>
       </div>
         <div classNname='pr-4'>
-        <FaPlusCircle color="gray" size={25}  />
+        <FaPlusCircle color="gray" size={25} onClick={()=>changeCreer()}  />
        </div>
     </div>
   <SetComponent p={switchChange}/>
