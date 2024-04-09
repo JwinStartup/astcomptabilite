@@ -40,9 +40,7 @@ export default function ParentListe() {
    
     </div>
     
-      <div className="flex ml-3 p-4 flex-col items-center justify-center">
-         <div className="text-green-400 font-bold text-sm">parent</div>
-      </div>
+   
     
     </div>
                     )}
