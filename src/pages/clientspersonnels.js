@@ -31,19 +31,14 @@ const SetComponent=({p,voir})=>{
      case 'PERSONNEL':
       return(
         <div>
-        <PersonnelListe voir={voir} />
+        <PersonnelListe voirPer={voirPer} />
         </div>
       )
-     case 'PERSONNEL':
-      return(
-        <div>
-        <PersonnelListe  voir={voir}/>
-        </div>
-      )
+   
     case 'ELEVE':
       return(
         <div>
-        <EleveListe voir={voir} />
+        <EleveListe voirEl={voirEl} />
         </div>
       )
   
@@ -165,6 +160,12 @@ export default function ClientsPersonnels() {
   const voir=(i)=>{
     setRub({bol:true,nom:'VOIRPARENT',value:i})
   }
+  const voirEl=(i)=>{
+    setRub({bol:true,nom:'VOIRELEVE',value:i})
+  }
+  const voirPe=(i)=>{
+    setRub({bol:true,nom:'VOIRPERSONNEL',value:i})
+  }
   return (
     <div>
         {rub.bol!==false&&<SetComponentPEP p={rub.nom} retour={()=>setRub({bol:false,nom:'',value:null})} value={rub.value} />}
@@ -191,7 +192,8 @@ export default function ClientsPersonnels() {
   <SetComponent 
              p={switchChange} 
                voir={voir}
-             
+               voirPer={voirPer}
+              voirEl={voirEl}
              />
 </div>
   )
