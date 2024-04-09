@@ -19,13 +19,13 @@ import ModifierEleve from '../components/modifierEleve'
 import { IoIosArrowDropleftCircle } from "react-icons/io";
 import { FaPlusCircle } from "react-icons/fa";
 import Backdrop from '../components/backdrop'
-const SetComponent=({p})=>{
+const SetComponent=({p,voir})=>{
   console.log(p)
   switch (p) {
      case 'PARENT':
       return(
         <div>
-        <ParentListe   />
+        <ParentListe  voir={voir} />
         </div>
       )
      case 'PERSONNEL':
@@ -168,6 +168,9 @@ export default function ClientsPersonnels() {
       setRub({bol:true,nom:'CREERELEVE',value:null})
     }
   }
+  const voir=(i)=>{
+    console.log(i)
+  }
   return (
     <div>
         {rub.bol!==false&&<SetComponentPEP p={rub.nom} retour={()=>setRub({bol:false,nom:'',value:null})} value={rub.value} />}
@@ -193,7 +196,7 @@ export default function ClientsPersonnels() {
     </div>
   <SetComponent 
              p={switchChange} 
-               
+               voir={voir}
              
              />
 </div>
