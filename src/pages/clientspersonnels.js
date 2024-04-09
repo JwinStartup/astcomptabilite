@@ -191,7 +191,11 @@ export default function ClientsPersonnels() {
         <FaPlusCircle color="gray" size={25} onClick={()=>changeCreer(switchChange)}  />
        </div>
     </div>
-  <SetComponent p={switchChange}/>
+  <SetComponent 
+             p={switchChange} 
+               
+             
+             />
 </div>
   )
 }
