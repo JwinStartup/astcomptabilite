@@ -34,10 +34,6 @@ const supprimer=()=>{
         <div className='flex flex-col items-center my-2  w-full'>
       <div className='flex flex-row '> 
         <button 
-       type="button" onClick={()=>retour()} className=" text-blue-700 font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center">
-        Retour
-        </button>
-        <button 
        type="button" onClick={()=>modifier()} className=" text-green-700  font-medium  text-sm px-3 py-2 text-center inline-flex items-center">
         Modifier
         </button>
