@@ -44,21 +44,11 @@ const creer=()=>{
         <input {...register("nombreEnfant")}  type='number' placeholder="Nombre d'enfant à inscrire" className='outline-none w-[250px] border-b-2 py-1 text-sm'/>
        </div>
        </div>
-
-
-
-
-
    
         <div className='flex flex-col items-center my-2  w-full'>
-    
-        <button 
-       type="submit"  className=" text-green-700  font-medium  text-md px-3 py-2 text-center inline-flex items-center">
- {isSubmitting===false? <span>  Inscrire</span>: <span> Inscrire ...</span>}
+        <button  
+         type="submit"  className="text-green-700  font-medium  text-md px-3 py-2 text-center inline-flex items-center">
         </button>
-       
-      
-       
         </div>
     </form>
   )
