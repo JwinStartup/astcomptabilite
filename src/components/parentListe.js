@@ -3,7 +3,7 @@ import Avatar from 'react-avatar'
 import { useDispatch,useSelector } from 'react-redux';
 import { userActions } from '../reducer/user.js'
 
-export default function ParentListe(voir) {
+export default function ParentListe({voir}) {
    const dispatch=useDispatch()
    
    useEffect(() => { 
