@@ -13,7 +13,7 @@ import {useNavigate} from 'react-router-dom'
 
 
 
-export default function VoirParent({retour,value}) {
+export default function creerParent({retour,value}) {
 const dispatch = useDispatch()
 const modifier=()=>{
   console.log('modifier')
