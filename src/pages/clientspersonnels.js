@@ -169,7 +169,7 @@ export default function ClientsPersonnels() {
     }
   }
   const voir=(i)=>{
-    console.log(i)
+    setRub({bol:true,nom:'VOIRPARENT',value:i})
   }
   return (
     <div>
