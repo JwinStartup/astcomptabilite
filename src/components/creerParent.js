@@ -53,7 +53,7 @@ const creer=()=>{
         <div className='flex flex-col items-center my-2  w-full'>
     
         <button 
-       type="submit" onClick={()=>creer()} className=" text-green-700  font-medium  text-md px-3 py-2 text-center inline-flex items-center">
+       type="submit"  className=" text-green-700  font-medium  text-md px-3 py-2 text-center inline-flex items-center">
  {isSubmitting===false? <span>  Inscrire</span>: <span> Inscrire ...</span>}
         </button>
        
