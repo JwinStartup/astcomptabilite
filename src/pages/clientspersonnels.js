@@ -41,6 +41,58 @@ const SetComponent=({p})=>{
 
 
 
+const SetComponentPEP=({p,retour,value})=>{
+  console.log(p)
+  switch (p) {
+    case 'CREER':
+      return(
+        <div>
+          <Backdrop/>
+        <FormulaireCreerFacture retour={retour}  />
+        </div>
+      );
+    case 'PARTAGER':
+      return(
+        <div>
+          <Backdrop/>
+        <PartagerFacture retour={retour} value={value}/>
+        </div>
+      )
+    case 'SUPPRIMER':
+      return(
+        <div>
+          <Backdrop/>
+        <SupprimerFacture retour={retour} value={value} />
+        </div>
+      )
+     case 'MODIFIER':
+      return(
+        <div>
+          <Backdrop/>
+        <ModifierFacture retour={retour} value={value} />
+        </div>
+      )
+     case 'VOIRRECUE':
+      return(
+        <div>
+          <Backdrop/>
+        <VoirRecue retour={retour} value={value} />
+        </div>
+      )
+    case 'PAYER':
+      return(
+        <div>
+          <Backdrop/>
+        <FormulairePayerFacture retour={retour} value={value} />
+        </div>
+      )
+  
+  
+    default:
+      break;
+  }
+}
+
 
 export default function ClientsPersonnels() {
   const navigate= useNavigate() 
