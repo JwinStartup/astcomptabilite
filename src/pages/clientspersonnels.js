@@ -188,7 +188,7 @@ export default function ClientsPersonnels() {
         </Link>
       </div>
         <div classNname='pr-4'>
-        <FaPlusCircle color="gray" size={25} onClick={()=>changeCreer()}  />
+        <FaPlusCircle color="gray" size={25} onClick={()=>changeCreer(switchChange)}  />
        </div>
     </div>
   <SetComponent p={switchChange}/>
