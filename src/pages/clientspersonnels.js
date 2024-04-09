@@ -163,7 +163,7 @@ export default function ClientsPersonnels() {
   const voirEl=(i)=>{
     setRub({bol:true,nom:'VOIRELEVE',value:i})
   }
-  const voirPe=(i)=>{
+  const voirPer=(i)=>{
     setRub({bol:true,nom:'VOIRPERSONNEL',value:i})
   }
   return (
