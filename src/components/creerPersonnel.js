@@ -23,7 +23,7 @@ const supprimer=()=>{
   console.log('supprimer')
 }
   return (
-   <form  className='w-[300px]  border p-3 bg-white border-gray-100 shadow-md rounded-lg   z-10 absolute top-[200px] left-[50px]'>
+   <form  className='w-[300px]  border p-3 bg-white border-gray-100 shadow-md rounded-lg   z-10 absolute top-[100px] left-[50px]'>
 
        <div className='flex flex-col '>
    <p className='text-2xl font-semibold text-black tracking-wider mb-3'>Inscription Personnel</p>             
