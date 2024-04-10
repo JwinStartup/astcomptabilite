@@ -19,9 +19,7 @@ const dispatch = useDispatch()
    retour()
    })
   }
-const modifier=()=>{
-  console.log('modifier')
-}
+
 const supprimer=()=>{
   console.log('supprimer')
 }
