@@ -18,7 +18,10 @@ export default function BilanComponent({retour,id}) {
     }
      console.log("corps:",bilan,resultat)
   return (
-    <div className='z-10 absolute top-[150px] left-[400px] p-4 border bg-white border-gray-100 shadow-lg w-[400px] flex justify-center items-center flex-col'>
+   <div className='z-10 absolute top-[100px] left-[20px] mx-3 bg-slate-100 w-[300px]  border p-3  border-gray-100  rounded-md '>
+   <div className='absolute right-0 top-0 m-1 cursor-pointer  z-50 '>    
+            <AiFillCloseCircle color="gray" size={25} onClick={()=>retour()} />
+           </div>
        {(isLoader===true||bilan===null)?<RingLoader
         color={"green"}
         size={60}
