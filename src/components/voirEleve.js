@@ -11,7 +11,7 @@ import {useNavigate} from 'react-router-dom'
 
 
 
-export default function VoirEleve({retour,value,supprimer}) {
+export default function VoirEleve({retour,value,supprimerEl}) {
 const dispatch = useDispatch()
  const navigate=useNavigate()
 const modifier=()=>{
@@ -44,7 +44,7 @@ const modifier=()=>{
         Modifier
         </button>
         <button 
-       type="button" onClick={()=>supprimer()} className=" text-red-500  font-medium  text-sm px-3 py-2 text-center inline-flex items-center">
+       type="button" onClick={()=>supprimerEl()} className=" text-red-500  font-medium  text-sm px-3 py-2 text-center inline-flex items-center">
         Supprimer
         </button>
       
