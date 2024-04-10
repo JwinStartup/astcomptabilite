@@ -20,9 +20,7 @@ const dispatch = useDispatch()
    })
   }
 
-const supprimer=()=>{
-  console.log('supprimer')
-}
+
   return (
     <div className='relative mx-3 bg-slate-100 w-[300px]  border p-3  border-gray-100  rounded-md '>
             <div className='font-bold  tracking-tight text-lg text-black pl-1'>Supprimer un élève</div>
