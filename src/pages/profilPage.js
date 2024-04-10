@@ -37,7 +37,7 @@ const [rub , setRub]=useState({retour:false,id:null})
         <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900  ">Profil  </h5>
     </div>
       <div className='flex  flex-col items-center justify-center '>
-            <Avatar name={`${user.me.nom} ${user.me.prenoms}`}  size="100" round={true} /> 
+            <Avatar name={`${user.me.nom}`}  size="100" round={true} /> 
            <div className='flex  text-lg font-bold tracking-wider text-center w-full justify-center items-center '>
             {user.me.nom}  {user.me.prenoms}
           </div>
@@ -59,9 +59,9 @@ const [rub , setRub]=useState({retour:false,id:null})
                  </svg>
              </div>:<>
            {bilans.length===0?<p className='text-center w-full'>Pas de bilan pour le moment </p>:
-    <div className='flex flex-row gap-2 overflow-x-auto w-full px-4  '>
+         <div className='flex flex-row gap-2 overflow-x-auto w-full p-3 '>
       {bilans.map((value,index)=>
-         <div key={index} onClick={()=>setRub({retour:true,id:value._id})} className=' m-3 p-2 cursor-pointer bg-gray-100 border rounded border-gray-200  flex flex-col'>
+         <div key={index} onClick={()=>setRub({retour:true,id:value._id})} className='  p-2 cursor-pointer bg-gray-100 border rounded border-gray-200  flex flex-col'>
           <div className='text-lg font-bold '>
               Bilan financier
           </div>
@@ -82,10 +82,10 @@ const [rub , setRub]=useState({retour:false,id:null})
 
            {/*autre fonctionnalite*/}
             <div  className='flex flex-col '>
-            <div className='border text-md font-semibold tracking-wider py-2  px-1' >Modifier les informations</div>
-            <div className='border-r text-md font-semibold tracking-wider py-2  px-1' >Changer de mot de passe</div>
-            <div className='border-r text-md font-semibold tracking-wider py-2  px-1' >Creer un utilisateur</div>
-            <div className='border-r text-md font-semibold tracking-wider py-2  px-1' >Se deconnecter</div>
+            <div className='border text-md font-semibold tracking-wider py-3  px-1' >Modifier les informations</div>
+            <div className='border-r text-md font-semibold tracking-wider py-3  px-1' >Changer de mot de passe</div>
+            <div className='border-r text-md font-semibold tracking-wider py-3  px-1' >Creer un utilisateur</div>
+            <div className='border-r text-md font-semibold tracking-wider py-3  px-1' >Se deconnecter</div>
              </div>
            </div>
 
