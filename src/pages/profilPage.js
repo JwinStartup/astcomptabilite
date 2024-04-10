@@ -28,6 +28,10 @@ const [rub , setRub]=useState({retour:false,id:null})
 
   return (
  <div className=' w-full'>
+    {rub.retour!==false&&<div>
+        <BilanComponent retour={()=>setRub({retour:false})} id={rub.id} />
+          <Backdrop/>
+        </div>}
     <h1 className='text-2xl m-1 font-bold'>ASTComptable</h1>
    <div className="flex  items-center "  onClick={()=>navigate('/')} >
         <IoIosArrowDropleftCircle size={30} color="black" />
