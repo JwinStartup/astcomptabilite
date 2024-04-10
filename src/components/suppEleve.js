@@ -14,7 +14,6 @@ import {useNavigate} from 'react-router-dom'
 export default function SupprimerEleve({retour,value}) {
 const dispatch = useDispatch()
   const supprimer=()=>{
-    console.log(rub.value)
     dispatch(userActions.supprimerEnfant(value._id)).then(()=>{
    retour()
    })
