@@ -18,9 +18,10 @@ const dispatch = useDispatch()
 
   return (
  <div className=' w-full'>
-     <div className='absolute right-0 top-0 m-1 cursor-pointer  z-50 '>    
-            <AiFillCloseCircle color="gray" size={25} onClick={()=>navigate('/')} />
-           </div> 
+   <div className="flex  items-center "  onClick={()=>navigate('/')} >
+        <IoIosArrowDropleftCircle size={30} color="black" />
+        <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900  ">Profil  </h5>
+    </div>
       <div className='flex  flex-col items-center justify-center '>
             <Avatar name={`${value.nom} ${value.prenoms}`}  size="100" round={true} /> 
            <div className='flex  text-lg font-bold tracking-wider text-center w-full justify-center items-center '>
