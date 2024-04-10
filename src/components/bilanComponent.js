@@ -4,6 +4,7 @@ import { comptabiliteActions } from '../reducer/comptabilite'
 import { RingLoader } from 'react-spinners'
 import { IoIosArrowDropleftCircle } from "react-icons/io";
 import {useNavigate} from 'react-router-dom'
+import { AiFillCloseCircle } from "react-icons/ai";
 export default function BilanComponent({retour,id}) {
     const dispatch =useDispatch()
     const navigate =useNavigate()
