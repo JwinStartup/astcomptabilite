@@ -28,6 +28,7 @@ const [rub , setRub]=useState({retour:false,id:null})
 
   return (
  <div className=' w-full'>
+    <h1 className='text-2xl m-1 font-bold'>ASTComptable</h1>
    <div className="flex  items-center "  onClick={()=>navigate('/')} >
         <IoIosArrowDropleftCircle size={30} color="black" />
         <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900  ">Profil  </h5>
