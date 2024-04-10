@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Entete from '../components/entete'
 import Backdrop from '../components/backdrop'
-import CreerUser from '../components/creerUser'
-import VoirUser from '../components/voirUser'
-import ModifierUser from '../components/modifierUser'
-import SupprimerUser from '../components/supprimerUser.js'
 import { IoIosArrowDropleftCircle } from "react-icons/io";
 import { FaPlusCircle } from "react-icons/fa"
 import {useNavigate} from 'react-router-dom'
@@ -12,6 +8,10 @@ import { useDispatch,useSelector } from 'react-redux';
 import { RingLoader} from 'react-spinners';
 import { userActions } from '../reducer/user.js'
 {/*const SetComponent=({p,retour,value,supprimer,modifier})=>{
+import CreerUser from '../components/creerUser'
+import VoirUser from '../components/voirUser'
+import ModifierUser from '../components/modifierUser'
+import SupprimerUser from '../components/supprimerUser.js'
   console.log(p)
   switch (p) {
     case 'CREER':
