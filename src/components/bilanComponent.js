@@ -46,7 +46,7 @@ export default function BilanComponent({retour,id}) {
                                </span>
          </div>
             
-      <table className='w-full'>
+      <table className='w-full mb-3'>
             
        <tbody>
          <tr className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full  cursor-pointer'>
@@ -67,13 +67,13 @@ export default function BilanComponent({retour,id}) {
     
       </table>
     
- <div classeName='flex flex-col mt-3 space-x-3 '>
+ <div classeName='flex flex-col  '>
 
    {bilan.statut!=='cloturé'&&
        <button 
        type="button" 
        onClick={()=>cloturer()} 
-       className="text-white bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
+       className="text-blue-700 font-medium  text-sm px-5 py-2.5 text-center inline-flex items-center"
         >
        Cloturer
    </button>}
