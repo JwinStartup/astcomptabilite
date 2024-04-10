@@ -22,7 +22,7 @@ export default function InscriptionUser() {
   return (
     <div className='w-full flex flex-col  items-center justify-center'>
         <Entete />
-         <form onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex justify-center w-[550px] mt-6 items-center flex-col space-y-4 p-9 border border-gray-400 rounded-lg shadow-lg' >
+         <form onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex justify-center w-[px] mt-6 items-center flex-col space-y-4 p-9 border border-gray-400 rounded-lg shadow-lg' >
          
      <div className='flex flex-col '>
    <p className='text-2xl font-semibold text-black tracking-wider mb-3'>Inscrivez un utilisateur</p>             
