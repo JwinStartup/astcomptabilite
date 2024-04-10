@@ -49,7 +49,7 @@ export default function Parents() {
       <button type='submit' className='outline-none flex flex-row items-center justify-center space-x-2  text-white bg-green-700 hover:bg-green-800  font-medium  text-md  px-5 py-2.5 mr-2 mb-2'>
        
         
-  {isSubmitting? <span>Inscrire</span>: <span>Inscrire.....</span>}
+  {isSubmitting? <span>Inscrire</span>: <span>Inscrire...</span>}
         </button>
       </form>
 
