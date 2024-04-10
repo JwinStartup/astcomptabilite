@@ -48,7 +48,7 @@ const [rub , setRub]=useState({retour:false,id:null})
        </div>
 
             <div>
-              <p className="text-lg font-bold ml-1 tracking-tight text-gray-900  "> Bilan financier </p>
+              <p className="text-lg font-semibold ml-1 tracking-tight text-gray-900  "> Bilan financier </p>
                <div>
            
            {/*liste des bilans financiers*/}
