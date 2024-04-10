@@ -20,7 +20,7 @@ export default function BilanComponent({retour,id}) {
     }
      console.log("corps:",bilan,resultat)
   return (
-   <div className='z-10 absolute top-[100px] left-[20px] mx-3 bg-slate-100 w-[300px]  border p-3  border-gray-100  rounded-md '>
+   <div className='z-10 absolute top-[100px] left-[20px] mx-3 bg-white w-[300px]  border p-3  border-gray-100  rounded-md '>
    <div className='absolute right-0 top-0 m-1 cursor-pointer  z-50 '>    
             <AiFillCloseCircle color="gray" size={25} onClick={()=>retour()} />
            </div>
@@ -68,13 +68,6 @@ export default function BilanComponent({retour,id}) {
       </table>
     
  <div classeName='flex flex-col mt-3 space-x-3 '>
-    
-   <button 
-      type="button"
-      onClick={()=>retour()} 
-      className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-   retour
-   </button>
 
    {bilan.statut!=='cloturé'&&
        <button 
