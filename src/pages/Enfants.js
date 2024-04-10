@@ -34,12 +34,10 @@ const {personnels} = useSelector((state)=>{
   return (
     <div>
     <Entete />
-    <div className='flex items-cennter justify-between mx-5 '>
-    <button className='ml-10 bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center' onClick={()=>navigate("/cp/ListePersonnel")} > retour</button>
-
-              <p className=' mb-3 p-0 ml-5  tracking-tight text-2xl text-black font-bold'>Inscription Ennfant</p>
-             
-          </div>
+     <div className="flex  items-center "  onClick={()=>navigate('/cp')} >
+        <IoIosArrowDropleftCircle size={30} style={{paddingRigth:"5px"} color="black" />
+        <h5 className="text-xl font-bold ml-1 tracking-tight text-gray-900  ">Inscription personnel  </h5>
+    </div>
          <form onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex justify-center h-full items-center flex-col space-y- p-9 ' >
          
      <div className='flex flex-col '>
