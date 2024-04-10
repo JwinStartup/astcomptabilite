@@ -15,7 +15,7 @@ export default function Parents() {
     console.log(data)
     //setLoading(true)
    dispatch(userActions.inscriptionParent(data)).then(()=>{
-     navigate('/cp/ListeParent')
+     navigate('/cp')
     })
   }
   return (
