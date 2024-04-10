@@ -7,6 +7,7 @@ import Avatar from 'react-avatar'
 import { IoIosArrowDropleftCircle } from "react-icons/io";
 import {useNavigate} from 'react-router-dom'
 import { comptabiliteActions } from '../reducer/comptabilite'
+import { userActions } from '../reducer/user'
 import Backdrop from '../components/backdrop'
 import BilanComponent from '../components/bilanComponent'
 import {UserContext} from '../context/authContext'
@@ -82,7 +83,7 @@ const [rub , setRub]=useState({retour:false,id:null})
             <div className='border text-md font-semibold tracking-wider py-3  px-1' >Modifier les informations</div>
             <div className='border text-md font-semibold tracking-wider py-3  px-1' >Changer de mot de passe</div>
             <div className='border text-md font-semibold tracking-wider py-3  px-1' >Creer un utilisateur</div>
-            <div className='text-md font-semibold tracking-wider py-3  px-1' >Se deconnecter</div>
+            <div onClick={()=>dispatch(userActions.deconnecte()).then(()=>logout())} className='text-md font-semibold tracking-wider py-3  px-1' >Se deconnecter</div>
              </div>
            </div>
 
