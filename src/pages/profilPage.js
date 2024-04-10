@@ -9,7 +9,7 @@ import {useNavigate} from 'react-router-dom'
 import { comptabiliteActions } from '../reducer/comptabilite'
 import Backdrop from '../components/backdrop'
 import BilanComponent from '../components/bilanComponent'
-
+import {UserContext} from '../context/authContext'
 
 
 export default function ProfilPage() {
