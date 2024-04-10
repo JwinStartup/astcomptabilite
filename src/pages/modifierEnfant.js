@@ -35,24 +35,23 @@ const {personnels} = useSelector((state)=>{
     return state.userReducer
    });
   return (
-    <div>
+   <div>
     <Entete />
-    <div className='flex items-cennter justify-between mx-5 w-[1150px]'>
+    <div className='flex items-cennter justify-between mx-5 '>
     <button className='ml-10 bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center' onClick={()=>navigate("/cp/ListePersonnel")} > retour</button>
 
-              <p className=' mb-3 p-0 ml-5  tracking-tight text-2xl text-black font-bold'>Modifier Ennfant</p>
+              <p className=' mb-3 p-0 ml-5  tracking-tight text-2xl text-black font-bold'>Inscription Ennfant</p>
              
           </div>
-         <form onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex justify-center h-full items-center flex-col space-y-4 p-9 ' >
+         <form onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex justify-center h-full items-center flex-col space-y- p-9 ' >
          
      <div className='flex flex-col '>
-   <p className='text-2xl font-semibold text-black tracking-wider mb-3'>Enfant</p>             
-      <div className='flex flex-col mx-4 space-y-4'>
-      <input {...register("nom")}   type='text' placeholder='Nom' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
-      <input {...register("prenoms")}   type='text' placeholder='Prenoms' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
-      <input {...register("cel")}   type='text' placeholder='Cel' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
-      <input {...register("ville")}   type='text' placeholder='ville' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
-      <input {...register("commune")}   type='text' placeholder='commune' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
+      <div className='flex flex-col mx-4 space-y-2'>
+      <input {...register("nom")}   type='text' placeholder='Nom' className='outline-none w-[250px] border-b-2 py-1 text-sm'/>
+      <input {...register("prenoms")}   type='text' placeholder='Prenoms' className='outline-none w-[250px] border-b-2 py-1 text-sm'/>
+      <input {...register("cel")}   type='text' placeholder='Cel' className='outline-none w-[250px] border-b-2 py-1 text-sm'/>
+      <input {...register("ville")}   type='text' placeholder='ville' className='outline-none w-[250px] border-b-2 py-1 text-sm'/>
+      <input {...register("commune")}   type='text' placeholder='commune' className='outline-none w-[250px] border-b-2 py-1 text-sm'/>
           <label> 
                {par.length!==0&& 
                   <div>{par.map((i)=>
@@ -61,11 +60,11 @@ const {personnels} = useSelector((state)=>{
                   </div>}
       Parent:
   <select {...register("parent")}
-              className='outline-none w-[350px] border-b-2 py-1 text-lg'>
+             defaultValue=" " className='outline-none w-[250px] border-b-2 py-1 text-sm'>
         {parents.map((val,index)=> <option className='' value={val._id} key={index}> {val.nom}  {val.prenoms}</option>)}
         </select> </label>
                
-  <select {...register("classe")}  className='outline-none w-[400px] border-b-2 py-1 text-lg'>
+  <select {...register("classe")} defaultValue='Cp1' className='outline-none w-[250px] border-b-2 py-1 text-sm'>
             <option>Cp1 </option>
             <option>Cp2</option>
             <option>Ce1</option>
@@ -87,9 +86,9 @@ const {personnels} = useSelector((state)=>{
         </select>
       <div> 
     
-      <div  className="w-[400px] ">
-         <label className="w-[400px] text-md font-medium ">Selectionner  des formateurs</label>    
-       <ul className="h-56 px-3 pb-3 overflow-y-auto text-sm text-gray-700 w-[400px] ">
+      <div  className="w-[250px] ">
+         <label className="w-[250px] text-md font-medium ">Selectionner  des formateurs</label>    
+       <ul className="px-3 pb-3 overflow-y-auto text-sm text-gray-700 w-[250px] ">
               {personnels.map((val,index)=><li>
         <div className="flex key={index} items-center p-2 rounded hover:bg-gray-100 ">
           <input id={index} 
@@ -110,8 +109,8 @@ const {personnels} = useSelector((state)=>{
      </div> 
      </div>
      
-<button type='submit' className='outline-none flex flex-row items-center justify-center space-x-2  text-white bg-red-700 hover:bg-red-800  font-medium rounded-lg text-lg  px-5 py-2.5 mr-2 mb-2'>
-       <span>   Modifier</span>
+<button type='submit' className='outline-none flex flex-row items-center justify-center     font-bold  text-lg  px-5 py-2.5 mr-2 mb-2'>
+                   {isSubmitting? <span>Inscrire</span>:<span>Inscrire...</span>}
       </button>
     </form>
 
