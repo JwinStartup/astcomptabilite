@@ -7,7 +7,8 @@ import Avatar from 'react-avatar'
 import { IoIosArrowDropleftCircle } from "react-icons/io";
 import {useNavigate} from 'react-router-dom'
 
-
+import Backdrop from '../components/backdrop'
+import BilanComponent from '../components/bilanComponent'
 
 
 
