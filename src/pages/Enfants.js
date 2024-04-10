@@ -34,7 +34,7 @@ const {personnels} = useSelector((state)=>{
   return (
     <div>
     <Entete />
-    <div className='flex items-cennter justify-between mx-5 w-[1150px]'>
+    <div className='flex items-cennter justify-between mx-5 w-full'>
     <button className='ml-10 bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center' onClick={()=>navigate("/cp/ListePersonnel")} > retour</button>
 
               <p className=' mb-3 p-0 ml-5  tracking-tight text-2xl text-black font-bold'>Inscription Ennfant</p>
