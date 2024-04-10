@@ -48,15 +48,16 @@ export default function FacturesImpayes() {
    });
   const navigate=useNavigate()
   return (
-    <div>
+  <div className=' w-full'>
          {rub.bol!==false&&<SetComponent p={rub.nom} retour={()=>setRub({bol:false,nom:''})} value={rub.value} />}
         <Entete />
-     <div className='  flex justify-between  space-x-2 mx-4'>
-     <div className=' mb-3 p-0  tracking-tight text-[22px] text-black font-semibold '><button className=' bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center ml-2' onClick={()=>navigate("/")} > retour</button>Utilisateur </div>
-     <div className='  flex justify-between  space-x-2'>
-                <button onClick={()=>setRub({nom:'CREER',bol:true})} className='ml-10 bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center'>+ Creer un utiilisateur</button>
-            </div>
-            </div>
+     <div className='  w-full  flex flex-col  space-x-2'>
+     <div className=' mb-3 p-0 w-full   '>
+     <div className='  flex w-full justify-between flex-row space-x-2 items-center w-[400px]'>
+    <div className="flex  items-center "  onClick={()=>navigate('/profil')} >
+        <IoIosArrowDropleftCircle size={30} color="black" />
+        <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900  ">Utiilisateur  </h5>
+    </div>
             {isLoader?<div className='w-full flex justify-center items-center mt-10 '> 
     <svg aria-hidden="true" className="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
