@@ -41,13 +41,10 @@ const [rub , setRub]=useState({retour:false,id:null})
            <div className='flex  text-lg font-bold tracking-wider text-center w-full justify-center items-center '>
             {user.me.nom}  {user.me.prenoms}
           </div>
-           <div className='flex  text-md text-green-400   font-normal tracking-widest text-center w-full justify-center items-center '>
-            Parent 
-          </div>
            <div className="flex justify-start text-red-300 font-medium text-sm items-center gap-1">{user.me.role} </div>
        </div>
 
-            <div>
+            <div className='mt-6'>
               <p className="text-lg font-semibold ml-1 tracking-tight text-gray-900  "> Bilan financier </p>
                <div>
            
