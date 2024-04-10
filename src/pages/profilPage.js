@@ -16,7 +16,7 @@ export default function ProfilPage() {
 const dispatch = useDispatch()
  const navigate=useNavigate()
 const [rub , setRub]=useState({retour:false,id:null})
-
+ const { login,logout, user } = useContext(UserContext);
   const navigate=useNavigate()
   useEffect(() => { 
     dispatch(comptabiliteActions.listeBilan())
