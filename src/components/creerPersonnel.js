@@ -19,25 +19,25 @@ const dispatch = useDispatch()
 const navigate=useNavigate()
 
   return (
-   <div  className='w-[300px] onSubmit={handleSubmit(onSubmit)} border p-3 bg-white border-gray-100 shadow-md rounded-lg   z-10 absolute top-[70px] left-[20px]'>
+   <div  className='w-[300px] onSubmit={handleSubmit(onSubmit)} border p-6 bg-white border-gray-100 shadow-md rounded-lg   z-10 absolute top-[70px] left-[20px]'>
              <div className='absolute right-0 top-0 m-1 cursor-pointer  z-50 '>    
             <AiFillCloseCircle color="gray" size={25} onClick={()=>retour()} />
            </div> 
          <div className='flex flex-col '>
-         <p className='text-lg font-semibold text-black tracking-wider mb-3'>Souhaitez vous inscrire </p>             
+         <p className='text-lg font-semibold text-black tracking-wider mb-3'>Souhaitez vous inscrire un </p>             
 
-            <div className='flex flex-col items-center my-2  w-full'>
+            <div className='flex flex-row items-center my-2  w-full'>
             <button 
-              onClick={()=>navigate('/inscription/parents')}  className=" text-black  border-r font-bold  text-lg px-3 py-2 text-center inline-flex items-center">
-              un parent
+              onClick={()=>navigate('/inscription/parents')}  className=" text-black  border-r font-semibold  text-lg px-3 py-2 text-center inline-flex items-center">
+               parent
             </button>
             <button 
-              onClick={()=>navigate('/inscription/personnels')}  className=" text-black  border-r font-bold  text-lg px-3 py-2 text-center inline-flex items-center">
-           un personnel
+              onClick={()=>navigate('/inscription/personnels')}  className=" text-black  border-r font-semibold  text-lg px-3 py-2 text-center inline-flex items-center">
+            personnel
             </button>
             <button 
-              onClick={()=>navigate('/inscription/enfants')}  className=" text-black  border font-bold  text-lg px-3 py-2 text-center inline-flex items-center">
-            un élève
+              onClick={()=>navigate('/inscription/enfants')}  className=" text-black font-semibold  font-bold  text-lg px-3 py-2 text-center inline-flex items-center">
+             élève
             </button>
                </div>
           </div>
