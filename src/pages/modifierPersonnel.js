@@ -50,7 +50,7 @@ dispatch(userActions.modifierPersonnel(data)).then(()=>{
      </div>
      
 <button type='submit' className='outline-none flex flex-row items-center justify-center  font-bold text-lg  px-5 py-2.5 mr-2 mb-2'>
-  {isSubmitting? <span>Inscrire</span>:<span>Inscrire...</span}
+  {isSubmitting? <span>Inscrire</span>:<span>Inscrire...</span>}
       </button>
     </form>
   </div>
