@@ -21,16 +21,14 @@ const supprimer=()=>{
 }
   return (
     <div className='relative mx-3 bg-slate-100 w-[300px]  border p-3  border-gray-100  rounded-md '>
-            
+            <div className='font-bold  tracking-tight text-lg text-black pl-1'>Supprimer un élève</div>
+          <p className='font-lg  tracking-tight text-md text-center' >Souhaitez-vous supprimer l'élève  <span className='font-lg  tracking-tight text-[18px] text-green-400 pl-1'>{value.nom} {value.prenoms} </span> </p>
+ 
         <div className='flex flex-col items-center my-2  w-full'>
       <div className='flex flex-row '> 
         <button 
        type="button" onClick={()=>retour()} className=" text-blue-700 font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center">
         Retour
-        </button>
-        <button 
-       type="button" onClick={()=>modifier()} className=" text-green-700  font-medium  text-sm px-3 py-2 text-center inline-flex items-center">
-        Modifier
         </button>
         <button 
        type="button" onClick={()=>supprimer()} className=" text-green-700  font-medium  text-sm px-3 py-2 text-center inline-flex items-center">
