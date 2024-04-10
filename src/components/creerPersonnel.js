@@ -29,15 +29,15 @@ const dispatch = useDispatch()
         <div className='flex flex-col items-center my-2  w-full'>
       <div className='flex flex-row '> 
         <button 
-          onClick={()=>navvigate('/inscription/parent')}  className=" text-black  border-r font-bold  text-lg px-3 py-2 text-center inline-flex items-center">
+          onClick={()=>navvigate('/inscription/parents')}  className=" text-black  border-r font-bold  text-lg px-3 py-2 text-center inline-flex items-center">
           un parent
         </button>
         <button 
-          onClick={()=>navvigate('/inscription/personnel')}  className=" text-black  border-r font-bold  text-lg px-3 py-2 text-center inline-flex items-center">
+          onClick={()=>navvigate('/inscription/personnels')}  className=" text-black  border-r font-bold  text-lg px-3 py-2 text-center inline-flex items-center">
        un personnel
         </button>
         <button 
-          onClick={()=>navvigate('/inscription/enfant')}  className=" text-black  border font-bold  text-lg px-3 py-2 text-center inline-flex items-center">
+          onClick={()=>navvigate('/inscription/enfants')}  className=" text-black  border font-bold  text-lg px-3 py-2 text-center inline-flex items-center">
         un élève
         </button>
      
