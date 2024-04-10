@@ -8,6 +8,7 @@ export default function Enfants() {
  const [par,setPar] = useState([])
   const navigate=useNavigate()
   const { register, handleSubmit,
+         formState:{isSubmitting}
   } = useForm(
 );
 const dispatch =useDispatch()
@@ -39,15 +40,15 @@ const {personnels} = useSelector((state)=>{
               <p className=' mb-3 p-0 ml-5  tracking-tight text-2xl text-black font-bold'>Inscription Ennfant</p>
              
           </div>
-         <form onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex justify-center h-full items-center flex-col space-y-4 p-9 ' >
+         <form onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex justify-center h-full items-center flex-col space-y- p-9 ' >
          
      <div className='flex flex-col '>
-      <div className='flex flex-col mx-4 space-y-4'>
-      <input {...register("nom")}   type='text' placeholder='Nom' className='outline-none w-[250px] border-b-2 py-1 text-lg'/>
-      <input {...register("prenoms")}   type='text' placeholder='Prenoms' className='outline-none w-[250px] border-b-2 py-1 text-lg'/>
-      <input {...register("cel")}   type='text' placeholder='Cel' className='outline-none w-[250px] border-b-2 py-1 text-lg'/>
-      <input {...register("ville")}   type='text' placeholder='ville' className='outline-none w-[250px] border-b-2 py-1 text-lg'/>
-      <input {...register("commune")}   type='text' placeholder='commune' className='outline-none w-[250px] border-b-2 py-1 text-lg'/>
+      <div className='flex flex-col mx-4 space-y-2'>
+      <input {...register("nom")}   type='text' placeholder='Nom' className='outline-none w-[250px] border-b-2 py-1 text-sm'/>
+      <input {...register("prenoms")}   type='text' placeholder='Prenoms' className='outline-none w-[250px] border-b-2 py-1 text-sm'/>
+      <input {...register("cel")}   type='text' placeholder='Cel' className='outline-none w-[250px] border-b-2 py-1 text-sm'/>
+      <input {...register("ville")}   type='text' placeholder='ville' className='outline-none w-[250px] border-b-2 py-1 text-sm'/>
+      <input {...register("commune")}   type='text' placeholder='commune' className='outline-none w-[250px] border-b-2 py-1 text-sm'/>
           <label> 
                {par.length!==0&& 
                   <div>{par.map((i)=>
@@ -56,11 +57,11 @@ const {personnels} = useSelector((state)=>{
                   </div>}
       Parent:
   <select {...register("parent")}
-             defaultValue=" " className='outline-none w-[250px] border-b-2 py-1 text-lg'>
+             defaultValue=" " className='outline-none w-[250px] border-b-2 py-1 text-sm'>
         {parents.map((val,index)=> <option className='' value={val._id} key={index}> {val.nom}  {val.prenoms}</option>)}
         </select> </label>
                
-  <select {...register("classe")} defaultValue='Cp1' className='outline-none w-[250px] border-b-2 py-1 text-lg'>
+  <select {...register("classe")} defaultValue='Cp1' className='outline-none w-[250px] border-b-2 py-1 text-sm'>
             <option>Cp1 </option>
             <option>Cp2</option>
             <option>Ce1</option>
@@ -105,8 +106,8 @@ const {personnels} = useSelector((state)=>{
      </div> 
      </div>
      
-<button type='submit' className='outline-none flex flex-row items-center justify-center space-x-2  text-white bg-green-700 hover:bg-green-800  font-medium rounded-lg text-lg  px-5 py-2.5 mr-2 mb-2'>
-       <span>   S'inscrire</span>
+<button type='submit' className='outline-none flex flex-row items-center justify-center   text-white   font-lg text-lg  px-5 py-2.5 mr-2 mb-2'>
+                   {isSubmitting? <span>Inscrire</span>:<span>Inscrire...</span>}
       </button>
     </form>
 
