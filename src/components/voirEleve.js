@@ -13,6 +13,7 @@ import {useNavigate} from 'react-router-dom'
 
 export default function VoirEleve({retour,value}) {
 const dispatch = useDispatch()
+ const navigate=useNavigate()
 const modifier=()=>{
   console.log('modifier')
 }
@@ -41,7 +42,7 @@ const supprimer=()=>{
         <div className='flex flex-col items-center my-2  w-full'>
       <div className='flex flex-row '> 
         <button 
-       type="button" onClick={()=>modifier()} className=" text-green-700  border-r  font-medium  text-sm px-3 py-2 text-center inline-flex items-center">
+       type="button" onClick={()=>navigate( `/modifier/eleves/${value._id}`)} className=" text-green-700  border-r  font-medium  text-sm px-3 py-2 text-center inline-flex items-center">
         Modifier
         </button>
         <button 
