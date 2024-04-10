@@ -105,7 +105,7 @@ const SetComponentPEP=({p,retour,value,supprimer,supprimerPer,supprimerEl})=>{
       return(
         <div>
           <Backdrop/>
-        <SupprimerParent retour={retour} value={value} }/>
+        <SupprimerParent retour={retour} value={value}/>
         </div>
       )
     case 'CREERELEVE':
