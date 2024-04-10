@@ -22,16 +22,9 @@ console.log(useur)
              Connectez-vous
       </Link>
        :
-      <div className='flex m-2 items-center gap-1 '>
+      <div className='flex m-2 items-center gap-1  onClick={()=>navigate('/')}'>
         <Avatar name={useur.me.nom} size="30" round={true} />
-        {/* <p className=''>{useur.me.nom} </p>
-             <div className='bg-gray-600 rounded-full w-2 h-2'/>
-             <p className='text-sm tracking-widest text-green-300 pb-0.5'>{useur.me.role}</p>
-           <Link  onClick={()=>dispatch(userActions.deconnecte()).then(()=>logout())}
-             className="me-3 inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium  leading-normal text-red-400 " 
-             >
-             Deconnetez-vous
-      </Link>*/}
+      
       </div>
   }
         </div>
