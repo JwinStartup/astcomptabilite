@@ -85,7 +85,7 @@ const [rub , setRub]=useState({retour:false,id:null})
                </div>
 
            {/*autre fonctionnalite*/}
-            <div  className=''>
+            <div  className='flex '>
             <div className='' >Modifier les informations</div>
             <div className='' >Changer de mot de passe</div>
             <div className='' >Creer un utilisateur</div>
