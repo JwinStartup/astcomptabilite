@@ -64,7 +64,7 @@ const [rub , setRub]=useState({retour:false,id:null})
               Bilan financier
           </div>
           <div className='text-sm text-gray-400 font-medium'>
-          Mois: {value.periode}
+           {value.periode}
           </div>
           <div className={`${value.statut==='cloturé'?'text-red-400':'text-green-400'}
                               tracking-wide text-sm  font-medium mt-1
