@@ -23,27 +23,24 @@ const navigate=useNavigate()
              <div className='absolute right-0 top-0 m-1 cursor-pointer  z-50 '>    
             <AiFillCloseCircle color="gray" size={25} onClick={()=>retour()} />
            </div> 
-       <div className='flex flex-col '>
-   <p className='text-lg font-semibold text-black tracking-wider mb-3'>Souhaitez vous inscrire </p>             
+         <div className='flex flex-col '>
+         <p className='text-lg font-semibold text-black tracking-wider mb-3'>Souhaitez vous inscrire </p>             
 
-        <div className='flex flex-col items-center my-2  w-full'>
-      <div className='flex flex-row '> 
-        <button 
-          onClick={()=>navvigate('/inscription/parents')}  className=" text-black  border-r font-bold  text-lg px-3 py-2 text-center inline-flex items-center">
-          un parent
-        </button>
-        <button 
-          onClick={()=>navvigate('/inscription/personnels')}  className=" text-black  border-r font-bold  text-lg px-3 py-2 text-center inline-flex items-center">
-       un personnel
-        </button>
-        <button 
-          onClick={()=>navvigate('/inscription/enfants')}  className=" text-black  border font-bold  text-lg px-3 py-2 text-center inline-flex items-center">
-        un élève
-        </button>
-     
-      
-         </div>
-        </div>
+            <div className='flex flex-col items-center my-2  w-full'>
+            <button 
+              onClick={()=>navvigate('/inscription/parents')}  className=" text-black  border-r font-bold  text-lg px-3 py-2 text-center inline-flex items-center">
+              un parent
+            </button>
+            <button 
+              onClick={()=>navvigate('/inscription/personnels')}  className=" text-black  border-r font-bold  text-lg px-3 py-2 text-center inline-flex items-center">
+           un personnel
+            </button>
+            <button 
+              onClick={()=>navvigate('/inscription/enfants')}  className=" text-black  border font-bold  text-lg px-3 py-2 text-center inline-flex items-center">
+            un élève
+            </button>
+               </div>
+          </div>
         </div>
   )
 }
