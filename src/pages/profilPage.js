@@ -18,9 +18,22 @@ const dispatch = useDispatch()
 
   return (
  <div className=' w-full'>
-    <div> 
-   
-   </div>
+     <div className='absolute right-0 top-0 m-1 cursor-pointer  z-50 '>    
+            <AiFillCloseCircle color="gray" size={25} onClick={()=>navigate('/')} />
+           </div> 
+      <div className='flex  flex-col items-center justify-center '>
+            <Avatar name={`${value.nom} ${value.prenoms}`}  size="100" round={true} /> 
+           <div className='flex  text-lg font-bold tracking-wider text-center w-full justify-center items-center '>
+            {value.nom}  {value.prenoms}
+          </div>
+           <div className='flex  text-md text-green-400   font-normal tracking-widest text-center w-full justify-center items-center '>
+            Parent 
+          </div>
+           <div className='flex  text-md font-bold tracking-wider text-center w-full justify-center items-center '>
+            {value.cel}  
+          </div>
+           <div className="flex justify-start text-red-300 font-medium text-sm items-center gap-1">{value.ville}<div className="w-2 h-2 rounded-full bg-black"/>{value.commune} </div>
+       </div>
     </div>
   )
 }
