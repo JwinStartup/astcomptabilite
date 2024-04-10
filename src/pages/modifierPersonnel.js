@@ -22,9 +22,8 @@ dispatch(userActions.modifierPersonnel(data)).then(()=>{
     <div>
     <Entete />
     <div className="flex  items-center "  onClick={()=>navigate('/cp')} >
-        <IoIosArrowDropleftCircle size={30} color="black" />
-        <FaFileInvoice  size={30} color="#1D4ED8" style={{paddingRigth:"5px"}}/>
-        <h5 className="text-xl font-bold ml-1 tracking-tight text-gray-900  ">Inscription personnel  </h5>
+        <IoIosArrowDropleftCircle size={30} color="black" style={{paddingRigth:"5px"}}/>
+        <h5 className="text-xl font-bold ml-1 tracking-tight text-gray-900  ">Modifier personnel  </h5>
     </div>
          <form onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex justify-center h-full items-center flex-col space-y-4 p-9 ' >
          
