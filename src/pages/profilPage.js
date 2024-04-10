@@ -6,7 +6,7 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import Avatar from 'react-avatar'
 import { IoIosArrowDropleftCircle } from "react-icons/io";
 import {useNavigate} from 'react-router-dom'
-
+import { comptabiliteActions } from '../reducer/comptabilite'
 import Backdrop from '../components/backdrop'
 import BilanComponent from '../components/bilanComponent'
 
