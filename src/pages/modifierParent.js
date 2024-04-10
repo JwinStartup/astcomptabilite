@@ -29,7 +29,7 @@ export default function ModifierParents() {
       <div className="flex  items-center "  onClick={()=>navigate('/cp')} >
         <IoIosArrowDropleftCircle size={30} color="black" />
         <FaFileInvoice  size={30} color="#1D4ED8" style={{paddingRigth:"5px"}}/>
-        <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900  ">Inscription parent  </h5>
+        <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900  ">Modifier  parent  </h5>
     </div>
            <form onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex justify-center h-full items-center flex-col space-y-4 p-9 ' >
            
