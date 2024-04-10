@@ -29,7 +29,7 @@ dispatch(userActions.inscriptionPersonnel(data)).then(()=>{
          <form onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex justify-center h-full items-center flex-col space-y-4 p-9 ' >
          
      <div className='flex flex-col '>
-      <div className='flex flex-col mx-4 space-y-4'>
+      <div className='flex flex-col mx-4 space-y-2'>
       <input {...register("nom")}   type='text' placeholder='Nom' className='outline-none w-[250px] border-b-2 py-1 text-lg'/>
       <input {...register("prenoms")}   type='text' placeholder='Prenoms' className='outline-none w-[250px] border-b-2 py-1 text-lg'/>
       <input {...register("cel")}   type='text' placeholder='Cel' className='outline-none w-[250px] border-b-2 py-1 text-lg'/>
@@ -49,7 +49,7 @@ dispatch(userActions.inscriptionPersonnel(data)).then(()=>{
      </div> 
      </div>
      
-<button type='submit' className='outline-none flex flex-row items-center justify-center space-x-2  text-white bg-green-700 hover:bg-green-800  font-medium rounded-lg text-lg  px-5 py-2.5 mr-2 mb-2'>
+<button type='submit' className='outline-none flex flex-row items-center justify-center  font-bold text-lg  px-5 py-2.5 mr-2 mb-2'>
   {isSubmitting? <span>Inscrire</span>:<span>Inscrire...</span}
       </button>
     </form>
