@@ -41,7 +41,7 @@ const {personnels} = useSelector((state)=>{
     <Entete />
     <div className="flex  items-center "  onClick={()=>navigate('/cp')} >
         <IoIosArrowDropleftCircle size={30} style={{paddingRigth:"5px"}} color="black" />
-        <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900  ">Inscription parent  </h5>
+        <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900  ">Modifier élève  </h5>
     </div>
          <form onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex justify-center h-full items-center flex-col space-y- p-9 ' >
          
