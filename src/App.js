@@ -21,6 +21,7 @@ import ModifierEnfants from './pages/modifierEnfant.js'
 import Enfants from './pages/Enfants.js'
 import Login from './pages/Login.js'
 import InscriptionUser from "./pages/InscriptionUser.js";
+import ProfilPage from "./pages/profilPage.js";
 import ListeParents from "./pages/ListeParents.js";
 import ListePersonnel from "./pages/ListePersonnels.js";
 import ListeEnfant from "./pages/ListeEnfants.js";
@@ -49,6 +50,7 @@ function App() {
         <Route path="/inscription/personnels" element={<Personnels/>}/>
            <Route path="/inscription/enfants" element={<Enfants/>}/>
         <Route path="/factures/recues" element={<Recues/>}/>
+        <Route path="/profil" element={<ProfilPage/>}/>
         </Route>
         <Route path="/" element={<Home/>}/>
         <Route path="/userAdmin" element={<UserAdmin/>}/>
