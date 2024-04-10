@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { comptabiliteActions } from '../reducer/comptabilite'
 import { RingLoader } from 'react-spinners'
+import { IoIosArrowDropleftCircle } from "react-icons/io";
 import {useNavigate} from 'react-router-dom'
 export default function BilanComponent({retour,id}) {
     const dispatch =useDispatch()
