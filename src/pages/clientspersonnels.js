@@ -52,11 +52,11 @@ const SetComponent=({p,voir,voirPer,voirEl})=>{
 const SetComponentPEP=({p,retour,value})=>{
   console.log(p)
   switch (p) {
-    case 'CREERPERSONNEL':
+    case 'CREER':
       return(
         <div>
           <Backdrop/>
-        <CreerPersonnel retour={retour} value={value}/>
+        <CreerPersonnel retour={retour} />
         </div>
       )
     case 'MODIFIERPERSONNEL':
@@ -186,7 +186,7 @@ export default function ClientsPersonnels() {
         </Link>
       </div>
         <div classNname='pr-4'>
-        <FaPlusCircle color="gray" size={25} onClick={()=>changeCreer(switchChange)}  />
+        <FaPlusCircle color="gray" size={25} onClick={()=>setRub({bol:true,nom:'CREER',value:null})}  />
        </div>
     </div>
   <SetComponent 
