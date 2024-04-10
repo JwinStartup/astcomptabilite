@@ -11,7 +11,7 @@ import {useNavigate} from 'react-router-dom'
 import { useDispatch,useSelector } from 'react-redux';
 import { RingLoader} from 'react-spinners';
 import { userActions } from '../reducer/user.js'
-const SetComponent=({p,retour,value})=>{
+const SetComponent=({p,retour,value,supprimer,modifier})=>{
   console.log(p)
   switch (p) {
     case 'CREER':
@@ -32,7 +32,7 @@ const SetComponent=({p,retour,value})=>{
       return(
         <div>
           <Backdrop/>
-        <VoirUser retour={retour} value={value}/>
+        <VoirUser retour={retour} value={value} modifier={modifier} supprimer={supprimer}/>
         </div>
       )
     case 'SUPPRIMER':
@@ -57,9 +57,18 @@ export default function FacturesImpayes() {
     return state.userReducer
    });
   const navigate=useNavigate()
+  const voir=(i)=>{
+    setRub({nom:'VOIR',bol:true,value:i})
+  }
+  const modifier=(i)=>{
+    setRub({nom:'MODIFIER',bol:true,value:i})
+  }
+  const supprimer=(i)=>{
+    setRub({nom:'SUPPRIMER',bol:true,value:i})
+  }
   return (
   <div className=' w-full'>
-         {rub.bol!==false&&<SetComponent p={rub.nom} retour={()=>setRub({bol:false,nom:''})} value={rub.value} />}
+         {rub.bol!==false&&<SetComponent p={rub.nom} retour={()=>setRub({bol:false,nom:''})} modifier={modifier} supprimer={supprimer} value={rub.value} />}
         <Entete />
      <div className='  w-full  flex flex-col  space-x-2'>
      <div className=' mb-3 p-0 w-full   '>
