@@ -22,7 +22,10 @@ const dispatch = useDispatch()
 
 
   return (
-    <div className='relative mx-3 bg-slate-100 w-[300px]  border p-3  border-gray-100  rounded-md '>
+    <div className='z-10 absolute top-[100px] left-[20px] mx-3 bg-slate-100 w-[300px]  border p-3  border-gray-100  rounded-md '>
+   <div className='absolute right-0 top-0 m-1 cursor-pointer  z-50 '>    
+            <AiFillCloseCircle color="gray" size={25} onClick={()=>retour()} />
+           </div> 
             <div className='font-bold  tracking-tight text-lg text-black pl-1'>Supprimer un personnel</div>
           <p className='font-lg  tracking-tight text-md text-center' >Souhaitez-vous supprimer le personnel  <span className='font-lg  tracking-tight text-[18px] text-green-400 pl-1'>{value.nom} {value.prenoms} </span> </p>
  
