@@ -49,7 +49,7 @@ const SetComponent=({p,voir,voirPer,voirEl})=>{
 
 
 
-const SetComponentPEP=({p,retour,value})=>{
+const SetComponentPEP=({p,retour,value,supprimer,supprimerPer,supprimerEl})=>{
   console.log(p)
   switch (p) {
     case 'CREER':
@@ -70,14 +70,14 @@ const SetComponentPEP=({p,retour,value})=>{
       return(
         <div>
           <Backdrop/>
-        <VoirPersonnel retour={retour} value={value}/>
+        <VoirPersonnel retour={retour} value={value} supprimerPer={supprimerPer}/>
         </div>
       )
     case 'SUPPRIMERPERSONNEL':
       return(
         <div>
           <Backdrop/>
-        <SupprimerPersonnel retour={retour} value={value}/>
+        <SupprimerPersonnel retour={retour} value={value} />
         </div>
       )
     case 'CREERPARENT':
@@ -98,14 +98,14 @@ const SetComponentPEP=({p,retour,value})=>{
       return(
         <div>
           <Backdrop/>
-        <VoirParent retour={retour} value={value}/>
+        <VoirParent retour={retour} value={value} supprimer={supprimer/>
         </div>
       )
     case 'SUPPRIMERPARENT':
       return(
         <div>
           <Backdrop/>
-        <SupprimerParent retour={retour} value={value}/>
+        <SupprimerParent retour={retour} value={value} }/>
         </div>
       )
     case 'CREERELEVE':
@@ -126,14 +126,14 @@ const SetComponentPEP=({p,retour,value})=>{
       return(
         <div>
           <Backdrop/>
-        <VoirEleve retour={retour} value={value}/>
+        <VoirEleve retour={retour} value={value} supprimerEl={supprimerEl}/>
         </div>
       )
     case 'SUPPRIMERELEVE':
       return(
         <div>
           <Backdrop/>
-        <SupprimerEleve retour={retour} value={value}/>
+        <SupprimerEleve retour={retour} value={value} />
         </div>
       )
 
@@ -166,9 +166,23 @@ export default function ClientsPersonnels() {
   const voirPer=(i)=>{
     setRub({bol:true,nom:'VOIRPERSONNEL',value:i})
   }
+  const supprimer=(i)=>{
+    setRub({bol:true,nom:'SUPPRIMERPARENT',value:i})
+  }
+  const supprimerEl=(i)=>{
+    setRub({bol:true,nom:'SUPPRIMERELEVE',value:i})
+  }
+  const supprimerPer=(i)=>{
+    setRub({bol:true,nom:'SUPPRIMERPERSONNEL',value:i})
+  }
   return (
     <div>
-        {rub.bol!==false&&<SetComponentPEP p={rub.nom} retour={()=>setRub({bol:false,nom:'',value:null})} value={rub.value} />}
+        {rub.bol!==false&&<SetComponentPEP
+        p={rub.nom} retour={()=>setRub({bol:false,nom:'',value:null})} value={rub.value} 
+                supprimer={supprimer}
+               supprimerPer={supprimerPer}
+              supprimerEl={supprimerEl}
+       />}
         <Entete />
         <div className='  flex  py-2 border-b justify-center items-center '>
          <div>
@@ -194,6 +208,7 @@ export default function ClientsPersonnels() {
                voir={voir}
                voirPer={voirPer}
               voirEl={voirEl}
+               
              />
 </div>
   )
