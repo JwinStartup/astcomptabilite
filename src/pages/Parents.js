@@ -6,7 +6,8 @@ import { useForm } from 'react-hook-form';
 import { userActions } from '../reducer/user';
 export default function Parents() {
   const navigate=useNavigate()
-  const { register, handleSubmit,
+  const { register, handleSubmit
+         formState:{isSubmitting}
      } = useForm(
    );
   const dispatch =useDispatch()
@@ -20,36 +21,35 @@ export default function Parents() {
   return (
     <div>
       <Entete />
-      <div className='flex items-cennter  mx-5 w-[1150px]'>
-         <button className='ml-10 bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center' onClick={()=>navigate("/cp/ListeParent")} > retour</button>
-                <p className=' mb-3 p-0 ml-5  tracking-tight text-2xl text-black font-bold'>Inscription parent</p>
-               
-            </div>
+      <div className="flex  items-center "  onClick={()=>navigate('/')} >
+        <IoIosArrowDropleftCircle size={30} color="black" />
+        <FaFileInvoice  size={30} color="#1D4ED8" style={{paddingRigth:"5px"}}/>
+        <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900  ">Inscription parent  </h5>
+    </div>
            <form onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex justify-center h-full items-center flex-col space-y-4 p-9 ' >
            
        <div className='flex flex-col '>
-     <p className='text-2xl font-semibold text-black tracking-wider mb-3'>Parent d'élèves</p>             
-        <div className='flex flex-col mx-4 space-y-4'>
-        <input {...register("nom")}  type='text' placeholder='Nom' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
-        <input {...register("prenoms")}  type='text' placeholder='Prenoms' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
-        <input {...register("cel")}  type='text' placeholder='Cel' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
-        <input {...register("email")}  type='text' placeholder='Email' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
-        <input {...register("whatshapp")}  type='text' placeholder='Whatshapp' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
-        <input {...register("ville")}  type='text' placeholder='Ville' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
-        <input {...register("commune")}  type='text' placeholder='Commune' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
-        <input {...register("montantCours")}  type='number' placeholder='Montant du cours à domicile' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
-        <input {...register("commission")}  type='number' placeholder='Commission sur le Montant' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
-        <input {...register("nombreEnfant")}  type='number' placeholder="Nombre d'enfant à inscrire" className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
+        <div className='flex flex-col mx-4 space-y-2'>
+        <input {...register("nom")}  type='text' placeholder='Nom' className='outline-none w-[250px] border-b-2 py-1 text-md'/>
+        <input {...register("prenoms")}  type='text' placeholder='Prenoms' className='outline-none w-[250px] border-b-2 py-1 text-md'/>
+        <input {...register("cel")}  type='text' placeholder='Cel' className='outline-none w-[250px] border-b-2 py-1 text-md'/>
+        <input {...register("email")}  type='text' placeholder='Email' className='outline-none w-[250px] border-b-2 py-1 text-md'/>
+        <input {...register("whatshapp")}  type='text' placeholder='Whatshapp' className='outline-none w-[250px] border-b-2 py-1 text-md'/>
+        <input {...register("ville")}  type='text' placeholder='Ville' className='outline-none w-[250px] border-b-2 py-1 text-md'/>
+        <input {...register("commune")}  type='text' placeholder='Commune' className='outline-none w-[250px] border-b-2 py-1 text-md'/>
+        <input {...register("montantCours")}  type='number' placeholder='Montant du cours à domicile' className='outline-none w-[250px] border-b-2 py-1 text-md'/>
+        <input {...register("commission")}  type='number' placeholder='Commission sur le Montant' className='outline-none w-[250px] border-b-2 py-1 text-md'/>
+        <input {...register("nombreEnfant")}  type='number' placeholder="Nombre d'enfant à inscrire" className='outline-none w-[250px] border-b-2 py-1 text-md'/>
        </div>
        </div>
         
     
        
        
-<button type='submit' className='outline-none flex flex-row items-center justify-center space-x-2  text-white bg-green-700 hover:bg-green-800  font-medium rounded-lg text-lg  px-5 py-2.5 mr-2 mb-2'>
+      <button type='submit' className='outline-none flex flex-row items-center justify-center space-x-2  text-white bg-green-700 hover:bg-green-800  font-medium  text-md  px-5 py-2.5 mr-2 mb-2'>
        
         
-         <span>   S'inscrire</span>
+  {isSubmitting? <span>Inscrire</span>: <span>Inscrire.....</span>}
         </button>
       </form>
 
