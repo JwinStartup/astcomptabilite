@@ -21,7 +21,7 @@ export default function Parents() {
   return (
     <div>
       <Entete />
-      <div className="flex  items-center "  onClick={()=>navigate('/')} >
+      <div className="flex  items-center "  onClick={()=>navigate('/cp')} >
         <IoIosArrowDropleftCircle size={30} color="black" />
         <FaFileInvoice  size={30} color="#1D4ED8" style={{paddingRigth:"5px"}}/>
         <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900  ">Inscription parent  </h5>
