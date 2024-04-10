@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import  Axios  from 'axios';
  import {FadeLoader}from 'react-spinners'
 import { AiFillCloseCircle } from "react-icons/ai";
-
+import { userActions } from '../reducer/user.js'
 
 import {useNavigate} from 'react-router-dom'
 
@@ -15,7 +15,7 @@ export default function SupprimerParent({retour,value}) {
 const dispatch = useDispatch()
   const supprimer=()=>{
     console.log(value)
-    dispatch(userActions.supprimerEnfant(value._id)).then(()=>{
+    dispatch(userActions.supprimerParent(value._id)).then(()=>{
    retour()
    })
   }
