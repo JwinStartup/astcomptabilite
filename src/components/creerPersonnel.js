@@ -28,15 +28,15 @@ const navigate=useNavigate()
 
             <div className='flex flex-col items-center my-2  w-full'>
             <button 
-              onClick={()=>navvigate('/inscription/parents')}  className=" text-black  border-r font-bold  text-lg px-3 py-2 text-center inline-flex items-center">
+              onClick={()=>navigate('/inscription/parents')}  className=" text-black  border-r font-bold  text-lg px-3 py-2 text-center inline-flex items-center">
               un parent
             </button>
             <button 
-              onClick={()=>navvigate('/inscription/personnels')}  className=" text-black  border-r font-bold  text-lg px-3 py-2 text-center inline-flex items-center">
+              onClick={()=>navigate('/inscription/personnels')}  className=" text-black  border-r font-bold  text-lg px-3 py-2 text-center inline-flex items-center">
            un personnel
             </button>
             <button 
-              onClick={()=>navvigate('/inscription/enfants')}  className=" text-black  border font-bold  text-lg px-3 py-2 text-center inline-flex items-center">
+              onClick={()=>navigate('/inscription/enfants')}  className=" text-black  border font-bold  text-lg px-3 py-2 text-center inline-flex items-center">
             un élève
             </button>
                </div>
