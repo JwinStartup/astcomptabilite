@@ -9,6 +9,7 @@ export default function Enfants() {
  const [par,setPar] = useState([])
   const navigate=useNavigate()
   const { register, handleSubmit,
+         formState:{isSubmitting}
   } = useForm(
     {
       defaultValues: async () => dispatch(userActions.voirEnfant(id)).then((d)=>{return d.payload})
