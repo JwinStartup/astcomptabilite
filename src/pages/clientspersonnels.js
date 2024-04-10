@@ -98,7 +98,7 @@ const SetComponentPEP=({p,retour,value,supprimer,supprimerPer,supprimerEl})=>{
       return(
         <div>
           <Backdrop/>
-        <VoirParent retour={retour} value={value} supprimer={supprimer/>
+        <VoirParent retour={retour} value={value} supprimer={supprimer}/>
         </div>
       )
     case 'SUPPRIMERPARENT':
