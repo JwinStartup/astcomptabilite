@@ -16,7 +16,7 @@ const dispatch = useDispatch()
          formState:{isSubmitting}
      } = useForm(
    );
-
+const navigate=useNavigate()
 
   return (
    <div  className='w-[300px] onSubmit={handleSubmit(onSubmit)} border p-3 bg-white border-gray-100 shadow-md rounded-lg   z-10 absolute top-[70px] left-[20px]'>
