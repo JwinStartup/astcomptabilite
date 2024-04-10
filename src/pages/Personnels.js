@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { userActions } from '../reducer/user';
+import { IoIosArrowDropleftCircle } from "react-icons/io";
 export default function Personnels() {
   const navigate=useNavigate()
   const { register, handleSubmit,
@@ -22,8 +23,7 @@ dispatch(userActions.inscriptionPersonnel(data)).then(()=>{
     <div>
     <Entete />
     <div className="flex  items-center "  onClick={()=>navigate('/cp')} >
-        <IoIosArrowDropleftCircle size={30} color="black" />
-        <FaFileInvoice  size={30} color="#1D4ED8" style={{paddingRigth:"5px"}}/>
+        <IoIosArrowDropleftCircle size={30} style={{paddingRigth:"5px"} color="black" />
         <h5 className="text-xl font-bold ml-1 tracking-tight text-gray-900  ">Inscription personnel  </h5>
     </div>
          <form onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex justify-center h-full items-center flex-col space-y-4 p-9 ' >
