@@ -20,10 +20,14 @@ export default function InscriptionUser() {
     })
   }
   return (
-    <div className='w-full flex flex-col  items-center justify-center'>
-        <Entete />
-         <form onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex justify-center w-[px] mt-6 items-center flex-col space-y-4 p-9 border border-gray-400 rounded-lg shadow-lg' >
-         
+    <div>
+      <Entete />
+      <div className="flex  items-center "  onClick={()=>navigate('/cp')} >
+        <IoIosArrowDropleftCircle size={30} style={{paddingRigth:"5px"}} color="black" />
+        <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900  ">Inscription parent  </h5>
+    </div>
+           <form onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex justify-center h-full items-center flex-col space-y-4 p-9 ' >
+           
      <div className='flex flex-col '>
    <p className='text-2xl font-semibold text-black tracking-wider mb-3'>Inscrivez un utilisateur</p>             
       <div className='flex flex-col mx-4 space-y-4'>
