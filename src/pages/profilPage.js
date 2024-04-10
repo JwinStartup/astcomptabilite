@@ -4,7 +4,7 @@ import  Axios  from 'axios';
  import {FadeLoader}from 'react-spinners'
 import { AiFillCloseCircle } from "react-icons/ai";
 import Avatar from 'react-avatar'
-
+import { IoIosArrowDropleftCircle } from "react-icons/io";
 import {useNavigate} from 'react-router-dom'
 
 
@@ -35,6 +35,15 @@ const dispatch = useDispatch()
           </div>
            <div className="flex justify-start text-red-300 font-medium text-sm items-center gap-1">{value.ville}<div className="w-2 h-2 rounded-full bg-black"/>{value.commune} </div>
        </div>
+
+            <div>
+              <p className="text-lg font-bold ml-1 tracking-tight text-gray-900  "> Bilan financier </p>
+               <div>
+           
+               </div>
+           </div>
+
+           
     </div>
   )
 }
