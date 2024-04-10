@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { userActions } from '../reducer/user';
 import { useNavigate } from 'react-router-dom';
+import { IoIosArrowDropleftCircle } from "react-icons/io";
 export default function InscriptionUser() {
   const navigate=useNavigate()
   const { register, handleSubmit,
