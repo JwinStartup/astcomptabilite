@@ -40,6 +40,30 @@ const dispatch = useDispatch()
               <p className="text-lg font-bold ml-1 tracking-tight text-gray-900  "> Bilan financier </p>
                <div>
            
+           {/*liste des bilans financiers*/}
+           {bilans.length===0?<p className='text-center w-full'>Pas de bilan pour le moment </p>:
+
+
+    <div className='flex-row flex-wrap items-center justify-center mt-8 flex  w-full  '>
+      {bilans.map((value,index)=>
+         <div key={index} onClick={()=>setRub({retour:true,id:value._id})} className='w-52 h-18 m-3 p-2 cursor-pointer bg-gray-100 border rounded border-gray-200 shadow-lg flex flex-col'>
+          <div className='text-lg font-bold '>
+              Bilan financier
+          </div>
+          <div className='text-sm text-gray-400 font-medium'>
+          Mois: {value.periode}
+          </div>
+          <div className={`${value.statut==='cloturé'?'text-red-400':'text-green-400'}
+                              tracking-wide text-sm  font-medium mt-1
+                              `}>
+          {value.statut}
+          </div>
+
+         </div>)}
+        
+         
+         </div>}</>}
+           
                </div>
            </div>
 
