@@ -15,7 +15,16 @@ import BilanComponent from '../components/bilanComponent'
 export default function ProfilPage() {
 const dispatch = useDispatch()
  const navigate=useNavigate()
+const [rub , setRub]=useState({retour:false,id:null})
 
+  const navigate=useNavigate()
+  useEffect(() => { 
+    dispatch(comptabiliteActions.listeBilan())
+  },[])
+  
+  const {isLoader,bilans} = useSelector((state)=>{
+    return state.comptabiliteReducer
+   });
 
   return (
  <div className=' w-full'>
