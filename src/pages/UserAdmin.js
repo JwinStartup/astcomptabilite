@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Entete from '../components/entete'
 import Backdrop from '../components/backdrop'
 import CreerUser from '../components/creerUser'
+import VoirUser from '../components/voirUser'
 import ModifierUser from '../components/modifierUser'
 import SupprimerUser from '../components/supprimerUser.js'
 import { IoIosArrowDropleftCircle } from "react-icons/io";
@@ -25,6 +26,13 @@ const SetComponent=({p,retour,value})=>{
         <div>
           <Backdrop/>
         <ModifierUser retour={retour} value={value}/>
+        </div>
+      )
+    case 'VOIR':
+      return(
+        <div>
+          <Backdrop/>
+        <VoirUser retour={retour} value={value}/>
         </div>
       )
     case 'SUPPRIMER':
