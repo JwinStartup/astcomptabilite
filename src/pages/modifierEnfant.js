@@ -19,7 +19,7 @@ const dispatch =useDispatch()
 const onSubmit = (data) => {
  console.log(data)
 dispatch(userActions.modifierEnfant(data)).then(()=>{
-  navigate('/cp/ListeEnfant')
+  navigate('/cp')
  })
 }
   useEffect(() => { 
