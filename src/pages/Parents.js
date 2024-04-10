@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { userActions } from '../reducer/user';
 export default function Parents() {
   const navigate=useNavigate()
-  const { register, handleSubmit
+  const { register, handleSubmit,
          formState:{isSubmitting}
      } = useForm(
    );
