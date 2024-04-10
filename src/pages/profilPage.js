@@ -39,15 +39,12 @@ const [rub , setRub]=useState({retour:false,id:null})
       <div className='flex  flex-col items-center justify-center '>
             <Avatar name={`${user.nom} ${user.prenoms}`}  size="100" round={true} /> 
            <div className='flex  text-lg font-bold tracking-wider text-center w-full justify-center items-center '>
-            {user.nom}  {user.prenoms}
+            {user.me.nom}  {user.me.prenoms}
           </div>
            <div className='flex  text-md text-green-400   font-normal tracking-widest text-center w-full justify-center items-center '>
             Parent 
           </div>
-           <div className='flex  text-md font-bold tracking-wider text-center w-full justify-center items-center '>
-            {user.email}  
-          </div>
-           <div className="flex justify-start text-red-300 font-medium text-sm items-center gap-1">{user.role} </div>
+           <div className="flex justify-start text-red-300 font-medium text-sm items-center gap-1">{user.me.role} </div>
        </div>
 
             <div>
@@ -62,7 +59,7 @@ const [rub , setRub]=useState({retour:false,id:null})
                  </svg>
              </div>:<>
            {bilans.length===0?<p className='text-center w-full'>Pas de bilan pour le moment </p>:
-    <div className='flex-row flex-wrap items-center justify-center mt-8 flex  w-full  '>
+    <div className='items-center justify-center mt-8 flex  w-full  '>
       {bilans.map((value,index)=>
          <div key={index} onClick={()=>setRub({retour:true,id:value._id})} className='w-52 h-18 m-3 p-2 cursor-pointer bg-gray-100 border rounded border-gray-200 shadow-lg flex flex-col'>
           <div className='text-lg font-bold '>
