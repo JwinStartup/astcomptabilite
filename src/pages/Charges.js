@@ -7,6 +7,7 @@ import VoirCharge from '../components/voirCharge.js'
 import { useDispatch, useSelector } from 'react-redux'
 import { comptabiliteActions } from '../reducer/comptabilite.js'
 import { RingLoader } from 'react-spinners'
+import { FaPlusCircle } from "react-icons/fa"
 export default function Charges() {
   const navigate=useNavigate()
   const dispatch =useDispatch()
