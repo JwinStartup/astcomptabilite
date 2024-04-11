@@ -9,8 +9,9 @@ import { IoIosArrowDropleftCircle } from "react-icons/io";
 export default function ModifierCharge() {
   const {id}=useParams()
   const { register, handleSubmit,
-  } = useForm(
+  } = useForm( {
      defaultValues: async () => dispatch(comptabiliteActions.voirCharge(id)).then((d)=>{return d.payload})
+  }
 );
 const dispatch=useDispatch()
 const navigate=useNavigate()
