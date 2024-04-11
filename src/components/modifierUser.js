@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { userActions } from '../reducer/user';
 import { useNavigate } from 'react-router-dom';
 import { AiFillCloseCircle } from "react-icons/ai";
-export default function ModifierUser({retour,value}) {
+export default function ModifierUser() {
   console.log(value)
   const navigate=useNavigate()
   const { register, handleSubmit,
@@ -20,13 +20,13 @@ export default function ModifierUser({retour,value}) {
     console.log(data)
     //setLoading(true)
    dispatch(userActions.modifier(data)).then(()=>{
-     retour()
+     navigate('/userAdmin')
     })
   }
   return (
          <form  className='w-[300px] onSubmit={handleSubmit(onSubmit)}  border p-3 bg-white border-gray-100 shadow-md rounded-lg   z-10 absolute top-[70px] left-[50px]'>
       <div className='absolute right-0 top-0 m-1 cursor-pointer  z-50 '>    
-            <AiFillCloseCircle color="gray" size={25} onClick={()=>retour()} />
+            <AiFillCloseCircle color="gray" size={25} onClick={()=>navigate('/userAdmin')} />
            </div> 
       <div className='flex flex-col '>
      <p className='text-lg font-semibold text-black tracking-wider mb-3'>Inscrivez un utilisateur</p>             
