@@ -116,6 +116,11 @@ function createInitialState() {
             return await fetchWrapper.get(`${url}/voirRecueByid/${body}`)
           }
           ),
+            voirCharge:createAsyncThunk(`${name}/voirCharge`,
+        async (body)=>{
+            return await fetchWrapper.get(`${url}/voirCharge/${body}`)
+          }
+          ),
         creerRecue:createAsyncThunk(`${name}/creerRecue`,
         async (body)=>{
             console.log(body)
@@ -159,6 +164,7 @@ function createExtraReducers() {
         supprimerFacture();
         modifierFacture();
         voirRecueByid();
+        voirCharge();
         payerFacture();
         listeFacture();
         listeRecue();
@@ -315,6 +321,23 @@ function createExtraReducers() {
               .addCase(fulfilled, (state, action) => {
                const recue = action.payload;
                 state.recue=recue
+                state.isLoader = false;
+              })
+              .addCase(rejected, (state, action) => {
+                state.isLoader = false;
+                state.error = action.error;
+              });
+          }
+        function voirCharge() {
+            var { pending, fulfilled, rejected } = extraActions.voirCharge;
+            builder
+              .addCase(pending, (state) => {
+                state.error = null;
+                state.isLoader = true;
+              })
+              .addCase(fulfilled, (state, action) => {
+               const charge = action.payload;
+                state.charge=charge
                 state.isLoader = false;
               })
               .addCase(rejected, (state, action) => {
