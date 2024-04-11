@@ -22,11 +22,11 @@ const navigate = useNavigate()
             <AiFillCloseCircle color="gray" size={25} onClick={()=>supprimer()} />
            </div> 
       <div className='flex flex-row justify-between w-full'> 
-        <div className='font-bold  tracking-tight text-[22px] text-black pl-1'>Charge</div>
+        <div className='font-bold  tracking-tight text-lg text-black pl-1'>Charge</div>
       </div> 
       <div className='flex flex-row w-full  justify-between my-2'>
         <div className='ml-2'>
-        <div className='text-sm font-bold text-gray-500'>type: {value.type}</div>
+        {value.type==='eaucourantintent'?<div className='text-sm font-bold text-gray-500'>type: Eau-Courant-Internet</div>:<div className='text-sm font-bold text-gray-500'>type: {value.type}</div}
        {value.nomCharge&&<div className='text-sm font-bold text-gray-500'>nom de la charge: {value.nomCharge}</div>}
         <div className='text-sm font-medium text-gray-500'>montant:{value.montant} FCFA</div>
         </div>
