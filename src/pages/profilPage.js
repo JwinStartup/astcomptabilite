@@ -81,7 +81,7 @@ const [rub , setRub]=useState({retour:false,id:null})
            {/*autre fonctionnalite*/}
             <div  className='flex flex-col '>
             <div className='border text-md font-semibold tracking-wider py-3  px-1' >Changer de mot de passe</div>
-            {/*<div onClick={()=>navigate('/userAdmin')} className='border text-md font-semibold tracking-wider py-3  px-1' >Voir les utilisateurs</div>*/}
+            <div onClick={()=>navigate('/userAdmin')} className='border text-md font-semibold tracking-wider py-3  px-1' >Voir les utilisateurs</div>
             <div onClick={()=>dispatch(userActions.deconnecte()).then(()=>logout())} className='text-md font-semibold tracking-wider py-3  px-1' >Se deconnecter</div>
              </div>
            </div>
