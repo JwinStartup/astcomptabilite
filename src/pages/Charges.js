@@ -11,14 +11,14 @@ import { FaPlusCircle } from "react-icons/fa"
 export default function Charges() {
   const navigate=useNavigate()
   const dispatch =useDispatch()
-  const [rub , setRub]=useState({nom:'',bol:false,value:null})
+  const [rub , setRub]=useState(null)
   useEffect(() => { 
     dispatch(comptabiliteActions.listeCharge())
   },[rub])
   
   const {isLoader,charges} = useSelector((state)=>{
     return state.comptabiliteReducer
-   },[parama]);
+   },[rub]);
  
   return (
     <div>
@@ -47,7 +47,7 @@ export default function Charges() {
             <div className='w-full flex justify-center mt-3 flex-col items-center  '>
                 {charges.map((value,index)=>
                   <VoirCharge 
-                             parama={parama}
+                             parama={()=>setRub(parama)}
                       value={value}
                        />)}
             </div>}</>}
