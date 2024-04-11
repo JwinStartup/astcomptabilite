@@ -19,7 +19,7 @@ export default function ModifierUser() {
   const onSubmit = (data) => {
     console.log(data)
     //setLoading(true)
-   dispatch(userActions.modifierUser(data)).then(()=>{
+   dispatch(userActions.modifier(data)).then(()=>{
      navigate('/userAdmin')
     })
   }
