@@ -3,6 +3,7 @@ import Entete from '../components/entete'
 import  {useNavigate} from "react-router-dom"
 import { IoIosArrowDropleftCircle } from "react-icons/io";
 import Backdrop from '../components/backdrop.js'
+import VoirCharge from '../components/voirCharge.js'
 import { useDispatch, useSelector } from 'react-redux'
 import { comptabiliteActions } from '../reducer/comptabilite.js'
 import { RingLoader } from 'react-spinners'
