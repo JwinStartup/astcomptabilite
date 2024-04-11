@@ -25,25 +25,24 @@ export default function InscriptionUser() {
       <Entete />
       <div className="flex  items-center "  onClick={()=>navigate('/cp')} >
         <IoIosArrowDropleftCircle size={30} style={{paddingRigth:"5px"}} color="black" />
-        <h5 className="text-xl font-bold ml-1 tracking-tight text-gray-900  ">Inscription parent  </h5>
+        <h5 className="text-xl font-bold ml-1 tracking-tight text-gray-900  ">Inscription utilisateur  </h5>
     </div>
            <form onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex justify-center h-full items-center flex-col space-y-4 p-9 ' >
            
      <div className='flex flex-col '>
-   <p className='text-2xl font-semibold text-black tracking-wider mb-3'>Inscrivez un utilisateur</p>             
-      <div className='flex flex-col mx-4 space-y-2'>
-      <input {...register("nom")} type='text' placeholder='Nom utiilisateur' className='outline-none w-[250px] border-b-2 py-1 text-sm'/>
-      <input {...register("email")}  type='text' placeholder='Email' className='outline-none w-[250px] border-b-2 py-1 text-sm'/>
-      <input {...register("password")}  type='text' placeholder='Mot de passe' className='outline-none w-[250px] border-b-2 py-1 text-sm'/>
-      <input {...register("cel")}  type='text' placeholder='Cel ' className='outline-none w-[250px] border-b-2 py-1 text-sm'/>
-      <select {...register("role")} defaultValue='Directeur' className='outline-none w-[250px] border-b-2 py-1 text-sm'>
+      <div className='flex flex-col mx-4 space-y-3'>
+      <input {...register("nom")} type='text' placeholder='Nom utiilisateur' className='outline-none w-[250px] border-b-2 py-1 text-md'/>
+      <input {...register("email")}  type='text' placeholder='Email' className='outline-none w-[250px] border-b-2 py-1 text-md'/>
+      <input {...register("password")}  type='text' placeholder='Mot de passe' className='outline-none w-[250px] border-b-2 py-1 text-md'/>
+      <input {...register("cel")}  type='text' placeholder='Cel ' className='outline-none w-[250px] border-b-2 py-1 text-md'/>
+      <select {...register("role")} defaultValue='Directeur' className='outline-none w-[250px] border-b-2 py-1 text-md'>
             <option>Directeur</option>
             <option>Administrateur</option>
         </select>
      </div> 
      </div>
      
-       <button type='submit' className='outline-none flex flex-row items-center justify-center mt-3 text-black  font-bold text-md  px-5 py-2.5 mr-2 mb-2'>
+       <button type='submit' className='outline-none flex flex-row items-center justify-center mt-3 text-black  font-bold text-lg  px-5 py-2.5 mr-2 mb-2'>
        <span>Inscrire</span>
       </button>
     </form>
