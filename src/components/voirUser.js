@@ -13,9 +13,6 @@ import {useNavigate} from 'react-router-dom'
 export default function VoirParent({retour,value,supprimer,modifier}) {
 const dispatch = useDispatch()
  const navigate=useNavigate()
-const modifier=()=>{
-  console.log('modifier')
-}
 
   return (
     <div className='z-10 absolute top-[100px] left-[20px] mx-3 bg-slate-100 w-[300px]  border p-3  border-gray-100  rounded-md '>
