@@ -11,7 +11,7 @@ import CreerUser from '../components/creerUser'
 import VoirUser from '../components/voirUser'
 import ModifierUser from '../components/modifierUser'
 import SupprimerUser from '../components/supprimerUser.js'
-
+import Avatar from 'react-avatar'
 const SetComponent=({p,retour,value,supprimer,modifier})=>{
   console.log(p)
   switch (p) {
