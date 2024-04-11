@@ -6,7 +6,7 @@ import { userActions } from '../reducer/user';
 import {useNavigate} from 'react-router-dom'
 import Entete from '../components/entete'
 import { IoIosArrowDropleftCircle } from "react-icons/io";
-export default function CreerCharge() {
+export default function ModifierCharge() {
   const { register, handleSubmit,
   } = useForm(
      defaultValues: async () => dispatch(comptabiliteActions.voirCharge(id)).then((d)=>{return d.payload})
