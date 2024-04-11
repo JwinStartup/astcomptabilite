@@ -113,6 +113,11 @@ function createInitialState() {
              return  await fetchWrapper.get(`${url}/voirEnfant/${body}`)
             }
             ),
+            voirUser:createAsyncThunk(`${name}/voirUser`,
+          async (body)=>{
+             return  await fetchWrapper.get(`${url}/voirUser/${body}`)
+            }
+            ),
             voirParent:createAsyncThunk(`${name}/voirParent`,
           async (body)=>{
              return  await fetchWrapper.get(`${url}/voirParent/${body}`)
@@ -166,6 +171,7 @@ function createExtraReducers() {
         inscriptionEnfant();
         supprimerEnfant();
         voirEnfant();
+        voirUser();
         voirParent();
         voirPersonnel();
         modifierEnfant();
@@ -518,6 +524,23 @@ function createExtraReducers() {
             .addCase(fulfilled, (state, action) => {
               const personnel = action.payload;
               state.personnel = personnel;
+              state.isLoader = false;
+            })
+            .addCase(rejected, (state, action) => {
+              state.isLoader = false;
+              state.error = action.error;
+            });
+          }
+        function voirUser() {
+            var {pending,fulfilled,rejected}=extraActions.voirUser
+            builder
+            .addCase(pending, (state) => {
+              state.error = null;
+              state.isLoader = true;
+            })
+            .addCase(fulfilled, (state, action) => {
+              const user = action.payload;
+              state.user = user;
               state.isLoader = false;
             })
             .addCase(rejected, (state, action) => {
