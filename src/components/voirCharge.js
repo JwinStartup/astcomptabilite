@@ -27,6 +27,7 @@ const navigate = useNavigate()
       <div className='flex flex-row w-full  justify-between my-2'>
         <div className='ml-2'>
         <div className='text-sm font-bold text-gray-500'>type: {value.type}</div>
+       {value.nomCharge&&<div className='text-sm font-bold text-gray-500'>nom de la charge: {value.nomCharge}</div>}
         <div className='text-sm font-medium text-gray-500'>montant:{value.montant} FCFA</div>
         </div>
 {value.type==='salaire'&&<div>
