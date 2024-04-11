@@ -35,7 +35,7 @@ const {isLoader,personnels} = useSelector((state)=>{
         <h5 className="text-xl font-bold ml-1 tracking-tight text-gray-900  ">Ajouter une charge </h5>
     </div>
         <form   onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex flex-col items-center mt-5  space-y-3 w-full h-full' > 
-        <select {...register("type")} onChange={(e)=>setSelect(e.target.value)}  defaultValue='salaire' className='outline-none w-[250px] ml-2 border-b-2 py-1 text-md'>
+        <select {...register("type")} onChange={(e)=>setSelect(e.target.value)}  defaultValue='salaire' className='outline-none w-[300px] ml-2 border-b-2 py-1 text-md'>
             <option value='salaire'>Salaire personnel</option>
             <option value='eaucourantintent'>Eau-Courant-Internet</option>
             <option value='loyer'>Loyer</option>
@@ -43,12 +43,12 @@ const {isLoader,personnels} = useSelector((state)=>{
         </select>
         <div className='flex flex-col items-center mt-5  space-y-3 w-full '>
         {select==="salaire"&& <select {...register("personnel")}
-             defaultValue=" " className='outline-none w-[250px] border-b-2 py-1 text-md'>
+             defaultValue=" " className='outline-none w-[300px] border-b-2 py-1 text-md'>
               <option className='text-gray-400' value=" " >Choisissez le personnel</option>
         {personnels.map((val,index)=> <option className=''  key={index}> {val.nom}  {val.prenoms}</option>)}
         </select>}
-        {select==="autreCharge"&&<input {...register("nomCharge")}  type="text"  className='w-[250px]  border-b-2 py-1 text-md pl-1 placeholder-gray-300' placeholder='Preciser la charge' />}
-        <select {...register("periodeAjouter")}   defaultValue='salaire' className='outline-none w-[250px] ml-2 border-b-2 py-1 text-md'>
+        {select==="autreCharge"&&<input {...register("nomCharge")}  type="text"  className='w-[300px]  border-b-2 py-1 text-md pl-1 placeholder-gray-300' placeholder='Preciser la charge' />}
+        <select {...register("periodeAjouter")}   defaultValue='salaire' className='outline-none w-[300px] ml-2 border-b-2 py-1 text-md'>
         <option>Janvier 2024</option>
             <option>Fevrier 2024</option>
             <option>Mars 2024</option>
@@ -62,8 +62,8 @@ const {isLoader,personnels} = useSelector((state)=>{
             <option>Novembre 2024</option>
             <option>Decembre 2024</option>
         </select>
-        <input {...register("montant")}  type="text"  className='w-[250px] h-10 border-b-2 py-1 text-md pl-1 placeholder-gray-300' placeholder='Montant ' />
-        <textarea {...register("observation")} type="text"    className='w-[250px] border-b-2 py-1 text-md pl-1 placeholder-gray-300' placeholder='Observation...' row={5} col={40}></textarea>
+        <input {...register("montant")}  type="text"  className='w-[300px] h-10 border-b-2 py-1 text-md pl-1 placeholder-gray-300' placeholder='Montant ' />
+        <textarea {...register("observation")} type="text"    className='w-[300px] border-b-2 py-1 text-md pl-1 placeholder-gray-300' placeholder='Observation...' row={5} col={40}></textarea>
        <div className='flex flex-row space-x-4'> 
         <button type="submit" className="text-black font-bold text-md px-5 py-2.5 text-center inline-flex items-center ">
         Creer
