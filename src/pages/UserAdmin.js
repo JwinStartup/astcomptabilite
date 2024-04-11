@@ -73,7 +73,6 @@ export default function FacturesImpayes() {
          {rub.bol!==false&&<SetComponent p={rub.nom} retour={()=>setRub({bol:false,nom:''})} modifier={modifier} supprimer={supprimer} value={rub.value} />}
         <Entete />
     <div className='  flex w-full justify-between flex-col space-x-2 items-center'>
-   
       <div className="flex  items-center w-full justify-between"  onClick={()=>navigate('/profil')} >
         <IoIosArrowDropleftCircle size={30} color="black" />
         <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900  ">Utiilisateur  </h5>
@@ -89,10 +88,14 @@ export default function FacturesImpayes() {
     </div>:
     <div>
      {users.map((i,j)=>
-        <div key={j} onClick={()=>voir(i)} className="flex px-2 py-5 w-full  items-center border-b hover:bg-gray-200">
-           <Avatar name={`${i.nom} ${i.prenoms}`}  size="55" round={true} /> 
-            <div className="text-md font-semibold ">{i.nom} {i.prenoms} </div>
-         </div>
+         <div key={j} onClick={()=>voir(i)} className="flex px-2 py-5 w-full  items-center border-b hover:bg-gray-200">
+            <div> 
+              <Avatar name={`${i.nom} ${i.prenoms}`}  size="55" round={true} /> 
+            </div>
+              <div className="flex flex-col px-2 ">
+               <div className="text-md font-semibold ">{i.nom} {i.prenoms} </div>
+            </div>
+          </div>
         )}
           
      </div>}
