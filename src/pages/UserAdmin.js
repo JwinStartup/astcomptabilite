@@ -7,11 +7,12 @@ import {useNavigate} from 'react-router-dom'
 import { useDispatch,useSelector } from 'react-redux';
 import { RingLoader} from 'react-spinners';
 import { userActions } from '../reducer/user.js'
-{/*const SetComponent=({p,retour,value,supprimer,modifier})=>{
 import CreerUser from '../components/creerUser'
 import VoirUser from '../components/voirUser'
 import ModifierUser from '../components/modifierUser'
 import SupprimerUser from '../components/supprimerUser.js'
+
+const SetComponent=({p,retour,value,supprimer,modifier})=>{
   console.log(p)
   switch (p) {
     case 'CREER':
@@ -45,7 +46,8 @@ import SupprimerUser from '../components/supprimerUser.js'
     default:
       break;
   }
-} */}
+} 
+
 export default function FacturesImpayes() {
   const dispatch =useDispatch()
   const [rub , setRub]=useState({nom:'',bol:false,value:null})
