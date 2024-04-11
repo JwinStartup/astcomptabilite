@@ -55,20 +55,16 @@ export default function Charges() {
             <button className='ml-10 bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center' onClick={()=>setRub({bol:true,nom:'AJOUTER',value:null})}>+ Ajouter Charges</button>
             </div>
 
-            {isLoader===true?<RingLoader
-        color={"green"}
-        size={60}
-      />:
-  <> {charges.length===0?<p className='text-center w-full'>Pas de Charges enregistrés </p>:
-
+            {isLoader===true?<div className="flex flex-col gap-2 justify-center items-center ">
+            { [1,2,3].map((i,j)=><div key={j} className="animate-pulse flex space-x-4 border rounded-md w-[250px] h-[200px] px-2 bg-gray-100">
+            </div>)}
+            </div>:
+         <> {charges.length===0?<p className='text-center w-full'>Pas de Charges enregistrés </p>:
             <div className='w-full flex justify-center mt-3 flex-col items-center  '>
-                
                 {charges.map((value,index)=>
                   <VoirCharge 
                       value={value}
-                       />
-                            )}
-       
+                       />)}
             </div>}</>}
     
     </div>
