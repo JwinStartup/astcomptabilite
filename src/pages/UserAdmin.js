@@ -76,7 +76,7 @@ export default function FacturesImpayes() {
       <div className="flex  items-center w-full justify-between" mb-2 onClick={()=>navigate('/profil')} >
         <IoIosArrowDropleftCircle size={30} color="black" />
         <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900  ">Utilisateur  </h5>
-          <FaPlusCircle color="gray" size={25}  onClick={()=>setRub({nom:'CREER',bol:true})}/>
+          <FaPlusCircle color="gray" size={25}  onClick={()=>navigate("/userAdmin/inscriptionUser")}/>
       </div>
           
  <div  className='w-full justify-center items-center border-t '>
