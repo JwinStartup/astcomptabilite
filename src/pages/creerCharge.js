@@ -26,7 +26,7 @@ const {isLoader,personnels} = useSelector((state)=>{
   return state.userReducer
  });
   return (
-    <div className='w-[300px]  border p-3 bg-white   '>
+    <div className='w-[400px]  border p-3 bg-white   '>
         <div className='font-bold  tracking-tight text-xl text-black pl-1'>Creer une Charge</div>
        
         <form   onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex flex-col items-center mt-5  space-y-3 w-full h-full' > 
