@@ -26,7 +26,7 @@ export default function Charges() {
      <div className='  flex justify-between items-center space-x-2 mx-4'>
      <div className="flex  items-center "  onClick={()=>navigate('/')} >
         <IoIosArrowDropleftCircle size={30} color="black" />
-        <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900  ">Charge  </h5>
+        <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900  ">Charges  </h5>
      </div>
           <div classNamme='flex items-center flex-col justify-center '>
                 <select className='text-sm font-medium'>
