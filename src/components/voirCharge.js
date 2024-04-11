@@ -14,6 +14,7 @@ import {useNavigate} from 'react-router-dom'
 
 export default function VoirFacture({value,modifier,supprimer}) {
 const dispatch = useDispatch()
+const navigate = useNavigate()
 
   return (
     <div className='relative mx-3 bg-slate-100 w-[300px]  border p-3  border-gray-100  rounded-md '>
