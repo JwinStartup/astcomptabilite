@@ -35,7 +35,7 @@ const {isLoader,personnels} = useSelector((state)=>{
       <Entete />
       <div className="flex  items-center "  onClick={()=>navigate('/charges')} >
         <IoIosArrowDropleftCircle size={30} style={{paddingRigth:"5px"}} color="black" />
-        <h5 className="text-xl font-bold ml-1 tracking-tight text-gray-900  ">Ajouter une charge </h5>
+        <h5 className="text-xl font-bold ml-1 tracking-tight text-gray-900  ">Modifier une charge </h5>
     </div>
         <form   onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex flex-col items-center mt-5  space-y-3 w-full h-full' > 
         <select {...register("type")} onChange={(e)=>setSelect(e.target.value)}  defaultValue='salaire' className='outline-none w-[300px] ml-2 border-b-2 py-1 text-md'>
@@ -69,7 +69,7 @@ const {isLoader,personnels} = useSelector((state)=>{
         <textarea {...register("observation")} type="text"    className='w-[300px] border-b-2 py-1 text-md pl-1 placeholder-gray-300' placeholder='Observation...' row={5} col={40}></textarea>
        <div className='flex flex-row space-x-4'> 
         <button type="submit" className="text-black font-bold text-md px-5 py-2.5 text-center inline-flex items-center ">
-        Creer
+        Modifier
         </button>
         </div>
         </div>
