@@ -19,40 +19,25 @@ export default function Charges() {
   const {isLoader,charges} = useSelector((state)=>{
     return state.comptabiliteReducer
    });
-  const SetComponent=({p,retour,value})=>{
-  switch (p) {
-    case 'AJOUTER':
-      return(
-        <div>
-          <Backdrop/>
-        <AjouterCharges retour={()=>setRub(false)} />
-        </div>
-      )
-    case 'SUPPRIMER':
-      return(
-        <div>
-          <Backdrop/>
-        <SupprimerCharge retour={retour} value={value} />
-        </div>
-      )
-     case 'MODIFIER':
-      return(
-        <div>
-          <Backdrop/>
-        <ModifierCharge retour={retour} value={value} />
-        </div>
-      )
-    default:
-      break;
-  }
-}
+ 
   return (
     <div>
-    {rub.bol!==false&&<SetComponent p={rub.nom} retour={()=>setRub({bol:false,nom:''})} value={rub.value} />}
         <Entete />
      <div className='  flex justify-between  space-x-2 mx-4'>
-     <div className=' mb-3 p-0 text-[22px] tracking-tight  text-black font-semibold '> <button className=' bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center ml-2' onClick={()=>navigate("/")} > retour</button>Les charges </div>
-            <button className='ml-10 bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center' onClick={()=>setRub({bol:true,nom:'AJOUTER',value:null})}>+ Ajouter Charges</button>
+     <div className="flex  items-center"  onClick={()=>navigate('/')} >
+        <IoIosArrowDropleftCircle size={30} color="black" />
+        <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900  ">Charge  </h5>
+     </div>
+          <div classNamme='flex items-center flex-col justify-center '>
+                <select className='text-sm font-medium'>
+                    <option value="">Aujourd'hui</option>
+                    <option value="">Ce mois</option>
+                    <option value="">Tous les mois</option>
+                </select>
+             </div>
+                 <FaPlusCircle color="gray" size={25}  onClick={()=>navigate('/creerCharge')}/>
+            </div>
+  
             </div>
 
             {isLoader===true?<div className="flex flex-col gap-2 justify-center items-center ">
