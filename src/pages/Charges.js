@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Entete from '../components/entete'
 import  {useNavigate} from "react-router-dom"
-import AjouterCharges from "../components/ajouterCharges.js"
-import ModifierCharge from "../components/modifierCharge.js"
-import SupprimerCharge from "../components/supprimerCharge.js"
+import { IoIosArrowDropleftCircle } from "react-icons/io";
 import Backdrop from '../components/backdrop.js'
 import { useDispatch, useSelector } from 'react-redux'
 import { comptabiliteActions } from '../reducer/comptabilite.js'
