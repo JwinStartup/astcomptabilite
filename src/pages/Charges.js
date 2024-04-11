@@ -18,7 +18,7 @@ export default function Charges() {
   
   const {isLoader,charges} = useSelector((state)=>{
     return state.comptabiliteReducer
-   });
+   },[parama]);
  
   return (
     <div>
@@ -47,6 +47,7 @@ export default function Charges() {
             <div className='w-full flex justify-center mt-3 flex-col items-center  '>
                 {charges.map((value,index)=>
                   <VoirCharge 
+                             parama={parama}
                       value={value}
                        />)}
             </div>}</>}
