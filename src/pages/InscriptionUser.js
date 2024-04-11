@@ -17,13 +17,13 @@ export default function InscriptionUser() {
     console.log(data)
     //setLoading(true)
    dispatch(userActions.inscription(data)).then(()=>{
-     navigate('/')
+     navigate('/userAdmin')
     })
   }
   return (
     <div>
       <Entete />
-      <div className="flex  items-center "  onClick={()=>navigate('/cp')} >
+      <div className="flex  items-center "  onClick={()=>navigate('/userAdmin')} >
         <IoIosArrowDropleftCircle size={30} style={{paddingRigth:"5px"}} color="black" />
         <h5 className="text-xl font-bold ml-1 tracking-tight text-gray-900  ">Inscription utilisateur  </h5>
     </div>
