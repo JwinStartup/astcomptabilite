@@ -9,11 +9,12 @@ export default function CreerCharge() {
   } = useForm(
 );
 const dispatch=useDispatch()
+const navigate=useNavigate()
 const [select, setSelect] = useState('salaire')
 const onSubmit = (data) => {
   console.log(data)
  dispatch(comptabiliteActions.creerCharge(data)).then(()=>{
-  retour()
+  navigate('/charge')
   })
  
 }
