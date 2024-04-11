@@ -14,7 +14,7 @@ const [select, setSelect] = useState('salaire')
 const onSubmit = (data) => {
   console.log(data)
  dispatch(comptabiliteActions.creerCharge(data)).then(()=>{
-  navigate('/charge')
+  navigate('/charges')
   })
  
 }
@@ -26,7 +26,7 @@ const {isLoader,personnels} = useSelector((state)=>{
   return state.userReducer
  });
   return (
-    <div className='w-[400px]  border p-3 bg-white   '>
+    <div className='w-[400px]  border p-3 bg-white'>
         <div className='font-bold  tracking-tight text-xl text-black pl-1'>Creer une Charge</div>
        
         <form   onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex flex-col items-center mt-5  space-y-3 w-full h-full' > 
@@ -43,7 +43,7 @@ const {isLoader,personnels} = useSelector((state)=>{
         {personnels.map((val,index)=> <option className=''  key={index}> {val.nom}  {val.prenoms}</option>)}
         </select>}
         {select==="autreCharge"&&<input {...register("nomCharge")}  type="text"  className='w-[250px]  border-b-2 py-1 text-md pl-1 placeholder-gray-300' placeholder='Preciser la charge' />}
-        <select {...register("periodeAjouter")}   defaultValue='salaire' className='outline-none w-[420px] ml-2 border-b-2 py-1 text-md'>
+        <select {...register("periodeAjouter")}   defaultValue='salaire' className='outline-none w-[250px] ml-2 border-b-2 py-1 text-md'>
         <option>Janvier 2024</option>
             <option>Fevrier 2024</option>
             <option>Mars 2024</option>
