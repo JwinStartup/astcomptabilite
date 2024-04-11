@@ -17,7 +17,7 @@ const dispatch = useDispatch()
 const navigate = useNavigate()
 
   return (
-    <div className='relative mx-3 bg-slate-100 w-[300px]  border p-3  border-gray-100  rounded-md '>
+    <div className='relative m-3 bg-slate-100 w-[300px]  border p-3  border-gray-100  rounded-md '>
            <div className='absolute right-0 top-0 m-1 cursor-pointer '>    
             <AiFillCloseCircle color="gray" size={25} onClick={()=>supprimer()} />
            </div> 
@@ -27,12 +27,12 @@ const navigate = useNavigate()
       <div className='flex flex-row w-full  justify-between my-2'>
         <div className='ml-2'>
         <div className='text-sm font-bold text-gray-500'>type: {value.type}</div>
-        <div className='text-sm font-medium text-gray-500'>montant:{value.montant}</div>
+        <div className='text-sm font-medium text-gray-500'>montant:{value.montant} FCFA</div>
         </div>
-        <div>
+{value.type==='salaire'&&<div>
              <div className='font-bold  tracking-wide text-sm text-black '>{value.personnel}</div>
             <div className='font-medium text-center tracking-tight text-[11px] text-gray-400 '>personnel</div>
-        </div>
+        </div>}
 
       </div>
             <div className='mx-4 font-medium  tracking-tight text-sm text-black '>{value.observation}</div>
