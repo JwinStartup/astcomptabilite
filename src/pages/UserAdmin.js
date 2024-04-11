@@ -72,7 +72,7 @@ export default function FacturesImpayes() {
   <div className=' w-full'>
          {rub.bol!==false&&<SetComponent p={rub.nom} retour={()=>setRub({bol:false,nom:''})} modifier={modifier} supprimer={supprimer} value={rub.value} />}
         <Entete />
-    <div className='  flex w-full justify-between flex-row space-x-2 items-center'>
+    <div className='  flex w-full justify-between flex-col space-x-2 items-center'>
    
       <div className="flex  items-center w-full justify-between"  onClick={()=>navigate('/profil')} >
         <IoIosArrowDropleftCircle size={30} color="black" />
