@@ -8,11 +8,11 @@ import {useNavigate} from 'react-router-dom'
 
 
 
-export default function VoirFacture({value}) {
+export default function VoirFacture({value,parama}) {
 const dispatch = useDispatch()
 const navigate = useNavigate()
  const supprimer=(id)=>{
-  dispatch(comptabiliteActions.supprimerCharge(id))
+  dispatch(comptabiliteActions.supprimerCharge(id)).then((d)=>parama(d.payload))
  }
   return (
     <div className='relative m-3 bg-slate-100 w-[300px]  border p-3  border-gray-100  rounded-md '>
