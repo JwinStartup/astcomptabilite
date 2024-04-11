@@ -11,7 +11,6 @@ export default function ModifierUser() {
     // formState: { errors }
      } = useForm(
     {
-      defaultValues:value
     }
    );
    const dispatch =useDispatch()
