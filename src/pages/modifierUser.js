@@ -29,7 +29,7 @@ export default function ModifierUser() {
       <Entete />
       <div className="flex  items-center "  onClick={()=>navigate('/userAdmin')} >
         <IoIosArrowDropleftCircle size={30} style={{paddingRigth:"5px"}} color="black" />
-        <h5 className="text-xl font-bold ml-1 tracking-tight text-gray-900  ">Inscription utilisateur  </h5>
+        <h5 className="text-xl font-bold ml-1 tracking-tight text-gray-900  ">Modifier utilisateur  </h5>
     </div>
            <form onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex justify-center h-full items-center flex-col space-y-4 p-9 ' >
            
@@ -46,7 +46,7 @@ export default function ModifierUser() {
      </div>
      
        <button type='submit' className='outline-none flex flex-row items-center justify-center mt-3 text-black  font-bold text-lg  px-5 py-2.5 mr-2 mb-2'>
-       <span>Inscrire</span>
+       <span>Modifier</span>
       </button>
     </form>
     </div>
