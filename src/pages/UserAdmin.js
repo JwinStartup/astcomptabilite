@@ -48,7 +48,7 @@ const SetComponent=({p,retour,value,supprimer,modifier})=>{
   }
 } 
 
-export default function FacturesImpayes() {
+export default function UserAdmin() {
   const dispatch =useDispatch()
   const [rub , setRub]=useState({nom:'',bol:false,value:null})
   useEffect(() => { 
@@ -73,8 +73,8 @@ export default function FacturesImpayes() {
          {rub.bol!==false&&<SetComponent p={rub.nom} retour={()=>setRub({bol:false,nom:''})} modifier={modifier} supprimer={supprimer} value={rub.value} />}
         <Entete />
     <div className='  flex w-full justify-between flex-col space-x-2 items-center '>
-      <div className="flex  items-center w-full justify-between mb-2"  onClick={()=>navigate('/profil')} >
-        <IoIosArrowDropleftCircle size={30} color="black" />
+      <div className="flex  items-center w-full justify-between mb-2"   >
+        <IoIosArrowDropleftCircle size={30} color="black" onClick={()=>navigate('/profil')}/>
         <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900  ">Utilisateur  </h5>
           <FaPlusCircle color="gray" size={25}  onClick={()=>navigate("/userAdmin/inscriptionUser")}/>
       </div>
