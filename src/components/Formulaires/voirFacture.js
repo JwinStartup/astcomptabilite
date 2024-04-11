@@ -19,7 +19,7 @@ const dispatch = useDispatch()
   return (
     <div className='relative mx-3 bg-slate-100 w-[300px]  border p-3  border-gray-100  rounded-md '>
            <div className='absolute right-0 top-0 m-1 cursor-pointer '>    
-            <AiFillCloseCircle color="gray" size={25} onClick={()=>supprimer()} />
+            {value.type==='impaye'&&<AiFillCloseCircle color="gray" size={25} onClick={()=>supprimer()} />}
            </div> 
       <div className='flex flex-row justify-between w-full'> 
         <div className='font-bold  tracking-tight text-[22px] text-black pl-1'>Facture</div>
