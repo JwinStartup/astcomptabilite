@@ -1,5 +1,4 @@
 import React,{useEffect,useState,} from 'react'
-import {PDFfacture} from '../PDFfacture'
 import { useDispatch, useSelector } from 'react-redux'
 import { comptabiliteActions } from '../reducer/comptabilite.js'
 import  Axios  from 'axios';
