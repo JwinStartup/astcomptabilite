@@ -72,14 +72,14 @@ export default function FacturesImpayes() {
   <div className=' w-full'>
          {rub.bol!==false&&<SetComponent p={rub.nom} retour={()=>setRub({bol:false,nom:''})} modifier={modifier} supprimer={supprimer} value={rub.value} />}
         <Entete />
-    <div className='  flex w-full justify-between flex-col space-x-2 items-center border-b'>
+    <div className='  flex w-full justify-between flex-col space-x-2 items-center mb-2'>
       <div className="flex  items-center w-full justify-between"  onClick={()=>navigate('/profil')} >
         <IoIosArrowDropleftCircle size={30} color="black" />
         <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900  ">Utiilisateur  </h5>
           <FaPlusCircle color="gray" size={25}  onClick={()=>setRub({nom:'CREER',bol:true})}/>
       </div>
           
- <div  className='w-full justify-center items-center '>
+ <div  className='w-full justify-center items-center border-t '>
   {isLoader?<div className='w-full flex justify-center items-center mt-10 '> 
     <svg aria-hidden="true" className="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
