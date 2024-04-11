@@ -6,20 +6,24 @@ import { userActions } from '../reducer/user';
 import { useNavigate } from 'react-router-dom';
 import { IoIosArrowDropleftCircle } from "react-icons/io";
 export default function ModifierUser() {
+    const {id}=useParams()
   const navigate=useNavigate()
   const { register, handleSubmit,
-    // formState: { errors }
+         formState:{isSubmitting}
      } = useForm(
-  //  { resolver: yupResolver(schema)}
+    {
+  defaultValues: async () => dispatch(userActions.voirUser(id)).then((d)=>{return d.payload})
+}
    );
-   const dispatch =useDispatch()
+  const dispatch =useDispatch()
   const onSubmit = (data) => {
     console.log(data)
     //setLoading(true)
-   dispatch(userActions.inscription(data)).then(()=>{
+   dispatch(userActions.modifierUser(data)).then(()=>{
      navigate('/userAdmin')
     })
   }
+
   return (
     <div>
       <Entete />
