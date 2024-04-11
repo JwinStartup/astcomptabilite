@@ -17,6 +17,7 @@ import UserAdmin from './pages/UserAdmin.js'
 import ModifierParents from './pages/modifierParent.js'
 import Personnels from './pages/Personnels.js'
 import ModifierPersonnels from './pages/modifierPersonnel.js'
+import ModifierUsers from './pages/modifierUser.js'
 import ModifierEnfants from './pages/modifierEnfant.js'
 import Enfants from './pages/Enfants.js'
 import Login from './pages/Login.js'
@@ -45,6 +46,7 @@ function App() {
         <Route path="/cp/ListePersonnel" element={<ListePersonnel/>}/>
         <Route path="/inscription/parents" element={<Parents/>}/>
           <Route path="/modifier/parents/:id" element={<ModifierParents/>}/>
+          <Route path="/modifier/users/:id" element={<ModifierUsers/>}/>
           <Route path="/modifier/personnels/:id" element={<ModifierPersonnels/>}/>
           <Route path="/modifier/enfants/:id" element={<ModifierEnfants/>}/>
         <Route path="/inscription/personnels" element={<Personnels/>}/>
