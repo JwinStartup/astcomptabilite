@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import Home from './pages/Home.js'
 import Recues from './pages/Recues.js'
+import CreerCharge from './pages/creerCharge.js'
 import Factures from './pages/Factures.js'
 import FacturesCommissions from './pages/FacturesCommussions.js'
 import FacturesImpayes from './pages/FacturesImpayes.js'
@@ -39,6 +40,7 @@ function App() {
         <Route path="/cp" element={<ClientsPersonnels/>}/>
         <Route path="/bilan" element={<Bilan/>}/>
         <Route path="/charges" element={<Charges/>}/>
+        <Route path="/creerCharge" element={<CreerCharge/>}/>
         <Route path="/factures/commissions" element={<FacturesCommissions/>}/>
         <Route path="/factures/impayes" element={<FacturesImpayes/>}/>
         <Route path="/cp/ListeParent" element={<ListeParents/>}/>
