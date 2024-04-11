@@ -8,7 +8,7 @@ import {useNavigate} from 'react-router-dom'
 
 
 
-export default function VoirFacture({value,supprimer}) {
+export default function VoirFacture({value}) {
 const dispatch = useDispatch()
 const navigate = useNavigate()
  const supprimer=(id)=>{
