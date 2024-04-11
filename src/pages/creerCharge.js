@@ -26,9 +26,12 @@ const {isLoader,personnels} = useSelector((state)=>{
   return state.userReducer
  });
   return (
-    <div className='w-[400px]  border p-3 bg-white'>
-        <div className='font-bold  tracking-tight text-xl text-black pl-1'>Creer une Charge</div>
-       
+     <div>
+      <Entete />
+      <div className="flex  items-center "  onClick={()=>navigate('/charges')} >
+        <IoIosArrowDropleftCircle size={30} style={{paddingRigth:"5px"}} color="black" />
+        <h5 className="text-xl font-bold ml-1 tracking-tight text-gray-900  ">Ajouter une charge </h5>
+    </div>
         <form   onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex flex-col items-center mt-5  space-y-3 w-full h-full' > 
         <select {...register("type")} onChange={(e)=>setSelect(e.target.value)}  defaultValue='salaire' className='outline-none w-[250px] ml-2 border-b-2 py-1 text-md'>
             <option value='salaire'>Salaire personnel</option>
