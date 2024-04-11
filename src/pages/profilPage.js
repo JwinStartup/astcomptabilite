@@ -43,7 +43,8 @@ const [rub , setRub]=useState({retour:false,id:null})
             {user.me.nom}  {user.me.prenoms}
           </div>
            <div className="flex justify-start text-red-300 font-medium text-sm items-center gap-1">{user.me.role} </div>
-       </div>
+            <div onClick={()=>dispatch(userActions.deconnecte()).then(()=>logout()).then(()=>navigate('/'))} className='text-md font-semibold tracking-wider py-3  px-1' >Se deconnecter</div>
+           </div>
 
             <div className='mt-6'>
               <p className="text-lg font-semibold ml-1 tracking-tight text-gray-900  "> Bilan financier </p>
@@ -82,7 +83,6 @@ const [rub , setRub]=useState({retour:false,id:null})
             <div  className='flex flex-col '>
             <div className='border text-md font-semibold tracking-wider py-3  px-1' >Changer de mot de passe</div>
             <div onClick={()=>navigate('/userAdmin')} className='border text-md font-semibold tracking-wider py-3  px-1' >Voir les utilisateurs</div>
-            <div onClick={()=>dispatch(userActions.deconnecte()).then(()=>logout())} className='text-md font-semibold tracking-wider py-3  px-1' >Se deconnecter</div>
              </div>
            </div>
 
