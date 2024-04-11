@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { comptabiliteActions } from '../reducer/comptabilite';
 import { useDispatch, useSelector } from 'react-redux';
 import { userActions } from '../reducer/user';
-
+import {useNavigate} from 'react-router-dom'
 export default function CreerCharge() {
   const { register, handleSubmit,
   } = useForm(
