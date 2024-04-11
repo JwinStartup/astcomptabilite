@@ -6,7 +6,6 @@ import { userActions } from '../reducer/user';
 import { useNavigate } from 'react-router-dom';
 import { AiFillCloseCircle } from "react-icons/ai";
 export default function ModifierUser() {
-  console.log(value)
   const navigate=useNavigate()
   const { register, handleSubmit,
     // formState: { errors }
