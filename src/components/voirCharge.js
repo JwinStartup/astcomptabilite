@@ -12,7 +12,7 @@ import {useNavigate} from 'react-router-dom'
 
 
 
-export default function VoirFacture({value,modifier,supprimer}) {
+export default function VoirFacture({value,supprimer}) {
 const dispatch = useDispatch()
 const navigate = useNavigate()
 
