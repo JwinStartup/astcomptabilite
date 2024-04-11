@@ -4,8 +4,6 @@ import { comptabiliteActions } from '../reducer/comptabilite.js'
 import  Axios  from 'axios';
  import {FadeLoader}from 'react-spinners'
 import { AiFillCloseCircle } from "react-icons/ai";
-
-
 import {useNavigate} from 'react-router-dom'
 
 
@@ -15,11 +13,13 @@ import {useNavigate} from 'react-router-dom'
 export default function VoirFacture({value,supprimer}) {
 const dispatch = useDispatch()
 const navigate = useNavigate()
-
+ const supprimer=(id)=>{
+  dispatch(comptabiliteActions.supprimerCharge(id))
+ }
   return (
     <div className='relative m-3 bg-slate-100 w-[300px]  border p-3  border-gray-100  rounded-md '>
            <div className='absolute right-0 top-0 m-1 cursor-pointer '>    
-            <AiFillCloseCircle color="gray" size={25} onClick={()=>supprimer()} />
+            <AiFillCloseCircle color="gray" size={25} onClick={()=>supprimer(value._id)} />
            </div> 
       <div className='flex flex-row justify-between w-full'> 
         <div className='font-bold  tracking-tight text-lg text-black pl-1'>Charge</div>
