@@ -47,7 +47,7 @@ export default function Charges() {
             <div className='w-full flex justify-center mt-3 flex-col items-center  '>
                 {charges.map((value,index)=>
                   <VoirCharge 
-                             parama={()=>setRub(parama)}
+                             parama={(d)=>setRub(d)}
                       value={value}
                        />)}
             </div>}</>}
