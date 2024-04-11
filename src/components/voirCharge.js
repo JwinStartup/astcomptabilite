@@ -30,7 +30,7 @@ const navigate = useNavigate()
         <div className='text-sm font-medium text-gray-500'>montant:{value.montant}</div>
         </div>
         <div>
-             <div className='font-bold  tracking-wide text-sm text-black '>{value.personnel.nom} {value.personnel.prenoms} FCFA</div>
+             <div className='font-bold  tracking-wide text-sm text-black '>{value.personnel}</div>
             <div className='font-medium text-center tracking-tight text-[11px] text-gray-400 '>personnel</div>
         </div>
 
