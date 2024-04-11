@@ -38,7 +38,6 @@ export default function Charges() {
                  <FaPlusCircle color="gray" size={25}  onClick={()=>navigate('/creerCharge')}/>
             </div>
   
-            </div>
 
             {isLoader===true?<div className="flex flex-col gap-2 justify-center items-center ">
             { [1,2,3].map((i,j)=><div key={j} className="animate-pulse flex space-x-4 border rounded-md w-[250px] h-[200px] px-2 bg-gray-100">
