@@ -12,8 +12,8 @@ export default function Login() {
   const navigate = useNavigate()
   const schema = yup
 .object({
-  nom: yup.string().required('Veuillez ajouter votre nom'),
-  password: yup.string().required('Veuillez ajouter votre mot de passe'),
+  nom: yup.string('Chaine de caractere requis').required('Veuillez ajouter votre nom'),
+  password: yup.string('Chaine de caractere requis').required('Veuillez ajouter votre mot de passe'),
 })
 .required()
   const { register, handleSubmit,
