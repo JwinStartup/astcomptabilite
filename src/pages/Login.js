@@ -1,6 +1,7 @@
 import React,{useContext} from 'react'
 import Entete from '../components/entete'
 import { useDispatch } from 'react-redux';
+import * as yup from 'yup'
 import { useForm } from 'react-hook-form';
 import { userActions } from '../reducer/user';
 import {useNavigate}from 'react-router-dom';
@@ -8,10 +9,16 @@ import {UserContext} from '../context/authContext'
 export default function Login() {
   const { login, user} = useContext(UserContext);
   const navigate = useNavigate()
+  const schema = yup
+.object({
+  nom: yup.string().required('Veuillez ajouter votre nom'),
+  password: yup.string().required('Veuillez ajouter votre mot de passe'),
+})
+.required()
   const { register, handleSubmit,
    formState: { isSubmitted,isSubmitSuccessful,isSubmitting,isLoading,isValidating}
      } = useForm(
-  //  { resolver: yupResolver(schema)}
+   { resolver: yupResolver(schema)}
    );
    const dispatch =useDispatch()
   const onSubmit = (data) => {
