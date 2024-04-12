@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { userActions } from '../reducer/user';
 import {useNavigate}from 'react-router-dom';
 import {UserContext} from '../context/authContext'
+import { yupResolver } from '@hookform/resolvers/yup';
 export default function Login() {
   const { login, user} = useContext(UserContext);
   const navigate = useNavigate()
