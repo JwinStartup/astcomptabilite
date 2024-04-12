@@ -45,9 +45,9 @@ export default function Login() {
      <div className='flex flex-col '>
    <p className='text-2xl font-semibold text-black tracking-wider mb-3'>Connectez-vous</p>             
       <div className='flex flex-col mx-1 space-y-4'>
-      <input {...register("nom")}  type='text' placeholder='Nom utilisateur' className='outline-none w-full border-b-2 py-1 text-lg'/>
+      <input {...register("nom")}  type='text' placeholder='Nom utilisateur' className={`outline-none w-full border-b-2 py-1 text-lg ${errors.nom?'border-red-500':'border-red-500'}`} />
     {errors.nom&&<p className='text-sm font-semibold text-red-500 tracking-wider my-2'>{errors.nom?.messages}</p> }
-    <input {...register("password")} type='text' placeholder='Mot de passe' className='outline-none w-full border-b-2 py-1 text-lg'/>
+    <input {...register("password")} type='text' placeholder='Mot de passe' className={`outline-none w-full border-b-2 py-1 text-lg ${errors.nom?'border-red-500':'border-red-500'}`}/>
       {errors.password&&<p className='text-sm font-semibold text-red-500 tracking-wider my-2'>{errors.password?.messages}</p> }
     </div> 
      </div>
