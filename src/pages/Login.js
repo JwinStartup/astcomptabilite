@@ -9,7 +9,7 @@ export default function Login() {
   const { login, user} = useContext(UserContext);
   const navigate = useNavigate()
   const { register, handleSubmit,
-    // formState: { errors }
+   formState: { isSubmitted,isSubmitSuccessful,isSubmitting,isLoading,isValidating}
      } = useForm(
   //  { resolver: yupResolver(schema)}
    );
@@ -23,6 +23,11 @@ export default function Login() {
     navigate('/')
     })
   }
+  console.log('isSubmitted:',isSubmitted)
+  console.log('isSubmitSuccessful:',isSubmitSuccessful)
+  console.log('isSubmitting:',isSubmitting)
+  console.log('isLoading:',isLoading)
+  console.log('isValidating:',isValidating)
   return (
     <div className='w-full flex flex-col  items-center justify-center '>
       <div className=' w-full flex mb-3'>
