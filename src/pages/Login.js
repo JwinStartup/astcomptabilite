@@ -16,7 +16,7 @@ export default function Login() {
 })
 .required()
   const { register, handleSubmit,
-   formState: { isSubmitted,isSubmitSuccessful,isSubmitting,isLoading,isValidating,formState: { errors }}
+   formState: { isSubmitted,isSubmitSuccessful,isSubmitting,isLoading,isValidating, errors }
      } = useForm(
    { resolver: yupResolver(schema)}
    );
