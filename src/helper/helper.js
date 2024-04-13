@@ -32,8 +32,9 @@ function request(method) {
 }
 function handleResponse(response) {
   return response.text().then((text) => {
+    console.log(JSON.parse(text))
+    let error
     const data = JSON.parse(text) || text;
-
     if (!response.ok) {
       // if ([401, 403].includes(response.status) && authToken()) {
       //   // auto logout if 401 Unauthorized or 403 Forbidden response returned from api
@@ -45,11 +46,11 @@ function handleResponse(response) {
       //   const home = () => history.navigate("Acceuil");
       //   home();
       // }
-
-      const error = (data && data.message) || response.statusText;
-      return Promise.reject(error);
+      
+      error = JSON.parse(text) || text;
+     // return Promise.reject(error);
     }
 
-    return data;
+    return data||error;
   });
 }
