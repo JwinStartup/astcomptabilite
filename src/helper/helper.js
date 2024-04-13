@@ -31,9 +31,12 @@ function request(method) {
   };
 }
 function handleResponse(response) {
-  return response.then((d) => {
+   if([400].includes(response.status)){
+     console.log(response)
+   }
+  //return response.then((d) => {
     console.log(d)
-    let error
+   // let error
    // const data = JSON.parse(text) || text;
    // if (!response.ok) {
       // if ([401, 403].includes(response.status) && authToken()) {
@@ -53,5 +56,5 @@ function handleResponse(response) {
   //  }
 
    // return data
-  });
+  //});
 }
