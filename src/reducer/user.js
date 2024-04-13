@@ -410,6 +410,10 @@ function createExtraReducers() {
               //  const user = action.payload;
                state.user = null;
                 state.isLoader = false;
+                   state.user = null;
+                  state.auth = null;
+                   localStorage.removeItem('user')
+                    history.navigate('/login')
               })
               .addCase(rejected, (state, action) => {
                 state.isLoader = false;
