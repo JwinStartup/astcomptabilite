@@ -32,7 +32,7 @@ function request(method) {
 }
 function handleResponse(response) {
   return response.text().then((text) => {
-    console.log(JSON.parse(text))
+    console.log(response)
     let error
     const data = JSON.parse(text) || text;
     if (!response.ok) {
@@ -46,6 +46,7 @@ function handleResponse(response) {
       //   const home = () => history.navigate("Acceuil");
       //   home();
       // }
+    //  const error = (data && data.message) || response.statusText;
       error = JSON.parse(text) || text;
       return Promise.reject(error);
     }
