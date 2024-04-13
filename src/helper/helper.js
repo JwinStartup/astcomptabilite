@@ -31,8 +31,8 @@ function request(method) {
   };
 }
 function handleResponse(response) {
-    console.log(response)
-  return response.text().then((text) => {
+  return response.then((d) => {
+    console.log(d)
     let error
     const data = JSON.parse(text) || text;
     if (!response.ok) {
