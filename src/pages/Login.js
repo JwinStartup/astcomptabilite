@@ -22,7 +22,7 @@ export default function Login() {
    { resolver: yupResolver(schema)}
    );
    const dispatch =useDispatch()
-   const {isLoader,user} = useSelector((state)=>{
+   const {isLoader} = useSelector((state)=>{
     return state.userReducer
    });
   const onSubmit = (data) => {
