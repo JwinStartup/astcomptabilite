@@ -1,6 +1,6 @@
 //import { useStore } from "react-redux";
 import { Navigate } from "react-router-dom";
-import { store, authActions } from '../reducer/store'
+import { store, userActions } from '../reducer/store'
 export const history = {
   navigate: null,
   location: null,
