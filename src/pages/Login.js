@@ -30,7 +30,7 @@ export default function Login() {
     console.log(data)
     //setLoading(true)
    dispatch(userActions.login(data)).then((d)=>{
-     setIsLoading(isLoader||isSubmittting)
+     setIsLoading(isLoader)
      console.log(d.payload.user)
      login(d.payload.user)
     navigate('/')
@@ -39,6 +39,7 @@ export default function Login() {
  
   return (
     <div className='w-full flex flex-col  items-center justify-center '>
+    {console.log(isLoader)}
       <div className=' w-full flex mb-3'>
           <h1 className='text-2xl m-1 font-bold'>ASTComptable</h1>
         </div>
