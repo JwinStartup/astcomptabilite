@@ -38,6 +38,7 @@ function createInitialState() {
         state.auth = null;
         state.userToken = null;
         localStorage.removeItem('user')
+        history.navigate('/login')
     }
   }
 
