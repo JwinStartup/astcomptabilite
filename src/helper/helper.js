@@ -1,6 +1,6 @@
 //import { useStore } from "react-redux";
 import { Navigate } from "react-router-dom";
-
+import { store, authActions } from './reducer/store'
 export const history = {
   navigate: null,
   location: null,
@@ -31,12 +31,27 @@ function request(method) {
   };
 }
 function handleResponse(response) {
-   if([400].includes(response.status)){
-     
-    const error=  response.text().then((d)=> {return d})
-     console.log(JSON.parse(error))
-     return Promise.reject(JSON.parse(error));
-   }
+  return response.text().then(text => {
+        const data = text && JSON.parse(text);
+
+        if (!response.ok) {
+            if ([401, 403].includes(response.status) ) {
+                // auto logout if 401 Unauthorized or 403 Forbidden response returned from api
+                const logout = () => store.dispatch(authActions.logout());
+                logout();
+            }
+            if ([400].includes(response.status) ) {
+         // auto logout if 401 Unauthorized or 403 Forbidden response returned from api
+            const home = () => history.navigate("/login");
+                    home();
+             }
+
+            const error = (data && data.message) || response.statusText;
+            return Promise.reject(error);
+        }
+
+        return data;
+    });
   //return response.then((d) => {
    // console.log(d)
    // let error
