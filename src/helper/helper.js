@@ -47,9 +47,9 @@ function handleResponse(response) {
       //   home();
       // }
       error = JSON.parse(text) || text;
-     // return Promise.reject(error);
+      return Promise.reject(error);
     }
 
-    return data||error;
+    return data
   });
 }
