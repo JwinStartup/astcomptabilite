@@ -8,6 +8,10 @@ import Avatar from 'react-avatar'
 import { AiOutlineLogout } from "react-icons/ai"
 export default function Entete() {
   const { login,logout, user } = useContext(UserContext);
+   const {auth} = useSelector((state)=>{
+    return state.userReducer
+   });
+  console.log(auth)
   const navigate = useNavigate()
   const  dispatch = useDispatch()
   const  [useur,setUseur] =useState(user)
