@@ -15,9 +15,6 @@ export default function Entete() {
   const navigate = useNavigate()
   const  dispatch = useDispatch()
   const  [useur,setUseur] =useState(auth||JSON.parse(localStorage.getItem('user')))
-  useEffect(()=>{
-    setUseur(auth)
-  },[auth])
   return (
     <div className=' w-full flex justify-between'>
           <h1 className='text-2xl m-1 font-bold'>ASTComptable</h1>
