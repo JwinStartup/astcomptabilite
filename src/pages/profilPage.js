@@ -24,7 +24,7 @@ const [rub , setRub]=useState({retour:false,id:null})
   useEffect(() => { 
     dispatch(comptabiliteActions.listeBilan())
   },[])
-  
+  console.log(auth)
   const {isLoader,bilans} = useSelector((state)=>{
     return state.comptabiliteReducer
    });
