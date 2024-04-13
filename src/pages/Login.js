@@ -27,18 +27,15 @@ export default function Login() {
     return state.userReducer
    });
   const onSubmit = (data) => {
-    console.log(data)
      setChargement(true)
    dispatch(userActions.login(data)).then((d)=>{
      setChargement(false)
-     console.log(d)
      
     })
   }
  
   return (
     <div className='w-full flex flex-col  items-center justify-center '>
-    {console.log(isloader,chargement)}
       <div className=' w-full flex mb-3'>
           <h1 className='text-2xl m-1 font-bold'>ASTComptable</h1>
         </div>
