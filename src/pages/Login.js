@@ -57,7 +57,7 @@ export default function Login() {
       <button onClick={()=>navigate('/')} className='inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-400 rounded-lg hover:bg-green-800 mx-2'>
        <span>retour</span>
       </button>
-  {isloader==false?<button type='submit' disable={isLoader} className='inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-400 rounded-lg hover:bg-green-800 mx-2'>
+  {isloader==false?<button type='submit' className='inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-400 rounded-lg hover:bg-green-800 mx-2'>
        <span>Se connecter</span>
       
       </button>:<span className='flex flex-row items-center space-x-2 justify-center inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-400 rounded-lg hover:bg-green-800 mx-2'>
