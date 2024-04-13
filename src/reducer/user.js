@@ -15,6 +15,7 @@ export const userReducer = slice.reducer;
 function createInitialState() {
     return {
       user: null,
+      auth: JSON.parse(localStorage.getItem('user')),
       users:[] ,
       parent:null,
       enfant:null,
@@ -35,6 +36,7 @@ function createInitialState() {
     function logout(state) {
         state.user = null;
         state.userToken = null;
+        localStorage.removeItem('user')
     }
   }
 
@@ -422,6 +424,7 @@ function createExtraReducers() {
               .addCase(fulfilled, (state, action) => {
                 const user = action.payload;
                 state.user = user;
+                  localStorage.setItem('user', JSON.stringify(user));
                 const { from } = history.location.state || { from: { pathname: '/' } };
                 history.navigate(from);
                 state.isLoader = false;
