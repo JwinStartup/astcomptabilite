@@ -19,11 +19,11 @@ export default function Home() {
         <FaFileInvoice  size={30} color="#1D4ED8"/>
         <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900 ">Facture & Reçue </h5>
     </div>
-    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg  "> <GiCheckMark size={18} color="green" />  Créer une facture ou reçue</p>
-    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="green" />  Modifier une facture ou reçue</p>
+    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg  "> <GiCheckMark size={18} color="green" />  Créer une facture ou un reçu</p>
+    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="green" />  Modifier une facture ou un reçu</p>
     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="green" /> Payer une facture</p>
-    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="green" /> Telecharger une facture ou reçue</p>
-    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="green" /> Suppprimer une facture</p>
+    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="green" /> Télècharger une facture ou un reçu</p>
+    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="green" /> Supprimer une facture</p>
     <Link to='/factures' className className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
         Commençer
         <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -38,11 +38,11 @@ export default function Home() {
         <FaUsers  size={30} color="green"/>
         <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900 dark:text-white">Parents & Personnels </h5>
     </div>
-    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg  "> <GiCheckMark size={18} color="gray" /> Inscrire les parents et le personnel</p>
+    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg  "> <GiCheckMark size={18} color="gray" /> Inscrire les parents et les personnels</p>
     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="gray" />  Inscrire les élèves </p>
     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="gray" /> Voir et Modifier les  informations</p>
     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="gray" />  Ajouter le montant de la formation</p>
-    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="gray" /> Suppprimer </p>
+    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="gray" /> Supprimer </p>
     <Link to='/cp' className className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-400 rounded-lg hover:bg-green-800">
         Commençer
         <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -75,8 +75,8 @@ export default function Home() {
     </div>
     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg  "> <GiCheckMark size={18} color="#764929" /> Suivre l'evolution des recettes </p>
     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg  "> <GiCheckMark size={18} color="#764929" /> Suivre l'evolution des charges </p>
-    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="#764929" /> Voir la liste les bilan </p>
-    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="#764929" /> Cloturer les bilan  </p>
+    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="#764929" /> Voir la liste les bilans </p>
+    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="#764929" /> Cloturer les bilans  </p>
     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex items-center text-lg"><GiCheckMark size={18} color="#764929" />  Voir le resultat net</p>
     <Link to='/profil' className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-[#f01e2c] rounded-lg ">
        Commençer
