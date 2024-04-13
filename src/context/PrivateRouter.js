@@ -9,7 +9,11 @@ const PrivateRouter =({children})=>{
     return state.userReducer
    });
 const  [useur,setUseur] =useState(auth)
- // useur.me!==null?<Outlet/>:<Navigate to="/login"  />
+  useEffect(()=>
+              {
+               setUseur(JSON.parse(localStorage.getItem('user')))
+              },[]
+              )
    if (!useur) {
         // not logged in so redirect to login page with the return url
         return <Navigate to="/login" state={{ from: history.location }} />
