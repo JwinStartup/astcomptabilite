@@ -10,6 +10,7 @@ import {UserContext} from '../context/authContext'
 import { yupResolver } from '@hookform/resolvers/yup';
 export default function Login() {
   const { login, user} = useContext(UserContext);
+  const {isLoder,setIsLoader}=useSate(false)
   const navigate = useNavigate()
   const schema = yup
 .object({
@@ -30,7 +31,7 @@ export default function Login() {
     console.log(data)
     //setLoading(true)
    dispatch(userActions.login(data)).then((d)=>{
-  
+         setIsLoader(isloader)
      console.log(d.payload.user)
      login(d.payload.user)
     navigate('/')
