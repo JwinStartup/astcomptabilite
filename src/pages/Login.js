@@ -18,14 +18,14 @@ export default function Login() {
 })
 .required()
   const { register, handleSubmit,
-   formState: {errors }
+   formState: {errors,isSubmittting }
      } = useForm(
    { resolver: yupResolver(schema)}
    );
    const dispatch =useDispatch()
- /*  const {isLoader} = useSelector((state)=>{
+  const {isLoader} = useSelector((state)=>{
     return state.userReducer
-   });*/
+   });
   const onSubmit = (data) => {
     console.log(data)
     //setLoading(true)
