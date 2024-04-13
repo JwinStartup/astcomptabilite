@@ -85,9 +85,8 @@ export default function FacturesImpayes() {
     <div className=' w-full'>
          {rub.bol!==false&&<SetComponent p={rub.nom} retour={()=>setRub({bol:false,nom:''})} value={rub.value} />}
         <Entete />
-     <div className='  w-full  flex flex-col  space-x-2'>
-     <div className=' mb-3 p-0 w-full   '>
-     <div className='  flex w-full justify-between flex-row space-x-2 items-center w-[400px]'>
+     <div className='  w-full  flex flex-col  '>
+     <div className='  flex w-full justify-between flex-row  items-center mx-4'>
     <div className="flex  items-center "  onClick={()=>navigate('/')} >
         <IoIosArrowDropleftCircle size={30} color="black" />
         <FaFileInvoice  size={30} color="#1D4ED8" style={{paddingRigth:"5px"}}/>
@@ -103,7 +102,6 @@ export default function FacturesImpayes() {
                  <FaPlusCircle color="gray" size={25}  onClick={()=>setRub({nom:'CREER',bol:true})}/>
             </div>
   
-            </div>
        {isLoader?
             <div className="flex flex-col gap-2 justify-center items-center ">
             { [1,2,3].map((i,j)=><div key={j} className="animate-pulse flex space-x-4 border rounded-md w-[250px] h-[200px] px-2 bg-gray-100">
