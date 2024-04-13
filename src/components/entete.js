@@ -14,7 +14,7 @@ export default function Entete() {
   console.log(auth)
   const navigate = useNavigate()
   const  dispatch = useDispatch()
-  const  [useur,setUseur] =useState(auth)
+  const  [useur,setUseur] =useState(auth||JSON.parse(localStorage.getItem('user')))
   useEffect(()=>{
     setUseur(auth)
   },[auth])
