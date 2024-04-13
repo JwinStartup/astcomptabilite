@@ -10,7 +10,6 @@ import {UserContext} from '../context/authContext'
 import { yupResolver } from '@hookform/resolvers/yup';
 export default function Login() {
   const { login, user} = useContext(UserContext);
-  const [isLoading,setIsLoading]=useState(false)
   const navigate = useNavigate()
   const schema = yup
 .object({
@@ -24,25 +23,23 @@ export default function Login() {
    { resolver: yupResolver(schema)}
    );
    const dispatch =useDispatch()
-  const {isLoader} = useSelector((state)=>{
+  const {isloader} = useSelector((state)=>{
     return state.userReducer
    });
   const onSubmit = (data) => {
     console.log(data)
     //setLoading(true)
    dispatch(userActions.login(data)).then((d)=>{
-     setIsLoading(isLoader)
+  
      console.log(d.payload.user)
      login(d.payload.user)
     navigate('/')
     })
   }
-  useEffect(() => {
-    setIsLoading(isLoader)
-  },[isLoader] )
+ 
   return (
     <div className='w-full flex flex-col  items-center justify-center '>
-    {console.log(isLoader)}
+    {console.log(isloader)}
       <div className=' w-full flex mb-3'>
           <h1 className='text-2xl m-1 font-bold'>ASTComptable</h1>
         </div>
@@ -60,7 +57,7 @@ export default function Login() {
       <button onClick={()=>navigate('/')} className='inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-400 rounded-lg hover:bg-green-800 mx-2'>
        <span>retour</span>
       </button>
-  {isLoading==false?<button type='submit' disable={isLoader} className='inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-400 rounded-lg hover:bg-green-800 mx-2'>
+  {isloader==false?<button type='submit' disable={isLoader} className='inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-400 rounded-lg hover:bg-green-800 mx-2'>
        <span>Se connecter</span>
       
       </button>:<span className='flex flex-row items-center justify-center inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-400 rounded-lg hover:bg-green-800 mx-2'>
