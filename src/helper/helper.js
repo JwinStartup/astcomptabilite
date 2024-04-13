@@ -47,8 +47,7 @@ function handleResponse(response) {
             const home = () => history.navigate("/login");
                     home();
              }
-            console.log(data)
-            const error = (data && data.message) || response.statusText;
+            const error = data 
             return Promise.reject(error);
         }
 
