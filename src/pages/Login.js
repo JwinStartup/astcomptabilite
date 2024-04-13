@@ -29,9 +29,9 @@ export default function Login() {
    });
   const onSubmit = (data) => {
     console.log(data)
-    //setLoading(true)
+     setIsLoader(true)
    dispatch(userActions.login(data)).then((d)=>{
-         setIsLoader(isloader)
+     setIsLoader(false)
      console.log(d.payload.user)
      login(d.payload.user)
     navigate('/')
