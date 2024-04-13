@@ -86,7 +86,7 @@ export default function FacturesImpayes() {
          {rub.bol!==false&&<SetComponent p={rub.nom} retour={()=>setRub({bol:false,nom:''})} value={rub.value} />}
         <Entete />
      <div className='  w-full  flex flex-col  '>
-     <div className='  flex w-full justify-between flex-row  items-center mx-4'>
+     <div className='    flex justify-between items-center space-x-2 mx-4'>
     <div className="flex  items-center "  onClick={()=>navigate('/')} >
         <IoIosArrowDropleftCircle size={30} color="black" />
         <FaFileInvoice  size={30} color="#1D4ED8" style={{paddingRigth:"5px"}}/>
