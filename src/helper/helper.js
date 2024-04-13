@@ -34,8 +34,8 @@ function handleResponse(response) {
   return response.then((d) => {
     console.log(d)
     let error
-    const data = JSON.parse(text) || text;
-    if (!response.ok) {
+   // const data = JSON.parse(text) || text;
+   // if (!response.ok) {
       // if ([401, 403].includes(response.status) && authToken()) {
       //   // auto logout if 401 Unauthorized or 403 Forbidden response returned from api
       //   const logout = () => store.dispatch(userActions.logout());
@@ -47,10 +47,11 @@ function handleResponse(response) {
       //   home();
       // }
     //  const error = (data && data.message) || response.statusText;
-      error = JSON.parse(text) || text;
-      return Promise.reject(error);
-    }
+   
+      //error = JSON.parse(text) || text;
+    //  return Promise.reject(error);
+  //  }
 
-    return data
+   // return data
   });
 }
