@@ -17,6 +17,7 @@ export default function ProfilPage() {
  const {auth} = useSelector((state)=>{
     return state.userReducer
    });
+ const  [useur,setUseur] =useState(auth||JSON.parse(localStorage.getItem('user')))
 const dispatch = useDispatch()
  const navigate=useNavigate()
 const [rub , setRub]=useState({retour:false,id:null})
@@ -24,7 +25,6 @@ const [rub , setRub]=useState({retour:false,id:null})
   useEffect(() => { 
     dispatch(comptabiliteActions.listeBilan())
   },[])
-  console.log(auth)
   const {isLoader,bilans} = useSelector((state)=>{
     return state.comptabiliteReducer
    });
@@ -41,9 +41,9 @@ const [rub , setRub]=useState({retour:false,id:null})
         <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900  ">Profil  </h5>
     </div>
       <div className='flex  flex-col items-center justify-center '>
-            <Avatar name={`${auth?.user?.nom}`}  size="100" round={true} /> 
+            <Avatar name={`${useur?.user?.nom}`}  size="100" round={true} /> 
            <div className='flex  text-lg font-bold tracking-wider text-center w-full justify-center items-center '>
-            {auth?.user?.nom}  {auth?.user?.prenoms}
+            {useur?.user?.nom}  {useur?.user?.prenoms}
           </div>
            <div className="flex justify-start text-red-300 font-medium text-sm items-center gap-1">{auth?.user?.role} </div>
             <div onClick={()=>
