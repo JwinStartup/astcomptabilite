@@ -36,7 +36,9 @@ export default function Login() {
     navigate('/')
     })
   }
- 
+  useEffect(() => {
+    setIsLoading(isLoader)
+  },[isLoader] )
   return (
     <div className='w-full flex flex-col  items-center justify-center '>
     {console.log(isLoader)}
