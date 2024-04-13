@@ -34,7 +34,7 @@ function handleResponse(response) {
    if([400].includes(response.status)){
      
     const error=  response.text().then((d)=> {return d})
-     console.log(error)
+     console.log(JSON.parse(error))
      return Promise.reject(JSON.parse(error));
    }
   //return response.then((d) => {
