@@ -47,7 +47,7 @@ const [rub , setRub]=useState({retour:false,id:null})
           </div>
            <div className="flex justify-start text-red-300 font-medium text-sm items-center gap-1">{auth.user.role} </div>
             <div onClick={()=>
-                        dispatch(userActions.deconnecte()).then(()=>userActions.logout()).then(()=> navigate('/'))
+                        dispatch(userActions.deconnecte())
               } 
                   
                            className='text-md font-semibold tracking-wider py-3  px-1' >Se deconnecter</div>
