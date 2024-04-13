@@ -1,5 +1,5 @@
 import {createSlice,createAsyncThunk} from '@reduxjs/toolkit'
-import { fetchWrapper } from '../helper/helper'
+import { fetchWrapper,history } from '../helper/helper'
 const url = "https://astcomptabiliteserver.onrender.com/api/users"
 
 const name = "users";
@@ -422,6 +422,8 @@ function createExtraReducers() {
               .addCase(fulfilled, (state, action) => {
                 const user = action.payload;
                 state.user = user;
+                const { from } = history.location.state || { from: { pathname: '/' } };
+                history.navigate(from);
                 state.isLoader = false;
               })
               .addCase(rejected, (state, action) => {
