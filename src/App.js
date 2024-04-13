@@ -41,8 +41,6 @@ function App() {
       <Route path='*' element={<Navigate to='/' />} />
          <Route path="/login" element={<Login/>}/>
   
-        <Route element={<PrivateRouter/>}>
-        </Route>
         <Route path="/factures" 
                 element={
                             <PrivateRouter>
