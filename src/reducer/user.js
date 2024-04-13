@@ -19,7 +19,8 @@ function createInitialState() {
       parent:null,
       enfant:null,
       personnel:null,
-        message:"",
+      message:"",
+      errors:null,
       parents:[],
       enfants:[],
       personnels:[],
@@ -187,7 +188,7 @@ function createExtraReducers() {
             var { pending, fulfilled, rejected } = extraActions.inscriptionPersonnel;
             builder
               .addCase(pending, (state) => {
-                state.error = null;
+                state.errors = null;
                 state.isLoader = true;
               })
               .addCase(fulfilled, (state, action) => {
@@ -197,14 +198,14 @@ function createExtraReducers() {
               })
               .addCase(rejected, (state, action) => {
                 state.isLoader = false;
-                state.error = action.error;
+                state.errors = action.errors;
               });
           }
         function modifierPersonnel() {
             var { pending, fulfilled, rejected } = extraActions.modifierPersonnel;
             builder
               .addCase(pending, (state) => {
-                state.error = null;
+                state.errors = null;
                 state.isLoader = true;
               })
               .addCase(fulfilled, (state, action) => {
@@ -214,14 +215,14 @@ function createExtraReducers() {
               })
               .addCase(rejected, (state, action) => {
                 state.isLoader = false;
-                state.error = action.error;
+                state.errors = action.errors;
               });
           }
         function supprimerPersonnel() {
             var { pending, fulfilled, rejected } = extraActions.supprimerPersonnel;
             builder
               .addCase(pending, (state) => {
-                state.error = null;
+                state.errors = null;
                 state.isLoader = true;
               })
               .addCase(fulfilled, (state, action) => {
@@ -231,14 +232,14 @@ function createExtraReducers() {
               })
               .addCase(rejected, (state, action) => {
                 state.isLoader = false;
-                state.error = action.error;
+                state.errors = action.errors;
               });
           }
         function inscriptionParent() {
             var { pending, fulfilled, rejected } = extraActions.inscriptionParent;
             builder
               .addCase(pending, (state) => {
-                state.error = null;
+                state.errors = null;
                 state.isLoader = true;
               })
               .addCase(fulfilled, (state, action) => {
@@ -248,14 +249,14 @@ function createExtraReducers() {
               })
               .addCase(rejected, (state, action) => {
                 state.isLoader = false;
-                state.error = action.error;
+                state.errors = action.errors;
               });
           }
         function supprimerParent() {
             var { pending, fulfilled, rejected } = extraActions.supprimerParent;
             builder
               .addCase(pending, (state) => {
-                state.error = null;
+                state.errors = null;
                 state.isLoader = true;
               })
               .addCase(fulfilled, (state, action) => {
@@ -265,14 +266,14 @@ function createExtraReducers() {
               })
               .addCase(rejected, (state, action) => {
                 state.isLoader = false;
-                state.error = action.error;
+                state.errors = action.errors;
               });
           }
         function modifierParent() {
             var { pending, fulfilled, rejected } = extraActions.modifierParent;
             builder
               .addCase(pending, (state) => {
-                state.error = null;
+                state.errors = null;
                 state.isLoader = true;
               })
               .addCase(fulfilled, (state, action) => {
@@ -282,14 +283,14 @@ function createExtraReducers() {
               })
               .addCase(rejected, (state, action) => {
                 state.isLoader = false;
-                state.error = action.error;
+                state.errors = action.errors;
               });
           }
          function modifierEnfant() {
             var { pending, fulfilled, rejected } = extraActions.modifierEnfant;
             builder
               .addCase(pending, (state) => {
-                state.error = null;
+                state.errors = null;
                 state.isLoader = true;
               })
               .addCase(fulfilled, (state, action) => {
@@ -299,14 +300,14 @@ function createExtraReducers() {
               })
               .addCase(rejected, (state, action) => {
                 state.isLoader = false;
-                state.error = action.error;
+                state.errors = action.errors;
               });
           }
          function supprimerEnfant() {
             var { pending, fulfilled, rejected } = extraActions.supprimerEnfant;
             builder
               .addCase(pending, (state) => {
-                state.error = null;
+                state.errors = null;
                 state.isLoader = true;
               })
               .addCase(fulfilled, (state, action) => {
@@ -316,14 +317,14 @@ function createExtraReducers() {
               })
               .addCase(rejected, (state, action) => {
                 state.isLoader = false;
-                state.error = action.error;
+                state.errors = action.errors;
               });
           }
          function inscriptionEnfant() {
             var { pending, fulfilled, rejected } = extraActions.inscriptionEnfant;
             builder
               .addCase(pending, (state) => {
-                state.error = null;
+                state.errors = null;
                 state.isLoader = true;
               })
               .addCase(fulfilled, (state, action) => {
@@ -333,14 +334,14 @@ function createExtraReducers() {
               })
               .addCase(rejected, (state, action) => {
                 state.isLoader = false;
-                state.error = action.error;
+                state.errors = action.errors;
               });
           }
         function listePersonnel() {
             var { pending, fulfilled, rejected } = extraActions.listePersonnel;
             builder
               .addCase(pending, (state) => {
-                state.error = null;
+                state.errors = null;
                 state.isLoader = true;
               })
               .addCase(fulfilled, (state, action) => {
@@ -351,14 +352,14 @@ function createExtraReducers() {
               })
               .addCase(rejected, (state, action) => {
                 state.isLoader = false;
-                state.error = action.error;
+                state.errors = action.errors;
               });
           }
          function listeEnfant() {
             var { pending, fulfilled, rejected } = extraActions.listeEnfant;
             builder
               .addCase(pending, (state) => {
-                state.error = null;
+                state.errors = null;
                 state.isLoader = true;
     
               })
@@ -370,7 +371,7 @@ function createExtraReducers() {
               })
               .addCase(rejected, (state, action) => {
                 state.isLoader = false;
-                state.error = action.error;
+                state.errors = action.errors;
 
               });
           }
@@ -378,7 +379,7 @@ function createExtraReducers() {
             var { pending, fulfilled, rejected } = extraActions.listeParent;
             builder
               .addCase(pending, (state) => {
-                state.error = null;
+                state.errors = null;
                 state.isLoader = true;
     
               })
@@ -390,7 +391,7 @@ function createExtraReducers() {
               })
               .addCase(rejected, (state, action) => {
                 state.isLoader = false;
-                state.error = action.error;
+                state.errors = action.errors;
 
               });
           }
@@ -398,7 +399,7 @@ function createExtraReducers() {
             var { pending, fulfilled, rejected } = extraActions.deconnecte;
             builder
               .addCase(pending, (state) => {
-                state.error = null;
+                state.errors = null;
                 state.isLoader = true;
               })
               .addCase(fulfilled, (state, action) => {
@@ -408,14 +409,14 @@ function createExtraReducers() {
               })
               .addCase(rejected, (state, action) => {
                 state.isLoader = false;
-                state.error = action.error;
+                state.errors = action.errors;
               });
           }
         function login() {
             var { pending, fulfilled, rejected } = extraActions.login;
             builder
               .addCase(pending, (state) => {
-                state.error = null;
+                state.errors = null;
                 state.isLoader = true;
               })
               .addCase(fulfilled, (state, action) => {
@@ -425,14 +426,15 @@ function createExtraReducers() {
               })
               .addCase(rejected, (state, action) => {
                 state.isLoader = false;
-                state.error = action.error;
+                  console.log("error:",action.errors,"payload:",action.payload)
+                state.errors = action.errors;
               });
           }
         function inscription() {
             var {pending,fulfilled,rejected}=extraActions.inscription
             builder
             .addCase(pending, (state) => {
-              state.error = null;
+              state.errors = null;
               state.isLoader = true;
             })
             .addCase(fulfilled, (state, action) => {
@@ -442,7 +444,7 @@ function createExtraReducers() {
             })
             .addCase(rejected, (state, action) => {
               state.isLoader = false;
-              state.error = action.error;
+              state.errors = action.errors;
             });
           }
       
@@ -450,7 +452,7 @@ function createExtraReducers() {
             var {pending,fulfilled,rejected}=extraActions.modifier
             builder
             .addCase(pending, (state) => {
-              state.error = null;
+              state.errors = null;
               state.isLoader = true;
             })
             .addCase(fulfilled, (state, action) => {
@@ -460,14 +462,14 @@ function createExtraReducers() {
             })
             .addCase(rejected, (state, action) => {
               state.isLoader = false;
-              state.error = action.error;
+              state.errors = action.errors;
             });
           }
         function supprimer() {
             var {pending,fulfilled,rejected}=extraActions.supprimer
             builder
             .addCase(pending, (state) => {
-              state.error = null;
+              state.errors = null;
               state.isLoader = true;
             })
             .addCase(fulfilled, (state, action) => {
@@ -477,14 +479,14 @@ function createExtraReducers() {
             })
             .addCase(rejected, (state, action) => {
               state.isLoader = false;
-              state.error = action.error;
+              state.errors = action.errors;
             });
           }
         function liste() {
             var {pending,fulfilled,rejected}=extraActions.liste
             builder
             .addCase(pending, (state) => {
-              state.error = null;
+              state.errors = null;
               state.isLoader = true;
             })
             .addCase(fulfilled, (state, action) => {
@@ -494,14 +496,14 @@ function createExtraReducers() {
             })
             .addCase(rejected, (state, action) => {
               state.isLoader = false;
-              state.error = action.error;
+              state.errors = action.errors;
             });
           }
         function voirEnfant() {
             var {pending,fulfilled,rejected}=extraActions.voirEnfant
             builder
             .addCase(pending, (state) => {
-              state.error = null;
+              state.errors = null;
               state.isLoader = true;
             })
             .addCase(fulfilled, (state, action) => {
@@ -511,14 +513,14 @@ function createExtraReducers() {
             })
             .addCase(rejected, (state, action) => {
               state.isLoader = false;
-              state.error = action.error;
+              state.errors = action.errors;
             });
           }
         function voirPersonnel() {
             var {pending,fulfilled,rejected}=extraActions.voirPersonnel
             builder
             .addCase(pending, (state) => {
-              state.error = null;
+              state.errors = null;
               state.isLoader = true;
             })
             .addCase(fulfilled, (state, action) => {
@@ -528,14 +530,14 @@ function createExtraReducers() {
             })
             .addCase(rejected, (state, action) => {
               state.isLoader = false;
-              state.error = action.error;
+              state.errors = action.errors;
             });
           }
         function voirUser() {
             var {pending,fulfilled,rejected}=extraActions.voirUser
             builder
             .addCase(pending, (state) => {
-              state.error = null;
+              state.errors = null;
               state.isLoader = true;
             })
             .addCase(fulfilled, (state, action) => {
@@ -545,14 +547,14 @@ function createExtraReducers() {
             })
             .addCase(rejected, (state, action) => {
               state.isLoader = false;
-              state.error = action.error;
+              state.errors = action.errors;
             });
           }
         function voirParent() {
             var {pending,fulfilled,rejected}=extraActions.voirParent
             builder
             .addCase(pending, (state) => {
-              state.error = null;
+              state.errors = null;
               state.isLoader = true;
             })
             .addCase(fulfilled, (state, action) => {
@@ -562,7 +564,7 @@ function createExtraReducers() {
             })
             .addCase(rejected, (state, action) => {
               state.isLoader = false;
-              state.error = action.error;
+              state.errors = action.errors;
             });
           }
           
