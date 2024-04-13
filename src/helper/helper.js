@@ -33,8 +33,8 @@ function request(method) {
 function handleResponse(response) {
    if([400].includes(response.status)){
      
-     response.text().then((d)=> {console.log(d)})
-     
+    const error=  response.text().then((d)=> {return d})
+     return Promise.reject(error);
    }
   //return response.then((d) => {
    // console.log(d)
