@@ -14,12 +14,14 @@ export default function Entete() {
   console.log(auth)
   const navigate = useNavigate()
   const  dispatch = useDispatch()
-  const  [useur,setUseur] =useState(user)
-console.log(useur)
+  const  [useur,setUseur] =useState(auth)
+  useEffect(()=>{
+    setUseur(auth)
+  },[auth])
   return (
     <div className=' w-full flex justify-between'>
           <h1 className='text-2xl m-1 font-bold'>ASTComptable</h1>
-{!auth?
+{!useur?
         <Link 
              className="me-3 inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium  leading-normal text-primary hover:text-primary-600" 
              to='/login'>
