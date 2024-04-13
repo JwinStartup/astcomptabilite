@@ -1,4 +1,3 @@
-
 import React,{useContext,useState,useEffect} from 'react'
 import Entete from '../components/entete'
 import { useDispatch,useSelector } from 'react-redux';
@@ -10,7 +9,7 @@ import {UserContext} from '../context/authContext'
 import { yupResolver } from '@hookform/resolvers/yup';
 export default function Login() {
   const { login, user} = useContext(UserContext);
-  const {isLoader,setIsLoader}=useState(false)
+  const {chargement,setChargement}=useState(false)
   const navigate = useNavigate()
   const schema = yup
 .object({
@@ -29,9 +28,9 @@ export default function Login() {
    });
   const onSubmit = (data) => {
     console.log(data)
-     setIsLoader(true)
+     setChargement(true)
    dispatch(userActions.login(data)).then((d)=>{
-     setIsLoader(false)
+     setChargement(false)
      console.log(d.payload.user)
      login(d.payload.user)
     navigate('/')
@@ -40,7 +39,7 @@ export default function Login() {
  
   return (
     <div className='w-full flex flex-col  items-center justify-center '>
-    {console.log(isloader,isLoader)}
+    {console.log(isloader,chargement)}
       <div className=' w-full flex mb-3'>
           <h1 className='text-2xl m-1 font-bold'>ASTComptable</h1>
         </div>
@@ -58,7 +57,7 @@ export default function Login() {
       <button onClick={()=>navigate('/')} className='inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-400 rounded-lg hover:bg-green-800 mx-2'>
        <span>retour</span>
       </button>
-  {isLoader==false?<button type='submit' className='inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-400 rounded-lg hover:bg-green-800 mx-2'>
+  {chargement==false?<button type='submit' className='inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-400 rounded-lg hover:bg-green-800 mx-2'>
        <span>Se connecter</span>
       
       </button>:<span className='flex flex-row items-center space-x-2 justify-center inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-400 rounded-lg hover:bg-green-800 mx-2'>
