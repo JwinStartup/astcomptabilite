@@ -9,6 +9,7 @@ import {UserContext} from '../context/authContext'
 import { yupResolver } from '@hookform/resolvers/yup';
 export default function Login() {
   const { login, user} = useContext(UserContext);
+  const [isLoading,setIsLoading]=useState(false)
   const navigate = useNavigate()
   const schema = yup
 .object({
@@ -22,13 +23,14 @@ export default function Login() {
    { resolver: yupResolver(schema)}
    );
    const dispatch =useDispatch()
-   const {isLoader} = useSelector((state)=>{
+ /*  const {isLoader} = useSelector((state)=>{
     return state.userReducer
-   });
+   });*/
   const onSubmit = (data) => {
     console.log(data)
     //setLoading(true)
    dispatch(userActions.login(data)).then((d)=>{
+     setIsLoading(isLoader)
      console.log(d.payload.user)
      login(d.payload.user)
     navigate('/')
@@ -55,7 +57,7 @@ export default function Login() {
        <span>retour</span>
       </button>
   <button type='submit' disable={isLoader} className='inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-400 rounded-lg hover:bg-green-800 mx-2'>
-     {isLoader!==false?  <span>Se connecter</span>
+     {isLoading==false?  <span>Se connecter</span>
       :<span className='flex flex-col items-center justify-center'>
        <svg aria-hidden="true" className="w-6 h-6 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                      <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
