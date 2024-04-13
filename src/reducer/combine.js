@@ -6,3 +6,6 @@ export default combineReducers({
   userReducer,
   comptabiliteReducer
 });
+
+export * from "./user.js";
+export * from "./comptabilite.js";
