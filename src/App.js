@@ -50,27 +50,134 @@ function App() {
                             </PrivateRouter>
                         }
                 />
-        <Route path="/cp" element={<ClientsPersonnels/>}/>
-        <Route path="/bilan" element={<Bilan/>}/>
-        <Route path="/charges" element={<Charges/>}/>
-        <Route path="/creerCharge" element={<CreerCharge/>}/>
-        <Route path="/factures/commissions" element={<FacturesCommissions/>}/>
-        <Route path="/factures/impayes" element={<FacturesImpayes/>}/>
-        <Route path="/cp/ListeParent" element={<ListeParents/>}/>
-           <Route path="/cp/ListeEnfant" element={<ListeEnfant/>}/>
-        <Route path="/cp/ListePersonnel" element={<ListePersonnel/>}/>
-        <Route path="/inscription/parents" element={<Parents/>}/>
-          <Route path="/modifier/parents/:id" element={<ModifierParents/>}/>
-          <Route path="/modifier/charge/:id" element={<ModifierCharge/>}/>
-          <Route path="/modifier/users/:id" element={<ModifierUsers/>}/>
-          <Route path="/modifier/personnels/:id" element={<ModifierPersonnels/>}/>
-          <Route path="/modifier/enfants/:id" element={<ModifierEnfants/>}/>
-        <Route path="/inscription/personnels" element={<Personnels/>}/>
-           <Route path="/inscription/enfants" element={<Enfants/>}/>
-        <Route path="/factures/recues" element={<Recues/>}/>
-        <Route path="/profil" element={<ProfilPage/>}/>
+        <Route path="/modifier/enfants/:id" 
+                element={
+                            <PrivateRouter>
+                                <ModifierEnfants/>
+                            </PrivateRouter>
+                        }
+                />
+        <Route path="/modifier/personnels/:id" 
+                element={
+                            <PrivateRouter>
+                                <ModifierPersonnels/>
+                            </PrivateRouter>
+                        }
+                />
+        <Route path="/modifier/charge/:id" 
+                element={
+                            <PrivateRouter>
+                                <ModifierCharge/>
+                            </PrivateRouter>
+                        }
+                />
+        <Route path="/modifier/users/:id" 
+                element={
+                            <PrivateRouter>
+                              <ModifierUsers/>
+                            </PrivateRouter>
+                        }
+                />
+        <Route path="/modifier/parents/:id" 
+                element={
+                            <PrivateRouter>
+                                <ModifierParents/>
+                            </PrivateRouter>
+                        }
+                />
+        <Route path="/inscription/parents" 
+                element={
+                            <PrivateRouter>
+                              <Parents/>
+                            </PrivateRouter>
+                        }
+                />
+        <Route path="/cp/ListeEnfant" 
+                element={
+                            <PrivateRouter>
+                               <ListeEnfant/>
+                            </PrivateRouter>
+                        }
+                />
+        <Route path="/cp/ListeParent" 
+                element={
+                            <PrivateRouter>
+                               <ListeParents/>
+                            </PrivateRouter>
+                        }
+                />
+        
+        <Route path="/factures/commissions" 
+                element={
+                            <PrivateRouter>
+                               <FacturesCommissions/>
+                            </PrivateRouter>
+                        }
+                />
+        <Route path="/creerCharge" 
+                element={
+                            <PrivateRouter>
+                                <CreerCharge/>
+                            </PrivateRouter>
+                        }
+                />
+        <Route path="/charges" 
+                element={
+                            <PrivateRouter>
+                                <Charges/>
+                            </PrivateRouter>
+                        }
+                />
+        <Route path="/bilan" 
+                element={
+                            <PrivateRouter>
+                               <Bilan/>
+                            </PrivateRouter>
+                        }
+                />
+        <Route path="/cp" 
+                element={
+                            <PrivateRouter>
+                                <ClientsPersonnels/>
+                            </PrivateRouter>
+                        }
+                />
+        <Route path="/factures/recues" 
+                element={
+                            <PrivateRouter>
+                                <Recues/>
+                            </PrivateRouter>
+                        }
+                />
+        <Route path="/inscription/enfants" 
+                element={
+                            <PrivateRouter>
+                               <Enfants/>
+                            </PrivateRouter>
+                        }
+                />
+        <Route path="/inscription/personnels" 
+                element={
+                            <PrivateRouter>
+                               <Personnels/>
+                            </PrivateRouter>
+                        }
+                />
+        <Route path="/profil" 
+                element={
+                            <PrivateRouter>
+                              <ProfilPage/>
+                            </PrivateRouter>
+                        }
+                />
+        <Route path="/userAdmin" 
+                element={
+                            <PrivateRouter>
+                             <UserAdmin/>
+                            </PrivateRouter>
+                        }
+                />
         <Route path="/" element={<Home/>}/>
-        <Route path="/userAdmin" element={<UserAdmin/>}/>
         <Route path="/userAdmin/inscriptionUser" element={<InscriptionUser/>}/>
         </Routes>
     </div>
