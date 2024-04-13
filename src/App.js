@@ -3,6 +3,8 @@ import {
   Routes,
   Route,
   Navigate,
+  useNavigate,
+  useLocation
 } from "react-router-dom";
 import Home from './pages/Home.js'
 import Recues from './pages/Recues.js'
@@ -30,6 +32,8 @@ import ListePersonnel from "./pages/ListePersonnels.js";
 import ListeEnfant from "./pages/ListeEnfants.js";
 import PrivateRouter from "./context/PrivateRouter.js";
 function App() {
+     history.navigate = useNavigate();
+    history.location = useLocation();
   return (
     <div className="App">
       <Routes>
