@@ -54,13 +54,13 @@ useEffect(()=>{
         <p className='font-lg  tracking-tight text-sm text-center' > Voulez-vous partager cette facture  <span className='font-lg  tracking-tight text-[18px] text-green-400 pl-1'>N* {value._id.slice(value._id.length-3)} </span> </p>
 
         <div className='flex flex-col items-center  w-full h-full'>
-        <div className='flex flex-row space-x-6'> 
+        <div className='flex flex-row '> 
        <button onClick={()=>retour()} 
-       type="button" className=" text-red-700    font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center ">
+       type="button" className=" text-red-700  flex  font-medium border-r justify-center text-sm px-3 py-2 text-center inline-flex items-center ">
         Retour
         </button>
         <button 
-       type="button" onClick={()=>download()} className=" text-blue-700    font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center">
+       type="button" onClick={()=>download()} className=" text-blue-700 flex  justify-center font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center">
         Telecharger
         </button>
       {ficher!==null&&
@@ -68,7 +68,7 @@ useEffect(()=>{
          url={ficher}
             title={`Votre facture N° ${value._id.slice(value._id.length-6)} a étè par ASTRAINIG BUSINESS`}
             >
-              <button type="button"   className=" text-green-700 gap-2 font-medium text-sm px-3 py-2 text-center inline-flex items-center">
+              <button type="button"   className=" text-green-700 gap-2 font-medium flex justify-center text-sm px-3 py-2 text-center inline-flex items-center">
                      <WhatsappIcon logoFillColor='white' size={30} round={true}> 
                      </WhatsappIcon> 
                      Partager 
