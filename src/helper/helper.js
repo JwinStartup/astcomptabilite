@@ -1,5 +1,5 @@
 //import { useStore } from "react-redux";
-
+import { Navigate } from "react-router-dom";
 
 export const history = {
   navigate: null,
@@ -46,7 +46,6 @@ function handleResponse(response) {
       //   const home = () => history.navigate("Acceuil");
       //   home();
       // }
-      
       error = JSON.parse(text) || text;
      // return Promise.reject(error);
     }
