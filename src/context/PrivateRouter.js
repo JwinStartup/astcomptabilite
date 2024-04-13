@@ -2,7 +2,6 @@ import React,{useContext,useState,useEffect} from 'react'
 import {Navigate,Outlet} from 'react-router-dom'
 import { history } from '../helper/helper'
 import { useSelector } from 'react-redux';
-export const UserContext =createContext({auth:false,user:null})
 const PrivateRouter =({children})=>{
 // const { login,logout, user } = useContext(UserContext);
    const {auth} = useSelector((state)=>{
