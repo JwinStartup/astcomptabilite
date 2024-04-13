@@ -428,6 +428,7 @@ function createExtraReducers() {
                 state.user = user;
                   localStorage.setItem('user', JSON.stringify(user));
                 const { from } = history.location.state || { from: { pathname: '/' } };
+                  console.log(from)
                 history.navigate(from);
                 state.isLoader = false;
               })
