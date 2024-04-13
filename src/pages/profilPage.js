@@ -14,6 +14,9 @@ import {UserContext} from '../context/authContext'
 
 
 export default function ProfilPage() {
+ const {auth} = useSelector((state)=>{
+    return state.userReducer
+   });
 const dispatch = useDispatch()
  const navigate=useNavigate()
 const [rub , setRub]=useState({retour:false,id:null})
@@ -38,11 +41,11 @@ const [rub , setRub]=useState({retour:false,id:null})
         <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900  ">Profil  </h5>
     </div>
       <div className='flex  flex-col items-center justify-center '>
-            <Avatar name={`${user.me.nom}`}  size="100" round={true} /> 
+            <Avatar name={`${auth.user.nom}`}  size="100" round={true} /> 
            <div className='flex  text-lg font-bold tracking-wider text-center w-full justify-center items-center '>
-            {user.me.nom}  {user.me.prenoms}
+            {auth.user.nom}  {auth.user.prenoms}
           </div>
-           <div className="flex justify-start text-red-300 font-medium text-sm items-center gap-1">{user.me.role} </div>
+           <div className="flex justify-start text-red-300 font-medium text-sm items-center gap-1">{auth.user.role} </div>
             <div onClick={()=>dispatch(userActions.deconnecte()).then(()=>userActions.logout())} className='text-md font-semibold tracking-wider py-3  px-1' >Se deconnecter</div>
            </div>
 
