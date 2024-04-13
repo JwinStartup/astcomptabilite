@@ -42,7 +42,14 @@ function App() {
          <Route path="/login" element={<Login/>}/>
   
         <Route element={<PrivateRouter/>}>
-        <Route path="/factures" element={<FacturesImpayes/>}/>
+        </Route>
+        <Route path="/factures" element=
+                element={
+                            <PrivateRoute>
+                                <FacturesImpayes/>
+                            </PrivateRoute>
+                        }
+                />
         <Route path="/cp" element={<ClientsPersonnels/>}/>
         <Route path="/bilan" element={<Bilan/>}/>
         <Route path="/charges" element={<Charges/>}/>
@@ -62,7 +69,6 @@ function App() {
            <Route path="/inscription/enfants" element={<Enfants/>}/>
         <Route path="/factures/recues" element={<Recues/>}/>
         <Route path="/profil" element={<ProfilPage/>}/>
-        </Route>
         <Route path="/" element={<Home/>}/>
         <Route path="/userAdmin" element={<UserAdmin/>}/>
         <Route path="/userAdmin/inscriptionUser" element={<InscriptionUser/>}/>
