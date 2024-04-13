@@ -431,9 +431,9 @@ function createExtraReducers() {
                 const user = action.payload;
                 state.user = user;
                   localStorage.setItem('user', JSON.stringify(user));
-                const { from } = history.location.state || { from: { pathname: '/' } };
-                  console.log(from)
-                history.navigate(from);
+               // const { from } = history.location.state || { from: { pathname: '/' } };
+                //  console.log(from)
+                history.navigate('/');
                 state.isLoader = false;
               })
               .addCase(rejected, (state, action) => {
