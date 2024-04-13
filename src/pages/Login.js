@@ -42,7 +42,7 @@ export default function Login() {
       <div className=' w-full flex mb-3'>
           <h1 className='text-2xl m-1 font-bold'>ASTComptable</h1>
         </div>
-{error&& <p className='text-red-500 text-md font-semibold '>{error.message} </p>}
+{error&& <p className='text-red-500 text-md font-semibold '>le couple nom / Mot de passe n'est pas correct  </p>}
          <form autoComplete='off' onSubmit={handleSubmit(onSubmit)}  className='flex justify-center  mt-16 items-center flex-col space-y-4 p-9 border border-gray-400 rounded-lg shadow-lg w-[300px] 2xl:w-[500px]' >
      <div className='flex flex-col '>
    <p className='text-2xl font-semibold text-black tracking-wider mb-3'>Connectez-vous</p>             
