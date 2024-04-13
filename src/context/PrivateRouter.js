@@ -12,7 +12,7 @@ const PrivateRouter =({children})=>{
  console.log(auth)
 const  [useur,setUseur] =useState(user)
  // useur.me!==null?<Outlet/>:<Navigate to="/login"  />
-   if (useur.me===null) {
+   if (!auth) {
         // not logged in so redirect to login page with the return url
         return <Navigate to="/login" state={{ from: history.location }} />
     }
