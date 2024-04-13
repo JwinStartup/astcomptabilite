@@ -35,6 +35,7 @@ function createInitialState() {
     
     function logout(state) {
         state.user = null;
+        state.auth = null;
         state.userToken = null;
         localStorage.removeItem('user')
     }
