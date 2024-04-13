@@ -45,9 +45,9 @@ function App() {
         </Route>
         <Route path="/factures" 
                 element={
-                            <PrivateRoute>
+                            <PrivateRouter>
                                 <FacturesImpayes/>
-                            </PrivateRoute>
+                            </PrivateRouter>
                         }
                 />
         <Route path="/cp" element={<ClientsPersonnels/>}/>
