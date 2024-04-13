@@ -43,7 +43,7 @@ function App() {
   
         <Route element={<PrivateRouter/>}>
         </Route>
-        <Route path="/factures" element=
+        <Route path="/factures" 
                 element={
                             <PrivateRoute>
                                 <FacturesImpayes/>
