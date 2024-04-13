@@ -33,7 +33,7 @@ function request(method) {
 function handleResponse(response) {
    if([400].includes(response.status)){
      
-     response.text.then((d)=> {console.log(d)})
+     response.text().then((d)=> {console.log(d)})
      
    }
   //return response.then((d) => {
