@@ -31,9 +31,10 @@ export default function Login() {
      setChargement(true)
    dispatch(userActions.login(data)).then((d)=>{
      setChargement(false)
-     console.log(d.payload.user)
+     console.log(d)
      login(d.payload.user)
     navigate('/')
+     
     })
   }
  
