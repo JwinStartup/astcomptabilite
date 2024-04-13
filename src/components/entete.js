@@ -27,7 +27,7 @@ console.log(useur)
       </Link>
        :
       <div className='flex m-2 items-center gap-1 ' onClick={()=>navigate('/profil')}>
-        <Avatar name={useur.me.nom} size="30" round={true} />
+        <Avatar name={auth.user.nom} size="30" round={true} />
       
       </div>
   }
