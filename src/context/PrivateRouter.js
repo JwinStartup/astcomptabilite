@@ -1,6 +1,5 @@
 import React,{useContext,useState} from 'react'
 import {Navigate,Outlet} from 'react-router-dom'
-import {UserContext} from './authContext'
 import { history } from '../helper/helper'
 import { useSelector } from 'react-redux';
 
