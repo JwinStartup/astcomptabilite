@@ -10,7 +10,7 @@ import {UserContext} from '../context/authContext'
 import { yupResolver } from '@hookform/resolvers/yup';
 export default function Login() {
   const { login, user} = useContext(UserContext);
-  const {isLoder,setIsLoader}=useState(false)
+  const {isLoader,setIsLoader}=useState(false)
   const navigate = useNavigate()
   const schema = yup
 .object({
