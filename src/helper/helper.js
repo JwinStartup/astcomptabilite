@@ -26,7 +26,6 @@ function request(method) {
       };
       requestOptions.body = JSON.stringify(body);
     }
-    console.log(requestOptions,url);
 
     return fetch(url, requestOptions).then((u) => handleResponse(u)).catch((err)=> handleResponse(err));
   };
