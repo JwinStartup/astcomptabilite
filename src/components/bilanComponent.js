@@ -73,7 +73,7 @@ export default function BilanComponent({retour,id}) {
        <button 
        type="button" 
        onClick={()=>cloturer()} 
-       className="text-blue-700 font-medium  text-sm px-5 py-2.5 text-center inline-flex items-center"
+       className="text-blue-700 font-medium  text-md w-full justiify-center px-5 py-2.5 text-center inline-flex items-center"
         >
        Cloturer
    </button>}
