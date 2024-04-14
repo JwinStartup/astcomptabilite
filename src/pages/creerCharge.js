@@ -13,6 +13,7 @@ export default function CreerCharge() {
 const dispatch=useDispatch()
 const navigate=useNavigate()
 const [select, setSelect] = useState('salaire')
+  const [chargement,setChargement]=useState(false)
 const onSubmit = (data) => {
   console.log(data)
   seChargement(true)
