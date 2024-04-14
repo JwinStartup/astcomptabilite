@@ -5,9 +5,9 @@ export default function SupprimerFacture({retour,value}) {
    const dispatch=useDispatch()
    const [chargement,setChargement]=useState(false)
    const supprimer=()=>{
-      setChagement(true)
+      setChargement(true)
     dispatch(comptabiliteActions.supprimerFacture(value._id)).then(()=>{
-      setChagement(false)
+      setChargement(false)
    retour()
    })
   }
