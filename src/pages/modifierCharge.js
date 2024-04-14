@@ -16,7 +16,7 @@ export default function ModifierCharge() {
 const dispatch=useDispatch()
 const navigate=useNavigate()
 const [select, setSelect] = useState('salaire')
-const [charegement, setCharegement] = useState(false)
+const [chargement,setChargement]=useState(false)
 const onSubmit = (data) => {
   console.log(data)
  dispatch(comptabiliteActions.modifierCharge(data)).then(()=>{
