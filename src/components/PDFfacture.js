@@ -1,4 +1,4 @@
-
+import moment from "moment"
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -68,7 +68,7 @@ export  const PDFfacture=({value})=>{
               <Text style={tw(' font-medium  tracking-tight text-[8px] text-black italic ')}>la presente facture est arretée à la somme de <Text style={tw(' font-bold  tracking-wider text-[8px] text-red-500 ')}>{value.montant} FCFA</Text></Text>
               </View>
               <View style={tw('flex justify-end mt-6  pb-1')}>
-              <Text style={tw(' font-medium  tracking-tight text-[8px] text-black  ')}>crée le  11/03/2024 à 11:00</Text>
+              <Text style={tw(' font-medium  tracking-tight text-[8px] text-black  ')}>crée le  moment(`${createdAt}`).format('LLLL')</Text>
               </View>
       
               <View style={tw('flex flex-col justify-center border-t border-t-red-500 ')}>
