@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function VoirEnfant({retour , sup}) {
   return (
-    <div className='w-[500px] space-y-4 h-[200px]  items-center justify-center  border p-3 bg-white border-gray-100 shadow-md rounded-3xl   z-10 absolute top-[125px] left-[400px]'>
+    <div className='w-[500px] space-y-4 h-[200px]  items-center justify-center  border p-3 bg-white border-gray-100 shadow-md rounded-3xl   z-10 absolute top-[100px] left-[30px]'>
     <div className='font-bold  tracking-tight text-[22px] text-black pl-1'>Modifier Formateur</div>
     <div className='flex flex-row gap-3 w-full items-center justify-center '>
         <p className='font-semibold text-gray-500 tracking-tight text-[18px] text-center' >AKOU JEAN PAUL  </p>
