@@ -5,6 +5,7 @@ import { comptabiliteActions } from '../../reducer/comptabilite';
 
 export default function FormulairePayerFacture({retour,value}) {
  const [select, setSelect] = useState('')
+ const [chargement, setChargement] = useState(false)
  const { register, handleSubmit,
  } = useForm(
 );
@@ -12,8 +13,9 @@ export default function FormulairePayerFacture({retour,value}) {
 
  const onSubmit = (data) => {
    console.log(data)
-   //setLoading(true)
+  setChargement(true)
   dispatch(comptabiliteActions.payerFacture({mode:data.mode,idFacture:value._id,ref:data.ref})).then(()=>{
+  setChargement(false)
    retour()
    })
   
