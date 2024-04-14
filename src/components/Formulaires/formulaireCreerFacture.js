@@ -65,7 +65,7 @@ export default function FormulaireCreerFacture({retour}) {
         Retour
         </button>
         
-{chargement==false?<button type='submit' className=' bg-blue-700 hover:bg-blue-800  font-medium  text-sm px-5 py-2.5 text-center inline-flex items-center'>
+{chargement==false?<button type='submit' className='   font-medium  text-md text-black px-5 py-2.5 text-center inline-flex items-center'>
        <span>Inscrire</span>
       
       </button>:<span className='flex flex-row items-center space-x-2 justify-center inline-flex items-center px-3 py-2 text-md font-medium text-center text-black'>
