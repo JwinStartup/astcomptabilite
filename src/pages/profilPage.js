@@ -45,7 +45,7 @@ const [rub , setRub]=useState({retour:false,id:null})
            <div className='flex  text-lg font-bold tracking-wider text-center w-full justify-center items-center '>
             {useur?.user?.nom}  {useur?.user?.prenoms}
           </div>
-           <div className="flex justify-start text-red-300 font-medium text-sm items-center gap-1">{auth?.user?.role} </div>
+           <div className="flex justify-start text-red-300 font-medium text-sm items-center gap-1">{useur?.user?.role} </div>
             <div onClick={()=>
                         dispatch(userActions.deconnecte())
               } 
