@@ -16,9 +16,9 @@ const [select, setSelect] = useState('salaire')
   const [chargement,setChargement]=useState(false)
 const onSubmit = (data) => {
   console.log(data)
-  seChargement(true)
+  setChargement(true)
  dispatch(comptabiliteActions.creerCharge(data)).then(()=>{
-  seChargement(false)
+  setChargement(false)
   navigate('/charges')
   })
  
