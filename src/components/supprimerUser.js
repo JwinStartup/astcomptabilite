@@ -7,7 +7,7 @@ const dispatch=useDispatch()
     dispatch(userActions.supprimer(value._id)).then(()=>retour())
   }
   return (
-    <div className='w-[500px] space-y-4 h-[200px]  items-center justify-center  border p-3 bg-white border-gray-100 shadow-md rounded-3xl   z-10 absolute top-[125px] left-[400px]'>
+    <div className='w-[500px] space-y-4 h-[200px]  items-center justify-center  border p-3 bg-white border-gray-100 shadow-md rounded-3xl   z-10 absolute top-[125px] left-[30px]'>
     <div className='font-bold  tracking-tight text-[22px] text-black pl-1'>Supprimer une charge</div>
     <p className='font-lg  tracking-tight text-[18px] text-center' >Souhaitez-vous supprimer l'utilisateur  <span className='font-lg  tracking-tight text-[18px] text-green-400 pl-1'>N*{value.nom}  </span> </p>
 
