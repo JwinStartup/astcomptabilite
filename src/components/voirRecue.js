@@ -63,7 +63,7 @@ useEffect(()=>{
   
  console.log(recue,value._id)
   return ( <div>
- <div className='w-[300px]  border p-3 bg-white border-gray-100 shadow-md rounded-md   z-10 absolute top-[200px] left-[50px]'>
+ <div className='w-[300px]  border p-3 bg-white border-gray-100 shadow-md rounded-md   z-10 absolute top-[100px] left-[25px]'>
    {isLoader? <div>Chargement... </div>:<div> {recue===null?<div> Pas de recue</div>:<div>
        <div className='flex flex-row justify-between w-full'> 
         <div className='font-bold  tracking-tight text-lg text-black pl-1'>Reçue</div>
