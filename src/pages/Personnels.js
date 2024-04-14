@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Entete from '../components/entete'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
@@ -14,8 +14,9 @@ export default function Personnels() {
 const dispatch =useDispatch()
 const onSubmit = (data) => {
  console.log(data)
- //setLoading(true)
+ setChargement(true)
 dispatch(userActions.inscriptionPersonnel(data)).then(()=>{
+ setChargement(false)
   navigate('/cp')
  })
 }
