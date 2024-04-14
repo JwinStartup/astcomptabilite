@@ -20,6 +20,7 @@ const tw = createTw({
 
 
 export  const PDFfacture=({value})=>{
+    console.log(value)
     return(
       <View style={tw('bg-white pt-5 px-5')}>
             <View style={tw('flex flex-row  w-full mb-2   justify-center ')}>
