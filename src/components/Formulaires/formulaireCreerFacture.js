@@ -34,7 +34,7 @@ export default function FormulaireCreerFacture({retour}) {
       setMontant(p.montantCours)
     }
   return (
-    <div className='w-[300px] border p-3 bg-white border-gray-100 shadow-md rounded-lg   z-10 absolute top-[200px] left-[50px]'>
+    <div className='w-[300px] border p-3 bg-white border-gray-100 shadow-md rounded-lg   z-10 absolute top-[100px] left-[30px]'>
         <div className='font-bold  tracking-tight text-lg text-black pl-1'>Créer une facture</div>
         <form   onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex flex-col items-center mt-5  space-y-3 w-full h-full' >
       
