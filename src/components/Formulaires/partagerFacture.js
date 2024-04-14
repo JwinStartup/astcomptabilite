@@ -52,7 +52,7 @@ useEffect(()=>{
    partager()
 })
   return (
-    <div className='w-[300px]  space-y-4   items-center justify-center  border p-3 bg-white border-gray-100 shadow-md rounded-lg z-10 absolute top-[200px] left-[50px]'>
+    <div className='w-[300px]  space-y-4   items-center justify-center  border p-3 bg-white border-gray-100 shadow-md rounded-lg z-10 absolute top-[100px] left-[30px]'>
         <div className='font-bold  tracking-tight text-lg text-black pl-1'>Partager une facture</div>
         <p className='font-lg  tracking-tight text-sm text-center' > Voulez-vous partager cette facture  <span className='font-lg  tracking-tight text-[18px] text-green-400 pl-1'>N* {value._id.slice(value._id.length-3)} </span> </p>
 
