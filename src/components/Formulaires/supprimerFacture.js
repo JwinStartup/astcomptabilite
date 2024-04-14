@@ -18,6 +18,7 @@ export default function SupprimerFacture({retour,value}) {
         Retour
        
         </button>
+         
         
         <button type="button"  onClick={()=>supprimer()} className=" text-blue-400 hover:text-blue-700  font-medium  text-sm py-2.5 text-center inline-flex items-center  ">
         Supprimer
