@@ -29,7 +29,7 @@ export default function ModifierFacture({retour,value}) {
     return state.userReducer
    });
   return (
-    <div className='w-[300px] my-5 border p-3 bg-white border-gray-100 shadow-md rounded-lg   z-10 absolute top-[200px] left-[50px]'>
+    <div className='w-[300px] my-5 border p-3 bg-white border-gray-100 shadow-md rounded-lg   z-10 absolute top-[100px] left-[30px]'>
         <div className='font-medium text-center  tracking-tight text-lg text-black pl-1'>Modifier la facture N°{value._id.slice(value._id.length-3)} de {value.client.nom}  {value.client.prenoms} </div>
         <form   onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex flex-col items-center mt-5  space-y-3 w-full h-full' >
         <input {...register("montant")}  type="number"  className='w-[200px] h-10 border-b-2 py-1 text-sm pl-1 placeholder-gray-300' placeholder='Montant prestation' />
