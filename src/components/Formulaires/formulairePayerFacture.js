@@ -22,7 +22,7 @@ export default function FormulairePayerFacture({retour,value}) {
  }
   console.log(value)
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className='w-[300px]  border p-3 bg-white border-gray-100 shadow-md rounded-lg   z-10 absolute top-[200px] left-[50px]'>
+    <form onSubmit={handleSubmit(onSubmit)} className='w-[300px]  border p-3 bg-white border-gray-100 shadow-md rounded-lg   z-10 absolute top-[100px] left-[30px]'>
       <div className='flex flex-row justify-between w-full'> 
         <div className='font-bold  tracking-tight text-lg text-black pl-1'>Payer une facture</div>
         <div className='font-medium  tracking-tight text-sm text-green-400 pl-1'>N°  {value._id.slice(value._id.length-3)} </div>
