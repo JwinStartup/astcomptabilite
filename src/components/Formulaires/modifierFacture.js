@@ -5,6 +5,7 @@ import { userActions } from '../../reducer/user';
 import { useForm } from 'react-hook-form';
 export default function ModifierFacture({retour,value}) {
   console.log(value)
+  const [chargement,setChargement]=useState(false)
   const { register, handleSubmit,
   } = useForm({
     defaultValues:value
@@ -17,8 +18,9 @@ export default function ModifierFacture({retour,value}) {
  
   const onSubmit = (data) => {
     console.log(data)
-    //setLoading(true)
+    setChargement(true)
    dispatch(comptabiliteActions.modifierFacture(data)).then(()=>{
+    setChargement(false)
     retour()
     })
    
