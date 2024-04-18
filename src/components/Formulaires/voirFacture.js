@@ -5,7 +5,8 @@ import { comptabiliteActions } from '../../reducer/comptabilite.js'
 import  Axios  from 'axios';
  import {FadeLoader}from 'react-spinners'
 import { AiFillCloseCircle } from "react-icons/ai";
-
+import moment from "moment"
+import "moment/min/locales"
 
 import {useNavigate} from 'react-router-dom'
 
@@ -55,6 +56,9 @@ const dispatch = useDispatch()
     </tr>
   </tbody>
 </table>
+        </div>
+   <div className='w-full items-center flex justify-end'>
+             <span className='text-end text-xs text-gray-400'> {moment(`${value.updatedAt}`).locale('fr').fromNow()}</span> 
         </div>
         <div className='flex flex-col items-center my-2  w-full'>
 <div className='flex flex-row '> 
