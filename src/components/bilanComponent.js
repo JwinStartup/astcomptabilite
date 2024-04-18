@@ -5,6 +5,8 @@ import { RingLoader } from 'react-spinners'
 import { IoIosArrowDropleftCircle } from "react-icons/io";
 import {useNavigate} from 'react-router-dom'
 import { AiFillCloseCircle } from "react-icons/ai";
+import moment from 'moment'
+import 'moment/min/locales'
 export default function BilanComponent({retour,id}) {
     const dispatch =useDispatch()
     const navigate =useNavigate()
@@ -69,7 +71,9 @@ export default function BilanComponent({retour,id}) {
        </tfoot>
     
       </table>
-    
+     <div className='w-full items-center flex justify-end'>
+             <span className='text-end text-xs text-gray-400'> {moment(`${bilan.updatedAt}`).locale('fr').fromNow()}</span> 
+        </div>
  <div classeName='flex flex-col  '>
 
    {bilan.statut!=='cloturé'&&
