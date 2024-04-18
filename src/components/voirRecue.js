@@ -107,7 +107,7 @@ useEffect(()=>{
 </table>
         </div>
         <div className='w-full items-center flex justify-end'>
-             <span className='text-end text-xs text-gray-400'> {moment(`${value.createdAt}`).locale('fr').fromNow()}</span> 
+             <span className='text-end text-xs text-gray-400'> {moment(`${recue.createdAt}`).locale('fr').fromNow()}</span> 
         </div>
              
         <div className='flex flex-col items-center my-2  space-y-3 w-full h-full'>
@@ -128,7 +128,7 @@ useEffect(()=>{
        </span>:
          <WhatsappShareButton 
          url={ficher}
-            title={`Votre facture N° ${recue._id.slice(recue._id.length-3)} a étè par ASTRAINIG BUSINESS`}
+            title={`Bonjour M/Mne ${recue.client.nom}. J'espère que vous allez bien. Vous trouverez ci-joint le lien de votre facture de prestation N° ${recue._id.slice(recue._id.length-3)} du mois de ${recue.periodeAjouter} . Vous pourrez faire le règlement dès que possible d'ici le 5 du mois en cours soit en espèces, soit par dépôt orange money ou wave au 07 59 63 27 88. Excellente journée `}
             >
               <button type="button"   className=" text-green-700 gap-2 font-medium text-sm px-3 py-2 text-center inline-flex items-center">
                      <WhatsappIcon logoFillColor='white' size={30} round={true}> 
