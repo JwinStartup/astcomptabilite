@@ -34,7 +34,7 @@ export  const PDFfacture=({value})=>{
       
               <Text style={tw('font-bold  tracking-tight text-[11px] text-black pl-1')}>
                   Facture
-              <Text style={tw('font-normal  tracking-tight text-[12px] text-blue-400 pl-1')}> N° {value._id.slice(value._id.length-6)} </Text>
+              <Text style={tw('font-normal  tracking-tight text-[12px] text-blue-400 pl-1')}> N° {value._id.slice(value._id.length-3)} </Text>
             </Text></View> 
             <View style={tw('flex flex-col w-full   justify-between ')}>
             <View style={tw('my-2 border-b border-b-black py-1')}>
