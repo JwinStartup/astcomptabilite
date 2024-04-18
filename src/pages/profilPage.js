@@ -88,7 +88,7 @@ const [rub , setRub]=useState({retour:false,id:null})
 
            {/*autre fonctionnalite*/}
             <div  className='flex flex-col '>
-            <div onClick={()=>navigate('/userAdmin')} className='border text-md font-semibold tracking-wider py-3  px-1' >Voir les utilisateurs</div>
+             {useur?.user?.role==="Administrateur"&&<div onClick={()=>navigate('/userAdmin')} className='border text-md font-semibold tracking-wider py-3  px-1' >Voir les utilisateurs</div>}
              </div>
            </div>
 
