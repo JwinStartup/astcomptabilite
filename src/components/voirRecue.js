@@ -107,7 +107,7 @@ useEffect(()=>{
 </table>
         </div>
         <div className='w-full items-center justify-end'>
-             <span> </span> 
+             <span> {moment(`${value.createdAt}`).locale('fr').fromNow()}</span> 
         </div>
              
         <div className='flex flex-col items-center my-2  space-y-3 w-full h-full'>
