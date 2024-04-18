@@ -1,3 +1,5 @@
+import moment from "moment"
+import 'moment/min/locales'
 import React,{useEffect,useState,} from 'react'
 import { usePDF } from '@react-pdf/renderer';
 import {WhatsappIcon,WhatsappShareButton} from "react-share";
@@ -103,6 +105,9 @@ useEffect(()=>{
     </tr>
   </tbody>
 </table>
+        </div>
+        <div className='w-full items-center justify-end'>
+             <span> </span> 
         </div>
              
         <div className='flex flex-col items-center my-2  space-y-3 w-full h-full'>
