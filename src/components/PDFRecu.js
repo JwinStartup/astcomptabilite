@@ -1,4 +1,5 @@
-
+import moment from 'moment'
+import 'moment/src/locale/fr';
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -32,7 +33,7 @@ export  const PDFRecu=({value})=>{
 
         <Text style={tw('font-bold  tracking-tight text-[11px] text-black pl-1')}>
             Reçue
-        <Text style={tw('font-normal  tracking-tight text-[12px] text-red-400 pl-1')}> N° {value._id.slice(value._id.length-6)} </Text>
+        <Text style={tw('font-normal  tracking-tight text-[12px] text-red-400 pl-1')}> N° {value._id.slice(value._id.length-3)} </Text>
       </Text></View> 
       <View style={tw('flex flex-col w-full   justify-between ')}>
       <View style={tw('my-2 border-b border-b-black py-1')}>
@@ -47,7 +48,7 @@ export  const PDFRecu=({value})=>{
       </View>
         <View style={tw('')}>
         <Text style={tw(' font-medium  tracking-tight text-sm text-gray-500 ')}>Periode : {value.periodeAjouter}</Text>
-        <Text style={tw(' font-medium  tracking-tight text-sm text-gray-500 ')}>N* Facture : {value.facture._id.slice(value.facture._id.length-6)}</Text>
+        <Text style={tw(' font-medium  tracking-tight text-sm text-gray-500 ')}>N* Facture : {value.facture._id.slice(value.facture._id.length-3)}</Text>
             <Text style={tw(' font-medium  tracking-tight text-sm text-gray-500 ')}>Mode : {value.modePaiement}</Text>
             {value.refPaiement&&<Text style={tw(' font-medium  tracking-tight text-sm text-gray-500 ')}>Ref : {value.refPaiement}</Text>}
            
@@ -56,7 +57,7 @@ export  const PDFRecu=({value})=>{
 
       </View>
         <View style={tw('flex justify-end pb-1 mt-6')}>
-        <Text style={tw(' font-medium  tracking-tight text-[8px] text-black  ')}>crée le  11/03/2024 à 11:00</Text>
+        <Text style={tw(' font-medium  tracking-tight text-[8px] text-black  ')}>crée le {moment(`${value.createdAt}`).locale('fr').format('LLLL')}</Text>
         </View>
 
         <View style={tw('flex flex-col justify-center border-t border-t-red-500  mt-1')}>
