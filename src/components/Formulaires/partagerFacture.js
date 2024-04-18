@@ -12,7 +12,7 @@ export default function PartagerFacture({retour,value}) {
    const [chargement,setChargement]=useState(false)
    const dispatch=useDispatch()
    const MyDoc = ({value})=>(
-  <Document pageMode='fullScreen' title={`Facture N° ${value._id.slice(value._id.length-6)}`}>
+  <Document pageMode='fullScreen' title={`Facture N° ${value._id.slice(value._id.length-3)}`}>
         <Page size="A7" style>
           <PDFfacture  value={value}/>
           </Page>
@@ -25,7 +25,7 @@ export default function PartagerFacture({retour,value}) {
  const blobUrl = window.URL.createObjectURL(blob);
  const anchor = window.document.createElement('a');
  console.log(blobUrl)
-  anchor.download = `Facture N° ${value._id.slice(value._id.length-6)}`;
+  anchor.download = `Facture N° ${value._id.slice(value._id.length-3)}`;
   anchor.href = blobUrl;
   anchor.click();
   window.URL.revokeObjectURL(blobUrl);
@@ -38,7 +38,7 @@ export default function PartagerFacture({retour,value}) {
         <MyDoc value={value} />
     ).toBlob();
   const formdata = new FormData();
-  let file = new File([blob], `Facture${value._id.slice(value._id.length-6)}.pdf`);
+  let file = new File([blob], `Facture${value._id.slice(value._id.length-3)}.pdf`);
    formdata.append("file", file);
    formdata.append("upload_preset","cfcpdf")
      Axios.post(
@@ -69,7 +69,7 @@ useEffect(()=>{
       {ficher!==null?
       <WhatsappShareButton 
          url={ficher}
-            title={`Votre facture N° ${value._id.slice(value._id.length-6)} a étè par ASTRAINIG BUSINESS`}
+            title={`Votre facture N° ${value._id.slice(value._id.length-3)} a étè par ASTRAINIG BUSINESS`}
             >
               <button type="button"   className=" text-green-700 gap-2 font-medium flex justify-center text-sm px-3 py-2 text-center inline-flex items-center">
                      <WhatsappIcon logoFillColor='white' size={30} round={true}> 
