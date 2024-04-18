@@ -128,7 +128,7 @@ useEffect(()=>{
        </span>:
          <WhatsappShareButton 
          url={ficher}
-            title={`Bonjour M/Mne ${recue.client.nom}. J'espère que vous allez bien. Vous trouverez ci-joint le lien de votre facture de prestation N° ${recue._id.slice(recue._id.length-3)} du mois de ${recue.periodeAjouter} . Vous pourrez faire le règlement dès que possible d'ici le 5 du mois en cours soit en espèces, soit par dépôt orange money ou wave au 07 59 63 27 88. Excellente journée `}
+            title={`Salut M/Mne ${recue.client.nom}. Vous trouverez ci-joint le lien de votre reçue  N° ${recue._id.slice(recue._id.length-3)} de la facture de prestation N° ${recue.facture._id.slice(recue.facture._id.length-3)} du mois de ${recue.periodeAjouter} .Merci pour votre confiance et excellente journée `}
             >
               <button type="button"   className=" text-green-700 gap-2 font-medium text-sm px-3 py-2 text-center inline-flex items-center">
                      <WhatsappIcon logoFillColor='white' size={30} round={true}> 
