@@ -184,18 +184,18 @@ export default function ClientsPersonnels() {
               supprimerEl={supprimerEl}
        />}
         <Entete />
-        <div className='  flex  py-2 border-b justify-center items-center '>
+        <div className='  flex  py-2 border-b justify-center items-center px-2'>
          <div>
           <IoIosArrowDropleftCircle size={30} color="black" onClick={()=>navigate('/')} />
          </div>
          <div className='w-full flex  justify-center items-center  '>
-           <Link  onClick={()=>setSwitchChange('PARENT')} className={`tracking-wider text-lg border-r  text-center items-center  px-4 flex justify-center  cursor-pointer  ${switchChange==="PARENT"?'font-bold text-green-500  ':'font-semibold text-black  '}`} >
+           <Link  onClick={()=>setSwitchChange('PARENT')} className={`tracking-wider text-lg border-r  text-center items-center  px-3 flex justify-center  cursor-pointer  ${switchChange==="PARENT"?'font-bold text-green-500  ':'font-semibold text-black  '}`} >
           Parents 
         </Link>
-        <Link onClick={()=>setSwitchChange('PERSONNEL')}  className={`tracking-wider text-lg border-r  text-center items-center  px-4 flex justify-center  cursor-pointer  ${switchChange==="PERSONNEL"?'font-bold text-green-500  ':'font-semibold text-black  '}`}>
+        <Link onClick={()=>setSwitchChange('PERSONNEL')}  className={`tracking-wider text-lg border-r  text-center items-center  px-3 flex justify-center  cursor-pointer  ${switchChange==="PERSONNEL"?'font-bold text-green-500  ':'font-semibold text-black  '}`}>
           Personnels
         </Link>
-        <Link onClick={()=>setSwitchChange('ELEVE')}  className={`tracking-wider text-lg   text-center items-center  px-4 flex justify-center  cursor-pointer  ${switchChange==="ELEVE"?'font-bold text-green-500  ':'font-semibold text-black  '}`}>
+        <Link onClick={()=>setSwitchChange('ELEVE')}  className={`tracking-wider text-lg   text-center items-center  px-3 flex justify-center  cursor-pointer  ${switchChange==="ELEVE"?'font-bold text-green-500  ':'font-semibold text-black  '}`}>
            Eleves 
         </Link>
       </div>
