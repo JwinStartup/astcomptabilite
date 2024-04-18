@@ -47,6 +47,10 @@ dispatch(userActions.inscriptionPersonnel(data)).then(()=>{
             <option>Histoire Geographie</option>
             <option>Anglais</option>
             <option>Philosophie</option>
+            <option>Allemand</option>
+            <option>Espagnole</option>
+            <option>Français</option>
+            <option>Svt</option>
         </select>
      </div> 
      </div>
