@@ -5,7 +5,8 @@ import  Axios  from 'axios';
  import {FadeLoader}from 'react-spinners'
 import { AiFillCloseCircle } from "react-icons/ai";
 import {useNavigate} from 'react-router-dom'
-
+import moment from 'moment'
+import "moment/min/locales"
 
 
 export default function VoirFacture({value,parama}) {
@@ -36,7 +37,8 @@ const navigate = useNavigate()
       </div>
             <div className='mx-4 font-medium  tracking-tight text-sm text-black '>{value.observation}</div>
             <div className='font-medium mt-2 tracking-tight text-sm text-black w-full text-end'>{value.periodeAjouter}</div>
-        <div className='  mt-2'>
+        <div className='w-full items-center flex justify-end'>
+             <span className='text-end text-xs text-gray-400'> {moment(`${value.updatedAt}`).locale('fr').fromNow()}</span> 
         </div>
         <div className='flex flex-col items-center my-2  w-full'>
     <div className='flex flex-row '> 
