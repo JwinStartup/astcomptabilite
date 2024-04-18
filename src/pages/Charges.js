@@ -28,13 +28,13 @@ export default function Charges() {
         <IoIosArrowDropleftCircle size={30} color="black" />
         <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900  ">Charges  </h5>
      </div>
-          <div classNamme='flex items-center flex-col justify-center '>
+          {/* <div classNamme='flex items-center flex-col justify-center '>
                 <select className='text-sm font-medium'>
                     <option value="">Aujourd'hui</option>
                     <option value="">Ce mois</option>
                     <option value="">Tous les mois</option>
                 </select>
-             </div>
+             </div> */}
                  <FaPlusCircle color="gray" size={25}  onClick={()=>navigate('/creerCharge')}/>
             </div>
   
