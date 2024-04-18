@@ -106,8 +106,8 @@ useEffect(()=>{
   </tbody>
 </table>
         </div>
-        <div className='w-full items-center justify-end'>
-             <span> {moment(`${value.createdAt}`).locale('fr').fromNow()}</span> 
+        <div className='w-full items-center flex justify-end'>
+             <span className='text-end text-xs text-gray-400'> {moment(`${value.createdAt}`).locale('fr').fromNow()}</span> 
         </div>
              
         <div className='flex flex-col items-center my-2  space-y-3 w-full h-full'>
