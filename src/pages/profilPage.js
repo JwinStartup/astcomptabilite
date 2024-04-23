@@ -55,7 +55,22 @@ const [rub , setRub]=useState({retour:false,id:null})
                   
                            className='text-md font-semibold tracking-wider py-3  px-1' >Se deconnecter</div>
            </div>
-
+             
+              <div className='flex  flex-col gap-2'>
+                <div className='flex flex-row'>
+                <p className="text-lg text-center font-semibold ml-1 tracking-tight text-black  "> {total===null? ` - `: `${total.commissions}`} </p>
+                <p className="text-sm text-center font-semibold ml-1 tracking-tight text-red-900  "> Commissions </p>
+                <div>
+                <div className='flex flex-row'>
+                <p className="text-lg text-center font-semibold ml-1 tracking-tight text-black  "> {total===null? ` - `: `${total.impayes}`} </p>
+                <p className="text-sm text-center font-semibold ml-1 tracking-tight text-red-900  "> Montant impayé </p>
+                <div>
+                <div className='flex flex-row'>
+                <p className="text-lg text-center font-semibold ml-1 tracking-tight text-black  "> {total===null? ` - `: `${total.payes}`} </p>
+                <p className="text-sm text-center font-semibold ml-1 tracking-tight text-red-900  "> Montant impayé </p>
+                <div>
+               <div>
+                      
             <div className='mt-6'>
               <p className="text-lg font-semibold ml-1 tracking-tight text-gray-900  "> Bilan financier </p>
                <div>
