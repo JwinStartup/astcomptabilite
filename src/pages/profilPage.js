@@ -25,10 +25,13 @@ const [rub , setRub]=useState({retour:false,id:null})
   useEffect(() => { 
     dispatch(comptabiliteActions.listeBilan())
   },[])
-  const {isLoader,bilans} = useSelector((state)=>{
+  useEffect(() => { 
+    dispatch(comptabiliteActions.voirTotal())
+  },[])
+  const {isLoader,bilans,total} = useSelector((state)=>{
     return state.comptabiliteReducer
    });
-
+  console.log(total)
   return (
  <div className=' w-full'>
     {rub.retour!==false&&<div>
