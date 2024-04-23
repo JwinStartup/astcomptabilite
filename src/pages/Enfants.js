@@ -47,7 +47,7 @@ const {personnels} = useSelector((state)=>{
       <div className='flex flex-col mx-4 space-y-2'>
       <input {...register("nom")}   type='text' placeholder='Nom' className='outline-none w-[250px] border-b-2 py-1 text-sm'/>
       <input {...register("prenoms")}   type='text' placeholder='Prenoms' className='outline-none w-[250px] border-b-2 py-1 text-sm'/>
-       <select {...register("sexe")} defaultValue='Homme' className='outline-none w-[250px] border-b-2 py-1 text-lg'>
+       <select {...register("genre")} defaultValue='Homme' className='outline-none w-[250px] border-b-2 py-1 text-lg'>
             <option>Homme</option>
             <option>Femme</option>
         </select>
