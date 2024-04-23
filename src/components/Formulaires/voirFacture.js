@@ -69,10 +69,10 @@ const dispatch = useDispatch()
        type="button" className=" text-red-800    font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center ">
         Voir reçue
         </button>}
-        <button 
+       {value.type==='impaye'&&<button 
        type="button" onClick={()=>modifier()} className=" text-blue-700 font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center">
         Modifier
-        </button>
+        </button>}
         <button 
        type="button" onClick={()=>partager()} className=" text-green-700  font-medium  text-sm px-3 py-2 text-center inline-flex items-center">
         Partager
