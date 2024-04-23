@@ -34,6 +34,10 @@ export default function Parents() {
         <div className='flex flex-col mx-4 space-y-2'>
         <input {...register("nom")}  type='text' placeholder='Nom' className='outline-none w-[250px] border-b-2 py-1 text-md'/>
         <input {...register("prenoms")}  type='text' placeholder='Prenoms' className='outline-none w-[250px] border-b-2 py-1 text-md'/>
+       <select {...register("sexe")} defaultValue='Homme' className='outline-none w-[250px] border-b-2 py-1 text-lg'>
+            <option>Homme</option>
+            <option>Femme</option>
+        </select>
         <input {...register("cel")}  type='text' placeholder='Cel' className='outline-none w-[250px] border-b-2 py-1 text-md'/>
         <input {...register("email")}  type='text' placeholder='Email' className='outline-none w-[250px] border-b-2 py-1 text-md'/>
         <input {...register("whatshapp")}  type='text' placeholder='Whatshapp' className='outline-none w-[250px] border-b-2 py-1 text-md'/>
