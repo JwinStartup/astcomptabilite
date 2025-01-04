@@ -11,7 +11,7 @@ import {useNavigate} from 'react-router-dom'
 
 
 
-export default function SupprimerEleve({retour,value}) {
+export default function SupprimerPersonnel({retour,value}) {
 const dispatch = useDispatch()
   const supprimer=()=>{
    
