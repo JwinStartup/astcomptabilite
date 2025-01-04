@@ -145,6 +145,7 @@ function createInitialState() {
             ),
             supprimerPersonnel:createAsyncThunk(`${name}/supprimerPersonnel`,
           async (body)=>{
+              console.log(body)
              return  await fetchWrapper.get(`${url}/supprimerPersonnel/${body}`)
             }
             ),
@@ -231,6 +232,7 @@ function createExtraReducers() {
               })
               .addCase(fulfilled, (state, action) => {
                const message = action.payload;
+                  console.log(message)
                 state.message=message;
                 state.isLoader = false;
               })
