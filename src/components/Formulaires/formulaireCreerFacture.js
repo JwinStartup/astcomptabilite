@@ -49,7 +49,7 @@ export default function FormulaireCreerFacture({retour}) {
         
         <input {...register("montant")} disabled value={montant} type="number"  className='w-[200px]  text-sm  h-10 border-b-2 py-1  pl-1 placeholder-gray-300' placeholder='Montant prestation' />
         
-           <select {...register("periodeAjouter")}  defaultValue=`Janvier ${(moment().year())}` className='outline-none w-[200px] border-b-2 py-1 text-sm'>
+           <select {...register("periodeAjouter")}  defaultValue={`Janvier ${(moment().year())}`} className='outline-none w-[200px] border-b-2 py-1 text-sm'>
             <option>Janvier {moment().year()}</option>
             <option>Fevrier {moment().year()}</option>
             <option>Mars {moment().year()}</option>
