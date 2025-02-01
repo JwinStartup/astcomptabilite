@@ -3,6 +3,8 @@ import { useDispatch,useSelector } from 'react-redux';
 import { comptabiliteActions } from '../../reducer/comptabilite';
 import { userActions } from '../../reducer/user';
 import { useForm } from 'react-hook-form';
+import moment from "moment"
+import "moment/min/locales"
 export default function FormulaireCreerFacture({retour}) {
   const { register, handleSubmit,
   } = useForm(
@@ -47,19 +49,19 @@ export default function FormulaireCreerFacture({retour}) {
         
         <input {...register("montant")} disabled value={montant} type="number"  className='w-[200px]  text-sm  h-10 border-b-2 py-1  pl-1 placeholder-gray-300' placeholder='Montant prestation' />
         
-           <select {...register("periodeAjouter")}  defaultValue='Janvier 2024' className='outline-none w-[200px] border-b-2 py-1 text-sm'>
-            <option>Janvier 2024</option>
-            <option>Fevrier 2024</option>
-            <option>Mars 2024</option>
-            <option>Avril 2024</option>
-            <option>Mai 2024</option>
-            <option>Juin 2024</option>
-            <option>Juillet 2024</option>
-            <option>Août 2024</option>
-            <option>Sepptembre 2024</option>
-            <option>Octobre 2024</option>
-            <option>Novembre 2024</option>
-            <option>Decembre 2024</option>
+           <select {...register("periodeAjouter")}  defaultValue=`Janvier ${(moment().year())}` className='outline-none w-[200px] border-b-2 py-1 text-sm'>
+            <option>Janvier {moment().year()}</option>
+            <option>Fevrier {moment().year()}</option>
+            <option>Mars {moment().year()}</option>
+            <option>Avril {moment().year()}</option>
+            <option>Mai {moment().year()}</option>
+            <option>Juin {moment().year()}</option>
+            <option>Juillet {moment().year()}</option>
+            <option>Août {moment().year()}</option>
+            <option>Sepptembre {moment().year()}</option>
+            <option>Octobre {moment().year()}</option>
+            <option>Novembre {moment().year()}</option>
+            <option>Decembre {moment().year()}</option>
         </select>
        <div className='flex flex-row space-x-4 pb-3'> <button type="button" onClick={()=>retour()} className="text-blue-700 hover:text-blue-800 border-r  font-medium  text-sm px-5 py-2.5 text-center inline-flex items-center ">
         Retour
