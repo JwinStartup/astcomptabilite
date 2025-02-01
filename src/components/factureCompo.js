@@ -1,6 +1,7 @@
 import React from "react"
 import { FaUserTie } from "react-icons/fa6"
 export default function FactureComponent({facture}){
+console.log(facture)
   return(
       <div className='border rounded-md  px-2'>
            <div className='flex items-center mx-2'> 
