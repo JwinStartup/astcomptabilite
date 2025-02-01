@@ -29,12 +29,12 @@ export default function FormulairePayerFacture({retour,value}) {
       </div> 
       <div className='flex flex-row w-full  justify-between my-4'>
         <div className='ml-7'>
-        <div className='text-sm font-medium text-gray-500'>{value.client.nom} {value?.client.prenoms}</div>
-        <div className='text-xs font-medium text-gray-500'>{value.client.cel}</div>
+        <div className='text-sm font-medium text-gray-500'>{value?.client?.nom} {value?.client?.prenoms}</div>
+        <div className='text-xs font-medium text-gray-500'>{value?.client?.cel}</div>
 
         </div>
         <div>
-            <div className='font-bold  tracking-wide text-md text-black '>{value.montant} FCFA</div>
+            <div className='font-bold  tracking-wide text-md text-black '>{value?.montant} FCFA</div>
             <div className='font-medium text-center tracking-tight text-xs text-red-400 '>Montant prestation</div>
             <div className='font-bold  tracking-tight text-sm text-black '>Periode : {value?.periodeAjouter} </div>
 
