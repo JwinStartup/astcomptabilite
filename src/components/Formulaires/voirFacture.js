@@ -16,7 +16,7 @@ import {useNavigate} from 'react-router-dom'
 
 export default function VoirFacture({payer,voirRecue,value,modifier,partager,supprimer}) {
 const dispatch = useDispatch()
-
+console.log(value)
   return (
     <div className='relative mx-3 bg-slate-100 w-[300px]  border p-3  border-gray-100  rounded-md '>
            <div className='absolute right-0 top-0 m-1 cursor-pointer '>    
