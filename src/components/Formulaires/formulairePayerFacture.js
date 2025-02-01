@@ -36,7 +36,7 @@ export default function FormulairePayerFacture({retour,value}) {
         <div>
             <div className='font-bold  tracking-wide text-md text-black '>{value.montant} FCFA</div>
             <div className='font-medium text-center tracking-tight text-xs text-red-400 '>Montant prestation</div>
-            <div className='font-bold  tracking-tight text-sm text-black '>Periode : {value.periode} </div>
+            <div className='font-bold  tracking-tight text-sm text-black '>Periode : {value.periodeAjoute} </div>
 
         </div>
 
