@@ -25,7 +25,7 @@ useEffect(()=> {
 
   const navigate=useNavigate()
 
-  console.log(factures,recues)
+  console.log('les factures et les reçues dans pages:',factures,recues)
 
   return (
     <div className='w-full'>
