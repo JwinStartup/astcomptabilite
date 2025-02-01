@@ -25,18 +25,18 @@ export default function FormulairePayerFacture({retour,value}) {
     <form onSubmit={handleSubmit(onSubmit)} className='w-[300px]  border p-3 bg-white border-gray-100 shadow-md rounded-lg   z-10 absolute top-[100px] left-[30px]'>
       <div className='flex flex-row justify-between w-full'> 
         <div className='font-bold  tracking-tight text-lg text-black pl-1'>Payer une facture</div>
-        <div className='font-medium  tracking-tight text-sm text-green-400 pl-1'>N°  {value._id.slice(value._id.length-3)} </div>
+        <div className='font-medium  tracking-tight text-sm text-green-400 pl-1'>N°  {value?._id.slice(value?._id.length-3)} </div>
       </div> 
       <div className='flex flex-row w-full  justify-between my-4'>
         <div className='ml-7'>
-        <div className='text-sm font-medium text-gray-500'>{value.client.nom} {value.client.prenoms}</div>
+        <div className='text-sm font-medium text-gray-500'>{value.client.nom} {value?.client.prenoms}</div>
         <div className='text-xs font-medium text-gray-500'>{value.client.cel}</div>
 
         </div>
         <div>
             <div className='font-bold  tracking-wide text-md text-black '>{value.montant} FCFA</div>
             <div className='font-medium text-center tracking-tight text-xs text-red-400 '>Montant prestation</div>
-            <div className='font-bold  tracking-tight text-sm text-black '>Periode : {value.periodeAjoute} </div>
+            <div className='font-bold  tracking-tight text-sm text-black '>Periode : {value?.periodeAjouter} </div>
 
         </div>
 
