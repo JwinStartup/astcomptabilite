@@ -37,14 +37,14 @@ export  const PDFRecu=({value})=>{
       </Text></View> 
       <View style={tw('flex flex-col w-full   justify-between ')}>
       <View style={tw('my-2 border-b border-b-black py-1')}>
-      <Text style={tw('text-sm font-bold text-black ')}>Information (s) Client</Text>
+      <Text style={tw('text-sm font-bold text-black ')}>Information(s) Client</Text>
       </View>
         <View style={tw(' ')}>
         <Text style={tw('text-sm font-medium text-gray-500')}>Client: {value.client.nom}  {value.client.prenoms}</Text>
         <Text style={tw('text-sm font-medium text-gray-500')}>Cel: {value.client.cel}</Text>
         </View>
         <View style={tw('my-1  border-b border-b-black ')}>
-      <Text style={tw('text-sm font-bold text-black')}>Information(s) client</Text>
+      <Text style={tw('text-sm font-bold text-black')}>Information transaction</Text>
       </View>
         <View style={tw('')}>
         <Text style={tw(' font-medium  tracking-tight text-sm text-gray-500 ')}>Periode : {value.periodeAjouter}</Text>
