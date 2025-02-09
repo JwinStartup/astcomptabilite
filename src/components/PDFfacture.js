@@ -38,7 +38,7 @@ export  const PDFfacture=({value})=>{
             </Text></View> 
             <View style={tw('flex flex-col w-full   justify-between ')}>
             <View style={tw('my-2 border-b border-b-black py-1')}>
-            <Text style={tw('text-sm font-bold text-black ')}>Information Client</Text>
+            <Text style={tw('text-sm font-bold text-black ')}>Information(s) Client</Text>
             </View>
               <View style={tw(' ')}>
               <Text style={tw('text-sm font-medium text-gray-500')}>Client: {value.client.nom}  {value.client.prenoms}</Text>
@@ -74,8 +74,8 @@ export  const PDFfacture=({value})=>{
       
               <View style={tw('flex flex-col justify-center border-t border-t-red-500 ')}>
               <Text style={tw(' font-medium  tracking-tight text-[8px] text-red-400 text-center mx-3 ')}>AS-TRAINING,  nous communiquons l'excellence</Text>
-              <Text style={tw(' font-medium  tracking-tight text-[8px] text-green-400 text-center mx-3')}>Telephone: 22 00 42 34 - 07 59 63 27 88 - 05 04 26 06 53 - 01 40 19 59 03</Text>
-              <Text style={tw(' font-medium  tracking-tight text-[8px] text-black text-center mx-3')}>Email: astraining_info@yahoo.fr</Text>
+              <Text style={tw(' font-medium  tracking-tight text-[8px] text-green-400 text-center mx-3')}>Contact:07 59 63 27 88 </Text>
+              <Text style={tw(' font-medium  tracking-tight text-[8px] text-black text-center mx-3')}>Email: groupeas.info@yahoo.fr</Text>
               </View>
           </View>
       
