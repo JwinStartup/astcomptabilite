@@ -37,7 +37,7 @@ export  const PDFRecu=({value})=>{
       </Text></View> 
       <View style={tw('flex flex-col w-full   justify-between ')}>
       <View style={tw('my-2 border-b border-b-black py-1')}>
-      <Text style={tw('text-sm font-bold text-black ')}>Information Client</Text>
+      <Text style={tw('text-sm font-bold text-black ')}>Information (s) Client</Text>
       </View>
         <View style={tw(' ')}>
         <Text style={tw('text-sm font-medium text-gray-500')}>Client: {value.client.nom}  {value.client.prenoms}</Text>
