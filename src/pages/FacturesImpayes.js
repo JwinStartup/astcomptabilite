@@ -72,7 +72,7 @@ export default function FacturesImpayes() {
   const dispatch = useDispatch()
   const [rub, setRub] = useState({nom:'',bol:false,value:null})
   const [searchTerm, setSearchTerm] = useState("")
-  const [filterDate, setFilterDate] = useState("today")
+  const [filterDate, setFilterDate] = useState("all") // Modification de la valeur initiale
   const navigate = useNavigate()
   
   useEffect(() => { 
@@ -116,13 +116,19 @@ export default function FacturesImpayes() {
     <div className='w-full'>
       {rub.bol!==false&&<SetComponent p={rub.nom} retour={()=>setRub({bol:false,nom:''})} value={rub.value} />}
       <Entete />
-      <div className='w-full flex flex-col space-y-4'>
-        <div className='flex justify-between items-center space-x-2 mx-4'>
+      <div className='w-full flex flex-row space-y-4'>
+        <div className='flex flex-col justify-between items-center space-x-2 mx-4'>
           <div className="flex items-center" onClick={()=>navigate('/')} >
             <IoIosArrowDropleftCircle size={30} color="black" />
             <FaFileInvoice size={30} color="#1D4ED8" className="mx-2"/>
             <h5 className="text-2xl font-bold tracking-tight text-gray-900">Facture</h5>
           </div>
+            <FaPlusCircle 
+              color="gray" 
+              size={25} 
+              className="cursor-pointer hover:text-blue-600 transition-colors"
+              onClick={()=>setRub({nom:'CREER',bol:true})}
+            />
         </div>
         <div className='flex items-center space-x-4'>
             <div className='relative'>
@@ -141,18 +147,12 @@ export default function FacturesImpayes() {
               value={filterDate}
               onChange={(e) => setFilterDate(e.target.value)}
             >
+              <option value="all" defaultValue>Toutes</option>
               <option value="today">Aujourd'hui</option>
               <option value="month">Ce mois</option>
               <option value="year">Cette année</option>
-              <option value="all">Tout</option>
             </select>
-            
-            <FaPlusCircle 
-              color="gray" 
-              size={25} 
-              className="cursor-pointer hover:text-blue-600 transition-colors"
-              onClick={()=>setRub({nom:'CREER',bol:true})}
-            />
+           
           </div>
 
         {isLoader ? (
