@@ -50,23 +50,27 @@ console.log(value)
           <div className='font-medium text-gray-800'>{value?.client?.nom} {value?.client?.prenoms}</div>
           <div className='text-sm text-gray-600'>{value?.client?.cel}</div>
         </div>
-
-        <div className='bg-gray-50 p-3 rounded-lg'>
-          <div className='text-sm text-gray-500 mb-1'>Élève</div>
-          <div className='font-medium text-gray-800'>{value?.eleve?.nom || "Akou eleva"}</div>
-          <div className='text-sm text-gray-600'>{value?.eleve?.classe || "Tle D"}</div>
-        </div>
-
         <div className='flex justify-between items-center bg-blue-50 p-3 rounded-lg'>
           <div>
-            <div className='text-sm text-gray-500'>Montant</div>
+            <div className='text-sm text-gray-500'>Montant total</div>
             <div className='font-bold text-lg text-blue-600'>{value?.montant} FCFA</div>
           </div>
           <div>
-            <div className='text-sm text-gray-500'>Période</div>
+            <div className='text-sm text-gray-500'>Mois</div>
             <div className='font-medium text-gray-700'>{value?.periodeAjouter}</div>
           </div>
         </div>
+      </div>
+
+      {/* Statut déplacé au-dessus du tableau */}
+      <div className='mb-3 flex justify-end'>
+        <span className={`px-3 py-1.5 text-sm font-medium rounded-full ${
+          value?.type === 'impaye' 
+            ? 'bg-red-100 text-red-600' 
+            : 'bg-green-100 text-green-600'
+        }`}>
+          {value?.type}
+        </span>
       </div>
 
       {/* Tableau des détails */}
@@ -75,23 +79,20 @@ console.log(value)
           <thead className='bg-gray-50'>
             <tr>
               <th className='py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>Désignation</th>
+              <th className='py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>Classe</th>
               <th className='py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>Montant</th>
-              <th className='py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>Statut</th>
             </tr>
           </thead>
           <tbody>
-            <tr className='bg-white'>
-              <td className='py-3 px-3 text-sm font-medium text-gray-700'>Cours à domicile</td>
-              <td className='py-3 px-3 text-sm text-gray-600'>{value?.montant}</td>
-              <td className='py-3 px-3'>
-                <span className={`px-2 py-1 text-xs font-medium rounded-full ${
-                  value?.type === 'impaye' 
-                    ? 'bg-red-100 text-red-600' 
-                    : 'bg-green-100 text-green-600'
-                }`}>
-                  {value?.type}
-                </span>
-              </td>
+            <tr className='bg-white border-b'>
+              <td className='py-3 px-3 text-sm font-medium text-gray-700'>CD - {value?.eleve?.nom || "Akou eleva"}</td>
+              <td className='py-3 px-3 text-xs text-gray-600'> {value?.eleve?.classe || "Tle D"}</td>
+              <td className='py-3 px-3 text-sm text-gray-600'>{value?.montant/2}</td>
+            </tr>
+            <tr className='bg-gray-50'>
+              <td className='py-3 px-3 text-sm font-medium text-gray-700'>CD - {value?.eleve?.nom || "Akou eleva"}</td>
+              <td className='py-3 px-3 text-xs text-gray-600'> {value?.eleve?.classe || "Tle D"}</td>
+              <td className='py-3 px-3 text-sm text-gray-600'>{value?.montant/2}</td>
             </tr>
           </tbody>
         </table>
