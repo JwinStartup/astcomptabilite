@@ -17,7 +17,7 @@ import {useNavigate} from 'react-router-dom'
 
 export default function VoirFacture({payer,voirRecue,value,modifier,partager,supprimer}) {
 const dispatch = useDispatch()
-console.log(value)
+const type= "enpartie"
   return (
     <div className='relative mx-3 bg-white shadow-lg w-[320px] border p-4 rounded-xl hover:shadow-xl transition-all duration-300'>
       {/* En-tête de la facture */}
@@ -63,14 +63,35 @@ console.log(value)
       </div>
 
       {/* Statut déplacé au-dessus du tableau */}
-      <div className='mb-3 flex justify-end'>
-        <span className={`px-3 py-1.5 text-sm font-medium rounded-full ${
-          value?.type === 'impaye' 
-            ? 'bg-red-100 text-red-600' 
-            : 'bg-green-100 text-green-600'
-        }`}>
-          {value?.type}
-        </span>
+      <div className='mb-3 flex flex-col items-end'>
+        <div className='flex items-center gap-2'>
+          <span className='text-gray-500 font-medium text-sm'>Statut :</span>
+          <span className={`px-3 py-1.5 text-sm font-semibold rounded-full
+            ${value?.type === 'impaye' ? 'bg-red-100 text-red-600' : ''}
+            ${value?.type === 'paye' ? 'bg-green-100 text-green-600' : ''}
+            ${value?.type === 'enpartie' ? 'bg-yellow-100 text-yellow-700' : ''}
+          `}>
+            {value?.type === 'impaye' && 'Impayé'}
+            {value?.type === 'paye' && 'Payé'}
+            {value?.type === 'enpartie' && 'En partie'}
+          </span>
+        </div>
+        {value?.type === 'enpartie' && (
+          <div className="flex flex-col items-end mt-2 w-full">
+            <div className="flex justify-between w-full">
+              <span className="text-xs text-gray-500 font-medium">Montant payé :</span>
+              <span className="text-xs font-semibold text-green-600 bg-green-50 rounded px-2 py-0.5 ml-2">
+                {value?.montantPaye || 5000} FCFA
+              </span>
+            </div>
+            <div className="flex justify-between w-full mt-1">
+              <span className="text-xs text-gray-500 font-medium">Reste à payer :</span>
+              <span className="text-xs font-semibold text-red-600 bg-red-50 rounded px-2 py-0.5 ml-2">
+                {value?.resteAPayer || 3000} FCFA
+              </span>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Tableau des détails */}
