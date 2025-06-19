@@ -88,7 +88,7 @@ export default function FacturesImpayes() {
                          facture.client?.nom.toLowerCase().includes(searchTerm.toLowerCase())
       
       // Filtre par date
-      const factureDate = new Date(facture.date)
+      const factureDate = new Date(facture.createdAt)
       const today = new Date()
       const isToday = factureDate.toDateString() === today.toDateString()
       const isThisMonth = factureDate.getMonth() === today.getMonth() && 
