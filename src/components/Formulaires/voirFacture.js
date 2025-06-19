@@ -7,6 +7,7 @@ import  Axios  from 'axios';
 import { AiFillCloseCircle } from "react-icons/ai";
 import moment from "moment"
 import "moment/min/locales"
+import { FaFileInvoice } from "react-icons/fa";
 
 import {useNavigate} from 'react-router-dom'
 
@@ -18,68 +19,112 @@ export default function VoirFacture({payer,voirRecue,value,modifier,partager,sup
 const dispatch = useDispatch()
 console.log(value)
   return (
-    <div className='relative mx-3 bg-slate-100 w-[300px]  border p-3  border-gray-100  rounded-md '>
-           <div className='absolute right-0 top-0 m-1 cursor-pointer '>    
-            {value?.type==='impaye'&&<AiFillCloseCircle color="gray" size={25} onClick={()=>supprimer()} />}
-           </div> 
-      <div className='flex flex-row justify-between w-full'> 
-        <div className='font-bold  tracking-tight text-[22px] text-black pl-1'>Facture</div>
-        <div className='font-medium mt-2  tracking-tight text-[14px] text-green-400 px-3'>N° {value?._id.slice(value?._id.length-3)} </div>
-      </div> 
-      <div className='flex flex-row w-full  justify-between my-2'>
-        <div className='ml-2'>
-        <div className='text-sm font-bold text-gray-500'>{value?.client?.nom} {value?.client?.prenoms}</div>
-        <div className='text-sm font-medium text-gray-500'>{value?.client?.cel}</div>
+    <div className='relative mx-3 bg-white shadow-lg w-[320px] border p-4 rounded-xl hover:shadow-xl transition-all duration-300'>
+      {/* En-tête de la facture */}
+      <div className='absolute right-2 top-2'>    
+        {value?.type === 'impaye' && 
+          <AiFillCloseCircle 
+            className="hover:text-red-500 transition-colors" 
+            color="gray" 
+            size={25} 
+            onClick={()=>supprimer()} 
+          />}
+      </div>
+
+      <div className='flex justify-between items-center border-b pb-3'> 
+        <div className='flex items-center space-x-2'>
+          <div className='p-2 bg-blue-100 rounded-lg'>
+            <FaFileInvoice size={20} className="text-blue-600" />
+          </div>
+          <div className='font-bold text-xl text-gray-800'>Facture</div>
         </div>
-        <div>
-             <div className='font-bold  tracking-wide text-sm text-black '>{value?.montant} FCFA</div>
-            <div className='font-medium text-center tracking-tight text-[11px] text-gray-400 '>Montant</div>
+        <div className='px-3 py-1 bg-green-100 rounded-full'>
+          <span className='font-semibold text-green-600'>N° {value?._id.slice(value?._id.length-3)}</span>
+        </div>
+      </div>
+
+      {/* Informations client */}
+      <div className='mt-4 space-y-3'>
+        <div className='bg-gray-50 p-3 rounded-lg'>
+          <div className='text-sm text-gray-500 mb-1'>Parent</div>
+          <div className='font-medium text-gray-800'>{value?.client?.nom} {value?.client?.prenoms}</div>
+          <div className='text-sm text-gray-600'>{value?.client?.cel}</div>
         </div>
 
+        <div className='bg-gray-50 p-3 rounded-lg'>
+          <div className='text-sm text-gray-500 mb-1'>Élève</div>
+          <div className='font-medium text-gray-800'>{value?.eleve?.nom || "Akou eleva"}</div>
+          <div className='text-sm text-gray-600'>{value?.eleve?.classe || "Tle D"}</div>
+        </div>
+
+        <div className='flex justify-between items-center bg-blue-50 p-3 rounded-lg'>
+          <div>
+            <div className='text-sm text-gray-500'>Montant</div>
+            <div className='font-bold text-lg text-blue-600'>{value?.montant} FCFA</div>
+          </div>
+          <div>
+            <div className='text-sm text-gray-500'>Période</div>
+            <div className='font-medium text-gray-700'>{value?.periodeAjouter}</div>
+          </div>
+        </div>
       </div>
-            <div className='mx-2 font-medium  tracking-tight text-sm text-black '>Periode : {value?.periodeAjouter}</div>
-        <div className='  mt-2'>
-        <table className="w-full ">
-  <thead>
-    <tr className="">
-      <th  className='border-b-2 text-gray-400 text-start  text-xs '>Designation</th>
-      <th  className='border-b-2 text-gray-400 text-start  text-xs'>Montant</th>
-      <th  className='border-b-2 text-gray-400 text-start  text-xs'>Type</th>
-      
-    </tr>
-  </thead>
-  <tbody>
-  <tr className='odd:bg-gray-200  bg-white rounded-3xl h-14 m-2  items-center w-full cursor-pointer'>
-      <td className='font-medium text-base text-gray-500 text-start'>Cours à domicile </td>      
-      <td className='font-medium text-base text-gray-500 text-start'>{value?.montant}</td>
-      <td className= { `font-medium text-base text-gray-500 text-start ${value?.type==='impaye'?'text-red-500':'text-green-500'}`}>{value?.type}</td>
-    </tr>
-  </tbody>
-</table>
-        </div>
-   <div className='w-full items-center flex justify-end'>
-             <span className='text-end text-xs text-gray-400'> {moment(`${value?.updatedAt}`).locale('fr').fromNow()}</span> 
-        </div>
-        <div className='flex flex-col items-center my-2  w-full'>
-<div className='flex flex-row '> 
-     {value?.type==='impaye'?  <button onClick={()=>payer()} 
-       type="button" className=" text-red-400    font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center ">
-        Payer
-        </button>: <button onClick={()=>voirRecue()} 
-       type="button" className=" text-red-800    font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center ">
-        Voir reçue
-        </button>}
-       {value?.type==='impaye'&&<button 
-       type="button" onClick={()=>modifier()} className=" text-blue-700 font-medium border-r text-sm px-3 py-2 text-center inline-flex items-center">
-        Modifier
-        </button>}
-        <button 
-       type="button" onClick={()=>partager()} className=" text-green-700  font-medium  text-sm px-3 py-2 text-center inline-flex items-center">
-        Partager
+
+      {/* Tableau des détails */}
+      <div className='mt-4 overflow-hidden rounded-lg border'>
+        <table className="w-full">
+          <thead className='bg-gray-50'>
+            <tr>
+              <th className='py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>Désignation</th>
+              <th className='py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>Montant</th>
+              <th className='py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>Statut</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className='bg-white'>
+              <td className='py-3 px-3 text-sm font-medium text-gray-700'>Cours à domicile</td>
+              <td className='py-3 px-3 text-sm text-gray-600'>{value?.montant}</td>
+              <td className='py-3 px-3'>
+                <span className={`px-2 py-1 text-xs font-medium rounded-full ${
+                  value?.type === 'impaye' 
+                    ? 'bg-red-100 text-red-600' 
+                    : 'bg-green-100 text-green-600'
+                }`}>
+                  {value?.type}
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      {/* Date et boutons */}
+      <div className='text-right mt-3 text-xs text-gray-400'>
+        {moment(`${value?.updatedAt}`).locale('fr').fromNow()}
+      </div>
+
+      <div className='mt-4 flex justify-center gap-2 border-t pt-4'>
+        {value?.type === 'impaye' ? (
+          <button onClick={()=>payer()} 
+            className="px-4 py-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-100 transition-colors font-medium text-sm">
+            Payer
+          </button>
+        ) : (
+          <button onClick={()=>voirRecue()} 
+            className="px-4 py-2 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition-colors font-medium text-sm">
+            Voir reçu
+          </button>
+        )}
+        {value?.type === 'impaye' && (
+          <button onClick={()=>modifier()} 
+            className="px-4 py-2 bg-gray-50 text-gray-600 rounded-lg hover:bg-gray-100 transition-colors font-medium text-sm">
+            Modifier
+          </button>
+        )}
+        <button onClick={()=>partager()} 
+          className="px-4 py-2 bg-green-50 text-green-600 rounded-lg hover:bg-green-100 transition-colors font-medium text-sm">
+          Partager
         </button>
-      
-         </div>
-        </div>
+      </div>
     </div>
   )
 }
