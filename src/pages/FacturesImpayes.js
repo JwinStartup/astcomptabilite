@@ -117,7 +117,7 @@ export default function FacturesImpayes() {
       {rub.bol!==false&&<SetComponent p={rub.nom} retour={()=>setRub({bol:false,nom:''})} value={rub.value} />}
       <Entete />
       <div className='w-full flex flex-col space-y-4'>
-        <div className='flex flex-row justify-between items-center space-x-2 mx-4'>
+        <div className='flex  justify-between items-center space-x-2 mx-4'>
           <div className="flex items-center" onClick={()=>navigate('/')} >
             <IoIosArrowDropleftCircle size={30} color="black" />
             <FaFileInvoice size={30} color="#1D4ED8" className="mx-2"/>
@@ -130,30 +130,29 @@ export default function FacturesImpayes() {
               onClick={()=>setRub({nom:'CREER',bol:true})}
             />
         </div>
-        <div className='flex items-center space-x-4'>
-            <div className='relative'>
+        <div className='flex flex-col space-y-3 px-4'>
+            <div className='w-full relative'>
               <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"/>
               <input
                 type="text"
-                placeholder="Nom ou numero ..."
-                className="pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Numero ou nom ..."
+                className="w-full pl-10 pr-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
             
             <select 
-              className='px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
+              className='w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm bg-white'
               value={filterDate}
               onChange={(e) => setFilterDate(e.target.value)}
             >
-              <option value="all" defaultValue>Toutes</option>
+              <option value="all">Toutes les factures</option>
               <option value="today">Aujourd'hui</option>
               <option value="month">Ce mois</option>
               <option value="year">Cette année</option>
             </select>
-           
-          </div>
+        </div>
 
         {isLoader ? (
           <div className="flex flex-col gap-2 justify-center items-center ">
