@@ -84,8 +84,8 @@ export default function FacturesImpayes() {
   const filteredFactures = useMemo(() => {
     return factures.filter(facture => {
       // Filtre par recherche
-      const matchSearch = facture.numero?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         facture.client?.toLowerCase().includes(searchTerm.toLowerCase())
+      const matchSearch = facture._id?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         facture.client?.nom.toLowerCase().includes(searchTerm.toLowerCase())
       
       // Filtre par date
       const factureDate = new Date(facture.date)
