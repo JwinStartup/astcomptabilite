@@ -69,60 +69,114 @@ const SetComponent=({p,retour,value})=>{
   }
 }
 export default function FacturesImpayes() {
-  const dispatch =useDispatch()
-  const [rub , setRub]=useState({nom:'',bol:false,value:null})
-  const navigate=useNavigate()
-  const [fact , setFact]=useState(" ")
+  const dispatch = useDispatch()
+  const [rub, setRub] = useState({nom:'',bol:false,value:null})
+  const [searchTerm, setSearchTerm] = useState("")
+  const [filterDate, setFilterDate] = useState("today")
+  const navigate = useNavigate()
+  
   useEffect(() => { 
     dispatch(comptabiliteActions.listeFacture())
   },[rub])
   
-  const {isLoader,factures} = useSelector((state)=>{
-    return state.comptabiliteReducer
-   });
-  
+  const {isLoader,factures} = useSelector((state)=> state.comptabiliteReducer);
+
+  const filteredFactures = useMemo(() => {
+    return factures.filter(facture => {
+      // Filtre par recherche
+      const matchSearch = facture.numero?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         facture.client?.toLowerCase().includes(searchTerm.toLowerCase())
+      
+      // Filtre par date
+      const factureDate = new Date(facture.date)
+      const today = new Date()
+      const isToday = factureDate.toDateString() === today.toDateString()
+      const isThisMonth = factureDate.getMonth() === today.getMonth() && 
+                         factureDate.getFullYear() === today.getFullYear()
+      const isThisYear = factureDate.getFullYear() === today.getFullYear()
+
+      switch(filterDate) {
+        case 'today': return matchSearch && isToday
+        case 'month': return matchSearch && isThisMonth
+        case 'year': return matchSearch && isThisYear
+        default: return matchSearch
+      }
+    })
+  }, [factures, searchTerm, filterDate])
+
   return (
-    <div className=' w-full'>
-         {rub.bol!==false&&<SetComponent p={rub.nom} retour={()=>setRub({bol:false,nom:''})} value={rub.value} />}
-        <Entete />
-     <div className='  w-full  flex flex-col  '>
-     <div className='    flex justify-between items-center space-x-2 mx-4'>
-    <div className="flex  items-center "  onClick={()=>navigate('/')} >
-        <IoIosArrowDropleftCircle size={30} color="black" />
-        <FaFileInvoice  size={30} color="#1D4ED8" style={{paddingRigth:"5px"}}/>
-        <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900  ">Facture  </h5>
-    </div>
-  {/* <div classNamme='flex items-center flex-col justify-center '>
-                <select className='text-sm font-medium'>
-                    <option value="">Aujourd'hui</option>
-                    <option value="">Ce mois</option>
-                    <option value="">Tous les mois</option>
-                </select>
-             </div> */}
-                 <FaPlusCircle color="gray" size={25}  onClick={()=>setRub({nom:'CREER',bol:true})}/>
+    <div className='w-full'>
+      {rub.bol!==false&&<SetComponent p={rub.nom} retour={()=>setRub({bol:false,nom:''})} value={rub.value} />}
+      <Entete />
+      <div className='w-full flex flex-col space-y-4'>
+        <div className='flex justify-between items-center space-x-2 mx-4'>
+          <div className="flex items-center" onClick={()=>navigate('/')} >
+            <IoIosArrowDropleftCircle size={30} color="black" />
+            <FaFileInvoice size={30} color="#1D4ED8" className="mx-2"/>
+            <h5 className="text-2xl font-bold tracking-tight text-gray-900">Facture</h5>
+          </div>
+          
+          <div className='flex items-center space-x-4'>
+            <div className='relative'>
+              <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"/>
+              <input
+                type="text"
+                placeholder="Rechercher par nom ou par numero..."
+                className="pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
             </div>
-  
-       {isLoader?
-            <div className="flex flex-col gap-2 justify-center items-center ">
+            
+            <select 
+              className='px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
+              value={filterDate}
+              onChange={(e) => setFilterDate(e.target.value)}
+            >
+              <option value="today">Aujourd'hui</option>
+              <option value="month">Ce mois</option>
+              <option value="year">Cette année</option>
+              <option value="all">Tout</option>
+            </select>
+            
+            <FaPlusCircle 
+              color="gray" 
+              size={25} 
+              className="cursor-pointer hover:text-blue-600 transition-colors"
+              onClick={()=>setRub({nom:'CREER',bol:true})}
+            />
+          </div>
+        </div>
+
+        {isLoader ? (
+          <div className="flex flex-col gap-2 justify-center items-center ">
             { [1,2,3].map((i,j)=><div key={j} className="animate-pulse flex space-x-4 border rounded-md w-[250px] h-[200px] px-2 bg-gray-100">
             </div>)}
-            </div>: <div >
-          {factures.length===0?
-         <div className='w-full flex justify-center items-center'> Pas de facture</div>
-                          :<div className='flex flex-col gap-3 justify-center items-center'>
-       {factures.map((value,index)=>
-            <VoirFacture 
-                     voirRecue={()=>setRub({nom:'VOIRRECUE',bol:true, value:value})}
-                     supprimer={()=>setRub({nom:'SUPPRIMER',bol:true, value:value})} 
-                     payer={()=>setRub({nom:'PAYER',bol:true, value:value} )} value={value}
-                     partager={()=>setRub({nom:'PARTAGER',bol:true, value:value} )} value={value}
-                     modifier={()=>setRub({nom:'MODIFIER',bol:true, value:value} )} value={value}
-                />)}
-                       </div>}
-      </div>}
-
-</div>
-    
+          </div>
+        ) : (
+          <div>
+            {filteredFactures.length === 0 ? (
+              <div className='w-full flex justify-center items-center py-10'>
+                Aucune facture trouvée
+              </div>
+            ) : (
+              <div className='flex flex-col gap-3 justify-center items-center'>
+                {filteredFactures.map((value,index)=>
+                  <VoirFacture 
+                    key={index}
+                    voirRecue={()=>setRub({nom:'VOIRRECUE',bol:true, value:value})}
+                    supprimer={()=>setRub({nom:'SUPPRIMER',bol:true, value:value})} 
+                    payer={()=>setRub({nom:'PAYER',bol:true, value:value})} 
+                    value={value}
+                    partager={()=>setRub({nom:'PARTAGER',bol:true, value:value})} 
+                    modifier={()=>setRub({nom:'MODIFIER',bol:true, value:value})}
+                  />
+                )}
+              </div>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   )
 }
