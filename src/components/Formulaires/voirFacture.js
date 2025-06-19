@@ -67,16 +67,16 @@ const type= "enpartie"
         <div className='flex items-center gap-2'>
           <span className='text-gray-500 font-medium text-sm'>Statut :</span>
           <span className={`px-3 py-1.5 text-sm font-semibold rounded-full
-            ${value?.type === 'impaye' ? 'bg-red-100 text-red-600' : ''}
-            ${value?.type === 'paye' ? 'bg-green-100 text-green-600' : ''}
-            ${value?.type === 'enpartie' ? 'bg-yellow-100 text-yellow-700' : ''}
+            ${type === 'impaye' ? 'bg-red-100 text-red-600' : ''}
+            ${type === 'paye' ? 'bg-green-100 text-green-600' : ''}
+            ${type === 'enpartie' ? 'bg-yellow-100 text-yellow-700' : ''}
           `}>
-            {value?.type === 'impaye' && 'Impayé'}
-            {value?.type === 'paye' && 'Payé'}
-            {value?.type === 'enpartie' && 'En partie'}
+            {type === 'impaye' && 'Impayé'}
+            {type === 'paye' && 'Payé'}
+            {type === 'enpartie' && 'En partie'}
           </span>
         </div>
-        {value?.type === 'enpartie' && (
+        {type === 'enpartie' && (
           <div className="flex flex-col items-end mt-2 w-full">
             <div className="flex justify-between w-full">
               <span className="text-xs text-gray-500 font-medium">Montant payé :</span>
