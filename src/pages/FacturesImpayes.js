@@ -83,10 +83,12 @@ export default function FacturesImpayes() {
 
   const filteredFactures = useMemo(() => {
     return factures.filter(facture => {
-      // Filtre par recherche
-      const matchSearch = facture._id?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         facture.client?.nom.toLowerCase().includes(searchTerm.toLowerCase())
-      
+      // Si aucun terme de recherche, on applique uniquement le filtre de date
+      const matchSearch = !searchTerm.trim() ? true : (
+        (facture._id && facture._id.includes(searchTerm)) ||
+        (facture.client?.nom && facture.client.nom.toLowerCase().includes(searchTerm.toLowerCase()))
+      );
+
       // Filtre par date
       const factureDate = new Date(facture.createdAt)
       const today = new Date()
@@ -95,11 +97,17 @@ export default function FacturesImpayes() {
                          factureDate.getFullYear() === today.getFullYear()
       const isThisYear = factureDate.getFullYear() === today.getFullYear()
 
+      // Si "all" est sélectionné ou si filterDate n'est pas défini, retourner uniquement le résultat de la recherche
+      if (filterDate === 'all' || !filterDate) {
+        return matchSearch;
+      }
+
+      // Appliquer le filtre de date sélectionné
       switch(filterDate) {
-        case 'today': return matchSearch && isToday
-        case 'month': return matchSearch && isThisMonth
-        case 'year': return matchSearch && isThisYear
-        default: return matchSearch
+        case 'today': return matchSearch && isToday;
+        case 'month': return matchSearch && isThisMonth;
+        case 'year': return matchSearch && isThisYear;
+        default: return matchSearch;
       }
     })
   }, [factures, searchTerm, filterDate])
@@ -115,13 +123,13 @@ export default function FacturesImpayes() {
             <FaFileInvoice size={30} color="#1D4ED8" className="mx-2"/>
             <h5 className="text-2xl font-bold tracking-tight text-gray-900">Facture</h5>
           </div>
-          
-          <div className='flex items-center space-x-4'>
+        </div>
+        <div className='flex items-center space-x-4'>
             <div className='relative'>
               <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"/>
               <input
                 type="text"
-                placeholder="Rechercher par nom ou par numero..."
+                placeholder="Nom ou numero ..."
                 className="pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
@@ -146,7 +154,6 @@ export default function FacturesImpayes() {
               onClick={()=>setRub({nom:'CREER',bol:true})}
             />
           </div>
-        </div>
 
         {isLoader ? (
           <div className="flex flex-col gap-2 justify-center items-center ">
