@@ -32,28 +32,31 @@ export default function FormulaireCreerFacture({retour}) {
   const { register, handleSubmit } = useForm()
   const [montant, setMontant] = useState(0)
   const [chargement, setChargement] = useState(false)
-  const [searchParent, setSearchParent] = useState("")
+  // const [searchParent, setSearchParent] = useState("") // supprimé
+  const [searchParentSelect, setSearchParentSelect] = useState("")
   const [selectedParent, setSelectedParent] = useState(null)
   const [selectedEnfants, setSelectedEnfants] = useState([])
+  const [showParentDropdown, setShowParentDropdown] = useState(false)
   const dispatch = useDispatch()
   /*
   useEffect(() => { 
     dispatch(userActions.listeParent())
   },[])
-*/
- // const {isLoader,parents} = useSelector((state)=> state.userReducer);
+  */
+  // const {isLoader,parents} = useSelector((state)=> state.userReducer);
 
-  // Filtrage des parents selon la recherche
+  // Filtrage des parents selon la recherche dans le select custom
   const filteredParents = parents.filter(p =>
-    (p.nom + " " + p.prenoms).toLowerCase().includes(searchParent.toLowerCase())
+    (p.nom + " " + p.prenoms).toLowerCase().includes(searchParentSelect.toLowerCase())
   )
 
   // Gestion sélection parent
-  const onChangeParent = (e) => {
-    const p = parents.find((d) => d._id === e)
+  const onChangeParent = (p) => {
     setSelectedParent(p)
     setSelectedEnfants([]) // reset enfants sélectionnés
     setMontant(0)
+    setShowParentDropdown(false)
+    setSearchParentSelect("")
   }
 
   // Gestion sélection enfants (cases à cocher)
@@ -94,31 +97,41 @@ export default function FormulaireCreerFacture({retour}) {
       <div className='font-bold text-2xl text-blue-700 mb-4 text-center'>Créer une facture</div>
       <form onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex flex-col gap-5 w-full'>
         
-        {/* Recherche parent */}
-        <div>
-          <label className='block text-sm font-medium text-gray-700 mb-1'>Rechercher un parent</label>
-          <input
-            type="text"
-            placeholder="Nom ou prénom du parent..."
-            className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            value={searchParent}
-            onChange={e => setSearchParent(e.target.value)}
-          />
-        </div>
-
-        {/* Sélection parent */}
-        <div>
+        {/* Sélection parent avec recherche intégrée */}
+        <div className="relative">
           <label className='block text-sm font-medium text-gray-700 mb-1'>Choisir un parent</label>
-          <select
-            className='w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400'
-            value={selectedParent?._id || ""}
-            onChange={e => onChangeParent(e.target.value)}
+          <div
+            className="w-full border rounded-lg px-3 py-2 text-sm bg-white cursor-pointer"
+            onClick={() => setShowParentDropdown(!showParentDropdown)}
+            tabIndex={0}
+            onBlur={() => setTimeout(() => setShowParentDropdown(false), 150)}
           >
-            <option value="">Sélectionnez un parent</option>
-            {filteredParents.map((val,index) => (
-              <option value={val._id} key={index}>{val.nom} {val.prenoms}</option>
-            ))}
-          </select>
+            {selectedParent ? `${selectedParent.nom} ${selectedParent.prenoms}` : "Sélectionnez un parent"}
+          </div>
+          {showParentDropdown && (
+            <div className="absolute z-20 w-full bg-white border rounded-lg mt-1 shadow-lg max-h-56 overflow-y-auto">
+              <input
+                type="text"
+                placeholder="Rechercher..."
+                className="w-full px-3 py-2 border-b outline-none text-sm"
+                value={searchParentSelect}
+                onChange={e => setSearchParentSelect(e.target.value)}
+                autoFocus
+              />
+              {filteredParents.length === 0 && (
+                <div className="px-3 py-2 text-gray-400 text-sm">Aucun parent trouvé</div>
+              )}
+              {filteredParents.map((val, index) => (
+                <div
+                  key={val._id}
+                  className={`px-3 py-2 hover:bg-blue-50 cursor-pointer text-sm ${selectedParent?._id === val._id ? "bg-blue-100 font-semibold" : ""}`}
+                  onClick={() => onChangeParent(val)}
+                >
+                  {val.nom} {val.prenoms}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Liste enfants du parent */}
