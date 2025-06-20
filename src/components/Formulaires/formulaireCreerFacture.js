@@ -98,13 +98,19 @@ export default function FormulaireCreerFacture({retour}) {
       <form onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex flex-col gap-5 w-full'>
         
         {/* Sélection parent avec recherche intégrée */}
-        <div className="relative">
+        <div className="relative" tabIndex={0}
+          onBlur={e => {
+            // On ferme le dropdown seulement si le focus sort du bloc parent
+            if (!e.currentTarget.contains(e.relatedTarget)) {
+              setShowParentDropdown(false)
+            }
+          }}
+        >
           <label className='block text-sm font-medium text-gray-700 mb-1'>Choisir un parent</label>
           <div
             className="w-full border rounded-lg px-3 py-2 text-sm bg-white cursor-pointer"
-            onClick={() => setShowParentDropdown(!showParentDropdown)}
-            tabIndex={0}
-            onBlur={() => setTimeout(() => setShowParentDropdown(false), 150)}
+            onClick={() => setShowParentDropdown(v => !v)}
+            // tabIndex={0} // supprimé ici, mis sur le wrapper
           >
             {selectedParent ? `${selectedParent.nom} ${selectedParent.prenoms}` : "Sélectionnez un parent"}
           </div>
@@ -126,6 +132,7 @@ export default function FormulaireCreerFacture({retour}) {
                   key={val._id}
                   className={`px-3 py-2 hover:bg-blue-50 cursor-pointer text-sm ${selectedParent?._id === val._id ? "bg-blue-100 font-semibold" : ""}`}
                   onClick={() => onChangeParent(val)}
+                  tabIndex={-1}
                 >
                   {val.nom} {val.prenoms}
                 </div>
@@ -195,7 +202,7 @@ export default function FormulaireCreerFacture({retour}) {
         )}
 
         {/* Boutons */}
-        <div className='flex flex-row justify-between items-center pt-2'>
+        <div className='flex flex-row justify-center items-center gap-6 pt-2'>
           <button type="button" onClick={()=>retour()} className="text-blue-700 hover:text-blue-800 border-r font-medium text-sm px-5 py-2.5 text-center">
             Retour
           </button>
