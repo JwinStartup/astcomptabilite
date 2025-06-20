@@ -3,13 +3,30 @@ import { useDispatch, useSelector } from 'react-redux';
 import { comptabiliteActions } from '../../reducer/comptabilite';
 import { userActions } from '../../reducer/user';
 import { useForm } from 'react-hook-form';
+import moment from 'moment';
 
 export default function ModifierFacture({ retour, value }) {
   const [chargement, setChargement] = useState(false)
+  const [mois, setMois] = useState(() => {
+    // Initialiser avec le mois de la période si possible
+    if (value.periodeAjouter) {
+      const [moisStr, anneeStr] = value.periodeAjouter.split(' ');
+      const moisNum = moment().month(moisStr).format("MM");
+      return moisNum || "";
+    }
+    return "";
+  });
+  const [annee, setAnnee] = useState(() => {
+    if (value.periodeAjouter) {
+      const [moisStr, anneeStr] = value.periodeAjouter.split(' ');
+      return anneeStr || "";
+    }
+    return "";
+  });
+
   const { register, handleSubmit, setValue } = useForm({
     defaultValues: {
       montant: value.montant,
-      periodeAjouter: value.periodeAjouter
     }
   });
   const dispatch = useDispatch()
@@ -20,11 +37,17 @@ export default function ModifierFacture({ retour, value }) {
   const { isLoader, parents } = useSelector((state) => state.userReducer);
 
   const onSubmit = (data) => {
+    // Construit la période sous forme "Mois Année"
+    let periodeAjouter = "";
+    if (mois && annee) {
+      const moisNom = moment().month(Number(mois) - 1).format("MMMM");
+      periodeAjouter = `${moisNom.charAt(0).toUpperCase() + moisNom.slice(1)} ${annee}`;
+    }
     setChargement(true)
     dispatch(comptabiliteActions.modifierFacture({
       ...value,
       montant: data.montant,
-      periodeAjouter: data.periodeAjouter
+      periodeAjouter: periodeAjouter
     })).then(() => {
       setChargement(false)
       retour()
@@ -38,7 +61,7 @@ export default function ModifierFacture({ retour, value }) {
         absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
         sm:static sm:translate-x-0 sm:translate-y-0 sm:mx-auto sm:my-10
         flex flex-col'
-      style={{ maxWidth: 400 }}
+      style={{ maxWidth: 350 }}
     >
       <div className='flex flex-row justify-between items-center mb-4'>
         <div className='font-bold text-xl text-blue-700'>
@@ -72,12 +95,17 @@ export default function ModifierFacture({ retour, value }) {
       </div>
 
       <div className='mb-4'>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Période</label>
+        <label className='block text-sm font-medium text-gray-700 mb-1'>Période (mois et année)</label>
         <input
-          {...register("periodeAjouter", { required: true })}
-          type="text"
-          className='w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400'
-          placeholder='Ex : Janvier 2024'
+          type="month"
+          value={mois && annee ? `${annee}-${mois.padStart(2, '0')}` : ""}
+          onChange={e => {
+            const [y, m] = e.target.value.split('-')
+            setMois(m)
+            setAnnee(y)
+          }}
+          className='w-full border rounded-lg px-3 py-2 text-sm bg-gray-100'
+          required
         />
       </div>
 
