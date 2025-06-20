@@ -37,6 +37,8 @@ export default function FormulaireCreerFacture({retour}) {
   const [selectedParent, setSelectedParent] = useState(null)
   const [selectedEnfants, setSelectedEnfants] = useState([])
   const [showParentDropdown, setShowParentDropdown] = useState(false)
+  const [mois, setMois] = useState("")
+  const [annee, setAnnee] = useState("")
   const dispatch = useDispatch()
   /*
   useEffect(() => { 
@@ -53,7 +55,7 @@ export default function FormulaireCreerFacture({retour}) {
   // Gestion sélection parent
   const onChangeParent = (p) => {
     setSelectedParent(p)
-    setSelectedEnfants([]) // reset enfants sélectionnés
+    setSelectedEnfants([] )// reset enfants sélectionnés
     setMontant(0)
     setShowParentDropdown(false)
     setSearchParentSelect("")
@@ -78,14 +80,15 @@ export default function FormulaireCreerFacture({retour}) {
     alert(JSON.stringify({
       client: selectedParent,
       enfants: selectedEnfants,
-      montant: montant
+      montant: montant,
+      periode: { mois, annee }
     }, null, 2))
-   /* setChargement(true)
+    /* setChargement(true)
     dispatch(comptabiliteActions.creerFacture({
       client: selectedParent?._id,
       enfants: selectedEnfants.map(e => e._id),
       montant: montant,
-      // periodeAjouter supprimé
+      periodeAjouter: `${mois} ${annee}`
     })).then(()=>{
       setChargement(false)
       retour()
@@ -173,6 +176,22 @@ export default function FormulaireCreerFacture({retour}) {
             type="number"
             className='w-full border rounded-lg px-3 py-2 text-sm bg-gray-100'
             placeholder='Montant prestation'
+          />
+        </div>
+
+        {/* Sélection de la période */}
+        <div>
+          <label className='block text-sm font-medium text-gray-700 mb-1'>Période (mois et année)</label>
+          <input
+            type="month"
+            value={mois && annee ? `${annee}-${mois.padStart(2, '0')}` : ""}
+            onChange={e => {
+              const [y, m] = e.target.value.split('-')
+              setMois(m)
+              setAnnee(y)
+            }}
+            className='w-full border rounded-lg px-3 py-2 text-sm bg-gray-100'
+            required
           />
         </div>
 
