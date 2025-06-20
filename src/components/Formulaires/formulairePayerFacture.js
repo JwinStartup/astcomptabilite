@@ -12,7 +12,16 @@ export default function FormulairePayerFacture({retour, value}) {
   const dispatch = useDispatch()
 
   const onSubmit = (data) => {
+    // Affiche les données sélectionnées dans une alerte
+    alert(JSON.stringify({
+      mode: data.mode,
+      idFacture: value._id,
+      ref: data.ref,
+      typePaiement: typePaiement,
+      montant: typePaiement === 'partie' ? montantPartiel : value.montant
+    }, null, 2))
     setChargement(true)
+    /*
     dispatch(comptabiliteActions.payerFacture({
       mode: data.mode,
       idFacture: value._id,
@@ -23,6 +32,9 @@ export default function FormulairePayerFacture({retour, value}) {
       setChargement(false)
       retour()
     })
+    */
+    setChargement(false)
+    // retour()
   }
 
   return (
@@ -96,14 +108,19 @@ export default function FormulairePayerFacture({retour, value}) {
           <input
             type="number"
             min={1}
-            max={value?.montant}
+            max={value?.montant - 1}
             value={montantPartiel}
-            onChange={e => setMontantPartiel(e.target.value)}
+            onChange={e => {
+              const val = e.target.value;
+              if (!val || Number(val) < value?.montant) {
+                setMontantPartiel(val);
+              }
+            }}
             className='w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400'
             placeholder='Montant partiel'
             required
           />
-          <div className="text-xs text-gray-400 mt-1">Montant maximum : {value?.montant} FCFA</div>
+          <div className="text-xs text-gray-400 mt-1">Montant maximum autorisé : {value?.montant - 1} FCFA</div>
         </div>
       )}
 
