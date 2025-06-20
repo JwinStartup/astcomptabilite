@@ -184,7 +184,20 @@ export default function FormulaireCreerFacture({retour}) {
           <label className='block text-sm font-medium text-gray-700 mb-1'>Période (mois et année)</label>
           <input
             type="month"
-            value={mois && annee ? `${annee}-${mois.padStart(2, '0')}` : ""}
+            value={
+              mois && annee
+                ? `${annee}-${mois.padStart(2, '0')}`
+                : (() => {
+                    // Par défaut : mois précédent
+                    const d = new Date();
+                    d.setMonth(d.getMonth() - 1);
+                    const y = d.getFullYear();
+                    const m = String(d.getMonth() + 1).padStart(2, '0');
+                    setMois(m);
+                    setAnnee(String(y));
+                    return `${y}-${m}`;
+                  })()
+            }
             onChange={e => {
               const [y, m] = e.target.value.split('-')
               setMois(m)

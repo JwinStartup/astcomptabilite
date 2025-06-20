@@ -72,7 +72,8 @@ export default function FacturesImpayes() {
   const dispatch = useDispatch()
   const [rub, setRub] = useState({nom:'',bol:false,value:null})
   const [searchTerm, setSearchTerm] = useState("")
-  const [filterDate, setFilterDate] = useState("all") // Modification de la valeur initiale
+  const [filterDate, setFilterDate] = useState("all")
+  const [filterType, setFilterType] = useState("all") // ajout du filtre type
   const navigate = useNavigate()
   
   useEffect(() => { 
@@ -83,11 +84,14 @@ export default function FacturesImpayes() {
 
   const filteredFactures = useMemo(() => {
     return factures.filter(facture => {
-      // Si aucun terme de recherche, on applique uniquement le filtre de date
+      // Filtre recherche
       const matchSearch = !searchTerm.trim() ? true : (
         (facture._id && facture._id.includes(searchTerm)) ||
         (facture.client?.nom && facture.client.nom.toLowerCase().includes(searchTerm.toLowerCase()))
       );
+
+      // Filtre par type
+      const matchType = filterType === "all" ? true : facture.type === filterType;
 
       // Filtre par date
       const factureDate = new Date(facture.createdAt)
@@ -97,20 +101,18 @@ export default function FacturesImpayes() {
                          factureDate.getFullYear() === today.getFullYear()
       const isThisYear = factureDate.getFullYear() === today.getFullYear()
 
-      // Si "all" est sélectionné ou si filterDate n'est pas défini, retourner uniquement le résultat de la recherche
       if (filterDate === 'all' || !filterDate) {
-        return matchSearch;
+        return matchSearch && matchType;
       }
 
-      // Appliquer le filtre de date sélectionné
       switch(filterDate) {
-        case 'today': return matchSearch && isToday;
-        case 'month': return matchSearch && isThisMonth;
-        case 'year': return matchSearch && isThisYear;
-        default: return matchSearch;
+        case 'today': return matchSearch && matchType && isToday;
+        case 'month': return matchSearch && matchType && isThisMonth;
+        case 'year': return matchSearch && matchType && isThisYear;
+        default: return matchSearch && matchType;
       }
     })
-  }, [factures, searchTerm, filterDate])
+  }, [factures, searchTerm, filterDate, filterType])
 
   return (
     <div className='w-full'>
@@ -151,6 +153,17 @@ export default function FacturesImpayes() {
               <option value="today">Aujourd'hui</option>
               <option value="month">Ce mois</option>
               <option value="year">Cette année</option>
+            </select>
+            {/* Nouveau select pour le type de la facture */}
+            <select
+              className='w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm bg-white mt-2'
+              value={filterType}
+              onChange={e => setFilterType(e.target.value)}
+            >
+              <option value="all" defaultValue>Tout les types</option>
+              <option value="impaye">Impayée</option>
+              <option value="enpartie">Payée en partie</option>
+              <option value="paye">Payée en totalité</option>
             </select>
         </div>
 
