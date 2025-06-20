@@ -19,7 +19,7 @@ export default function VoirFacture({payer,voirRecue,value,modifier,partager,sup
 const dispatch = useDispatch()
 const type= "enpartie"
   return (
-    <div className='relative mx-3 bg-white shadow-lg w-[320px] border p-4 rounded-xl hover:shadow-xl transition-all duration-300'>
+    <div className='relative mx-1 bg-white shadow-lg w-[320px] border p-4 rounded-xl hover:shadow-xl transition-all duration-300'>
       {/* En-tête de la facture */}
       <div className='absolute right-2 top-2'>    
         {value?.type === 'impaye' && 
