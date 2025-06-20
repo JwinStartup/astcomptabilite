@@ -17,55 +17,75 @@ import { PropagateLoader } from 'react-spinners';
 import { FaSearch,FaFileInvoice } from 'react-icons/fa';
 import { FaPlusCircle } from "react-icons/fa"
 import { MdOutlineArrowBackIos } from "react-icons/md";
-const SetComponent=({p,retour,value})=>{
-  console.log(p)
+const SetComponent = ({ p, retour, value }) => {
+  // Empêche le scroll du body quand un modal est ouvert
+  React.useEffect(() => {
+    if (p) {
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [p]);
+
+  // Affiche le composant modal toujours visible (position fixed, centré)
+  const modalStyle = {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    zIndex: 50,
+    width: '100vw',
+    height: '100vh',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  };
+
   switch (p) {
     case 'CREER':
-      return(
-        <div>
-          <Backdrop/>
-        <FormulaireCreerFacture retour={retour}  />
+      return (
+        <div style={modalStyle}>
+          <Backdrop />
+          <FormulaireCreerFacture retour={retour} />
         </div>
       );
     case 'PARTAGER':
-      return(
-        <div>
-          <Backdrop/>
-        <PartagerFacture retour={retour} value={value}/>
+      return (
+        <div style={modalStyle}>
+          <Backdrop />
+          <PartagerFacture retour={retour} value={value} />
         </div>
       )
     case 'SUPPRIMER':
-      return(
-        <div>
-          <Backdrop/>
-        <SupprimerFacture retour={retour} value={value} />
+      return (
+        <div style={modalStyle}>
+          <Backdrop />
+          <SupprimerFacture retour={retour} value={value} />
         </div>
       )
-     case 'MODIFIER':
-      return(
-        <div>
-          <Backdrop/>
-        <ModifierFacture retour={retour} value={value} />
+    case 'MODIFIER':
+      return (
+        <div style={modalStyle}>
+          <Backdrop />
+          <ModifierFacture retour={retour} value={value} />
         </div>
       )
-     case 'VOIRRECUE':
-      return(
-        <div>
-          <Backdrop/>
-        <VoirRecue retour={retour} value={value} />
+    case 'VOIRRECUE':
+      return (
+        <div style={modalStyle}>
+          <Backdrop />
+          <VoirRecue retour={retour} value={value} />
         </div>
       )
     case 'PAYER':
-      return(
-        <div>
-          <Backdrop/>
-        <FormulairePayerFacture retour={retour} value={value} />
+      return (
+        <div style={modalStyle}>
+          <Backdrop />
+          <FormulairePayerFacture retour={retour} value={value} />
         </div>
       )
-  
-  
     default:
-      break;
+      return null;
   }
 }
 export default function FacturesImpayes() {
