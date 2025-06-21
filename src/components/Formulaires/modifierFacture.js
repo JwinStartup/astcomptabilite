@@ -7,22 +7,8 @@ import moment from 'moment';
 
 export default function ModifierFacture({ retour, value }) {
   const [chargement, setChargement] = useState(false)
-  const [mois, setMois] = useState(() => {
-    // Initialiser avec le mois de la période si possible
-    if (value.periodeAjouter) {
-      const [moisStr, anneeStr] = value.periodeAjouter.split(' ');
-      const moisNum = moment().month(moisStr).format("MM");
-      return moisNum || "";
-    }
-    return "";
-  });
-  const [annee, setAnnee] = useState(() => {
-    if (value.periodeAjouter) {
-      const [moisStr, anneeStr] = value.periodeAjouter.split(' ');
-      return anneeStr || "";
-    }
-    return "";
-  });
+   const [mois, setMois] = useState("")
+   const [annee, setAnnee] = useState("")
 
   const { register, handleSubmit, setValue } = useForm({
     defaultValues: {
@@ -37,12 +23,7 @@ export default function ModifierFacture({ retour, value }) {
   const { isLoader, parents } = useSelector((state) => state.userReducer);
 
   const onSubmit = (data) => {
-    // Construit la période sous forme "Mois Année"
-    let periodeAjouter = "";
-    if (mois && annee) {
-      const moisNom = moment().month(Number(mois) - 1).format("MMMM");
-      periodeAjouter = `${moisNom.charAt(0).toUpperCase() + moisNom.slice(1)} ${annee}`;
-    }
+  
     setChargement(true)
     dispatch(comptabiliteActions.modifierFacture({
       ...value,
