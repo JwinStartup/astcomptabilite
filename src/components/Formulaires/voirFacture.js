@@ -15,7 +15,7 @@ import {useNavigate} from 'react-router-dom'
 
 
 
-export default function VoirFacture({payer,voirRecue,value,modifier,partager,supprimer}) {
+export default function VoirFacture({payer,voirRecue,value,partager,supprimer}) {
 const dispatch = useDispatch()
 const type= "enpartie"
   return (
@@ -136,12 +136,7 @@ const type= "enpartie"
             Voir reçu
           </button>
         )}
-        {value?.type === 'impaye' && (
-          <button onClick={()=>modifier()} 
-            className="px-4 py-2 bg-gray-50 text-gray-600 rounded-lg hover:bg-gray-100 transition-colors font-medium text-sm">
-            Modifier
-          </button>
-        )}
+       
         <button onClick={()=>partager()} 
           className="px-4 py-2 bg-green-50 text-green-600 rounded-lg hover:bg-green-100 transition-colors font-medium text-sm">
           Partager
