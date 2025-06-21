@@ -1,7 +1,6 @@
 import React, {useEffect,useState} from 'react'
 import Entete from '../components/entete'
 import FactureComponent from '../components/factureCompo'
-import RecuesComponent from '../components/recuesCompo'
 import { Link, useNavigate } from 'react-router-dom'
 import { IoArrowBackCircleSharp } from "react-icons/io5"
 import { FaUserTie } from "react-icons/fa6"
@@ -72,15 +71,7 @@ useEffect(()=> {
       </Link>
       </div>
          {/* les 3 premieres factures crées  ou modifiés*/}
-      <div className="flex flex-row gap-2 overflow-x-auto w-full" >
-         {isLoader?
-            <div className="flex flex-row gap-2 overflow-x-auto w-full">
-            { [1,2,3].map((i,j)=><div key={j} className="animate-pulse flex space-x-4 border rounded-md w-[170px] px-2 bg-gray-100">
-            </div>)}
-            </div> :<div className="flex flex-row gap-2 overflow-x-auto w-full">
-                        {recues.map((i,j)=><RecuesComponent recue={i} />)}
-                        </div>}
-        </div>
+     
        
       </div>
     
