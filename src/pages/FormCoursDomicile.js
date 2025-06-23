@@ -192,15 +192,19 @@ export default function FormCoursDomicile() {
           {/* Prix */}
           <input {...register("prix", { required: true })} placeholder="Prix" className="border rounded px-3 py-2" />
           {errors.prix && <span className="text-red-500 text-xs">Ce champ est requis</span>}
-          {/* Agence */}
-          <select {...register("inscritPar", { required: true })} className="border rounded px-3 py-2">
-            <option value="">Sélectionner l'agence</option>
-            <option value="Agence Bouaké">Agence Bouaké</option>
-            <option value="Agence Abidjan">Agence Abidjan</option>
-            <option value="Agence San Pedro">Agence San Pedro</option>
-          </select>
-          {errors.inscritPar && <span className="text-red-500 text-xs">Ce champ est requis</span>}
-          <button type="submit" className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg mt-4">Enregistrer</button>
+          {/* Boutons */}
+          <div className="flex flex-row gap-4 mt-2">
+            <button
+              type="button"
+              className="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded-lg"
+              onClick={() => navigate(-1)}
+            >
+              Retour
+            </button>
+            <button type="submit" className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg">
+              Enregistrer
+            </button>
+          </div>
         </form>
       </div>
     </div>
