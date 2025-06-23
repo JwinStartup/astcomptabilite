@@ -133,17 +133,21 @@ export default function FacturesImpayes() {
       <Entete />
       <div className='w-full flex flex-col space-y-4'>
         <div className='flex  justify-between items-center space-x-2 mx-4'>
-          <div className="flex items-center" onClick={()=>navigate('/')} >
+          <div className="flex items-center">
             <IoIosArrowDropleftCircle size={30} color="black" />
             <FaFileInvoice size={30} color="#1D4ED8" className="mx-2"/>
-            <h5 className="text-2xl font-bold tracking-tight text-gray-900">Facture</h5>
+            <h5 className="text-2xl font-extrabold tracking-tight text-blue-800 ml-1">Factures</h5>
           </div>
-            <FaPlusCircle 
-              color="gray" 
-              size={25} 
-              className="cursor-pointer hover:text-blue-600 transition-colors"
-              onClick={()=>setRub({nom:'CREER',bol:true})}
-            />
+          <div className="flex items-center gap-2">
+            <Link
+              to="/factures/nouveau"
+              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-3 py-2 rounded-lg shadow transition-colors text-sm"
+              style={{whiteSpace: 'nowrap'}}
+            >
+              <FaPlusCircle size={18} />
+              <span className="hidden sm:inline">Créer facture</span>
+            </Link>
+          </div>
         </div>
         <div className='flex flex-col space-y-3 px-4'>
             <div className='w-full relative'>

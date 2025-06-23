@@ -81,7 +81,15 @@ useEffect(()=> {
        <div className='w-full flex flex-col items-center mt-8'>
         {/* Header avec bouton à droite */}
         <div className="w-full max-w-5xl flex flex-row items-center justify-between mb-6 px-2">
-          <h2 className="text-xl font-bold text-gray-700">Cours à domicile</h2>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => navigate(-1)}
+              className="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-1 px-3 rounded-lg text-sm transition"
+            >
+              Retour
+            </button>
+            <h2 className="text-xl font-bold text-gray-700">Cours à domicile</h2>
+          </div>
           <Link
             to="/cd/nouveau"
             className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg shadow transition-colors flex items-center justify-center"

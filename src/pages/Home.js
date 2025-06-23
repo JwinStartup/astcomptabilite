@@ -121,9 +121,9 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <span className='text-xs mt-6 text-gray-400 w-full justify-center '>
+      <span className='text-xs mt-6 text-gray-400 w-full flex justify-center items-center text-center'>
            (c) 2024 Astraining  by jwin technology
-        </span> 
+      </span> 
     </div>
   )
 }
