@@ -25,20 +25,27 @@ export default function EleveListe({voirEl}) {
 </div>:
   <div>
      {enfants.map((i,j)=>
-        
-        <div onClick={()=>voirEl(i)} className="flex px-2 py-5 w-full  items-center border-b hover:bg-gray-200">
-    <div> 
-      <Avatar name={`${i.nom} ${i.prenoms}`}  size="60" round={true} /> 
-    </div>
-    
-    <div className="flex flex-col px-2 ">
-    
-       <div className="text-md font-semibold ">{i.nom} {i.prenoms} </div>
-   
-    </div>
-    
-    </div>
-                    )}
+        <div
+          key={j}
+          onClick={()=>voirEl(i)}
+          className="flex flex-col items-center bg-gradient-to-br from-purple-50 via-white to-purple-100 rounded-2xl shadow-xl border border-purple-200 p-6 mb-4 hover:shadow-2xl hover:-translate-y-1 transition-all duration-200 cursor-pointer group"
+        >
+          <Avatar name={`${i.nom} ${i.prenoms}`} size="60" round={true} className="mb-3 shadow" />
+          <div className="text-lg font-bold text-purple-800 mb-1 group-hover:text-purple-900 transition">{i.nom} {i.prenoms}</div>
+          <div className="text-sm text-gray-600 mb-1">
+            <span className="font-semibold">Classe :</span> <span className="text-gray-800">{i.classe}</span>
+          </div>
+          <div className="text-sm text-gray-600 mb-1">
+            <span className="font-semibold">Parent :</span> <span className="text-gray-800">{i.parent?.nom} {i.parent?.prenoms}</span>
+          </div>
+          <button
+            className="mt-2 px-4 py-1 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-semibold text-xs shadow transition"
+            onClick={e => { e.stopPropagation(); voirEl(i); }}
+          >
+            Voir le profil
+          </button>
+        </div>
+     )}
      </div>
 }
     </div>

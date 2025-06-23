@@ -50,93 +50,167 @@ const SetComponent=({p,voir,voirPer,voirEl})=>{
 
 
 const SetComponentPEP=({p,retour,value,supprimer,supprimerPer,supprimerEl})=>{
-  console.log(p)
+  // Style commun pour les overlays
+  const overlayStyle = "fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm";
+  const modalStyle = "w-full max-w-lg mx-2 sm:mx-auto bg-white rounded-2xl shadow-2xl p-6 relative animate-fadeIn";
+
   switch (p) {
     case 'CREER':
       return(
-        <div>
-          <Backdrop/>
-        <CreerPersonnel retour={retour} />
+        <div className={overlayStyle}>
+          <div className={modalStyle}>
+            <button
+              className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold"
+              onClick={retour}
+              aria-label="Fermer"
+            >×</button>
+            <CreerPersonnel retour={retour} />
+          </div>
         </div>
       )
     case 'MODIFIERPERSONNEL':
       return(
-        <div>
-          <Backdrop/>
-        <ModifierPersonnel retour={retour} value={value}/>
+        <div className={overlayStyle}>
+          <div className={modalStyle}>
+            <button
+              className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold"
+              onClick={retour}
+              aria-label="Fermer"
+            >×</button>
+            <ModifierPersonnel retour={retour} value={value}/>
+          </div>
         </div>
       )
     case 'VOIRPERSONNEL':
       return(
-        <div>
-          <Backdrop/>
-        <VoirPersonnel retour={retour} value={value} supprimerPer={supprimerPer}/>
+        <div className={overlayStyle}>
+          <div className={modalStyle}>
+            <button
+              className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold"
+              onClick={retour}
+              aria-label="Fermer"
+            >×</button>
+            <VoirPersonnel retour={retour} value={value} supprimerPer={supprimerPer}/>
+          </div>
         </div>
       )
     case 'SUPPRIMERPERSONNEL':
       return(
-        <div>
-          <Backdrop/>
-        <SupprimerPersonnel retour={retour} value={value} />
+        <div className={overlayStyle}>
+          <div className={modalStyle}>
+            <button
+              className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold"
+              onClick={retour}
+              aria-label="Fermer"
+            >×</button>
+            <SupprimerPersonnel retour={retour} value={value} />
+          </div>
         </div>
       )
     case 'CREERPARENT':
       return(
-        <div>
-          <Backdrop/>
-        <CreerParent retour={retour} value={value}/>
+        <div className={overlayStyle}>
+          <div className={modalStyle}>
+            <button
+              className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold"
+              onClick={retour}
+              aria-label="Fermer"
+            >×</button>
+            <CreerParent retour={retour} value={value}/>
+          </div>
         </div>
       )
     case 'MODIFIERPARENT':
       return(
-        <div>
-          <Backdrop/>
-        <ModifierParent retour={retour} value={value}/>
+        <div className={overlayStyle}>
+          <div className={modalStyle}>
+            <button
+              className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold"
+              onClick={retour}
+              aria-label="Fermer"
+            >×</button>
+            <ModifierParent retour={retour} value={value}/>
+          </div>
         </div>
       )
     case 'VOIRPARENT':
       return(
-        <div>
-          <Backdrop/>
-        <VoirParent retour={retour} value={value} supprimer={supprimer}/>
+        <div className={overlayStyle}>
+          <div className={modalStyle}>
+            <button
+              className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold"
+              onClick={retour}
+              aria-label="Fermer"
+            >×</button>
+            <VoirParent retour={retour} value={value} supprimer={supprimer}/>
+          </div>
         </div>
       )
     case 'SUPPRIMERPARENT':
       return(
-        <div>
-          <Backdrop/>
-        <SupprimerParent retour={retour} value={value}/>
+        <div className={overlayStyle}>
+          <div className={modalStyle}>
+            <button
+              className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold"
+              onClick={retour}
+              aria-label="Fermer"
+            >×</button>
+            <SupprimerParent retour={retour} value={value}/>
+          </div>
         </div>
       )
     case 'CREERELEVE':
       return(
-        <div>
-          <Backdrop/>
-        <CreerEleve retour={retour} value={value}/>
+        <div className={overlayStyle}>
+          <div className={modalStyle}>
+            <button
+              className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold"
+              onClick={retour}
+              aria-label="Fermer"
+            >×</button>
+            <CreerEleve retour={retour} value={value}/>
+          </div>
         </div>
       )
     case 'MODIFIERELEVE':
       return(
-        <div>
-          <Backdrop/>
-        <ModifierEleve retour={retour} value={value}/>
+        <div className={overlayStyle}>
+          <div className={modalStyle}>
+            <button
+              className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold"
+              onClick={retour}
+              aria-label="Fermer"
+            >×</button>
+            <ModifierEleve retour={retour} value={value}/>
+          </div>
         </div>
       )
     case 'VOIRELEVE':
       return(
-        <div>
-          <Backdrop/>
-        <VoirEleve retour={retour} value={value} supprimerEl={supprimerEl}/>
+        <div className={overlayStyle}>
+          <div className={modalStyle}>
+            <button
+              className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold"
+              onClick={retour}
+              aria-label="Fermer"
+            >×</button>
+            <VoirEleve retour={retour} value={value} supprimerEl={supprimerEl}/>
+          </div>
         </div>
       )
     case 'SUPPRIMERELEVE':
       return(
-        <div>
-          <Backdrop/>
-        <SupprimerEleve retour={retour} value={value} />
+        <div className={overlayStyle}>
+          <div className={modalStyle}>
+            <button
+              className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold"
+              onClick={retour}
+              aria-label="Fermer"
+            >×</button>
+            <SupprimerEleve retour={retour} value={value} />
+          </div>
         </div>
       )
-
     default:
       break;
   }
