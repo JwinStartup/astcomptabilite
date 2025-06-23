@@ -193,7 +193,7 @@ function App() {
                 />
         <Route path="/" element={<Home/>}/>
         <Route path="/userAdmin/inscriptionUser" element={<InscriptionUser/>}/>
-        <Route path="/cd/facture/nouveau" element={<FormulaireCreerFacture />} />
+        <Route path="/factures/nouveau" element={<FormulaireCreerFacture />} />
         </Routes>
     </div>
   );
