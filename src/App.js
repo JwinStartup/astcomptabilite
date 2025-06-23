@@ -8,9 +8,10 @@ import {
   useLocation
 } from "react-router-dom";
 import Home from './pages/Home.js'
+import CoursDomicile from './pages/CoursDomicile.js'
+import FormulaireCours from './pages/FormCoursDomicile.js'
 import Recues from './pages/Recues.js'
 import CreerCharge from './pages/creerCharge.js'
-import Factures from './pages/Factures.js'
 import FacturesCommissions from './pages/FacturesCommussions.js'
 import FacturesImpayes from './pages/FacturesImpayes.js'
 import Charges from './pages/Charges.js'
@@ -45,6 +46,20 @@ function App() {
                 element={
                             <PrivateRouter>
                                 <FacturesImpayes/>
+                            </PrivateRouter>
+                        }
+                />
+        <Route path="/cd" 
+                element={
+                            <PrivateRouter>
+                                <CoursDomicile/>
+                            </PrivateRouter>
+                        }
+                />
+        <Route path="/cd/nouveau" 
+                element={
+                            <PrivateRouter>
+                                <FormulaireCours/>
                             </PrivateRouter>
                         }
                 />
