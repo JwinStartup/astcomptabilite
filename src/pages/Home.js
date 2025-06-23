@@ -95,11 +95,35 @@ export default function Home() {
               </svg>
             </Link>
           </div>
+          {/* Cours à domicile */}
+          <div className="p-6 bg-white border border-gray-200 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-200 flex flex-col items-start">
+            <div className="flex items-center mb-4">
+              <FaUsers size={32} className="text-purple-600" />
+              <h5 className="text-xl font-bold ml-3 tracking-tight text-gray-900">Cours à domicile</h5>
+            </div>
+            <ul className="mb-4 space-y-2">
+              <li className="flex items-center text-base text-gray-700">
+                <GiCheckMark size={18} className="text-purple-500 mr-2" />Inscription des élèves
+              </li>
+              <li className="flex items-center text-base text-gray-700">
+                <GiCheckMark size={18} className="text-purple-500 mr-2" />Modification des informations
+              </li>
+              <li className="flex items-center text-base text-gray-700">
+                <GiCheckMark size={18} className="text-purple-500 mr-2" />Supprimer les cours à domicile
+              </li>
+            </ul>
+            <Link to='/cd' className="inline-flex items-center px-4 py-2 text-sm font-semibold text-white bg-purple-600 rounded-lg hover:bg-purple-700 transition-colors">
+              Commencer
+              <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 14 10">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+              </svg>
+            </Link>
+          </div>
         </div>
       </div>
       <span className='text-xs mt-6 text-gray-400 w-full justify-center '>
            (c) 2024 Astraining  by jwin technology
-        </span>
+        </span> 
     </div>
   )
 }
