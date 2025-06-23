@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch,useSelector } from 'react-redux';
-import { comptabiliteActions } from '../../reducer/comptabilite';
-import { userActions } from '../../reducer/user';
 import { useForm } from 'react-hook-form';
 import moment from "moment"
 import "moment/min/locales"
