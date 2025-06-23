@@ -102,7 +102,7 @@ useEffect(()=> {
                  <div className="text-sm text-gray-600"><span className="font-semibold">Inscrit par :</span> {cours.inscritPar}</div>
                  <div className="text-sm text-gray-700 font-bold mt-2"><span className="text-purple-600">Prix :</span> {cours.prix}</div>
                  <Link
-                   to={`/factures/nouveau?eleve=${encodeURIComponent(cours.eleve)}`}
+                   to={`/factures/nouveau`}
                    className="mt-3 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold py-2 px-3 rounded shadow transition-colors text-center"
                  >
                    Créer une facture

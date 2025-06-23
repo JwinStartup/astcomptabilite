@@ -1,5 +1,5 @@
 import React from 'react';
-import Entete from '../src/components/entete.js';
+import Entete from '../components/entete';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
@@ -11,7 +11,7 @@ export default function FormulaireCreerFacture() {
 
   const { register, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
-      eleve: eleveParam,
+      eleve: 'heloo',
       montant: '',
       description: ''
     }
