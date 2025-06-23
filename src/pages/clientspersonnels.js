@@ -51,8 +51,13 @@ const SetComponent=({p,voir,voirPer,voirEl})=>{
 
 const SetComponentPEP=({p,retour,value,supprimer,supprimerPer,supprimerEl})=>{
   // Style commun pour les overlays
+  React.useEffect(() => {
+    // Désactive le scroll du body quand le modal est ouvert
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = ""; };
+  }, []);
   const overlayStyle = "fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm";
-  const modalStyle = "w-full max-w-lg mx-2 sm:mx-auto bg-white rounded-2xl shadow-2xl p-6 relative animate-fadeIn";
+  const modalStyle = "w-full max-w-lg mx-2 sm:mx-auto bg-white rounded-2xl shadow-2xl p-6 relative animate-fadeIn flex items-center justify-center";
 
   switch (p) {
     case 'CREER':
@@ -64,7 +69,9 @@ const SetComponentPEP=({p,retour,value,supprimer,supprimerPer,supprimerEl})=>{
               onClick={retour}
               aria-label="Fermer"
             >×</button>
-            <CreerPersonnel retour={retour} />
+            <div className="w-full flex items-center justify-center">
+              <CreerPersonnel retour={retour} />
+            </div>
           </div>
         </div>
       )
@@ -72,12 +79,10 @@ const SetComponentPEP=({p,retour,value,supprimer,supprimerPer,supprimerEl})=>{
       return(
         <div className={overlayStyle}>
           <div className={modalStyle}>
-            <button
-              className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold"
-              onClick={retour}
-              aria-label="Fermer"
-            >×</button>
-            <ModifierPersonnel retour={retour} value={value}/>
+            <button className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold" onClick={retour} aria-label="Fermer">×</button>
+            <div className="w-full flex items-center justify-center">
+              <ModifierPersonnel retour={retour} value={value}/>
+            </div>
           </div>
         </div>
       )
@@ -85,12 +90,10 @@ const SetComponentPEP=({p,retour,value,supprimer,supprimerPer,supprimerEl})=>{
       return(
         <div className={overlayStyle}>
           <div className={modalStyle}>
-            <button
-              className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold"
-              onClick={retour}
-              aria-label="Fermer"
-            >×</button>
-            <VoirPersonnel retour={retour} value={value} supprimerPer={supprimerPer}/>
+            <button className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold" onClick={retour} aria-label="Fermer">×</button>
+            <div className="w-full flex items-center justify-center">
+              <VoirPersonnel retour={retour} value={value} supprimerPer={supprimerPer}/>
+            </div>
           </div>
         </div>
       )
@@ -98,12 +101,10 @@ const SetComponentPEP=({p,retour,value,supprimer,supprimerPer,supprimerEl})=>{
       return(
         <div className={overlayStyle}>
           <div className={modalStyle}>
-            <button
-              className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold"
-              onClick={retour}
-              aria-label="Fermer"
-            >×</button>
-            <SupprimerPersonnel retour={retour} value={value} />
+            <button className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold" onClick={retour} aria-label="Fermer">×</button>
+            <div className="w-full flex items-center justify-center">
+              <SupprimerPersonnel retour={retour} value={value} />
+            </div>
           </div>
         </div>
       )
@@ -111,12 +112,10 @@ const SetComponentPEP=({p,retour,value,supprimer,supprimerPer,supprimerEl})=>{
       return(
         <div className={overlayStyle}>
           <div className={modalStyle}>
-            <button
-              className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold"
-              onClick={retour}
-              aria-label="Fermer"
-            >×</button>
-            <CreerParent retour={retour} value={value}/>
+            <button className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold" onClick={retour} aria-label="Fermer">×</button>
+            <div className="w-full flex items-center justify-center">
+              <CreerParent retour={retour} value={value}/>
+            </div>
           </div>
         </div>
       )
@@ -124,12 +123,10 @@ const SetComponentPEP=({p,retour,value,supprimer,supprimerPer,supprimerEl})=>{
       return(
         <div className={overlayStyle}>
           <div className={modalStyle}>
-            <button
-              className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold"
-              onClick={retour}
-              aria-label="Fermer"
-            >×</button>
-            <ModifierParent retour={retour} value={value}/>
+            <button className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold" onClick={retour} aria-label="Fermer">×</button>
+            <div className="w-full flex items-center justify-center">
+              <ModifierParent retour={retour} value={value}/>
+            </div>
           </div>
         </div>
       )
@@ -137,12 +134,10 @@ const SetComponentPEP=({p,retour,value,supprimer,supprimerPer,supprimerEl})=>{
       return(
         <div className={overlayStyle}>
           <div className={modalStyle}>
-            <button
-              className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold"
-              onClick={retour}
-              aria-label="Fermer"
-            >×</button>
-            <VoirParent retour={retour} value={value} supprimer={supprimer}/>
+            <button className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold" onClick={retour} aria-label="Fermer">×</button>
+            <div className="w-full flex items-center justify-center">
+              <VoirParent retour={retour} value={value} supprimer={supprimer}/>
+            </div>
           </div>
         </div>
       )
@@ -150,12 +145,10 @@ const SetComponentPEP=({p,retour,value,supprimer,supprimerPer,supprimerEl})=>{
       return(
         <div className={overlayStyle}>
           <div className={modalStyle}>
-            <button
-              className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold"
-              onClick={retour}
-              aria-label="Fermer"
-            >×</button>
-            <SupprimerParent retour={retour} value={value}/>
+            <button className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold" onClick={retour} aria-label="Fermer">×</button>
+            <div className="w-full flex items-center justify-center">
+              <SupprimerParent retour={retour} value={value}/>
+            </div>
           </div>
         </div>
       )
@@ -163,12 +156,10 @@ const SetComponentPEP=({p,retour,value,supprimer,supprimerPer,supprimerEl})=>{
       return(
         <div className={overlayStyle}>
           <div className={modalStyle}>
-            <button
-              className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold"
-              onClick={retour}
-              aria-label="Fermer"
-            >×</button>
-            <CreerEleve retour={retour} value={value}/>
+            <button className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold" onClick={retour} aria-label="Fermer">×</button>
+            <div className="w-full flex items-center justify-center">
+              <CreerEleve retour={retour} value={value}/>
+            </div>
           </div>
         </div>
       )
@@ -176,12 +167,10 @@ const SetComponentPEP=({p,retour,value,supprimer,supprimerPer,supprimerEl})=>{
       return(
         <div className={overlayStyle}>
           <div className={modalStyle}>
-            <button
-              className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold"
-              onClick={retour}
-              aria-label="Fermer"
-            >×</button>
-            <ModifierEleve retour={retour} value={value}/>
+            <button className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold" onClick={retour} aria-label="Fermer">×</button>
+            <div className="w-full flex items-center justify-center">
+              <ModifierEleve retour={retour} value={value}/>
+            </div>
           </div>
         </div>
       )
@@ -189,12 +178,10 @@ const SetComponentPEP=({p,retour,value,supprimer,supprimerPer,supprimerEl})=>{
       return(
         <div className={overlayStyle}>
           <div className={modalStyle}>
-            <button
-              className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold"
-              onClick={retour}
-              aria-label="Fermer"
-            >×</button>
-            <VoirEleve retour={retour} value={value} supprimerEl={supprimerEl}/>
+            <button className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold" onClick={retour} aria-label="Fermer">×</button>
+            <div className="w-full flex items-center justify-center">
+              <VoirEleve retour={retour} value={value} supprimerEl={supprimerEl}/>
+            </div>
           </div>
         </div>
       )
@@ -202,12 +189,10 @@ const SetComponentPEP=({p,retour,value,supprimer,supprimerPer,supprimerEl})=>{
       return(
         <div className={overlayStyle}>
           <div className={modalStyle}>
-            <button
-              className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold"
-              onClick={retour}
-              aria-label="Fermer"
-            >×</button>
-            <SupprimerEleve retour={retour} value={value} />
+            <button className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold" onClick={retour} aria-label="Fermer">×</button>
+            <div className="w-full flex items-center justify-center">
+              <SupprimerEleve retour={retour} value={value} />
+            </div>
           </div>
         </div>
       )

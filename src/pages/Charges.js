@@ -21,37 +21,49 @@ export default function Charges() {
    },[rub]);
  
   return (
-    <div>
-        <Entete />
-     <div className='  flex justify-between items-center space-x-2 mx-4'>
-     <div className="flex  items-center "  onClick={()=>navigate('/')} >
-        <IoIosArrowDropleftCircle size={30} color="black" />
-        <h5 className="text-2xl font-bold ml-1 tracking-tight text-gray-900  ">Charges  </h5>
-     </div>
-          {/* <div classNamme='flex items-center flex-col justify-center '>
-                <select className='text-sm font-medium'>
-                    <option value="">Aujourd'hui</option>
-                    <option value="">Ce mois</option>
-                    <option value="">Tous les mois</option>
-                </select>
-             </div> */}
-                 <FaPlusCircle color="gray" size={25}  onClick={()=>navigate('/creerCharge')}/>
-            </div>
-  
-
-            {isLoader===true?<div className="flex flex-col gap-2 justify-center items-center ">
-            { [1,2,3].map((i,j)=><div key={j} className="animate-pulse flex space-x-4 border rounded-md w-[250px] h-[200px] px-2 bg-gray-100">
-            </div>)}
-            </div>:
-         <> {charges.length===0?<p className='text-center w-full'>Pas de Charges enregistrés </p>:
-            <div className='w-full flex justify-center mt-3 flex-col items-center  '>
-                {charges.map((value,index)=>
-                  <VoirCharge 
-                             parama={(d)=>setRub(d)}
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100">
+      <Entete />
+      <div className="flex flex-col items-center w-full">
+        <div className="flex flex-row items-center justify-between w-full max-w-4xl py-4 px-2 bg-white/70 rounded-b-2xl shadow-md border-b mb-6">
+          <div className="flex items-center gap-2 cursor-pointer" onClick={()=>navigate('/')}>
+            <IoIosArrowDropleftCircle size={32} color="#2563eb" className="hover:scale-110 transition-transform" />
+            <h5 className="text-2xl font-bold ml-1 tracking-tight text-blue-800">Charges</h5>
+          </div>
+          <FaPlusCircle
+            color="gray"
+            size={28}
+            className="cursor-pointer hover:text-green-600 transition"
+            onClick={()=>navigate('/creerCharge')}
+          />
+        </div>
+        {isLoader === true ? (
+          <div className="flex flex-wrap gap-6 justify-center items-center w-full py-10">
+            {[1,2,3].map((i,j) => (
+              <div key={j} className="animate-pulse flex flex-col border rounded-2xl w-[260px] h-[180px] px-4 py-6 bg-gray-100 shadow"></div>
+            ))}
+          </div>
+        ) : (
+          <>
+            {charges.length === 0 ? (
+              <p className="text-center w-full text-gray-500 mt-10">Pas de Charges enregistrées</p>
+            ) : (
+              <div className="w-full flex flex-wrap justify-center gap-6 mt-3 px-2">
+                {charges.map((value, index) => (
+                  <div key={index} className="w-full max-w-xs">
+                    <VoirCharge
+                      parama={(d) => setRub(d)}
                       value={value}
-                       />)}
-            </div>}</>}
-    
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
+          </>
+        )}
+      </div>
+      <footer className="w-full text-center text-xs text-gray-400 py-4 mt-8">
+        (c) 2024 Astraining by jwin technology
+      </footer>
     </div>
   )
 }
