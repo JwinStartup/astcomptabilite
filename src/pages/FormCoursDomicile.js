@@ -193,7 +193,7 @@ export default function FormCoursDomicile() {
           <input {...register("prix", { required: true })} placeholder="Prix" className="border rounded px-3 py-2" />
           {errors.prix && <span className="text-red-500 text-xs">Ce champ est requis</span>}
           {/* Boutons */}
-          <div className="flex flex-row gap-4 mt-2">
+          <div className="flex flex-row gap-4 mt-2 justify-center">
             <button
               type="button"
               className="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded-lg"

@@ -176,40 +176,61 @@ export default function ClientsPersonnels() {
     setRub({bol:true,nom:'SUPPRIMERPERSONNEL',value:i})
   }
   return (
-    <div>
-        {rub.bol!==false&&<SetComponentPEP
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100">
+      {rub.bol!==false&&<SetComponentPEP
         p={rub.nom} retour={()=>setRub({bol:false,nom:'',value:null})} value={rub.value} 
-                supprimer={supprimer}
-               supprimerPer={supprimerPer}
-              supprimerEl={supprimerEl}
-       />}
-        <Entete />
-        <div className='  flex  py-2 border-b justify-center items-center px-2'>
-         <div>
-          <IoIosArrowDropleftCircle size={30} color="black" onClick={()=>navigate('/')} />
-         </div>
-         <div className='w-full flex  justify-center items-center  '>
-           <Link  onClick={()=>setSwitchChange('PARENT')} className={`tracking-wider text-lg border-r  text-center items-center  px-3 flex justify-center  cursor-pointer  ${switchChange==="PARENT"?'font-bold text-green-500  ':'font-semibold text-black  '}`} >
-          Parents 
-        </Link>
-        <Link onClick={()=>setSwitchChange('PERSONNEL')}  className={`tracking-wider text-lg border-r  text-center items-center  px-3 flex justify-center  cursor-pointer  ${switchChange==="PERSONNEL"?'font-bold text-green-500  ':'font-semibold text-black  '}`}>
-          Personnels
-        </Link>
-        <Link onClick={()=>setSwitchChange('ELEVE')}  className={`tracking-wider text-lg   text-center items-center  px-3 flex justify-center  cursor-pointer  ${switchChange==="ELEVE"?'font-bold text-green-500  ':'font-semibold text-black  '}`}>
-           Eleves 
-        </Link>
+        supprimer={supprimer}
+        supprimerPer={supprimerPer}
+        supprimerEl={supprimerEl}
+      />}
+      <Entete />
+      <div className='flex flex-col items-center w-full'>
+        <div className='flex flex-row items-center justify-between w-full max-w-5xl py-4 px-2 bg-white/70 rounded-b-2xl shadow-md border-b mb-6'>
+          <div className="flex items-center gap-2">
+            <IoIosArrowDropleftCircle size={32} color="#2563eb" className="cursor-pointer hover:scale-110 transition-transform" onClick={()=>navigate('/')} />
+            <span className="text-lg font-bold text-blue-800">Gestion des clients & personnels</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={()=>changeCreer(switchChange)}
+              className="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-2 rounded-lg shadow transition-colors"
+            >
+              <FaPlusCircle size={20} /> Ajouter {switchChange === "PARENT" ? "Parent" : switchChange === "PERSONNEL" ? "Personnel" : "Élève"}
+            </button>
+          </div>
+        </div>
+        <div className='w-full max-w-5xl flex flex-row justify-center items-center gap-2 mb-4'>
+          <Link
+            onClick={()=>setSwitchChange('PARENT')}
+            className={`tracking-wider text-base px-4 py-2 rounded-lg transition-all duration-150 cursor-pointer border ${switchChange==="PARENT" ? 'bg-green-100 text-green-700 font-bold border-green-400 shadow' : 'bg-white text-gray-700 border-gray-200 hover:bg-green-50'}`}
+          >
+            Parents
+          </Link>
+          <Link
+            onClick={()=>setSwitchChange('PERSONNEL')}
+            className={`tracking-wider text-base px-4 py-2 rounded-lg transition-all duration-150 cursor-pointer border ${switchChange==="PERSONNEL" ? 'bg-green-100 text-green-700 font-bold border-green-400 shadow' : 'bg-white text-gray-700 border-gray-200 hover:bg-green-50'}`}
+          >
+            Personnels
+          </Link>
+          <Link
+            onClick={()=>setSwitchChange('ELEVE')}
+            className={`tracking-wider text-base px-4 py-2 rounded-lg transition-all duration-150 cursor-pointer border ${switchChange==="ELEVE" ? 'bg-green-100 text-green-700 font-bold border-green-400 shadow' : 'bg-white text-gray-700 border-gray-200 hover:bg-green-50'}`}
+          >
+            Élèves
+          </Link>
+        </div>
+        <div className="w-full max-w-5xl bg-white rounded-2xl shadow-lg p-4 mt-2 mb-8">
+          <SetComponent 
+            p={switchChange} 
+            voir={voir}
+            voirPer={voirPer}
+            voirEl={voirEl}
+          />
+        </div>
       </div>
-        <div classNname='pr-4'>
-        <FaPlusCircle color="gray" size={25} onClick={()=>setRub({bol:true,nom:'CREER',value:null})}  />
-       </div>
+      <footer className="w-full text-center text-xs text-gray-400 py-4">
+        (c) 2024 Astraining by jwin technology
+      </footer>
     </div>
-  <SetComponent 
-             p={switchChange} 
-               voir={voir}
-               voirPer={voirPer}
-              voirEl={voirEl}
-               
-             />
-</div>
   )
 }
