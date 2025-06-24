@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Entete from '../components/entete.js';
 import { useNavigate } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
 
 // Données simulées
 const elevesData = [
@@ -32,12 +33,24 @@ export default function FormCoursDomicile() {
   const [searchEnseignant, setSearchEnseignant] = useState('');
   const [showEnseignantDropdown, setShowEnseignantDropdown] = useState(false);
   const [selectedMatieres, setSelectedMatieres] = useState([]);
+     const dispatch=useDispatch()
+       
+       useEffect(() => { 
+        dispatch(userActions.listeEnfant())
+      },[])
+      useEffect(() => { 
+          dispatch(userActions.listePersonnel())
+        },[])
+        
 
+      const {isLoader,enfants,personnels}  = useSelector((state)=>{
+            return state.userReducer
+           })
   // Pour remplir automatiquement le parent
   const selectedEleveId = watch("eleve");
   React.useEffect(() => {
-    const eleve = elevesData.find(e => String(e.id) === String(selectedEleveId));
-    if (eleve) setValue("parent", eleve.parent);
+    const eleve = enfants.find(e => String(e._id) === String(selectedEleveId));
+    if (eleve) setValue("parent", eleve?.parent?.nom);
     else setValue("parent", "");
   }, [selectedEleveId, setValue]);
 
@@ -61,11 +74,11 @@ export default function FormCoursDomicile() {
   };
 
   // Filtrage pour recherche élève
-  const filteredEleves = elevesData.filter(e =>
+  const filteredEleves = enfants.filter(e =>
     e.nom.toLowerCase().includes(searchEleve.toLowerCase())
   );
   // Filtrage pour recherche enseignant
-  const filteredEnseignants = enseignantsData.filter(e =>
+  const filteredEnseignants = personnels.filter(e =>
     e.nom.toLowerCase().includes(searchEnseignant.toLowerCase())
   );
 
@@ -75,14 +88,7 @@ export default function FormCoursDomicile() {
       <div className="max-w-lg mx-auto mt-10 bg-white p-8 rounded-2xl shadow">
         <h2 className="text-2xl font-bold mb-6 text-purple-700">Nouveau cours à domicile</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-          {/* Date de libellé */}
-          <input
-            {...register("dateLibel", { required: true })}
-            type="date"
-            className="border rounded px-3 py-2"
-            placeholder="Date du libellé"
-          />
-          {errors.dateLibel && <span className="text-red-500 text-xs">Ce champ est requis</span>}
+       
           {/* Année académique */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Année académique</label>
@@ -100,9 +106,9 @@ export default function FormCoursDomicile() {
               defaultValue=""
             >
               <option value="">Sélectionner l'année</option>
-              <option value="2024">2024-2025</option>
               <option value="2025">2025-2026</option>
               <option value="2026">2026-2027</option>
+              <option value="2027">2027-2028</option>
             </select>
             {errors.anneeAcademique && <span className="text-red-500 text-xs">Ce champ est requis</span>}
           </div>
@@ -117,7 +123,7 @@ export default function FormCoursDomicile() {
               onClick={() => setShowEleveDropdown(v => !v)}
             >
               {selectedEleveId
-                ? elevesData.find(e => String(e.id) === String(selectedEleveId))?.nom
+                ? elevesData.find(e => String(e._id) === String(selectedEleveId))?.nom
                 : "Sélectionner un élève"}
             </div>
             {showEleveDropdown && (
@@ -130,22 +136,32 @@ export default function FormCoursDomicile() {
                   onChange={e => setSearchEleve(e.target.value)}
                   autoFocus
                 />
+                <>
+                {isLoader?<div className='w-full flex justify-center items-center mt-10 '> 
+    <svg aria-hidden="true" className="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+        <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+    </svg></div>:
+                <>
                 {filteredEleves.length === 0 && (
-                  <div className="px-3 py-2 text-gray-400 text-sm">Aucun élève trouvé</div>
+                    <div className="px-3 py-2 text-gray-400 text-sm">Aucun élève trouvé</div>
                 )}
                 {filteredEleves.map(eleve => (
-                  <div
-                    key={eleve.id}
-                    className={`px-3 py-2 hover:bg-purple-50 cursor-pointer text-sm ${selectedEleveId === String(eleve.id) ? "bg-purple-100 font-semibold" : ""}`}
+                    <div
+                    key={eleve._id}
+                    className={`px-3 py-2 hover:bg-purple-50 cursor-pointer text-sm ${selectedEleveId === String(eleve._id) ? "bg-purple-100 font-semibold" : ""}`}
                     onClick={() => {
-                      setValue("eleve", eleve.id);
-                      setShowEleveDropdown(false);
+                        setValue("eleve", eleve._id);
+                        setShowEleveDropdown(false);
                     }}
                     tabIndex={-1}
-                  >
-                    {eleve.nom}
+                    >
+                    {eleve.nom} {eleve.prenoms}
                   </div>
                 ))}
+                </>}
+
+                </>
               </div>
             )}
             <input type="hidden" {...register("eleve", { required: true })} />
@@ -165,7 +181,7 @@ export default function FormCoursDomicile() {
               onClick={() => setShowEnseignantDropdown(v => !v)}
             >
               {watch("enseignant")
-                ? enseignantsData.find(e => String(e.id) === String(watch("enseignant")))?.nom
+                ? personnels.find(e => String(e._id) === String(watch("enseignant")))?.nom
                 : "Sélectionner un enseignant"}
             </div>
             {showEnseignantDropdown && (
@@ -183,15 +199,15 @@ export default function FormCoursDomicile() {
                 )}
                 {filteredEnseignants.map(ens => (
                   <div
-                    key={ens.id}
-                    className={`px-3 py-2 hover:bg-purple-50 cursor-pointer text-sm ${watch("enseignant") === String(ens.id) ? "bg-purple-100 font-semibold" : ""}`}
+                    key={ens._id}
+                    className={`px-3 py-2 hover:bg-purple-50 cursor-pointer text-sm ${watch("enseignant") === String(ens._id) ? "bg-purple-100 font-semibold" : ""}`}
                     onClick={() => {
-                      setValue("enseignant", ens.id);
+                      setValue("enseignant", ens._id);
                       setShowEnseignantDropdown(false);
                     }}
                     tabIndex={-1}
                   >
-                    {ens.nom}
+                    {ens.nom} {ens.prenoms}
                   </div>
                 ))}
               </div>
