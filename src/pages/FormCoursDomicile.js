@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Entete from '../components/entete.js';
 import { useNavigate } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
@@ -48,7 +48,7 @@ export default function FormCoursDomicile() {
            })
   // Pour remplir automatiquement le parent
   const selectedEleveId = watch("eleve");
-  React.useEffect(() => {
+  useEffect(() => {
     const eleve = enfants.find(e => String(e._id) === String(selectedEleveId));
     if (eleve) setValue("parent", eleve?.parent?.nom);
     else setValue("parent", "");
@@ -63,7 +63,7 @@ export default function FormCoursDomicile() {
     );
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     setValue("matieres", selectedMatieres);
   }, [selectedMatieres, setValue]);
 
@@ -123,7 +123,7 @@ export default function FormCoursDomicile() {
               onClick={() => setShowEleveDropdown(v => !v)}
             >
               {selectedEleveId
-                ? elevesData.find(e => String(e._id) === String(selectedEleveId))?.nom
+                ? enfants.find(e => String(e._id) === String(selectedEleveId))?.nom
                 : "Sélectionner un élève"}
             </div>
             {showEleveDropdown && (
