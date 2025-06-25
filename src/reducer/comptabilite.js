@@ -1,6 +1,7 @@
 import {createSlice,createAsyncThunk} from '@reduxjs/toolkit'
 import { fetchWrapper } from '../helper/helper'
 const url = "https://astcomptabiliteserver.onrender.com/api/comptabilites"
+const urlCours = "https://astcomptabiliteserver.onrender.com/api/cours"
 
 const name = "comptabilites";
 const initialState = createInitialState();
@@ -15,6 +16,8 @@ export const comptabiliteReducer = slice.reducer;
 function createInitialState() {
     return {
       facture: null,
+      cour: null,
+      cours:[],
       resultat:0,
       factures:[],
       message:"",
@@ -155,6 +158,32 @@ function createInitialState() {
             return await fetchWrapper.post(`${url}/payerFacture`,body)
           }
           ),
+
+           getCoursById: createAsyncThunk(`${name}/getCoursById`,
+          async (id) => {
+            return await fetchWrapper.get(`${urlCours}/${id}`)
+          }
+        ),
+        createCours: createAsyncThunk(`${name}/createCours`,
+          async (body) => {
+            return await fetchWrapper.post(`${urlCours}`, body)
+          }
+        ),
+        deleteCours: createAsyncThunk(`${name}/deleteCours`,
+          async (id) => {
+            return await fetchWrapper.delete(`${urlCours}/${id}`)
+          }
+        ),
+        updateCours: createAsyncThunk(`${name}/updateCours`,
+          async ({ id, data }) => {
+            return await fetchWrapper.put(`${urlCours}/${id}`, data)
+          }
+        ),
+        getAllCours: createAsyncThunk(`${name}/getAllCours`,
+          async () => {
+            return await fetchWrapper.get(`${urlCours}`)
+          }
+        ),
          
   }
   }
@@ -180,6 +209,80 @@ function createExtraReducers() {
         voirByIdBilan();
         listeCommission();
         cloturer();
+        getCoursById();
+        createCours();
+        deleteCours();
+        updateCours();
+        getAllCours();
+
+        function getCoursById() {
+            var { pending, fulfilled, rejected } = extraActions.getCoursById;
+            builder
+              .addCase(pending, (state) => {
+                state.error = null;
+                state.isLoader = true;
+              })
+              .addCase(fulfilled, (state, action) => {
+               const cours = action.payload;
+                state.cour=cours;
+                state.isLoader = false;
+              })
+              .addCase(rejected, (state, action) => {
+                state.isLoader = false;
+                state.error = action.error;
+              });
+          }
+        function getAllCours() {
+            var { pending, fulfilled, rejected } = extraActions.getAllCours;
+            builder
+              .addCase(pending, (state) => {
+                state.error = null;
+                state.isLoader = true;
+              })
+              .addCase(fulfilled, (state, action) => {
+               const cours = action.payload;
+                state.cours=cours;
+                state.isLoader = false;
+              })
+              .addCase(rejected, (state, action) => {
+                state.isLoader = false;
+                state.error = action.error;
+              });
+        }
+        function createCours() {
+            var { pending, fulfilled, rejected } = extraActions.createCours;
+            builder
+              .addCase(pending, (state) => {
+                state.error = null;
+                state.isLoader = true;
+              })
+              .addCase(fulfilled, (state, action) => {
+               const cour = action.payload;
+                state.cour=cour;
+                state.isLoader = false;
+              })
+              .addCase(rejected, (state, action) => {
+                state.isLoader = false;
+                state.error = action.error;
+              });
+        }
+        function deleteCours() {
+            var { pending, fulfilled, rejected } = extraActions.deleteCours;
+            builder
+              .addCase(pending, (state) => {
+                state.error = null;
+                state.isLoader = true;
+              })
+              .addCase(fulfilled, (state, action) => {
+               const message = action.payload;
+                state.message=message;
+                state.isLoader = false;
+              })
+              .addCase(rejected, (state, action) => {
+                state.isLoader = false;
+                state.error = action.error;
+              });
+          }
         function creerCharge() {
             var { pending, fulfilled, rejected } = extraActions.creerCharge;
             builder

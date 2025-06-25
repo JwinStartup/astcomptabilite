@@ -68,7 +68,15 @@ export default function FormCoursDomicile() {
   const onSubmit = data => {
     console.log('Données du formulaire cours à domicile:', data);
     alert('Cours ajouté !\n' + JSON.stringify(data, null, 2));
-    navigate('/cd');
+    
+    // Ici, vous pouvez envoyer les données à votre API ou effectuer d'autres actions
+     dispatch(userActions.createCours(data)).then(() => {
+        alert('Cours à domicile créé avec succès !');
+    }).catch(err => {
+        console.error('Erreur lors de la création du cours à domicile:', err);
+        alert('Erreur lors de la création du cours à domicile. Veuillez réessayer.');
+    });
+        navigate('/cd');
   };
 
   // Filtrage pour recherche élève
