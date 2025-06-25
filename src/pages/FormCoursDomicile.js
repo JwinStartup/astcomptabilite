@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { userActions } from '../reducer/user.js';
 
 const matieresData = [
- "Primaire", "Mathématiques", "Physique", "Français", "Anglais", "SVT", "Histoire", "Géographie", "Philosophie", "Informatique"
+ "Primaire","EDHC", "Mathématiques", "Physique", "Français", "Anglais", "SVT", "Histoire", "Géographie", "Philosophie", "Informatique"
 ];
 
 const classesData = [
@@ -90,7 +90,7 @@ export default function FormCoursDomicile() {
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Année Academique</label>
             <select {...register("anneeAcademique", { required: true })} className="border rounded px-3 py-2">
-              <option value="">Sélectionner l'année academique</option>
+              <option value="">Sélectionner </option>
               {anneeAcademiqueData.map(annee => (
                 <option key={annee} value={annee}>{annee}</option>
               ))}
@@ -153,6 +153,7 @@ export default function FormCoursDomicile() {
             {errors.eleve && <span className="text-red-500 text-xs">Ce champ est requis</span>}
           </div>
           {/* Parent (auto-rempli) */}
+            <label className="block text-sm font-medium text-gray-700 mb-1">Parent</label>
           <input {...register("parent", { required: true })} placeholder="Nom du parent" className="border rounded px-3 py-2 bg-gray-100" readOnly />
           {errors.parent && <span className="text-red-500 text-xs">Ce champ est requis</span>}
           {/* Sélection enseignant avec recherche */}
@@ -166,7 +167,7 @@ export default function FormCoursDomicile() {
               onClick={() => setShowEnseignantDropdown(v => !v)}
             >
               {watch("enseignant")
-                ? personnels.find(e => String(e._id) === String(watch("enseignant")))?.nom
+                ?`${personnels.find(e => String(e._id) === String(watch("enseignant")))?.nom} ${personnels.find(e => String(e._id) === String(watch("enseignant")))?.prenoms}` 
                 : "Sélectionner un enseignant"}
             </div>
             {showEnseignantDropdown && (
@@ -232,10 +233,10 @@ export default function FormCoursDomicile() {
              
         
           {/* Prix */}
-          <input {...register("prix", { required: true })} placeholder="Prix" className="border rounded px-3 py-2" />
+          <input {...register("prix", { required: true })} type='number' placeholder="Prix" className="border rounded px-3 py-2" />
           {errors.prix && <span className="text-red-500 text-xs">Ce champ est requis</span>}
           {/* Commission */}
-          <input {...register("commission", { required: true })} placeholder="Commission" className="border rounded px-3 py-2" />
+          <input {...register("commission", { required: true })} type='number' placeholder="Commission" className="border rounded px-3 py-2" />
           {errors.commission && <span className="text-red-500 text-xs">Ce champ est requis</span>}
           {/* Boutons */}
           <div className="flex flex-row gap-4 mt-2 justify-center">
