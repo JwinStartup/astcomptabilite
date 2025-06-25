@@ -42,8 +42,8 @@ export default function FormCoursDomicile() {
   const selectedEleveId = watch("eleve");
   useEffect(() => {
     const eleve = enfants.find(e => String(e._id) === String(selectedEleveId));
-    if (eleve) setValue("parent", eleve?.parent?.nom);
-    else setValue("parent", "");
+    if (eleve) {setValue("parent",  eleve?.parent?.nom + " " + eleve?.parent?.prenoms);setValue("parentId", eleve?.parent?._id)}
+    else {setValue("parent", ""); setValue("parentId", "")};
   }, [selectedEleveId, setValue]);
 
   // Pour l'affichage de l'année académique sélectionnée
