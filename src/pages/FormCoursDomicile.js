@@ -15,6 +15,7 @@ const classesData = [
   "2ndA", "2ndC", "1ereC", "1ereD", "1ereA",
   "TleC", "TleD", "TleA"
 ];
+const anneeAcademiqueData = ["2024-2025", "2025-2026", "2026-2027"];
 
 export default function FormCoursDomicile() {
   const navigate = useNavigate();
@@ -87,30 +88,13 @@ export default function FormCoursDomicile() {
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
           {/* Année académique */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Année académique</label>
-            <select
-              className="border rounded px-3 py-2"
-              value={anneeAcademique}
-              onChange={e => {
-                const annee = e.target.value;
-                if (annee) {
-                  const prev = (parseInt(annee, 10) - 1).toString();
-                  setAnneeAcademique(`${prev}-${annee}`);
-                } else {
-                  setAnneeAcademique("");
-                }
-              }}
-            >
-              <option value="">Sélectionner l'année</option>
-              <option value="2025">2025-2026</option>
-              <option value="2026">2026-2027</option>
-              <option value="2027">2027-2028</option>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Année Academique</label>
+            <select {...register("anneeAcademique", { required: true })} className="border rounded px-3 py-2">
+              <option value="">Sélectionner l'année academique</option>
+              {anneeAcademiqueData.map(annee => (
+                <option key={annee} value={annee}>{annee}</option>
+              ))}
             </select>
-            {/* Affichage de l'année académique sélectionnée */}
-            {anneeAcademique && (
-              <div className="mt-1 text-xs text-gray-500">Année sélectionnée : <span className="font-semibold">{anneeAcademique}</span></div>
-            )}
-            <input type="hidden" {...register("anneeAcademique", { required: true })} value={anneeAcademique} />
             {errors.anneeAcademique && <span className="text-red-500 text-xs">Ce champ est requis</span>}
           </div>
           {/* Sélection élève avec recherche */}
@@ -250,6 +234,9 @@ export default function FormCoursDomicile() {
           {/* Prix */}
           <input {...register("prix", { required: true })} placeholder="Prix" className="border rounded px-3 py-2" />
           {errors.prix && <span className="text-red-500 text-xs">Ce champ est requis</span>}
+          {/* Commission */}
+          <input {...register("commission", { required: true })} placeholder="Commission" className="border rounded px-3 py-2" />
+          {errors.commission && <span className="text-red-500 text-xs">Ce champ est requis</span>}
           {/* Boutons */}
           <div className="flex flex-row gap-4 mt-2 justify-center">
             <button
