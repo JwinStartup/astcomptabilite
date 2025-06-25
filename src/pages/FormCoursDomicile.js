@@ -5,25 +5,15 @@ import { useForm, Controller } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { userActions } from '../reducer/user.js';
 
-// Données simulées
-const elevesData = [
-  { id: 1, nom: "Fatou Diop", parent: "Papa Diop" },
-  { id: 2, nom: "Aliou Sow", parent: "Maman Sow" },
-  { id: 3, nom: "Aminata Fall", parent: "Papa Fall" },
-  { id: 4, nom: "Moussa Kane", parent: "Papa Kane" },
-  { id: 5, nom: "Seynabou Gaye", parent: "Maman Gaye" }
-];
-
-const enseignantsData = [
-  { id: 1, nom: "M. Ndiaye" },
-  { id: 2, nom: "Mme Ba" },
-  { id: 3, nom: "M. Sy" },
-  { id: 4, nom: "Mme Diallo" },
-  { id: 5, nom: "M. Faye" }
-];
-
 const matieresData = [
-  "Mathématiques", "Physique", "Français", "Anglais", "SVT", "Histoire", "Géographie", "Philosophie", "Informatique"
+ "Primaire", "Mathématiques", "Physique", "Français", "Anglais", "SVT", "Histoire", "Géographie", "Philosophie", "Informatique"
+];
+
+const classesData = [
+  "Cp1", "Cp2", "Ce1", "Ce2", "Cm1", "Cm2",
+  "6eme", "5eme", "4eme", "3eme",
+  "2ndA", "2ndC", "1ereC", "1ereD", "1ereA",
+  "TleC", "TleD", "TleA"
 ];
 
 export default function FormCoursDomicile() {
@@ -75,7 +65,7 @@ export default function FormCoursDomicile() {
   }, [selectedMatieres, setValue]);
 
   const onSubmit = data => {
-    // Ici, ajouter la logique d'enregistrement (API ou Redux)
+    console.log('Données du formulaire cours à domicile:', data);
     alert('Cours ajouté !\n' + JSON.stringify(data, null, 2));
     navigate('/cd');
   };
@@ -134,7 +124,7 @@ export default function FormCoursDomicile() {
               onClick={() => setShowEleveDropdown(v => !v)}
             >
               {selectedEleveId
-                ? enfants.find(e => String(e._id) === String(selectedEleveId))?.nom
+                ? `${enfants.find(e => String(e._id) === String(selectedEleveId))?.nom} ${enfants.find(e => String(e._id) === String(selectedEleveId))?.prenoms} ` 
                 : "Sélectionner un élève"}
             </div>
             {showEleveDropdown && (
@@ -227,8 +217,16 @@ export default function FormCoursDomicile() {
             {errors.enseignant && <span className="text-red-500 text-xs">Ce champ est requis</span>}
           </div>
           {/* Classe */}
-          <input {...register("classe", { required: true })} placeholder="Classe" className="border rounded px-3 py-2" />
-          {errors.classe && <span className="text-red-500 text-xs">Ce champ est requis</span>}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Classe</label>
+            <select {...register("classe", { required: true })} className="border rounded px-3 py-2">
+              <option value="">Sélectionner la classe</option>
+              {classesData.map(classe => (
+                <option key={classe} value={classe}>{classe}</option>
+              ))}
+            </select>
+            {errors.classe && <span className="text-red-500 text-xs">Ce champ est requis</span>}
+          </div>
           {/* Sélection matières multi-check */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Matières</label>
@@ -247,6 +245,8 @@ export default function FormCoursDomicile() {
             {errors.matieres && <span className="text-red-500 text-xs">Sélectionnez au moins une matière</span>}
           </div>
           <input type="hidden" {...register("matieres", { required: true, validate: v => v && v.length > 0 })} />
+             
+        
           {/* Prix */}
           <input {...register("prix", { required: true })} placeholder="Prix" className="border rounded px-3 py-2" />
           {errors.prix && <span className="text-red-500 text-xs">Ce champ est requis</span>}
