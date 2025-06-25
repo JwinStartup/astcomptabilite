@@ -3,6 +3,7 @@ import Entete from '../components/entete.js';
 import { useNavigate } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
+import { userActions } from '../reducer/user.js';
 
 // Données simulées
 const elevesData = [
@@ -33,7 +34,8 @@ export default function FormCoursDomicile() {
   const [searchEnseignant, setSearchEnseignant] = useState('');
   const [showEnseignantDropdown, setShowEnseignantDropdown] = useState(false);
   const [selectedMatieres, setSelectedMatieres] = useState([]);
-     const dispatch=useDispatch()
+  const [anneeAcademique, setAnneeAcademique] = useState(""); // Ajouté pour affichage
+  const dispatch=useDispatch()
        
        useEffect(() => { 
         dispatch(userActions.listeEnfant())
@@ -53,6 +55,11 @@ export default function FormCoursDomicile() {
     if (eleve) setValue("parent", eleve?.parent?.nom);
     else setValue("parent", "");
   }, [selectedEleveId, setValue]);
+
+  // Pour l'affichage de l'année académique sélectionnée
+  useEffect(() => {
+    setValue("anneeAcademique", anneeAcademique);
+  }, [anneeAcademique, setValue]);
 
   // Gestion multi sélection matières
   const handleMatiereCheck = (matiere) => {
@@ -88,28 +95,32 @@ export default function FormCoursDomicile() {
       <div className="max-w-lg mx-auto mt-10 bg-white p-8 rounded-2xl shadow">
         <h2 className="text-2xl font-bold mb-6 text-purple-700">Nouveau cours à domicile</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-       
           {/* Année académique */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Année académique</label>
             <select
-              {...register("anneeAcademique", { required: true })}
               className="border rounded px-3 py-2"
+              value={anneeAcademique}
               onChange={e => {
-                // Ajoute automatiquement l'année précédente pour le format 2024-2025
                 const annee = e.target.value;
                 if (annee) {
                   const prev = (parseInt(annee, 10) - 1).toString();
-                  setValue("anneeAcademique", `${prev}-${annee}`);
+                  setAnneeAcademique(`${prev}-${annee}`);
+                } else {
+                  setAnneeAcademique("");
                 }
               }}
-              defaultValue=""
             >
               <option value="">Sélectionner l'année</option>
               <option value="2025">2025-2026</option>
               <option value="2026">2026-2027</option>
               <option value="2027">2027-2028</option>
             </select>
+            {/* Affichage de l'année académique sélectionnée */}
+            {anneeAcademique && (
+              <div className="mt-1 text-xs text-gray-500">Année sélectionnée : <span className="font-semibold">{anneeAcademique}</span></div>
+            )}
+            <input type="hidden" {...register("anneeAcademique", { required: true })} value={anneeAcademique} />
             {errors.anneeAcademique && <span className="text-red-500 text-xs">Ce champ est requis</span>}
           </div>
           {/* Sélection élève avec recherche */}
