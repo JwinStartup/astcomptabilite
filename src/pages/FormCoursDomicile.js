@@ -3,7 +3,7 @@ import Entete from '../components/entete.js';
 import { useNavigate } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { userActions } from '../reducer/user.js';
+import { comptabiliteActions } from '../reducer/comptabilite.js';
 
 const matieresData = [
  "Primaire","EDHC", "Mathématiques", "Physique", "Français", "Anglais", "SVT", "Histoire", "Géographie", "Philosophie", "Informatique"
@@ -67,10 +67,9 @@ export default function FormCoursDomicile() {
 
   const onSubmit = data => {
     console.log('Données du formulaire cours à domicile:', data);
-    alert('Cours ajouté !\n' + JSON.stringify(data, null, 2));
     
     // Ici, vous pouvez envoyer les données à votre API ou effectuer d'autres actions
-     dispatch(userActions.createCours(data)).then(() => {
+     dispatch(comptabiliteActions.createCours(data)).then(() => {
         alert('Cours à domicile créé avec succès !');
     }).catch(err => {
         console.error('Erreur lors de la création du cours à domicile:', err);
