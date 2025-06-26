@@ -266,6 +266,23 @@ function createExtraReducers() {
                 state.error = action.error;
               });
         }
+        function updateCours() {
+            var { pending, fulfilled, rejected } = extraActions.updateCours;
+            builder
+              .addCase(pending, (state) => {
+                state.error = null;
+                state.isLoader = true;
+              })
+              .addCase(fulfilled, (state, action) => {
+               const cour = action.payload;
+                state.cour=cour;
+                state.isLoader = false;
+              })
+              .addCase(rejected, (state, action) => {
+                state.isLoader = false;
+                state.error = action.error;
+              });
+        }
         function deleteCours() {
             var { pending, fulfilled, rejected } = extraActions.deleteCours;
             builder
