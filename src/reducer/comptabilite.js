@@ -241,6 +241,7 @@ function createExtraReducers() {
               })
               .addCase(fulfilled, (state, action) => {
                const cours = action.payload;
+               console.log('les cours:',cours)
                 state.cours=cours;
                 state.isLoader = false;
               })
