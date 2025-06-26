@@ -11,14 +11,14 @@ export default function Factures() {
    const dispatch=useDispatch()
 
 useEffect(() => { 
-   dispatch(comptabiliteActions.listeFacture())
-  },[])
+   dispatch(comptabiliteActions.getAllCours())
+   },[])
 
 useEffect(()=> {
   dispatch(comptabiliteActions.listeRecue())
 },[])
 
-  const {isLoader,factures,recues} = useSelector((state)=>{
+  const {isLoader,factures,recues,cours} = useSelector((state)=>{
     return state.comptabiliteReducer
    });
 
@@ -109,17 +109,18 @@ useEffect(()=> {
         </div>
         {/* Liste de cartes responsive */}
         <div className="w-full max-w-5xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-6 px-2">
-          {coursDomicileList.map((cours, idx) => (
+          {cours.map((cours, idx) => (
             <div key={idx} className="bg-white border border-gray-200 rounded-2xl shadow-lg p-5 flex flex-col gap-2 hover:shadow-2xl transition-all duration-200">
               <div className="flex items-center gap-2 mb-2">
                 <FaUserTie className="text-purple-600" size={22} />
-                <span className="font-bold text-lg text-gray-800">{cours.parent}</span>
+                <span className="font-bold text-lg text-gray-800">{cours.eleve?.nom} {cours.eleve?.prenoms}</span>
               </div>
               <div className="text-sm text-gray-600"><span className="font-semibold">Année :</span> {cours.anneeAcademique}</div>
-              <div className="text-sm text-gray-600"><span className="font-semibold">Élève :</span> {cours.eleve}</div>
-              <div className="text-sm text-gray-600"><span className="font-semibold">Enseignant :</span> {cours.enseignant}</div>
+              <div className="text-sm text-gray-600"><span className="font-semibold">Élève :</span> {cours.parent?.nom} {cours.parent?.prenoms}</div>
+              <div className="text-sm text-gray-600"><span className="font-semibold">Formateur :</span> {cours.formateur?.nom} {cours.enseignant?.prenoms}</div>
               <div className="text-sm text-gray-600"><span className="font-semibold">Classe :</span> {cours.classe}</div>
               <div className="text-sm text-gray-600"><span className="font-semibold">Matières :</span> {Array.isArray(cours.matieres) ? cours.matieres.join(', ') : cours.matieres}</div>
+              <div className="text-sm text-gray-600"><span className="font-semibold">Commissions :</span> {cours.commission}</div>
               <div className="text-sm text-gray-700 font-bold mt-2"><span className="text-purple-600">Prix :</span> {cours.prix} FCFA</div>
               <Link
                 to={`/factures/nouveau`}
