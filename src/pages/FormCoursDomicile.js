@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { comptabiliteActions } from '../reducer/comptabilite.js';
+import { userActions } from '../reducer/user.js';
 
 const matieresData = [
  "Primaire","EDHC", "Mathématiques", "Physique", "Français", "Anglais", "SVT", "Histoire", "Géographie", "Philosophie", "Informatique"
