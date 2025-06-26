@@ -371,6 +371,7 @@ function createExtraReducers() {
               })
               .addCase(fulfilled, (state, action) => {
                const enfant = action.payload;
+               console.log(enfant)
                 state.enfants=enfant;
                 state.isLoader = false;
 

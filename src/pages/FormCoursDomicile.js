@@ -40,6 +40,7 @@ export default function FormCoursDomicile() {
       const {isLoader,enfants,personnels}  = useSelector((state)=>{
             return state.userReducer
            })
+           console.log(enfants,personnels)
   // Pour remplir automatiquement le parent
   const selectedEleveId = watch("eleve");
   useEffect(() => {
