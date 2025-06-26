@@ -23,8 +23,8 @@ export default function FormCoursDomicile() {
   const { register, handleSubmit, formState: { errors }, setValue, control, watch } = useForm();
   const [searchEleve, setSearchEleve] = useState('');
   const [showEleveDropdown, setShowEleveDropdown] = useState(false);
-  const [searchEnseignant, setSearchEnseignant] = useState('');
-  const [showEnseignantDropdown, setShowEnseignantDropdown] = useState(false);
+  const [searchFormateur, setSearchFormateur] = useState('');
+  const [showFormateurDropdown, setShowFormateurDropdown] = useState(false);
   const [selectedMatieres, setSelectedMatieres] = useState([]);
   const [anneeAcademique, setAnneeAcademique] = useState(""); // Ajouté pour affichage
   const dispatch=useDispatch()
@@ -83,9 +83,9 @@ export default function FormCoursDomicile() {
   const filteredEleves = enfants.filter(e =>
     e.nom.toLowerCase().includes(searchEleve.toLowerCase())
   );
-  // Filtrage pour recherche enseignant
-  const filteredEnseignants = personnels.filter(e =>
-    e.nom.toLowerCase().includes(searchEnseignant.toLowerCase())
+  // Filtrage pour recherche formateur
+  const filteredFormateurs = personnels.filter(e =>
+    e.nom.toLowerCase().includes(searchFormateur.toLowerCase())
   );
 
   return (
@@ -164,40 +164,40 @@ export default function FormCoursDomicile() {
             <label className="block text-sm font-medium text-gray-700 mb-1">Parent</label>
           <input {...register("parent", { required: true })} placeholder="Nom du parent" className="border rounded px-3 py-2 bg-gray-100" readOnly />
           {errors.parent && <span className="text-red-500 text-xs">Ce champ est requis</span>}
-          {/* Sélection enseignant avec recherche */}
+          {/* Sélection formateur avec recherche */}
           <div className="relative" tabIndex={0}
             onBlur={e => {
-              if (!e.currentTarget.contains(e.relatedTarget)) setShowEnseignantDropdown(false);
+              if (!e.currentTarget.contains(e.relatedTarget)) setShowFormateurDropdown(false);
             }}>
             <label className="block text-sm font-medium text-gray-700 mb-1">Enseignant</label>
             <div
               className="w-full border rounded px-3 py-2 bg-white cursor-pointer"
-              onClick={() => setShowEnseignantDropdown(v => !v)}
+              onClick={() => setShowFormateurDropdown(v => !v)}
             >
-              {watch("enseignant")
-                ?`${personnels.find(e => String(e._id) === String(watch("enseignant")))?.nom} ${personnels.find(e => String(e._id) === String(watch("enseignant")))?.prenoms}` 
-                : "Sélectionner un enseignant"}
+              {watch("formateur")
+                ?`${personnels.find(e => String(e._id) === String(watch("formateur")))?.nom} ${personnels.find(e => String(e._id) === String(watch("formateur")))?.prenoms}` 
+                : "Sélectionner un formateur"}
             </div>
-            {showEnseignantDropdown && (
+            {showFormateurDropdown && (
               <div className="absolute z-20 w-full bg-white border rounded-lg mt-1 shadow-lg max-h-56 overflow-y-auto">
                 <input
                   type="text"
                   placeholder="Rechercher..."
                   className="w-full px-3 py-2 border-b outline-none text-sm"
-                  value={searchEnseignant}
-                  onChange={e => setSearchEnseignant(e.target.value)}
+                  value={searchFormateur}
+                  onChange={e => setSearchFormateur(e.target.value)}
                   autoFocus
                 />
-                {filteredEnseignants.length === 0 && (
-                  <div className="px-3 py-2 text-gray-400 text-sm">Aucun enseignant trouvé</div>
+                {filteredFormateurs.length === 0 && (
+                  <div className="px-3 py-2 text-gray-400 text-sm">Aucun formateur trouvé</div>
                 )}
-                {filteredEnseignants.map(ens => (
+                {filteredFormateurs.map(ens => (
                   <div
                     key={ens._id}
-                    className={`px-3 py-2 hover:bg-purple-50 cursor-pointer text-sm ${watch("enseignant") === String(ens._id) ? "bg-purple-100 font-semibold" : ""}`}
+                    className={`px-3 py-2 hover:bg-purple-50 cursor-pointer text-sm ${watch("formateur") === String(ens._id) ? "bg-purple-100 font-semibold" : ""}`}
                     onClick={() => {
-                      setValue("enseignant", ens._id);
-                      setShowEnseignantDropdown(false);
+                      setValue("formateur", ens._id);
+                      setShowFormateurDropdown(false);
                     }}
                     tabIndex={-1}
                   >
@@ -206,8 +206,8 @@ export default function FormCoursDomicile() {
                 ))}
               </div>
             )}
-            <input type="hidden" {...register("enseignant", { required: true })} />
-            {errors.enseignant && <span className="text-red-500 text-xs">Ce champ est requis</span>}
+            <input type="hidden" {...register("formateur", { required: true })} />
+            {errors.formateur && <span className="text-red-500 text-xs">Ce champ est requis</span>}
           </div>
           {/* Classe */}
           <div>
