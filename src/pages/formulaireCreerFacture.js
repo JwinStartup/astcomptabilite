@@ -21,7 +21,8 @@ export default function FormulaireCreerFacture({retour}) {
 
   // Récupération des paramètres de l'URL (ex: t et cours)
   const [searchParams] = useSearchParams();
-  const type = searchParams.get('t');      // 'cd' pour cours à domicile ou 'new' pour logique de base
+  // Correction : enlever les quotes parasites si présents dans l'URL
+  const type = (searchParams.get('t') || '').replace(/^'+|'+$/g, ""); // supprime les quotes simples autour
   const coursId = searchParams.get('cours'); // id du cours sélectionné
 
   // Récupération du cours depuis le store si type === 'cd'
