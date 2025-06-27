@@ -134,7 +134,7 @@ export default function FormulaireCreerFacture({retour}) {
     console.log("selectedCours:", selectedCours);
     console.log("anneeAcademique:", anneeAcademique);
     console.log("mois:", mois, "annee:", annee);
-  }, [selectedParent, selectedCours, anneeAcademique, mois, annee,type,coursId,courId]);
+  }, [selectedParent, selectedCours, anneeAcademique, mois, annee,type,coursId,cour]);
 
   if (pageLoading) {
     return (
