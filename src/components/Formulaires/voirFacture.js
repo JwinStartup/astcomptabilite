@@ -105,7 +105,7 @@ const dispatch = useDispatch()
                   </tr>
                 </thead>
                 <tbody>
-                  {valeur.cours.map((cours, i) => (
+                  {value.cours.map((cours, i) => (
                     <tr key={cours._id} className={i%2===0 ? "bg-white" : "bg-gray-50"}>
                       <td className="py-2 px-2">{cours.anneeAcademique}</td>
                       <td className="py-2 px-2">{cours.eleve.nom} {cours.eleve.prenoms}</td>
