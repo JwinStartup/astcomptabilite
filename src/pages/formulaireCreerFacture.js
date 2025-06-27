@@ -25,7 +25,7 @@ export default function FormulaireCreerFacture({retour}) {
   const coursId = searchParams.get('cours'); // id du cours sélectionné
 
   // Récupération du cours depuis le store si type === 'cd'
-  const cour = useSelector(state => state.comptabiliteReducer.cour);
+  const {cour} = useSelector(state => state.comptabiliteReducer);
 
   // Récupération des parents
   const {isLoader,parents} = useSelector((state)=> state.userReducer);
@@ -107,6 +107,44 @@ export default function FormulaireCreerFacture({retour}) {
       setAnneeAcademique(cour.anneeAcademique);
     }
   }, [cour, anneeAcademique]);
+
+  // Ajout d'un état pour le chargement global de la page
+  const [pageLoading, setPageLoading] = useState(true);
+
+  useEffect(() => {
+    // On considère la page chargée quand les données nécessaires sont prêtes
+    if (type === "cd") {
+      // Pour un cours à domicile, on attend que cour soit chargé
+      if (cour && cour.parent) setPageLoading(false);
+      else setPageLoading(true);
+    } else {
+      // Pour la logique de base, on attend que les parents soient chargés
+      if (!isLoader) setPageLoading(false);
+      else setPageLoading(true);
+    }
+  }, [type, cour, isLoader]);
+
+  // Ajout des logs pour le debug
+  useEffect(() => {
+    console.log("selectedParent:", selectedParent);
+    console.log("selectedCours:", selectedCours);
+    console.log("anneeAcademique:", anneeAcademique);
+    console.log("mois:", mois, "annee:", annee);
+  }, [selectedParent, selectedCours, anneeAcademique, mois, annee]);
+
+  if (pageLoading) {
+    return (
+      <div className="w-full min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100 py-10">
+        <div className="flex flex-col items-center">
+          <svg className="animate-spin h-10 w-10 text-blue-600 mb-4" viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"/>
+          </svg>
+          <span className="text-blue-600 font-semibold text-lg">Chargement...</span>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100 py-10">
