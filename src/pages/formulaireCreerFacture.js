@@ -149,7 +149,7 @@ export default function FormulaireCreerFacture({retour}) {
                       className="accent-blue-600"
                     />
                     <span className="text-sm font-medium text-gray-700">
-                     {cour.anneeAcademique} {cour.eleve.nom} {cour.eleve.prenoms}  {cour.classe}
+                     {cour.anneeAcademique} {cour.eleve.nom} {cour.eleve.prenoms}  {cour.classe}  {Array.isArray(cour.matieres) ? cour.matieres.join('/') : cour.matieres}
                       <span className="ml-2 text-xs text-gray-500">({cour.prix || 0} FCFA)</span>
                     </span>
                   </label>
