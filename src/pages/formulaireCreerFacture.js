@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import moment from "moment"
 import "moment/min/locales"
 import { userActions } from '../reducer/user';
+import { comptabiliteActions } from '../reducer/comptabilite';
 import { Link, useNavigate } from 'react-router-dom'
 import { useSearchParams } from 'react-router-dom'
 import Entete from '../components/entete'
