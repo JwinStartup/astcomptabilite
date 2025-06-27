@@ -6,6 +6,7 @@ import "moment/min/locales"
 import { userActions } from '../reducer/user';
 import { Link, useNavigate } from 'react-router-dom'
 import { useSearchParams } from 'react-router-dom'
+import Entete from '../components/entete'
 
 
 export default function FormulaireCreerFacture({retour}) {
@@ -19,6 +20,9 @@ export default function FormulaireCreerFacture({retour}) {
   const [showParentDropdown, setShowParentDropdown] = useState(false)
   const [mois, setMois] = useState("")
   const [annee, setAnnee] = useState("")
+  const [anneeAcademiqueSelectionnee, setAnneeAcademiqueSelectionnee] = useState(
+    "2024-2025"
+  );
   const dispatch = useDispatch()
   const navigate=useNavigate()
 
@@ -61,12 +65,14 @@ export default function FormulaireCreerFacture({retour}) {
 
   const onSubmit = (data) => {
     // Affiche les données sélectionnées dans une alerte
-    alert(JSON.stringify({
-      client: selectedParent,
-      enfants: selectedCours,
+    
+   console.log ({
+      client: selectedParent?._id,
+      cours: selectedCours,
       montant: montant,
-      periode: { mois, annee }
-    }, null, 2))
+      periode: `${mois} ${annee}`,
+      anneeAcademique: anneeAcademiqueSelectionnee
+    })
     /* setChargement(true)
     dispatch(comptabiliteActions.creerFacture({
       client: selectedParent?._id,
@@ -90,7 +96,8 @@ export default function FormulaireCreerFacture({retour}) {
   }, [parentParam, parents]);
 
   return (
-    <div className="w-full min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100 py-10">
+    <div className="w-full min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100 py-10">
+      <Entete />
       <div className="w-full max-w-lg mx-auto border p-8 bg-white border-blue-100 shadow-2xl rounded-2xl">
         <div className="font-bold text-2xl text-blue-700 mb-6 text-center">Créer une facture</div>
         <form onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex flex-col gap-6 w-full'>
@@ -167,6 +174,21 @@ export default function FormulaireCreerFacture({retour}) {
               className='w-full border rounded-lg px-3 py-2 text-sm bg-gray-100'
               placeholder='Montant prestation'
             />
+          </div>
+          
+          {/* Sélection de l'année académique */}
+          <div>
+            <label className='block text-sm font-medium text-gray-700 mb-1'>Année académique</label>
+            <select
+              value={anneeAcademiqueSelectionnee}
+              onChange={e => setAnneeAcademiqueSelectionnee(e.target.value)}
+              className='w-full border rounded-lg px-3 py-2 text-sm bg-gray-100'
+              required
+            >
+              <option value="2024-2025">2024-2025</option>
+              <option value="2025-2026">2025-2026</option>
+              <option value="2026-2027">2026-2027</option>
+            </select>
           </div>
           {/* Sélection de la période */}
           <div>
