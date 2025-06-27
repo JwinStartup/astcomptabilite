@@ -71,8 +71,14 @@ useEffect(()=> {
                   <div className="text-sm text-gray-600"><span className="font-semibold">Matières :</span> {Array.isArray(cours.matieres) ? cours.matieres.join(', ') : cours.matieres}</div>
                   <div className="text-sm text-gray-600"><span className="font-semibold">Commissions :</span> {cours.commission}</div>
                   <div className="text-sm text-gray-700 font-bold mt-2"><span className="text-purple-600">Prix :</span> {cours.prix} FCFA</div>
+                  {/* 
+                    Le lien ci-dessous permet de créer une nouvelle facture pour le cours sélectionné.
+                    - Le paramètre 't' est fixé à 'cd' pour indiquer qu'il s'agit d'un cours à domicile.
+                    - Le paramètre 'cours' transmet l'identifiant unique du cours concerné.
+                    Ainsi, la page de création de facture saura pour quel cours et quel type de prestation la facture doit être générée.
+                  */}
                   <Link
-                    to={`/factures/nouveau`}
+                    to={`/factures/nouveau?t="cd"&cours=${cours._id}`}
                     className="mt-3 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold py-2 px-3 rounded shadow transition-colors text-center"
                   >
                     Créer une facture
@@ -83,7 +89,7 @@ useEffect(()=> {
           )}
         </div>
       </div>
-      <span className='text-xs mt-6 text-gray-400 w-full justify-center '>
+      <span className='flex text-xs mt-6 text-gray-400 w-full justify-center '>
          (c) 2024 Astraining  by jwin technology
        </span>
      </div>

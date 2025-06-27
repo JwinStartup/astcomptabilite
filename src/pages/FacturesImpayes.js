@@ -97,6 +97,8 @@ export default function FacturesImpayes() {
   const {isLoader,factures} = useSelector((state)=> state.comptabiliteReducer);
 
   const filteredFactures = useMemo(() => {
+    // Vérifie que factures est bien un tableau, sinon retourne un tableau vide
+    if (!Array.isArray(factures)) return [];
     return factures.filter(facture => {
       // Filtre recherche
       const matchSearch = !searchTerm.trim() ? true : (

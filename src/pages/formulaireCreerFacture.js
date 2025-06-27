@@ -3,73 +3,74 @@ import { useDispatch,useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import moment from "moment"
 import "moment/min/locales"
+import { useSearchParams } from 'react-router-dom';
 
-// Exemple de données parents avec enfants, classe et montant
-const parents = [
-  {
-    _id: "parent1",
-    nom: "Kouadio",
-    prenoms: "Jean",
-    enfants: [
-      { _id: "enfant1", nom: "Awa", classe: "CM2", montant: 15000 },
-      { _id: "enfant2", nom: "Yao", classe: "CE1", montant: 12000 }
-    ]
-  },
-  {
-    _id: "parent2",
-    nom: "Traoré",
-    prenoms: "Fatou",
-    enfants: [
-      { _id: "enfant3", nom: "Moussa", classe: "6ème", montant: 18000 },
-      { _id: "enfant4", nom: "Aminata", classe: "5ème", montant: 17000 }
-    ]
-  }
-]
 
 export default function FormulaireCreerFacture({retour}) {
   const { register, handleSubmit } = useForm()
   const [montant, setMontant] = useState(0)
   const [chargement, setChargement] = useState(false)
-  // const [searchParent, setSearchParent] = useState("") // supprimé
   const [searchParentSelect, setSearchParentSelect] = useState("")
   const [selectedParent, setSelectedParent] = useState(null)
-  const [selectedEnfants, setSelectedEnfants] = useState([])
+  const [selectedCours, setSelectedCours] = useState([]) // remplace selectedEnfants
   const [showParentDropdown, setShowParentDropdown] = useState(false)
   const [mois, setMois] = useState("")
   const [annee, setAnnee] = useState("")
   const dispatch = useDispatch()
-  /*
-  useEffect(() => { 
-    dispatch(userActions.listeParent())
-  },[])
-  */
-  // const {isLoader,parents} = useSelector((state)=> state.userReducer);
 
-  // Filtrage des parents selon la recherche dans le select custom
+  // Récupération des paramètres de l'URL (ex: t et cours)
+  const [searchParams] = useSearchParams();
+  const type = searchParams.get('t');      // 'cd' pour cours à domicile ou 'new' pour logique de base
+  const coursId = searchParams.get('cours'); // id du cours sélectionné
+
+  // Récupération du cours depuis le store si type === 'cd'
+  const cour = useSelector(state => state.comptabiliteReducer.cour);
+
+  // Récupération des parents
+  const {isLoader,parents} = useSelector((state)=> state.userReducer);
+
+  // Si type === 'cd', on va chercher le cours par son id
+  useEffect(() => {
+    if ((type === "cd") && coursId) {
+      dispatch(comptabiliteActions.getCoursById(coursId));
+    }
+    // Si type === 'new', on ne fait rien de spécial, on garde la logique de base
+  }, [type, coursId, dispatch]);
+
+  // Si type === 'cd', on initialise selectedParent avec cour.parent
+  useEffect(() => {
+    if ((type === "cd") && cour && cour.parent) {
+      setSelectedParent(cour.parent);
+      setSelectedCours([cour]); // sélectionne le cours par défaut
+    }
+    // Si type === 'new', on ne fait rien de spécial, on garde la logique de base
+  }, [type, cour]);
+
+  // Filtrage des parents selon la recherche dans le select custom (hors type cd)
   const filteredParents = parents.filter(p =>
     (p.nom + " " + p.prenoms).toLowerCase().includes(searchParentSelect.toLowerCase())
   )
 
-  // Gestion sélection parent
+  // Gestion sélection parent (hors type cd)
   const onChangeParent = (p) => {
     setSelectedParent(p)
-    setSelectedEnfants([] )// reset enfants sélectionnés
+    setSelectedCours([]) // reset sélection
     setMontant(0)
     setShowParentDropdown(false)
     setSearchParentSelect("")
   }
 
-  // Gestion sélection enfants (cases à cocher)
-  const handleCheckEnfant = (enfant, checked) => {
+  // Gestion sélection cours (cases à cocher)
+  const handleCheckCours = (cours, checked) => {
     let newSelected;
     if (checked) {
-      newSelected = [...selectedEnfants, enfant]
+      newSelected = [...selectedCours, cours]
     } else {
-      newSelected = selectedEnfants.filter(e => e._id !== enfant._id)
+      newSelected = selectedCours.filter(e => e._id !== cours._id)
     }
-    setSelectedEnfants(newSelected)
+    setSelectedCours(newSelected)
     // Calcul du montant total
-    let total = newSelected.reduce((acc, el) => acc + (el.montant || 0), 0)
+    let total = newSelected.reduce((acc, el) => acc + (el.montant || el.prix || 0), 0)
     setMontant(total)
   }
 
@@ -77,21 +78,34 @@ export default function FormulaireCreerFacture({retour}) {
     // Affiche les données sélectionnées dans une alerte
     alert(JSON.stringify({
       client: selectedParent,
-      enfants: selectedEnfants,
+      cours: selectedCours,
       montant: montant,
-      periode: { mois, annee }
+      periode: { mois, annee },
+      anneeAcademique: anneeAcademique // ajout de l'année académique
     }, null, 2))
     /* setChargement(true)
     dispatch(comptabiliteActions.creerFacture({
       client: selectedParent?._id,
       enfants: selectedEnfants.map(e => e._id),
       montant: montant,
-      periodeAjouter: `${mois} ${annee}`
+      periodeAjouter: `${mois} ${annee}`,
+      anneeAcademique: anneeAcademique // ajout de l'année académique
     })).then(()=>{
       setChargement(false)
       retour()
     })*/
   }
+  
+
+  // Ajout de l'état pour l'année académique
+  const [anneeAcademique, setAnneeAcademique] = useState("");
+
+  // Correction : initialiser la valeur par défaut de l'année académique si possible
+  useEffect(() => {
+    if (cour?.anneeAcademique && !anneeAcademique) {
+      setAnneeAcademique(cour.anneeAcademique);
+    }
+  }, [cour, anneeAcademique]);
 
   return (
     <div className="w-full min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100 py-10">
@@ -99,65 +113,100 @@ export default function FormulaireCreerFacture({retour}) {
         <div className="font-bold text-2xl text-blue-700 mb-6 text-center">Créer une facture</div>
         <form onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex flex-col gap-6 w-full'>
           {/* Sélection parent avec recherche intégrée */}
-          <div className="relative" tabIndex={0}
-            onBlur={e => {
-              if (!e.currentTarget.contains(e.relatedTarget)) {
-                setShowParentDropdown(false)
-              }
-            }}
-          >
-            <label className='block text-sm font-medium text-gray-700 mb-1'>Choisir un parent</label>
-            <div
-              className="w-full border rounded-lg px-3 py-2 text-sm bg-white cursor-pointer"
-              onClick={() => setShowParentDropdown(v => !v)}
+          {(type !== "cd") && (
+            <div className="relative" tabIndex={0}
+              onBlur={e => {
+                if (!e.currentTarget.contains(e.relatedTarget)) {
+                  setShowParentDropdown(false)
+                }
+              }}
             >
-              {selectedParent ? `${selectedParent.nom} ${selectedParent.prenoms}` : "Sélectionnez un parent"}
-            </div>
-            {showParentDropdown && (
-              <div className="absolute z-20 w-full bg-white border rounded-lg mt-1 shadow-lg max-h-56 overflow-y-auto">
-                <input
-                  type="text"
-                  placeholder="Rechercher..."
-                  className="w-full px-3 py-2 border-b outline-none text-sm"
-                  value={searchParentSelect}
-                  onChange={e => setSearchParentSelect(e.target.value)}
-                  autoFocus
-                />
-                {filteredParents.length === 0 && (
-                  <div className="px-3 py-2 text-gray-400 text-sm">Aucun parent trouvé</div>
-                )}
-                {filteredParents.map((val, index) => (
-                  <div
-                    key={val._id}
-                    className={`px-3 py-2 hover:bg-blue-50 cursor-pointer text-sm ${selectedParent?._id === val._id ? "bg-blue-100 font-semibold" : ""}`}
-                    onClick={() => onChangeParent(val)}
-                    tabIndex={-1}
-                  >
-                    {val.nom} {val.prenoms}
-                  </div>
-                ))}
+              <label className='block text-sm font-medium text-gray-700 mb-1'>Choisir un parent</label>
+              <div
+                className="w-full border rounded-lg px-3 py-2 text-sm bg-white cursor-pointer"
+                onClick={() => setShowParentDropdown(v => !v)}
+              >
+                {selectedParent ? `${selectedParent.nom} ${selectedParent.prenoms}` : "Sélectionnez un parent"}
               </div>
-            )}
-          </div>
-          {/* Liste enfants du parent */}
-          {selectedParent && selectedParent.enfants && selectedParent.enfants.length > 0 && (
+              {showParentDropdown && (
+                <div className="absolute z-20 w-full bg-white border rounded-lg mt-1 shadow-lg max-h-56 overflow-y-auto">
+                  <input
+                    type="text"
+                    placeholder="Rechercher..."
+                    className="w-full px-3 py-2 border-b outline-none text-sm"
+                    value={searchParentSelect}
+                    onChange={e => setSearchParentSelect(e.target.value)}
+                    autoFocus
+                  />
+                  {/* Affiche le loader si les parents sont en cours de chargement */}
+                  {isLoader && (
+                    <div className="flex items-center justify-center py-4">
+                      <svg className="animate-spin h-5 w-5 text-blue-500 mr-2" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"/>
+                      </svg>
+                      <span className="text-blue-500 text-sm">Chargement...</span>
+                    </div>
+                  )}
+                  {!isLoader && filteredParents.length === 0 && (
+                    <div className="px-3 py-2 text-gray-400 text-sm">Aucun parent trouvé</div>
+                  )}
+                  {filteredParents.map((val, index) => (
+                    <div
+                      key={val._id}
+                      className={`px-3 py-2 hover:bg-blue-50 cursor-pointer text-sm ${selectedParent?._id === val._id ? "bg-blue-100 font-semibold" : ""}`}
+                      onClick={() => onChangeParent(val)}
+                      tabIndex={-1}
+                    >
+                      {val.nom} {val.prenoms}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+          {/* Liste cours à sélectionner */}
+          {selectedParent && (
             <div>
-              <label className='block text-sm font-medium text-gray-700 mb-1'>Sélectionner les enfants</label>
+              <label className='block text-sm font-medium text-gray-700 mb-1'>
+                {type === "cd" ? "Cours à domicile" : "Sélectionner les cours"}
+              </label>
               <div className='flex flex-col gap-2 max-h-40 overflow-y-auto border rounded-lg p-2 bg-gray-50'>
-                {selectedParent.enfants.map((enfant, idx) => (
-                  <label key={enfant._id} className="flex items-center gap-2 cursor-pointer">
+                {(type === "cd") ? (
+                  <label className="flex items-center gap-2 cursor-pointer">
                     <input
                       type="checkbox"
-                      checked={selectedEnfants.some(e => e._id === enfant._id)}
-                      onChange={e => handleCheckEnfant(enfant, e.target.checked)}
+                      checked={selectedCours.some(e => e._id === cour?._id)}
+                      onChange={e => handleCheckCours(cour, e.target.checked)}
                       className="accent-blue-600"
+                      disabled // Un seul cours, donc toujours sélectionné et non modifiable
                     />
                     <span className="text-sm font-medium text-gray-700">
-                      {enfant.nom} - {enfant.classe}
-                      <span className="ml-2 text-xs text-gray-500">({enfant.montant || 0} FCFA)</span>
+                      {cour?.eleve?.nom} {cour?.eleve?.prenoms} - {cour?.classe}
+                      <span className="ml-2 text-xs text-gray-500">({cour?.prix || 0} FCFA)</span>
                     </span>
                   </label>
-                ))}
+                ) : (
+                  selectedParent.cours && selectedParent.cours.length > 0 ? (
+                    selectedParent.cours.map((cours, idx) => (
+                      <label key={cours._id} className="flex items-center gap-2 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={selectedCours.some(e => e._id === cours._id)}
+                          onChange={e => handleCheckCours(cours, e.target.checked)}
+                          className="accent-blue-600"
+                        />
+                        <span className="text-sm font-medium text-gray-700">
+                          <span className="mr-2 text-xs text-gray-500">({cours.anneeAcademique})</span>
+                          {cours?.eleve?.nom}  {cours?.eleve?.prenoms} - {cours.classe}
+                          <span className="ml-2 text-xs text-gray-500">({cours.montant || cours.prix || 0} FCFA)</span>
+                        </span>
+                      </label>
+                    ))
+                  ) : (
+                    <span className="text-gray-400 text-sm">Aucun cours trouvé</span>
+                  )
+                )}
               </div>
             </div>
           )}
@@ -199,24 +248,41 @@ export default function FormulaireCreerFacture({retour}) {
               required
             />
           </div>
+          {/* Sélection de l'année académique */}
+          <div>
+            <label className='block text-sm font-medium text-gray-700 mb-1'>Année académique</label>
+            <select
+              value={anneeAcademique || "2024-2025"}
+              onChange={e => setAnneeAcademique(e.target.value)}
+              className='w-full border rounded-lg px-3 py-2 text-sm bg-gray-100'
+              required
+            >
+              <option value="">Sélectionner</option>
+              <option value="2023-2024">2023-2024</option>
+              <option value="2024-2025">2024-2025</option>
+              <option value="2025-2026">2025-2026</option>
+            </select>
+          </div>
           {/* Tableau récapitulatif */}
-          {selectedEnfants.length > 0 && (
+          {selectedCours.length > 0 && (
             <div className="mt-2">
               <div className="font-semibold text-gray-700 mb-2">Résumé</div>
               <table className="w-full text-sm border rounded-lg overflow-hidden">
                 <thead className="bg-blue-50">
                   <tr>
-                    <th className="py-2 px-2 text-left">Désignation</th>
+                    <th className="py-2 px-2 text-left">Année</th>
+                    <th className="py-2 px-2 text-left">Nom & prenoms</th>
                     <th className="py-2 px-2 text-left">Classe</th>
                     <th className="py-2 px-2 text-left">Montant</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {selectedEnfants.map((el, i) => (
+                  {selectedCours.map((el, i) => (
                     <tr key={el._id} className={i%2===0 ? "bg-white" : "bg-gray-50"}>
-                      <td className="py-2 px-2">{el.nom}</td>
+                      <td className="py-2 px-2">{el.anneeAcademique}</td>
+                      <td className="py-2 px-2">{el.eleve?.nom} {el.eleve?.prenoms}</td>
                       <td className="py-2 px-2">{el.classe}</td>
-                      <td className="py-2 px-2">{el.montant || 0} FCFA</td>
+                      <td className="py-2 px-2">{el.montant || el.prix || 0} FCFA</td>
                     </tr>
                   ))}
                 </tbody>
