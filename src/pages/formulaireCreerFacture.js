@@ -3,77 +3,73 @@ import { useDispatch,useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import moment from "moment"
 import "moment/min/locales"
-import { useSearchParams } from 'react-router-dom';
-import { comptabiliteActions } from '../reducer/comptabilite.js'
 
+// Exemple de données parents avec enfants, classe et montant
+const parents = [
+  {
+    _id: "parent1",
+    nom: "Kouadio",
+    prenoms: "Jean",
+    enfants: [
+      { _id: "enfant1", nom: "Awa", classe: "CM2", montant: 15000 },
+      { _id: "enfant2", nom: "Yao", classe: "CE1", montant: 12000 }
+    ]
+  },
+  {
+    _id: "parent2",
+    nom: "Traoré",
+    prenoms: "Fatou",
+    enfants: [
+      { _id: "enfant3", nom: "Moussa", classe: "6ème", montant: 18000 },
+      { _id: "enfant4", nom: "Aminata", classe: "5ème", montant: 17000 }
+    ]
+  }
+]
 
 export default function FormulaireCreerFacture({retour}) {
   const { register, handleSubmit } = useForm()
   const [montant, setMontant] = useState(0)
   const [chargement, setChargement] = useState(false)
+  // const [searchParent, setSearchParent] = useState("") // supprimé
   const [searchParentSelect, setSearchParentSelect] = useState("")
   const [selectedParent, setSelectedParent] = useState(null)
-  const [selectedCours, setSelectedCours] = useState([]) // remplace selectedEnfants
+  const [selectedEnfants, setSelectedEnfants] = useState([])
   const [showParentDropdown, setShowParentDropdown] = useState(false)
   const [mois, setMois] = useState("")
   const [annee, setAnnee] = useState("")
   const dispatch = useDispatch()
+  
+  useEffect(() => { 
+    dispatch(userActions.listeParent())
+  },[])
+  
+   const {isLoader,parents} = useSelector((state)=> state.userReducer);
 
-  // Récupération des paramètres de l'URL (ex: t et cours)
-  const [searchParams] = useSearchParams();
-  // Correction : enlever les quotes parasites si présents dans l'URL
-  const type = (searchParams.get('t') || '').replace(/^'+|'+$/g, ""); // supprime les quotes simples autour
-  const coursId = searchParams.get('cours'); // id du cours sélectionné
-
-  // Récupération du cours depuis le store si type === 'cd'
-  const {isLoader,cour} = useSelector(state => state.comptabiliteReducer);
-  console.log('cour:', cour);
-  // Récupération des parents
-  const {parents} = useSelector((state)=> state.userReducer);
-
-  // Si type === 'cd', on va chercher le cours par son id
-  useEffect(() => {
-    console.log('type:', type, 'coursId:', coursId);
-    if ((type === "cd") && coursId) {
-      dispatch(comptabiliteActions.getCoursById(coursId)).then(()=>console.log('le cours a été chargé'));
-    }
-    // Si type === 'new', on ne fait rien de spécial, on garde la logique de base
-  }, [type, coursId, dispatch]);
-
-  // Si type === 'cd', on initialise selectedParent avec cour.parent
-  useEffect(() => {
-    if ((type === "cd") && cour && cour.parent) {
-      setSelectedParent(cour.parent);
-      setSelectedCours([cour]); // sélectionne le cours par défaut
-    }
-    // Si type === 'new', on ne fait rien de spécial, on garde la logique de base
-  }, [type, cour]);
-
-  // Filtrage des parents selon la recherche dans le select custom (hors type cd)
+  // Filtrage des parents selon la recherche dans le select custom
   const filteredParents = parents.filter(p =>
     (p.nom + " " + p.prenoms).toLowerCase().includes(searchParentSelect.toLowerCase())
   )
 
-  // Gestion sélection parent (hors type cd)
+  // Gestion sélection parent
   const onChangeParent = (p) => {
     setSelectedParent(p)
-    setSelectedCours([]) // reset sélection
+    setSelectedEnfants([] )// reset enfants sélectionnés
     setMontant(0)
     setShowParentDropdown(false)
     setSearchParentSelect("")
   }
 
-  // Gestion sélection cours (cases à cocher)
-  const handleCheckCours = (cours, checked) => {
+  // Gestion sélection enfants (cases à cocher)
+  const handleCheckEnfant = (enfant, checked) => {
     let newSelected;
     if (checked) {
-      newSelected = [...selectedCours, cours]
+      newSelected = [...selectedEnfants, enfant]
     } else {
-      newSelected = selectedCours.filter(e => e._id !== cours._id)
+      newSelected = selectedEnfants.filter(e => e._id !== enfant._id)
     }
-    setSelectedCours(newSelected)
+    setSelectedEnfants(newSelected)
     // Calcul du montant total
-    let total = newSelected.reduce((acc, el) => acc + (el.montant || el.prix || 0), 0)
+    let total = newSelected.reduce((acc, el) => acc + (el.montant || 0), 0)
     setMontant(total)
   }
 
@@ -81,74 +77,20 @@ export default function FormulaireCreerFacture({retour}) {
     // Affiche les données sélectionnées dans une alerte
     alert(JSON.stringify({
       client: selectedParent,
-      cours: selectedCours,
+      enfants: selectedEnfants,
       montant: montant,
-      periode: { mois, annee },
-      anneeAcademique: anneeAcademique // ajout de l'année académique
+      periode: { mois, annee }
     }, null, 2))
     /* setChargement(true)
     dispatch(comptabiliteActions.creerFacture({
       client: selectedParent?._id,
       enfants: selectedEnfants.map(e => e._id),
       montant: montant,
-      periodeAjouter: `${mois} ${annee}`,
-      anneeAcademique: anneeAcademique // ajout de l'année académique
+      periodeAjouter: `${mois} ${annee}`
     })).then(()=>{
       setChargement(false)
       retour()
     })*/
-  }
-  
-
-  // Ajout de l'état pour l'année académique
-  const [anneeAcademique, setAnneeAcademique] = useState("");
-
-  // Correction : initialiser la valeur par défaut de l'année académique si possible
-  useEffect(() => {
-    if (cour?.anneeAcademique && !anneeAcademique) {
-      setAnneeAcademique(cour.anneeAcademique);
-    }
-  }, [cour, anneeAcademique]);
-
-  // Ajout d'un état pour le chargement global de la page
-  const [pageLoading, setPageLoading] = useState(true);
-
-  useEffect(() => {
-    // On considère la page chargée quand les données nécessaires sont prêtes
-    if (type === "cd") {
-      // Pour un cours à domicile, on attend que cour soit chargé
-      if (cour && cour.parent) setPageLoading(false);
-      else setPageLoading(true);
-    } else {
-      // Pour la logique de base, on attend que les parents soient chargés
-      if (!isLoader) setPageLoading(false);
-      else setPageLoading(true);
-    }
-  }, [type, cour, isLoader]);
-
-  // Ajout des logs pour le debug
-  useEffect(() => {
-    console.log("type",type);
-    console.log("courId",coursId);
-    console.log("cour",cour);
-    console.log("selectedParent:", selectedParent);
-    console.log("selectedCours:", selectedCours);
-    console.log("anneeAcademique:", anneeAcademique);
-    console.log("mois:", mois, "annee:", annee);
-  }, [selectedParent, selectedCours, anneeAcademique, mois, annee,type,coursId,cour]);
-
-  if (pageLoading) {
-    return (
-      <div className="w-full min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100 py-10">
-        <div className="flex flex-col items-center">
-          <svg className="animate-spin h-10 w-10 text-blue-600 mb-4" viewBox="0 0 24 24">
-            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
-            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"/>
-          </svg>
-          <span className="text-blue-600 font-semibold text-lg">Chargement...</span>
-        </div>
-      </div>
-    );
   }
 
   return (
@@ -157,100 +99,65 @@ export default function FormulaireCreerFacture({retour}) {
         <div className="font-bold text-2xl text-blue-700 mb-6 text-center">Créer une facture</div>
         <form onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex flex-col gap-6 w-full'>
           {/* Sélection parent avec recherche intégrée */}
-          {(type !== "cd") && (
-            <div className="relative" tabIndex={0}
-              onBlur={e => {
-                if (!e.currentTarget.contains(e.relatedTarget)) {
-                  setShowParentDropdown(false)
-                }
-              }}
+          <div className="relative" tabIndex={0}
+            onBlur={e => {
+              if (!e.currentTarget.contains(e.relatedTarget)) {
+                setShowParentDropdown(false)
+              }
+            }}
+          >
+            <label className='block text-sm font-medium text-gray-700 mb-1'>Choisir un parent</label>
+            <div
+              className="w-full border rounded-lg px-3 py-2 text-sm bg-white cursor-pointer"
+              onClick={() => setShowParentDropdown(v => !v)}
             >
-              <label className='block text-sm font-medium text-gray-700 mb-1'>Choisir un parent</label>
-              <div
-                className="w-full border rounded-lg px-3 py-2 text-sm bg-white cursor-pointer"
-                onClick={() => setShowParentDropdown(v => !v)}
-              >
-                {selectedParent ? `${selectedParent.nom} ${selectedParent.prenoms}` : "Sélectionnez un parent"}
-              </div>
-              {showParentDropdown && (
-                <div className="absolute z-20 w-full bg-white border rounded-lg mt-1 shadow-lg max-h-56 overflow-y-auto">
-                  <input
-                    type="text"
-                    placeholder="Rechercher..."
-                    className="w-full px-3 py-2 border-b outline-none text-sm"
-                    value={searchParentSelect}
-                    onChange={e => setSearchParentSelect(e.target.value)}
-                    autoFocus
-                  />
-                  {/* Affiche le loader si les parents sont en cours de chargement */}
-                  {isLoader && (
-                    <div className="flex items-center justify-center py-4">
-                      <svg className="animate-spin h-5 w-5 text-blue-500 mr-2" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"/>
-                      </svg>
-                      <span className="text-blue-500 text-sm">Chargement...</span>
-                    </div>
-                  )}
-                  {!isLoader && filteredParents.length === 0 && (
-                    <div className="px-3 py-2 text-gray-400 text-sm">Aucun parent trouvé</div>
-                  )}
-                  {filteredParents.map((val, index) => (
-                    <div
-                      key={val._id}
-                      className={`px-3 py-2 hover:bg-blue-50 cursor-pointer text-sm ${selectedParent?._id === val._id ? "bg-blue-100 font-semibold" : ""}`}
-                      onClick={() => onChangeParent(val)}
-                      tabIndex={-1}
-                    >
-                      {val.nom} {val.prenoms}
-                    </div>
-                  ))}
-                </div>
-              )}
+              {selectedParent ? `${selectedParent.nom} ${selectedParent.prenoms}` : "Sélectionnez un parent"}
             </div>
-          )}
-          {/* Liste cours à sélectionner */}
-          {selectedParent && (
+            {showParentDropdown && (
+              <div className="absolute z-20 w-full bg-white border rounded-lg mt-1 shadow-lg max-h-56 overflow-y-auto">
+                <input
+                  type="text"
+                  placeholder="Rechercher..."
+                  className="w-full px-3 py-2 border-b outline-none text-sm"
+                  value={searchParentSelect}
+                  onChange={e => setSearchParentSelect(e.target.value)}
+                  autoFocus
+                />
+                {filteredParents.length === 0 && (
+                  <div className="px-3 py-2 text-gray-400 text-sm">Aucun parent trouvé</div>
+                )}
+                {filteredParents.map((val, index) => (
+                  <div
+                    key={val._id}
+                    className={`px-3 py-2 hover:bg-blue-50 cursor-pointer text-sm ${selectedParent?._id === val._id ? "bg-blue-100 font-semibold" : ""}`}
+                    onClick={() => onChangeParent(val)}
+                    tabIndex={-1}
+                  >
+                    {val.nom} {val.prenoms}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+          {/* Liste enfants du parent */}
+          {selectedParent && selectedParent.enfants && selectedParent.enfants.length > 0 && (
             <div>
-              <label className='block text-sm font-medium text-gray-700 mb-1'>
-                {type === "cd" ? "Cours à domicile" : "Sélectionner les cours"}
-              </label>
+              <label className='block text-sm font-medium text-gray-700 mb-1'>Sélectionner les enfants</label>
               <div className='flex flex-col gap-2 max-h-40 overflow-y-auto border rounded-lg p-2 bg-gray-50'>
-                {(type === "cd") ? (
-                  <label className="flex items-center gap-2 cursor-pointer">
+                {selectedParent.enfants.map((enfant, idx) => (
+                  <label key={enfant._id} className="flex items-center gap-2 cursor-pointer">
                     <input
                       type="checkbox"
-                      checked={selectedCours.some(e => e._id === cour?._id)}
-                      onChange={e => handleCheckCours(cour, e.target.checked)}
+                      checked={selectedEnfants.some(e => e._id === enfant._id)}
+                      onChange={e => handleCheckEnfant(enfant, e.target.checked)}
                       className="accent-blue-600"
-                      disabled // Un seul cours, donc toujours sélectionné et non modifiable
                     />
                     <span className="text-sm font-medium text-gray-700">
-                      {cour?.eleve?.nom} {cour?.eleve?.prenoms} - {cour?.classe}
-                      <span className="ml-2 text-xs text-gray-500">({cour?.prix || 0} FCFA)</span>
+                      {enfant.nom} - {enfant.classe}
+                      <span className="ml-2 text-xs text-gray-500">({enfant.montant || 0} FCFA)</span>
                     </span>
                   </label>
-                ) : (
-                  selectedParent.cours && selectedParent.cours.length > 0 ? (
-                    selectedParent.cours.map((cours, idx) => (
-                      <label key={cours._id} className="flex items-center gap-2 cursor-pointer">
-                        <input
-                          type="checkbox"
-                          checked={selectedCours.some(e => e._id === cours._id)}
-                          onChange={e => handleCheckCours(cours, e.target.checked)}
-                          className="accent-blue-600"
-                        />
-                        <span className="text-sm font-medium text-gray-700">
-                          <span className="mr-2 text-xs text-gray-500">({cours.anneeAcademique})</span>
-                          {cours?.eleve?.nom}  {cours?.eleve?.prenoms} - {cours.classe}
-                          <span className="ml-2 text-xs text-gray-500">({cours.montant || cours.prix || 0} FCFA)</span>
-                        </span>
-                      </label>
-                    ))
-                  ) : (
-                    <span className="text-gray-400 text-sm">Aucun cours trouvé</span>
-                  )
-                )}
+                ))}
               </div>
             </div>
           )}
@@ -292,41 +199,24 @@ export default function FormulaireCreerFacture({retour}) {
               required
             />
           </div>
-          {/* Sélection de l'année académique */}
-          <div>
-            <label className='block text-sm font-medium text-gray-700 mb-1'>Année académique</label>
-            <select
-              value={anneeAcademique || "2024-2025"}
-              onChange={e => setAnneeAcademique(e.target.value)}
-              className='w-full border rounded-lg px-3 py-2 text-sm bg-gray-100'
-              required
-            >
-              <option value="">Sélectionner</option>
-              <option value="2023-2024">2023-2024</option>
-              <option value="2024-2025">2024-2025</option>
-              <option value="2025-2026">2025-2026</option>
-            </select>
-          </div>
           {/* Tableau récapitulatif */}
-          {selectedCours.length > 0 && (
+          {selectedEnfants.length > 0 && (
             <div className="mt-2">
               <div className="font-semibold text-gray-700 mb-2">Résumé</div>
               <table className="w-full text-sm border rounded-lg overflow-hidden">
                 <thead className="bg-blue-50">
                   <tr>
-                    <th className="py-2 px-2 text-left">Année</th>
-                    <th className="py-2 px-2 text-left">Nom & prenoms</th>
+                    <th className="py-2 px-2 text-left">Désignation</th>
                     <th className="py-2 px-2 text-left">Classe</th>
                     <th className="py-2 px-2 text-left">Montant</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {selectedCours.map((el, i) => (
+                  {selectedEnfants.map((el, i) => (
                     <tr key={el._id} className={i%2===0 ? "bg-white" : "bg-gray-50"}>
-                      <td className="py-2 px-2">{el.anneeAcademique}</td>
-                      <td className="py-2 px-2">{el.eleve?.nom} {el.eleve?.prenoms}</td>
+                      <td className="py-2 px-2">{el.nom}</td>
                       <td className="py-2 px-2">{el.classe}</td>
-                      <td className="py-2 px-2">{el.montant || el.prix || 0} FCFA</td>
+                      <td className="py-2 px-2">{el.montant || 0} FCFA</td>
                     </tr>
                   ))}
                 </tbody>
