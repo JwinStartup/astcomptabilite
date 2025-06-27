@@ -4,8 +4,8 @@ import { useForm } from 'react-hook-form';
 import moment from "moment"
 import "moment/min/locales"
 import { userActions } from '../reducer/user';
-
-// Exemple de données parents avec enfants, classe et montant
+import { Link, useNavigate } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 
 
 export default function FormulaireCreerFacture({retour}) {
@@ -20,12 +20,16 @@ export default function FormulaireCreerFacture({retour}) {
   const [mois, setMois] = useState("")
   const [annee, setAnnee] = useState("")
   const dispatch = useDispatch()
-  
+  const navigate=useNavigate()
+
+  // Récupération du paramètre parent depuis l'URL
+  const [searchParams] = useSearchParams();
+  const parentParam = searchParams.get('parent');
   useEffect(() => { 
     dispatch(userActions.listeParent())
   },[])
   
-   const {isLoader,parents} = useSelector((state)=> state.userReducer);
+  const {isLoader,parents} = useSelector((state)=> state.userReducer);
 
   // Filtrage des parents selon la recherche dans le select custom
   const filteredParents = parents.filter(p =>
@@ -74,6 +78,16 @@ export default function FormulaireCreerFacture({retour}) {
       retour()
     })*/
   }
+
+  // Sélection automatique du parent si parentParam présent dans l'URL
+  useEffect(() => {
+    if (parentParam && parents && parents.length > 0) {
+      const foundParent = parents.find(p => p._id === parentParam);
+      if (foundParent) {
+        setSelectedParent(foundParent);
+      }
+    }
+  }, [parentParam, parents]);
 
   return (
     <div className="w-full min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100 py-10">
@@ -135,7 +149,7 @@ export default function FormulaireCreerFacture({retour}) {
                       className="accent-blue-600"
                     />
                     <span className="text-sm font-medium text-gray-700">
-                     {cour.eleve.anneeAcademique} {cour.eleve.nom} {cour.eleve.prenoms}  {cour.classe}
+                     {cour.anneeAcademique} {cour.eleve.nom} {cour.eleve.prenoms}  {cour.classe}
                       <span className="ml-2 text-xs text-gray-500">({cour.prix || 0} FCFA)</span>
                     </span>
                   </label>
@@ -211,7 +225,7 @@ export default function FormulaireCreerFacture({retour}) {
           <div className='flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 pt-2 w-full'>
             <button
               type="button"
-              onClick={()=>retour()}
+              onClick={() => navigate(-1)}
               className="w-full sm:w-auto text-blue-700 hover:text-blue-800 border-r-0 sm:border-r font-medium text-sm px-5 py-2.5 text-center rounded sm:rounded-none"
             >
               Retour

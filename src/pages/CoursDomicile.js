@@ -65,7 +65,7 @@ useEffect(()=> {
                     <span className="font-bold text-lg text-gray-800">{cours.eleve?.nom} {cours.eleve?.prenoms}</span>
                   </div>
                   <div className="text-sm text-gray-600"><span className="font-semibold">Année :</span> {cours.anneeAcademique}</div>
-                  <div className="text-sm text-gray-600"><span className="font-semibold">Élève :</span> {cours.parent?.nom} {cours.parent?.prenoms}</div>
+                  <div className="text-sm text-gray-600"><span className="font-semibold">Parent :</span> {cours.parent?.nom} {cours.parent?.prenoms}</div>
                   <div className="text-sm text-gray-600"><span className="font-semibold">Formateur :</span> {cours.formateur?.nom} {cours.formateur?.prenoms}</div>
                   <div className="text-sm text-gray-600"><span className="font-semibold">Classe :</span> {cours.classe}</div>
                   <div className="text-sm text-gray-600"><span className="font-semibold">Matières :</span> {Array.isArray(cours.matieres) ? cours.matieres.join(', ') : cours.matieres}</div>
@@ -78,7 +78,7 @@ useEffect(()=> {
                     Ainsi, la page de création de facture saura pour quel cours et quel type de prestation la facture doit être générée.
                   */}
                   <Link
-                    to={`/factures/nouveau?t="cd"&cours=${cours._id}`}
+                    to={`/factures/nouveau?parent=${cours.parent._id}`}
                     className="mt-3 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold py-2 px-3 rounded shadow transition-colors text-center"
                   >
                     Créer une facture
