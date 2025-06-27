@@ -26,10 +26,10 @@ export default function FormulaireCreerFacture({retour}) {
   const coursId = searchParams.get('cours'); // id du cours sélectionné
 
   // Récupération du cours depuis le store si type === 'cd'
-  const {cour} = useSelector(state => state.comptabiliteReducer);
+  const {isLoader,cour} = useSelector(state => state.comptabiliteReducer);
   console.log('cour:', cour);
   // Récupération des parents
-  const {isLoader,parents} = useSelector((state)=> state.userReducer);
+  const {parents} = useSelector((state)=> state.userReducer);
 
   // Si type === 'cd', on va chercher le cours par son id
   useEffect(() => {

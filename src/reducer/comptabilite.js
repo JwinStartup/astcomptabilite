@@ -161,6 +161,7 @@ function createInitialState() {
 
            getCoursById: createAsyncThunk(`${name}/getCoursById`,
           async (id) => {
+            console.log(id)
             return await fetchWrapper.get(`${urlCours}/${id}`)
           }
         ),
