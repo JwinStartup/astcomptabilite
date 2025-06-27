@@ -3,28 +3,10 @@ import { useDispatch,useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import moment from "moment"
 import "moment/min/locales"
+import { userActions } from '../reducer/user';
 
 // Exemple de données parents avec enfants, classe et montant
-const parents = [
-  {
-    _id: "parent1",
-    nom: "Kouadio",
-    prenoms: "Jean",
-    enfants: [
-      { _id: "enfant1", nom: "Awa", classe: "CM2", montant: 15000 },
-      { _id: "enfant2", nom: "Yao", classe: "CE1", montant: 12000 }
-    ]
-  },
-  {
-    _id: "parent2",
-    nom: "Traoré",
-    prenoms: "Fatou",
-    enfants: [
-      { _id: "enfant3", nom: "Moussa", classe: "6ème", montant: 18000 },
-      { _id: "enfant4", nom: "Aminata", classe: "5ème", montant: 17000 }
-    ]
-  }
-]
+
 
 export default function FormulaireCreerFacture({retour}) {
   const { register, handleSubmit } = useForm()
