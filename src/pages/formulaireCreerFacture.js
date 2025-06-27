@@ -26,14 +26,15 @@ export default function FormulaireCreerFacture({retour}) {
 
   // Récupération du cours depuis le store si type === 'cd'
   const {cour} = useSelector(state => state.comptabiliteReducer);
-
+  console.log('cour:', cour);
   // Récupération des parents
   const {isLoader,parents} = useSelector((state)=> state.userReducer);
 
   // Si type === 'cd', on va chercher le cours par son id
   useEffect(() => {
+    console.log('type:', type, 'coursId:', coursId);
     if ((type === "cd") && coursId) {
-      dispatch(comptabiliteActions.getCoursById(coursId));
+      dispatch(comptabiliteActions.getCoursById(coursId)).then(()=>console.log('le cours a été chargé'));
     }
     // Si type === 'new', on ne fait rien de spécial, on garde la logique de base
   }, [type, coursId, dispatch]);
@@ -126,11 +127,14 @@ export default function FormulaireCreerFacture({retour}) {
 
   // Ajout des logs pour le debug
   useEffect(() => {
+    console.log("type",type);
+    console.log("courId",coursId);
+    console.log("cour",cour);
     console.log("selectedParent:", selectedParent);
     console.log("selectedCours:", selectedCours);
     console.log("anneeAcademique:", anneeAcademique);
     console.log("mois:", mois, "annee:", annee);
-  }, [selectedParent, selectedCours, anneeAcademique, mois, annee]);
+  }, [selectedParent, selectedCours, anneeAcademique, mois, annee,type,coursId,courId]);
 
   if (pageLoading) {
     return (
