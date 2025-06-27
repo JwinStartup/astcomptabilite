@@ -15,7 +15,7 @@ export default function FormulaireCreerFacture({retour}) {
   // const [searchParent, setSearchParent] = useState("") // supprimé
   const [searchParentSelect, setSearchParentSelect] = useState("")
   const [selectedParent, setSelectedParent] = useState(null)
-  const [selectedEnfants, setSelectedEnfants] = useState([])
+  const [selectedCours, setSelectedCours] = useState([])
   const [showParentDropdown, setShowParentDropdown] = useState(false)
   const [mois, setMois] = useState("")
   const [annee, setAnnee] = useState("")
@@ -35,23 +35,23 @@ export default function FormulaireCreerFacture({retour}) {
   // Gestion sélection parent
   const onChangeParent = (p) => {
     setSelectedParent(p)
-    setSelectedEnfants([] )// reset enfants sélectionnés
+    setSelectedCours([]) // reset cours sélectionnés
     setMontant(0)
     setShowParentDropdown(false)
     setSearchParentSelect("")
   }
 
-  // Gestion sélection enfants (cases à cocher)
-  const handleCheckEnfant = (enfant, checked) => {
+  // Gestion sélection cours (cases à cocher)
+  const handleCheckCours = (cour, checked) => {
     let newSelected;
     if (checked) {
-      newSelected = [...selectedEnfants, enfant]
+      newSelected = [...selectedCours, cour]
     } else {
-      newSelected = selectedEnfants.filter(e => e._id !== enfant._id)
+      newSelected = selectedCours.filter(e => e._id !== cour._id)
     }
-    setSelectedEnfants(newSelected)
+    setSelectedCours(newSelected)
     // Calcul du montant total
-    let total = newSelected.reduce((acc, el) => acc + (el.montant || 0), 0)
+    let total = newSelected.reduce((acc, el) => acc + (el.prix || 0), 0)
     setMontant(total)
   }
 
@@ -59,7 +59,7 @@ export default function FormulaireCreerFacture({retour}) {
     // Affiche les données sélectionnées dans une alerte
     alert(JSON.stringify({
       client: selectedParent,
-      enfants: selectedEnfants,
+      enfants: selectedCours,
       montant: montant,
       periode: { mois, annee }
     }, null, 2))
@@ -121,22 +121,22 @@ export default function FormulaireCreerFacture({retour}) {
               </div>
             )}
           </div>
-          {/* Liste enfants du parent */}
-          {selectedParent && selectedParent.enfants && selectedParent.enfants.length > 0 && (
+          {/* Liste cours du parent */}
+          {selectedParent && selectedParent.cours && selectedParent.cours.length > 0 && (
             <div>
-              <label className='block text-sm font-medium text-gray-700 mb-1'>Sélectionner les enfants</label>
+              <label className='block text-sm font-medium text-gray-700 mb-1'>Sélectionner les cours</label>
               <div className='flex flex-col gap-2 max-h-40 overflow-y-auto border rounded-lg p-2 bg-gray-50'>
-                {selectedParent.enfants.map((enfant, idx) => (
-                  <label key={enfant._id} className="flex items-center gap-2 cursor-pointer">
+                {selectedParent.cours.map((cour, idx) => (
+                  <label key={cour._id} className="flex items-center gap-2 cursor-pointer">
                     <input
                       type="checkbox"
-                      checked={selectedEnfants.some(e => e._id === enfant._id)}
-                      onChange={e => handleCheckEnfant(enfant, e.target.checked)}
+                      checked={selectedCours.some(e => e._id === cour._id)}
+                      onChange={e => handleCheckCours(cour, e.target.checked)}
                       className="accent-blue-600"
                     />
                     <span className="text-sm font-medium text-gray-700">
-                      {enfant.nom} - {enfant.classe}
-                      <span className="ml-2 text-xs text-gray-500">({enfant.montant || 0} FCFA)</span>
+                     {cour.eleve.anneeAcademique} {cour.eleve.nom} {cour.eleve.prenoms}  {cour.classe}
+                      <span className="ml-2 text-xs text-gray-500">({cour.prix || 0} FCFA)</span>
                     </span>
                   </label>
                 ))}
@@ -182,23 +182,25 @@ export default function FormulaireCreerFacture({retour}) {
             />
           </div>
           {/* Tableau récapitulatif */}
-          {selectedEnfants.length > 0 && (
+          {selectedCours.length > 0 && (
             <div className="mt-2">
               <div className="font-semibold text-gray-700 mb-2">Résumé</div>
               <table className="w-full text-sm border rounded-lg overflow-hidden">
                 <thead className="bg-blue-50">
                   <tr>
-                    <th className="py-2 px-2 text-left">Désignation</th>
+                    <th className="py-2 px-2 text-left">Année</th>
+                    <th className="py-2 px-2 text-left">Elève</th>
                     <th className="py-2 px-2 text-left">Classe</th>
                     <th className="py-2 px-2 text-left">Montant</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {selectedEnfants.map((el, i) => (
-                    <tr key={el._id} className={i%2===0 ? "bg-white" : "bg-gray-50"}>
-                      <td className="py-2 px-2">{el.nom}</td>
-                      <td className="py-2 px-2">{el.classe}</td>
-                      <td className="py-2 px-2">{el.montant || 0} FCFA</td>
+                  {selectedCours.map((cours, i) => (
+                    <tr key={cours._id} className={i%2===0 ? "bg-white" : "bg-gray-50"}>
+                      <td className="py-2 px-2">{cours.anneeAcademique}</td>
+                      <td className="py-2 px-2">{cours.eleve.nom} {cours.eleve.prenoms}</td>
+                      <td className="py-2 px-2">{cours.classe}</td>
+                      <td className="py-2 px-2">{cours.prix || 0} FCFA</td>
                     </tr>
                   ))}
                 </tbody>
