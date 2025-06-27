@@ -92,10 +92,11 @@ export default function FacturesImpayes() {
   
   useEffect(() => { 
     dispatch(comptabiliteActions.listeFacture())
-  },[rub])
+  },[rub,dispatch])
   
   const {isLoader,factures} = useSelector((state)=> state.comptabiliteReducer);
 
+  console.log('les factures dans pages:',factures)
   const filteredFactures = useMemo(() => {
     // Vérifie que factures est bien un tableau, sinon retourne un tableau vide
     if (!Array.isArray(factures)) return [];
@@ -134,20 +135,28 @@ export default function FacturesImpayes() {
     <div className='w-full'>
       {rub.bol!==false&&<SetComponent p={rub.nom} retour={()=>setRub({bol:false,nom:''})} value={rub.value} />}
       <Entete />
+      {/* entete pour la page facture ameliorer le style */}
       <div className='w-full flex flex-col space-y-4'>
-        <div className='flex  justify-between items-center space-x-2 mx-4'>
-          <div className="flex items-center">
-            <IoIosArrowDropleftCircle size={30} color="black" />
-            <FaFileInvoice size={30} color="#1D4ED8" className="mx-2"/>
-            <h5 className="text-2xl font-extrabold tracking-tight text-blue-800 ml-1">Factures</h5>
+        <div className="flex flex-col md:flex-row md:justify-between md:items-center bg-gradient-to-r from-blue-700 via-blue-500 to-purple-600 rounded-b-xl shadow-lg px-6 py-4 mb-2">
+          <div className="flex items-center gap-3">
+            <IoIosArrowDropleftCircle
+              size={34}
+              className="text-white cursor-pointer hover:text-blue-200 transition"
+              onClick={() => window.history.back()}
+              title="Retour"
+            />
+            <FaFileInvoice size={32} className="text-yellow-300 drop-shadow" />
+            <h5 className="text-3xl font-extrabold tracking-tight text-white ml-2 drop-shadow">
+              Factures
+            </h5>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3 mt-4 md:mt-0">
             <Link
               to="/factures/nouveau"
-              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-3 py-2 rounded-lg shadow transition-colors text-sm"
+              className="flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold px-4 py-2 rounded-lg shadow-lg transition-colors text-base"
               style={{whiteSpace: 'nowrap'}}
             >
-              <FaPlusCircle size={18} />
+              <FaPlusCircle size={20} />
               <span className="hidden sm:inline">Créer facture</span>
             </Link>
           </div>

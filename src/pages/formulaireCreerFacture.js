@@ -64,25 +64,27 @@ export default function FormulaireCreerFacture({retour}) {
   }
 
   const onSubmit = (data) => {
-    // Affiche les données sélectionnées dans une alerte
-    
-   console.log ({
+    // Conversion du mois numérique en nom de mois (ex: "05" => "mai")
+    const moisNom = mois
+      ? new Date(2000, parseInt(mois, 10) - 1, 1).toLocaleString('fr-FR', { month: 'long' })
+      : "";
+
+    console.log ({
       client: selectedParent?._id,
-      cours: selectedCours,
+      cours: selectedCours.map(c => c._id), // tableau des ids des cours sélectionnés
       montant: montant,
-      periode: `${mois} ${annee}`,
+      periode: `${moisNom} ${annee}`,
       anneeAcademique: anneeAcademiqueSelectionnee
     })
-    /* setChargement(true)
     dispatch(comptabiliteActions.creerFacture({
       client: selectedParent?._id,
-      enfants: selectedEnfants.map(e => e._id),
+      cours: selectedCours.map(c => c._id), // tableau des ids des cours sélectionnés
       montant: montant,
-      periodeAjouter: `${mois} ${annee}`
+      periode: `${moisNom} ${annee}`,
+      anneeAcademique: anneeAcademiqueSelectionnee
     })).then(()=>{
-      setChargement(false)
-      retour()
-    })*/
+      navigate("/factures")
+    })
   }
 
   // Sélection automatique du parent si parentParam présent dans l'URL

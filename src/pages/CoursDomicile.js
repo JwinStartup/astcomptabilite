@@ -12,13 +12,11 @@ export default function Factures() {
 
 useEffect(() => { 
    dispatch(comptabiliteActions.getAllCours())
-   },[])
+   },[dispatch])
 
-useEffect(()=> {
-  dispatch(comptabiliteActions.listeRecue())
-},[])
 
-  const {isLoader,factures,recues,cours} = useSelector((state)=>{
+
+  const {isLoader,cours} = useSelector((state)=>{
     return state.comptabiliteReducer
    });
 
