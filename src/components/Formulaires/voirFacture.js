@@ -17,7 +17,6 @@ import {useNavigate} from 'react-router-dom'
 
 export default function VoirFacture({payer,voirRecue,value,partager,supprimer}) {
 const dispatch = useDispatch()
-const type= "enpartie"
   return (
     <div className='relative mx-1 bg-white shadow-lg w-[320px] border p-4 rounded-xl hover:shadow-xl transition-all duration-300'>
       {/* En-tête de la facture */}
@@ -57,7 +56,7 @@ const type= "enpartie"
           </div>
           <div>
             <div className='text-sm text-gray-500'>Mois</div>
-            <div className='font-medium text-gray-700'>{value?.periodeAjouter}</div>
+            <div className='font-medium text-gray-700'>{value?.periode}</div>
           </div>
         </div>
       </div>
@@ -81,13 +80,13 @@ const type= "enpartie"
             <div className="flex justify-between w-full">
               <span className="text-xs text-gray-500 font-medium">Montant payé :</span>
               <span className="text-xs font-semibold text-green-600 bg-green-50 rounded px-2 py-0.5 ml-2">
-                {value?.montantPaye || 5000} FCFA
+                {value?.montantPaye || 0} FCFA
               </span>
             </div>
             <div className="flex justify-between w-full mt-1">
               <span className="text-xs text-gray-500 font-medium">Reste à payer :</span>
               <span className="text-xs font-semibold text-red-600 bg-red-50 rounded px-2 py-0.5 ml-2">
-                {value?.resteAPayer || 3000} FCFA
+                {value?.resteAPayer || 0} FCFA
               </span>
             </div>
           </div>
@@ -96,27 +95,26 @@ const type= "enpartie"
 
       {/* Tableau des détails */}
       <div className='mt-4 overflow-hidden rounded-lg border'>
-        <table className="w-full">
-          <thead className='bg-gray-50'>
-            <tr>
-              <th className='py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>Désignation</th>
-              <th className='py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>Classe</th>
-              <th className='py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>Montant</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className='bg-white border-b'>
-              <td className='py-3 px-3 text-sm font-medium text-gray-700'>CD - {value?.eleve?.nom || "Akou eleva"}</td>
-              <td className='py-3 px-3 text-xs text-gray-600'> {value?.eleve?.classe || "Tle D"}</td>
-              <td className='py-3 px-3 text-sm text-gray-600'>{value?.montant/2}</td>
-            </tr>
-            <tr className='bg-gray-50'>
-              <td className='py-3 px-3 text-sm font-medium text-gray-700'>CD - {value?.eleve?.nom || "Akou eleva"}</td>
-              <td className='py-3 px-3 text-xs text-gray-600'> {value?.eleve?.classe || "Tle D"}</td>
-              <td className='py-3 px-3 text-sm text-gray-600'>{value?.montant/2}</td>
-            </tr>
-          </tbody>
-        </table>
+        <table className="w-full text-sm border rounded-lg overflow-hidden">
+                <thead className="bg-blue-50">
+                  <tr>
+                    <th className="py-2 px-2 text-left">Année</th>
+                    <th className="py-2 px-2 text-left">Elève</th>
+                    <th className="py-2 px-2 text-left">Classe</th>
+                    <th className="py-2 px-2 text-left">Montant</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {valeur.cours.map((cours, i) => (
+                    <tr key={cours._id} className={i%2===0 ? "bg-white" : "bg-gray-50"}>
+                      <td className="py-2 px-2">{cours.anneeAcademique}</td>
+                      <td className="py-2 px-2">{cours.eleve.nom} {cours.eleve.prenoms}</td>
+                      <td className="py-2 px-2">{cours.classe}</td>
+                      <td className="py-2 px-2">{cours.prix || 0} FCFA</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
       </div>
 
       {/* Date et boutons */}
