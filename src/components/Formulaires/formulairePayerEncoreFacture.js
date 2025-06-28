@@ -52,7 +52,7 @@ export default function FormulairePayerEncoreFacture({retour, value}) {
         </div>
         <div className='text-right'>
           <div className='font-bold text-lg text-blue-600'>{value?.resteApayer} FCFA</div>
-          <div className='text-xs text-gray-400'>Montant prestation</div>
+          <div className='text-xs text-gray-400'>Montant restant </div>
           <div className='font-medium text-xs text-gray-600'>Période : {value?.periode}</div>
         </div>
       </div>
