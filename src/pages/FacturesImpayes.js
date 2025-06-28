@@ -144,7 +144,7 @@ export default function FacturesImpayes() {
       <Entete />
       {/* entete pour la page facture ameliorer le style */}
       <div className='w-full flex flex-col space-y-4'>
-        <div className="flex flex-col md:flex-row md:justify-between md:items-center border-2 border-blue-500 bg-transparent rounded-xl shadow-none px-3 py-2 md:px-6 md:py-4 mb-2">
+        <div className="flex flex-col md:flex-row md:justify-between md:items-center  bg-transparent  px-3 py-2 md:px-6 md:py-4 mb-2">
           <div className="flex items-center gap-2 md:gap-3">
             <IoIosArrowDropleftCircle
               size={28}

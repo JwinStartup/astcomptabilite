@@ -21,7 +21,7 @@ export default function FormulairePayerFacture({retour, value}) {
       montantPayer: type === 'enpartie' ? montantPartiel : value.montant
     }, null, 2))
     setChargement(true)
-    /*
+    
     dispatch(comptabiliteActions.payerFacture({
       mode: data.mode,
       idFacture: value._id,
@@ -32,8 +32,6 @@ export default function FormulairePayerFacture({retour, value}) {
       setChargement(false)
       retour()
     })
-    */
-    setChargement(false)
     // retour()
   }
 
