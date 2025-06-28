@@ -225,7 +225,7 @@ export default function FacturesImpayes() {
                     voirRecue={()=>setRub({nom:'VOIRRECUE',bol:true, value:value})}
                     supprimer={()=>setRub({nom:'SUPPRIMER',bol:true, value:value})} 
                     payer={()=>setRub({nom:'PAYER',bol:true, value:value})} 
-                    payerEnCore={()=>setRub({nom:'PAYERENCORE',bol:true, value:value})}
+                    payerEncore={()=>setRub({nom:'PAYERENCORE',bol:true, value:value})}
                     value={value}
                     partager={()=>setRub({nom:'PARTAGER',bol:true, value:value})} 
                   />
