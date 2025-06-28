@@ -27,7 +27,7 @@ export default function FormulairePayerFacture({retour, value}) {
       idFacture: value._id,
       ref: data.ref,
       type: type,
-      montant: type === 'enpartie' ? montantPartiel : value.montant
+      montantPayer: type === 'enpartie' ? montantPartiel : value.montant
     })).then(() => {
       setChargement(false)
       retour()

@@ -24,7 +24,7 @@ export default function FormulairePayerEncoreFacture({retour, value}) {
       mode: data.mode,
       idFacture: value._id,
       ref: data.ref,
-      montant: montantPayer
+      montantPayer: montantPayer
     })).then(() => {
       setChargement(false)
       retour()
