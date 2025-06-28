@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import Backdrop from '../components/backdrop'
 import FormulaireCreerFacture from '../components/Formulaires/formulaireCreerFacture'
 import VoirRecue from '../components/voirRecue.js'
+import FormulairePayerEncoreFacture from '../components/Formulaires/formulairePayerEncoreFacture.js'
 import FormulairePayerFacture from '../components/Formulaires/formulairePayerFacture.js'
 import { IoIosArrowDropleftCircle } from "react-icons/io";
 import VoirFacture from '../components/Formulaires/voirFacture.js'
@@ -63,7 +64,13 @@ const SetComponent = ({ p, retour, value }) => {
           <SupprimerFacture retour={retour} value={value} />
         </div>
       )
-   
+    case 'PAYERENCORE':
+   return (
+        <div style={modalStyle}>
+          <Backdrop />
+          <FormulairePayerEncoreFacture retour={retour} value={value} />
+        </div> 
+   )
     case 'VOIRRECUE':
       return (
         <div style={modalStyle}>
@@ -137,63 +144,66 @@ export default function FacturesImpayes() {
       <Entete />
       {/* entete pour la page facture ameliorer le style */}
       <div className='w-full flex flex-col space-y-4'>
-        <div className="flex flex-col md:flex-row md:justify-between md:items-center bg-gradient-to-r from-blue-700 via-blue-500 to-purple-600 rounded-b-xl shadow-lg px-6 py-4 mb-2">
-          <div className="flex items-center gap-3">
+        <div className="flex flex-col md:flex-row md:justify-between md:items-center border-2 border-blue-500 bg-transparent rounded-xl shadow-none px-3 py-2 md:px-6 md:py-4 mb-2">
+          <div className="flex items-center gap-2 md:gap-3">
             <IoIosArrowDropleftCircle
-              size={34}
-              className="text-white cursor-pointer hover:text-blue-200 transition"
+              size={28}
+              className="text-blue-600 cursor-pointer hover:text-blue-400 transition"
               onClick={() => window.history.back()}
               title="Retour"
             />
-            <FaFileInvoice size={32} className="text-yellow-300 drop-shadow" />
-            <h5 className="text-3xl font-extrabold tracking-tight text-white ml-2 drop-shadow">
+            <FaFileInvoice size={26} className="text-blue-600 drop-shadow" />
+            <h5 className="text-lg md:text-xl font-bold tracking-tight text-blue-700 ml-1 md:ml-2 drop-shadow">
               Factures
             </h5>
           </div>
-          <div className="flex items-center gap-3 mt-4 md:mt-0">
+          <div className="flex items-center gap-2 md:gap-3 mt-3 md:mt-0">
             <Link
               to="/factures/nouveau"
-              className="flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold px-4 py-2 rounded-lg shadow-lg transition-colors text-base"
+              className="flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold px-3 py-1.5 md:px-4 md:py-2 rounded-lg shadow-lg transition-colors text-sm md:text-base"
               style={{whiteSpace: 'nowrap'}}
             >
-              <FaPlusCircle size={20} />
+              <FaPlusCircle size={18} className="text-blue-700" />
               <span className="hidden sm:inline">Créer facture</span>
             </Link>
           </div>
         </div>
-        <div className='flex flex-col space-y-3 px-4'>
-            <div className='w-full relative'>
+        <div className='flex flex-col md:flex-row md:space-x-4 md:space-y-0 space-y-3 px-2 md:px-4'>
+            <div className='w-full md:w-1/3 relative'>
               <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"/>
               <input
                 type="text"
                 placeholder="Numero ou nom ..."
-                className="w-full pl-10 pr-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                className="w-full pl-10 pr-4 py-2 md:py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm md:text-base"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
-            
-            <select 
-              className='w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm bg-white'
-              value={filterDate}
-              onChange={(e) => setFilterDate(e.target.value)}
-            >
-              <option value="all">Toutes les factures</option>
-              <option value="today">Aujourd'hui</option>
-              <option value="month">Ce mois</option>
-              <option value="year">Cette année</option>
-            </select>
+            <div className='w-full md:w-1/4'>
+              <select 
+                className='w-full px-3 py-2 md:py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm md:text-base bg-white'
+                value={filterDate}
+                onChange={(e) => setFilterDate(e.target.value)}
+              >
+                <option value="all">Toutes les factures</option>
+                <option value="today">Aujourd&apos;hui</option>
+                <option value="month">Ce mois</option>
+                <option value="year">Cette année</option>
+              </select>
+            </div>
             {/* Nouveau select pour le type de la facture */}
-            <select
-              className='w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm bg-white mt-2'
-              value={filterType}
-              onChange={e => setFilterType(e.target.value)}
-            >
-              <option value="all" defaultValue>Tout les types</option>
-              <option value="impaye">Impayée</option>
-              <option value="enpartie">Payée en partie</option>
-              <option value="paye">Payée en totalité</option>
-            </select>
+            <div className='w-full md:w-1/4'>
+              <select
+                className='w-full px-3 py-2 md:py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm md:text-base bg-white'
+                value={filterType}
+                onChange={e => setFilterType(e.target.value)}
+              >
+                <option value="all" defaultValue>Tout les types</option>
+                <option value="impaye">Impayée</option>
+                <option value="enpartie">Payée en partie</option>
+                <option value="totalite">Payée en totalité</option>
+              </select>
+            </div>
         </div>
 
         {isLoader ? (
@@ -208,13 +218,14 @@ export default function FacturesImpayes() {
                 Aucune facture trouvée
               </div>
             ) : (
-              <div className='flex flex-col gap-3 justify-center items-center'>
+              <div className='flex flex-col md:flex-row md:flex-wrap md:justify-center gap-3 justify-center items-center'>
                 {filteredFactures.map((value,index)=>
                   <VoirFacture 
                     key={index}
                     voirRecue={()=>setRub({nom:'VOIRRECUE',bol:true, value:value})}
                     supprimer={()=>setRub({nom:'SUPPRIMER',bol:true, value:value})} 
                     payer={()=>setRub({nom:'PAYER',bol:true, value:value})} 
+                    payerEnCore={()=>setRub({nom:'PAYERENCORE',bol:true, value:value})}
                     value={value}
                     partager={()=>setRub({nom:'PARTAGER',bol:true, value:value})} 
                   />

@@ -3,10 +3,9 @@ import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { comptabiliteActions } from '../../reducer/comptabilite';
 
-export default function FormulairePayerFacture({retour, value}) {
+export default function FormulairePayerEncoreFacture({retour, value}) {
   const [select, setSelect] = useState('espece')
-  const [type, setType] = useState('totalite')
-  const [montantPartiel, setMontantPartiel] = useState('')
+  const [montantPayer, setMontantPaye] = useState(value?.resteApayer || 0)
   const [chargement, setChargement] = useState(false)
   const { register, handleSubmit, setValue } = useForm();
   const dispatch = useDispatch()
@@ -17,23 +16,19 @@ export default function FormulairePayerFacture({retour, value}) {
       mode: data.mode,
       idFacture: value._id,
       ref: data.ref,
-      type: type,
-      montantPayer: type === 'enpartie' ? montantPartiel : value.montant
+      montantPayer: montantPayer
     }, null, 2))
     setChargement(true)
-    /*
-    dispatch(comptabiliteActions.payerFacture({
+    
+    dispatch(comptabiliteActions.payerEncoreFacture({
       mode: data.mode,
       idFacture: value._id,
       ref: data.ref,
-      type: type,
-      montant: type === 'enpartie' ? montantPartiel : value.montant
+      montant: montantPayer
     })).then(() => {
       setChargement(false)
       retour()
     })
-    */
-    setChargement(false)
     // retour()
   }
 
@@ -56,9 +51,9 @@ export default function FormulairePayerFacture({retour, value}) {
           <div className='text-xs text-gray-500'>{value?.client?.cel}</div>
         </div>
         <div className='text-right'>
-          <div className='font-bold text-lg text-blue-600'>{value?.montant} FCFA</div>
+          <div className='font-bold text-lg text-blue-600'>{value?.resteApayer} FCFA</div>
           <div className='text-xs text-gray-400'>Montant prestation</div>
-          <div className='font-medium text-xs text-gray-600'>Période : {value?.periodeAjouter}</div>
+          <div className='font-medium text-xs text-gray-600'>Période : {value?.periode}</div>
         </div>
       </div>
 
@@ -91,38 +86,23 @@ export default function FormulairePayerFacture({retour, value}) {
       )}
 
       <div className='mb-4'>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Type de paiement</label>
-        <select
-          value={type}
-          onChange={e => setType(e.target.value)}
+        <label className="block text-sm font-medium text-gray-700 mb-1">Montant à payer</label>
+        <input
+          type="number"
+          min={1}
+          max={value?.resteApayer}
+          value={montantPayer}
+          onChange={e => {
+            const val = e.target.value;
+            if (!val || Number(val) <= (value?.resteApayer)) {
+              setMontantPaye(val);
+            }
+          }}
           className='w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400'
-        >
-          <option value='totalite'>Paiement en totalité</option>
-          <option value='enpartie'>Paiement en partie</option>
-        </select>
+          placeholder='Montant à payer'
+          required
+        />
       </div>
-
-      {type === 'enpartie' && (
-        <div className='mb-4'>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Montant à payer</label>
-          <input
-            type="number"
-            min={1}
-            max={value?.montant - 1}
-            value={montantPartiel}
-            onChange={e => {
-              const val = e.target.value;
-              if (!val || Number(val) < value?.montant) {
-                setMontantPartiel(val);
-              }
-            }}
-            className='w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400'
-            placeholder='Montant partiel'
-            required
-          />
-          <div className="text-xs text-gray-400 mt-1">Montant maximum autorisé : {value?.montant - 1} FCFA</div>
-        </div>
-      )}
 
       <div className='flex flex-row justify-center gap-6 mt-6'>
         <button
@@ -152,4 +132,5 @@ export default function FormulairePayerFacture({retour, value}) {
     </form>
   )
 }
+
 

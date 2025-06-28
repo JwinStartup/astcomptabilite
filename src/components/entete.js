@@ -17,7 +17,7 @@ export default function Entete() {
   return (
     <header className="w-full flex justify-between items-center px-4 py-2 bg-gradient-to-r from-purple-600 via-blue-500 to-blue-700 shadow-md rounded-b-lg">
       <div className="flex items-center gap-2 cursor-pointer" onClick={()=>navigate('/')}>
-        <img src="/logo192.png" alt="Logo" className="h-8 w-8 rounded-full shadow" />
+        <img src="/ASTRAINING_LOGO_PNG.png" alt="Logo" className="h-8 w-8 rounded-full shadow" />
         <h1 className="text-2xl font-bold text-white tracking-wide drop-shadow">ASTComptable</h1>
       </div>
       {!useur ? (
@@ -36,13 +36,7 @@ export default function Entete() {
             <Avatar name={useur?.user?.nom} size="32" round={true} />
             <span className="font-medium text-blue-700 text-sm">{useur?.user?.nom}</span>
           </div>
-          <button
-            className="flex items-center gap-1 px-2 py-1 rounded hover:bg-blue-100 text-blue-700 transition"
-            onClick={logout}
-            title="Déconnexion"
-          >
-            <AiOutlineLogout size={20} />
-          </button>
+          
         </div>
       )}
     </header>

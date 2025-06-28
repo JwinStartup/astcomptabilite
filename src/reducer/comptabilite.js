@@ -158,6 +158,12 @@ function createInitialState() {
             return await fetchWrapper.post(`${url}/payerFacture`,body)
           }
           ),
+        payerEncoreFacture:createAsyncThunk(`${name}/payerEncoreFacture`,
+        async (body)=>{
+            console.log(body)
+            return await fetchWrapper.post(`${url}/payerEncoreFacture`,body)
+          }
+          ),
 
            getCoursById: createAsyncThunk(`${name}/getCoursById`,
           async (id) => {
@@ -202,6 +208,7 @@ function createExtraReducers() {
         voirRecueByid();
         voirCharge();
         payerFacture();
+        payerEncoreFacture();
         listeFacture();
         listeRecue();
         listeCharge();
@@ -494,6 +501,23 @@ function createExtraReducers() {
           
         function payerFacture() {
             var { pending, fulfilled, rejected } = extraActions.payerFacture;
+            builder
+              .addCase(pending, (state) => {
+                state.error = null;
+                state.isLoader = true;
+              })
+              .addCase(fulfilled, (state, action) => {
+               const facture = action.payload;
+                state.facture=facture
+                state.isLoader = false;
+              })
+              .addCase(rejected, (state, action) => {
+                state.isLoader = false;
+                state.error = action.error;
+              });
+          }
+        function payerEncoreFacture() {
+            var { pending, fulfilled, rejected } = extraActions.payerEncoreFacture;
             builder
               .addCase(pending, (state) => {
                 state.error = null;
