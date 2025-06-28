@@ -168,7 +168,7 @@ export default function FacturesImpayes() {
             </Link>
           </div>
         </div>
-        <div className='flex flex-col md:flex-row md:space-x-4 md:space-y-0 space-y-3 px-2 md:px-4'>
+        <div className='flex flex-col justify-center  md:flex-row md:space-x-4 md:space-y-0 space-y-3 px-2 md:px-4'>
             <div className='w-full md:w-1/3 relative'>
               <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"/>
               <input

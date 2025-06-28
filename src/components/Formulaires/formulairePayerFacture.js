@@ -13,13 +13,7 @@ export default function FormulairePayerFacture({retour, value}) {
 
   const onSubmit = (data) => {
     // Affiche les données sélectionnées dans une alerte
-    alert(JSON.stringify({
-      mode: data.mode,
-      idFacture: value._id,
-      ref: data.ref,
-      type: type,
-      montantPayer: type === 'enpartie' ? montantPartiel : value.montant
-    }, null, 2))
+   
     setChargement(true)
     
     dispatch(comptabiliteActions.payerFacture({
@@ -56,7 +50,7 @@ export default function FormulairePayerFacture({retour, value}) {
         <div className='text-right'>
           <div className='font-bold text-lg text-blue-600'>{value?.montant} FCFA</div>
           <div className='text-xs text-gray-400'>Montant prestation</div>
-          <div className='font-medium text-xs text-gray-600'>Période : {value?.periodeAjouter}</div>
+          <div className='font-medium text-xs text-gray-600'>Période : {value?.periode}</div>
         </div>
       </div>
 

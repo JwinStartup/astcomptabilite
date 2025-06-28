@@ -80,13 +80,13 @@ const dispatch = useDispatch()
             <div className="flex justify-between w-full">
               <span className="text-xs md:text-sm text-gray-500 font-medium">Montant payé :</span>
               <span className="text-xs md:text-sm font-semibold text-green-600 bg-green-50 rounded px-2 py-0.5 ml-2">
-                {value?.montantPaye || 0} FCFA
+                {value?.montantPayer || 0} FCFA
               </span>
             </div>
             <div className="flex justify-between w-full mt-1">
               <span className="text-xs md:text-sm text-gray-500 font-medium">Reste à payer :</span>
               <span className="text-xs md:text-sm font-semibold text-red-600 bg-red-50 rounded px-2 py-0.5 ml-2">
-                {value?.resteAPayer || 0} FCFA
+                {value?.resteApayer || 0} FCFA
               </span>
             </div>
           </div>
