@@ -11,20 +11,15 @@ export default function FormulairePayerEncoreFacture({retour, value}) {
   const dispatch = useDispatch()
 
   const onSubmit = (data) => {
-    // Affiche les données sélectionnées dans une alerte
-    alert(JSON.stringify({
-      mode: data.mode,
-      idFacture: value._id,
-      ref: data.ref,
-      montantPayer: montantPayer
-    }, null, 2))
+   
     setChargement(true)
     
     dispatch(comptabiliteActions.payerEncoreFacture({
       mode: data.mode,
       idFacture: value._id,
       ref: data.ref,
-      montantPayer: montantPayer
+      //convertir en valeur numerique
+      montantPayer: Number(montantPayer)
     })).then(() => {
       setChargement(false)
       retour()
