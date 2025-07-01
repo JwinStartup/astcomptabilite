@@ -5,7 +5,7 @@ import { comptabiliteActions } from '../../reducer/comptabilite';
 
 export default function FormulairePayerEncoreFacture({retour, value}) {
   const [select, setSelect] = useState('espece')
-  const [montantPayer, setMontantPaye] = useState(value?.resteApayer || 0)
+  const [montantPaye, setMontantPaye] = useState(value?.resteApayer || 0)
   const [chargement, setChargement] = useState(false)
   const { register, handleSubmit, setValue } = useForm();
   const dispatch = useDispatch()
@@ -19,7 +19,8 @@ export default function FormulairePayerEncoreFacture({retour, value}) {
       idFacture: value._id,
       ref: data.ref,
       //convertir en valeur numerique
-      montantPayer: Number(montantPayer)
+      montantPayer:Number(montantPaye),
+      resteApayer:value.resteApayer - Number(montantPaye)
     })).then(() => {
       setChargement(false)
       retour()
@@ -86,7 +87,7 @@ export default function FormulairePayerEncoreFacture({retour, value}) {
           type="number"
           min={1}
           max={value?.resteApayer}
-          value={montantPayer}
+          value={montantPaye}
           onChange={e => {
             const val = e.target.value;
             if (!val || Number(val) <= (value?.resteApayer)) {
