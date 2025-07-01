@@ -50,36 +50,8 @@ export  const PDFfacture=({value})=>{
                   <Text style={tw('text-xs font-medium text-gray-700')}>Montant total :</Text>
                   <Text style={tw('text-xs font-bold text-blue-600')}>{value.montant} FCFA</Text>
                 </View>
-                {/* Statut */}
-                <View style={tw('flex flex-row justify-between items-center mb-1')}>
-                  <Text style={tw('text-xs font-medium text-gray-700')}>Statut :</Text>
-                  <Text style={tw(
-                    `text-xs font-bold px-2 py-1 rounded-full ${
-                      value.type === 'impaye'
-                        ? 'bg-red-100 text-red-600'
-                        : value.type === 'enpartie'
-                        ? 'bg-yellow-100 text-yellow-700'
-                        : 'bg-green-100 text-green-600'
-                    }`
-                  )}>
-                    {value.type === 'impaye' && 'Impayé'}
-                    {value.type === 'enpartie' && 'En partie'}
-                    {value.type === 'totalite' && 'Payé'}
-                  </Text>
-                </View>
-                {/* Si en partie, afficher montant payé et reste à payer */}
-                {value.type === 'enpartie' && (
-                  <View style={tw('flex flex-row justify-between items-center mb-1')}>
-                    <Text style={tw('text-xs text-gray-500')}>Montant payé :</Text>
-                    <Text style={tw('text-xs font-bold text-green-600')}>{value?.montantPaye || 0} FCFA</Text>
-                  </View>
-                )}
-                {value.type === 'enpartie' && (
-                  <View style={tw('flex flex-row justify-between items-center mb-1')}>
-                    <Text style={tw('text-xs text-gray-500')}>Reste à payer :</Text>
-                    <Text style={tw('text-xs font-bold text-red-600')}>{value?.resteAPayer || 0} FCFA</Text>
-                  </View>
-                )}
+                
+                
               </View>
 
               {/* Tableau des cours */}
