@@ -46,14 +46,13 @@ export  const PDFfacture=({value})=>{
                 <Text style={tw('text-[8px] font-medium text-gray-700 mb-1')}>Client : {value?.client?.nom} {value?.client?.prenoms}</Text>
                 <Text style={tw('text-[8px] font-medium text-gray-700 mb-1')}>Cel : {value?.client?.cel}</Text>
                 <Text style={tw('text-[8px] font-medium text-gray-700 mb-1')}>Période : {value?.periode}</Text>
+                <Text style={tw('text-[8px] font-medium text-gray-700 mb-1')}>Année scolaire : {value?.anneeAcademique}</Text>
               </View>
 
               {/* Tableau des cours */}
               <View style={tw('mt-4 border border-blue-200 rounded-lg overflow-hidden')}>
                 <View style={tw('flex flex-row bg-blue-100')}>
-                  <Text style={tw('w-[60px] py-1 px-1 text-[8px] text-center font-bold text-blue-900')}>Année</Text>
                   <Text style={tw('flex-1 py-1 px-1 text-[8px] text-center font-bold text-blue-900')}>Élève</Text>
-                  <Text style={tw('w-[60px] py-1 px-1 text-[8px] text-center font-bold text-blue-900')}>Classe</Text>
                   <Text style={tw('w-[70px] py-1 px-1 text-[8px] text-center font-bold text-blue-900 text-right')}>Montant</Text>
                 </View>
                 {Array.isArray(value?.cours) && value.cours.length > 0 ? (
