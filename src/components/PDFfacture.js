@@ -43,36 +43,36 @@ export  const PDFfacture=({value})=>{
                 <Text style={tw('text-sm font-bold text-black')}>Information(s) Client</Text>
               </View>
               <View>
-                <Text style={tw('text-xs font-medium text-gray-700 mb-1')}>Client : {value?.client?.nom} {value?.client?.prenoms}</Text>
-                <Text style={tw('text-xs font-medium text-gray-700 mb-1')}>Cel : {value?.client?.cel}</Text>
-                <Text style={tw('text-xs font-medium text-gray-700 mb-1')}>Période : {value?.periode}</Text>
+                <Text style={tw('text-[8px] font-medium text-gray-700 mb-1')}>Client : {value?.client?.nom} {value?.client?.prenoms}</Text>
+                <Text style={tw('text-[8px] font-medium text-gray-700 mb-1')}>Cel : {value?.client?.cel}</Text>
+                <Text style={tw('text-[8px] font-medium text-gray-700 mb-1')}>Période : {value?.periode}</Text>
               </View>
 
               {/* Tableau des cours */}
               <View style={tw('mt-4 border border-blue-200 rounded-lg overflow-hidden')}>
                 <View style={tw('flex flex-row bg-blue-100')}>
-                  <Text style={tw('w-[60px] py-1 px-1 text-xs font-bold text-blue-900')}>Année</Text>
-                  <Text style={tw('flex-1 py-1 px-1 text-xs font-bold text-blue-900')}>Élève</Text>
-                  <Text style={tw('w-[60px] py-1 px-1 text-xs font-bold text-blue-900')}>Classe</Text>
-                  <Text style={tw('w-[70px] py-1 px-1 text-xs font-bold text-blue-900 text-right')}>Montant</Text>
+                  <Text style={tw('w-[60px] py-1 px-1 text-[8px] text-center font-bold text-blue-900')}>Année</Text>
+                  <Text style={tw('flex-1 py-1 px-1 text-[8px] text-center font-bold text-blue-900')}>Élève</Text>
+                  <Text style={tw('w-[60px] py-1 px-1 text-[8px] text-center font-bold text-blue-900')}>Classe</Text>
+                  <Text style={tw('w-[70px] py-1 px-1 text-[8px] text-center font-bold text-blue-900 text-right')}>Montant</Text>
                 </View>
                 {Array.isArray(value?.cours) && value.cours.length > 0 ? (
                   value.cours.map((cours, i) => (
                     <View key={cours._id || i} style={tw(`flex flex-row ${i%2===0 ? 'bg-white' : 'bg-gray-50'}`)}>
-                      <Text style={tw('w-[60px] py-1 px-1 text-xs')}>{cours.anneeAcademique}</Text>
-                      <Text style={tw('flex-1 py-1 px-1 text-xs')}>{cours.eleve?.nom} {cours.eleve?.prenoms}</Text>
-                      <Text style={tw('w-[60px] py-1 px-1 text-xs')}>{cours.classe}</Text>
-                      <Text style={tw('w-[70px] py-1 px-1 text-xs text-right')}>{cours.prix || 0} FCFA</Text>
+                      <Text style={tw('w-[60px] py-1 px-1 text-[8px]')}>{cours.anneeAcademique}</Text>
+                      <Text style={tw('flex-1 py-1 px-1 text-[8px]')}>{cours.eleve?.nom} {cours.eleve?.prenoms}</Text>
+                      <Text style={tw('w-[60px] py-1 px-1 text-[8px]')}>{cours.classe}</Text>
+                      <Text style={tw('w-[70px] py-1 px-1 text-[8px] text-right')}>{cours.prix || 0} FCFA</Text>
                     </View>
                   ))
                 ) : (
                   <View style={tw('flex flex-row')}>
-                    <Text style={tw('py-1 px-1 text-xs text-gray-400')}>Aucun cours</Text>
+                    <Text style={tw('py-1 px-1 text-[8px] text-gray-400')}>Aucun cours</Text>
                   </View>
                 )}
               </View>
             </View>
-            <View style={tw('flex justify-end p-2 mr-7')}>
+            <View style={tw('flex p-2 mr-7')}>
               <Text style={tw('font-medium tracking-tight text-[9px] text-black italic')}>
                 La présente facture est arrêtée à la somme de <Text style={tw('font-bold tracking-wider text-[9px] text-red-500')}>{value?.montant} FCFA</Text>
               </Text>
