@@ -3,79 +3,58 @@ import Entete from '../components/entete'
 import {useNavigate} from 'react-router-dom'
 import Backdrop from '../components/backdrop'
 import { useDispatch, useSelector } from 'react-redux'
-import VoirRecue from '../components/voirRecue.js'
+import ComposantRecue from '../components/ComposantRecue.js'
 import { comptabiliteActions } from '../reducer/comptabilite.js'
 import { RingLoader } from 'react-spinners'
 export default function Recues() {
  const dispatch = useDispatch()
   const navigate=useNavigate()
- const [rub , setRub]=useState({nom:'',bol:false,value:null})
+  //on va utiliser useParams pour récupérer l'id de la facture depuis l'url
+  const {id} = useParams()
+  
   useEffect(() => { 
-    dispatch(comptabiliteActions.listeRecue())
+    dispatch(comptabiliteActions.getFactureById(id))
   },[])
   
-  const {isLoader,recues} = useSelector((state)=>{
+  const {isLoader,recues,facture} = useSelector((state)=>{
     return state.comptabiliteReducer
    });
   return (
     <div>
-      {console.log(recues)}
-        {rub.bol!==false&&<div>
-          <Backdrop/>
-        <VoirRecue retour={()=>setRub({bol:false})} value={rub.value}/>
-        </div>}
-         <Entete />
-         <div>
-            <div className='flex items-cennter justify-between mx-5 w-[1150px]'>
-            <div className=' mb-3 p-0  tracking-tight text-[22px] text-black font-semibold '><button className=' bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center ml-2' onClick={()=>navigate("/factures")} > retour</button>Reçues </div>
-                <div className='  flex justify-between  space-x-2'>
-                  <input type="search" className='w-[500px] bg-slate-400 rounded-3xl  pl-1 placeholder-white' placeholder='Numero de reçue' />
-                <select name="" id="">
-                    <option value="">Aujourd'hui</option>
-                    <option value="">Ce mois</option>
-                    <option value="">Tous les mois</option>
-                </select>
-            </div>
-            </div>
-            {isLoader===true?<RingLoader
-        color={"green"}
-        size={60}
-      />:
-  <> {recues.length===0?<p className='text-center w-full'>Pas de reçues </p>:
-
-
-
-            <div className='w-full flex justify-center mt-16 '>
-
-            <table className="w-full mx-2">
-  <thead>
-    <tr className="">
-      <th  className='border-b-2 text-gray-400'>Numeros</th>
-      <th  className='border-b-2 text-gray-400'>Clients</th>
-      <th  className='border-b-2 text-gray-400'>Facture</th>
-      <th  className='border-b-2 text-gray-400'>Periode</th>
-     <th  className='border-b-2 text-gray-400'>Montants</th>
-     <th  className='border-b-2 text-gray-400'>Mode paiement</th>
-     <th  className='border-b-2 text-gray-400'>Ref paiement</th>
-    </tr>
-  </thead>
-  <tbody>
-  {recues.map((value,index)=><tr onClick={()=>setRub({nom:'VOIR',bol:true,value:value} )} key={index} className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full hover:bg-green-100 cursor-pointer'>
-      <td className='font-medium text-base text-gray-500 text-center'>{value._id.slice(value._id.length-6)}</td>
-      <td className='font-medium text-base text-gray-500 text-center'>{value.client.nom} {value.client.prenoms}</td>      
-      <td className='font-medium text-base text-gray-500 text-center'>{value.facture._id.slice(value.facture._id.length-6)}</td>
-      <td className='font-medium text-base text-gray-500 text-center'>{value.periodeAjouter}</td>
-      <td className='font-medium text-base text-gray-500 text-center'>{value.montant}</td>
-      <td className='font-medium text-base text-gray-500 text-center'>{value.modePaiement}</td>
-      <td className='font-medium text-base text-gray-500 text-center'>{value.refPaiement}</td>
-    </tr>)}
-  </tbody>
-</table>
-</div>
-}
-</>
-}
-         </div>
+              {/* Entête de la page */}
+      <Entete />
+      <div className='flex flex-col items-center justify-start mt-10'>
+        {/* ajouter retour*/}
+        <button 
+          onClick={() => navigate(-1)} 
+          className='mb-5 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors'
+        >
+          {/* logo chevrons gauche de react-icons */}
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 inline-block mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <h1 className='text-2xl font-bold text-gray-800 mb-6'>Reçues de la facture N°{facture._id}</h1>
     </div>
-  )
-}
+
+     {/* Liste des reçues de la facture , on utilisera map pour afficher chaque reçue , on utilisera le composant VoirRecue pour afficher chaque reçue */}
+        <div className='w-full max-w-4xl mx-auto px-4'>
+          {isLoader ? (
+            <div className='flex items-center justify-center h-64'>
+              <RingLoader color="#3b82f6" size={50} />
+            </div>
+          ) : (
+            <div className='space-y-4'>
+              {facture?.recues?.length > 0 ? (
+                facture.recues.map((recue, index) => (
+                  <ComposantRecue key={index} value={recue} facture={facture} />
+                ))
+              ) : (
+                <div className='text-center text-gray-500'>Aucune reçue trouvée</div>
+              )}
+              </div>
+            )}
+            </div>
+    </div>
+    )
+  }

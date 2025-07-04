@@ -171,6 +171,12 @@ function createInitialState() {
             return await fetchWrapper.get(`${urlCours}/${id}`)
           }
         ),
+           getFactureById: createAsyncThunk(`${name}/getFactureById`,
+          async (id) => {
+            console.log(id)
+            return await fetchWrapper.get(`${urlCours}/${id}`)
+          }
+        ),
         createCours: createAsyncThunk(`${name}/createCours`,
           async (body) => {
             return await fetchWrapper.post(`${urlCours}`, body)
@@ -218,6 +224,7 @@ function createExtraReducers() {
         listeCommission();
         cloturer();
         getCoursById();
+        getFactureById();
         createCours();
         deleteCours();
         updateCours();
@@ -233,6 +240,24 @@ function createExtraReducers() {
               .addCase(fulfilled, (state, action) => {
                const cours = action.payload;
                 state.cour=cours;
+                state.isLoader = false;
+              })
+              .addCase(rejected, (state, action) => {
+                state.isLoader = false;
+                state.error = action.error;
+              });
+          }
+
+        function getFactureById() {
+            var { pending, fulfilled, rejected } = extraActions.getFactureById;
+            builder
+              .addCase(pending, (state) => {
+                state.error = null;
+                state.isLoader = true;
+              })
+              .addCase(fulfilled, (state, action) => {
+               const facture = action.payload;
+                state.facture=facture;
                 state.isLoader = false;
               })
               .addCase(rejected, (state, action) => {
