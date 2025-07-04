@@ -22,6 +22,7 @@ export default function Recues() {
   const {isLoader,recues,facture} = useSelector((state)=>{
     return state.comptabiliteReducer
    });
+   console.log('facture:',facture)
   return (
     <div>
               {/* Entête de la page */}
@@ -37,7 +38,7 @@ export default function Recues() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
-        <h1 className='text-2xl font-bold text-gray-800 mb-6'>Reçues de la facture N°{facture._id}</h1>
+        <h1 className='text-2xl font-bold text-gray-800 mb-6'>Reçues de la facture N°{facture?._id}</h1>
     </div>
 
      {/* Liste des reçues de la facture , on utilisera map pour afficher chaque reçue , on utilisera le composant VoirRecue pour afficher chaque reçue */}
