@@ -19,7 +19,7 @@ export default function FormulairePayerEncoreFacture({retour, value}) {
       idFacture: value._id,
       ref: data.ref,
       //convertir en valeur numerique
-      montantPayer:Number(montantPaye),
+      montantPaye:Number(montantPaye),
       resteApayer:value.resteApayer - Number(montantPaye)
     })).then(() => {
       setChargement(false)

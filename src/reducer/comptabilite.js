@@ -174,7 +174,7 @@ function createInitialState() {
            getFactureById: createAsyncThunk(`${name}/getFactureById`,
           async (id) => {
             console.log(id)
-            return await fetchWrapper.get(`${urlCours}/${id}`)
+            return await fetchWrapper.get(`${url}/factureById/${id}`)
           }
         ),
         createCours: createAsyncThunk(`${name}/createCours`,

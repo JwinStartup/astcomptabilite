@@ -45,8 +45,8 @@ export default function Recues() {
             </div>
           ) : (
             <div className='space-y-4'>
-              {facture?.recues?.length > 0 ? (
-                facture.recues.map((recue, index) => (
+              {facture?.paiement?.length > 0 ? (
+                facture.paiement.map((recue, index) => (
                   <ComposantRecue key={index} value={recue} facture={facture} />
                 ))
               ) : (
