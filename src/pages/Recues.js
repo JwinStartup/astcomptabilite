@@ -6,9 +6,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import ComposantRecue from '../components/ComposantRecue.js'
 import { comptabiliteActions } from '../reducer/comptabilite.js'
 import { RingLoader } from 'react-spinners'
+import { useNavigate,useParams } from 'react-router-dom'
+
 export default function Recues() {
  const dispatch = useDispatch()
   const navigate=useNavigate()
+  
   //on va utiliser useParams pour récupérer l'id de la facture depuis l'url
   const {id} = useParams()
   

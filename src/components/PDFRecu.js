@@ -44,20 +44,21 @@ export  const PDFRecu=({value})=>{
         <Text style={tw('text-sm font-medium text-gray-500')}>Cel: {value.client.cel}</Text>
         </View>
         <View style={tw('my-1  border-b border-b-black ')}>
-      <Text style={tw('text-sm font-bold text-black')}>Information transaction</Text>
+      <Text style={tw('text-sm font-bold text-black mb-1 uppercase tracking-wide')}>Information transaction</Text>
       </View>
-        <View style={tw('')}>
-        <Text style={tw(' font-medium  tracking-tight text-sm text-gray-500 ')}>Periode : {value.periodeAjouter}</Text>
-        <Text style={tw(' font-medium  tracking-tight text-sm text-gray-500 ')}>N* Facture : {value.facture._id.slice(value.facture._id.length-3)}</Text>
-            <Text style={tw(' font-medium  tracking-tight text-sm text-gray-500 ')}>Mode : {value.modePaiement}</Text>
-            {value.refPaiement&&<Text style={tw(' font-medium  tracking-tight text-sm text-gray-500 ')}>Ref : {value.refPaiement}</Text>}
-           
-        <Text style={tw(' font-medium  tracking-tight text-sm text-red-500 ')}>Montant payé : {value.montant} FCFA</Text>
+        <View style={tw('bg-gray-50 rounded-lg px-2 py-1 mb-2')}>
+        <Text style={tw('font-semibold tracking-tight text-sm text-gray-700 mb-1')}>Période : <Text style={tw('font-normal')}>{value.periodeAjouter}</Text></Text>
+        <Text style={tw('font-semibold tracking-tight text-sm text-gray-700 mb-1')}>N° Facture : <Text style={tw('font-normal')}>{value.facture._id.slice(value.facture._id.length-3)}</Text></Text>
+        <Text style={tw('font-semibold tracking-tight text-sm text-gray-700 mb-1')}>Mode : <Text style={tw('font-normal')}>{value.modePaiement}</Text></Text>
+        {value.refPaiement && (
+          <Text style={tw('font-semibold tracking-tight text-sm text-gray-700 mb-1')}>Réf : <Text style={tw('font-normal')}>{value.refPaiement}</Text></Text>
+        )}
+        <Text style={tw('font-bold tracking-tight text-base text-red-600 mt-2')}>Montant payé : {value.montant} FCFA</Text>
         </View>
 
       </View>
-        <View style={tw('flex justify-end pb-1 mt-6')}>
-        <Text style={tw(' font-medium  tracking-tight text-[8px] text-black  ')}>crée le {moment(`${value.createdAt}`).locale('fr').format('LLLL')}</Text>
+        <View style={tw('flex justify-end pb-1 mt-8')}>
+        <Text style={tw('font-medium tracking-tight text-[9px] text-gray-700 italic')}>Créé le {moment(`${value.createdAt}`).locale('fr').format('LLLL')}</Text>
         </View>
 
         <View style={tw('flex flex-col justify-center border-t border-t-red-500  mt-1')}>
