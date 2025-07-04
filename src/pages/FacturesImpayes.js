@@ -222,7 +222,7 @@ export default function FacturesImpayes() {
                 {filteredFactures.map((value,index)=>
                   <VoirFacture 
                     key={index}
-                    voirRecue={()=>setRub({nom:'VOIRRECUE',bol:true, value:value})}
+                    voirRecue={()=>navigate(`/factures/${value._id}`)}
                     supprimer={()=>setRub({nom:'SUPPRIMER',bol:true, value:value})} 
                     payer={()=>setRub({nom:'PAYER',bol:true, value:value})} 
                     payerEncore={()=>setRub({nom:'PAYERENCORE',bol:true, value:value})}
