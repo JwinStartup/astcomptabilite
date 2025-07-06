@@ -17,6 +17,7 @@ export default function ComposantRecue({ value,client }) {
     const [ficher, setFicher] = useState(null);
 
     const download = async () => {
+        console.log(value,client)
         const blob = await pdf(<MyDoc value={value} client={client} />).toBlob();
         const blobUrl = window.URL.createObjectURL(blob);
         const anchor = window.document.createElement('a');
@@ -27,6 +28,7 @@ export default function ComposantRecue({ value,client }) {
     }
 
     const partager = async () => {
+          console.log(value,client)
         const blob = await pdf(<MyDoc value={value} client={client} />).toBlob();
         const formdata = new FormData();
         let file = new File([blob], `Reçue${value?._id.slice(value?._id.length - 3)}.pdf`);
