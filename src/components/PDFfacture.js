@@ -74,7 +74,7 @@ export  const PDFfacture=({value})=>{
                 La présente facture est arrêtée à la somme de <Text style={tw('font-bold tracking-wider text-[9px] text-red-500')}>{value?.montant} FCFA</Text>
               </Text>
             </View>
-            <View style={tw('flex justify-end mt-6 pb-1')}>
+            <View style={tw('flex justify-end mt-2 pb-1')}>
               <Text style={tw('font-medium tracking-tight text-[9px] text-black')}>
                 Créée le {moment(`${value?.createdAt}`).locale('fr').format('LLLL')}
               </Text>
@@ -87,7 +87,7 @@ export  const PDFfacture=({value})=>{
                 Contact: 07 59 63 27 88
               </Text>
               <Text style={tw('font-medium tracking-tight text-[8px] text-black text-center mx-3')}>
-                Email: groupeas.info@yahoo.fr
+                Email: groupeas.infos@yahoo.fr
               </Text>
             </View>
           </View>
