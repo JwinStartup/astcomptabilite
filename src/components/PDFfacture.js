@@ -50,7 +50,7 @@ export  const PDFfacture=({value})=>{
               </View>
 
               {/* Tableau des cours */}
-              <View style={tw('mt-4 border border-blue-200 rounded-lg overflow-hidden')}>
+              <View style={tw('mt-2 border border-blue-200 rounded-lg overflow-hidden')}>
                 <View style={tw('flex flex-row bg-blue-100')}>
                   <Text style={tw('flex-1 py-1 px-1 text-[8px]  font-bold text-blue-900')}>Élève</Text>
                   <Text style={tw('w-[70px] py-1 px-1 text-[8px]  font-bold text-blue-900 text-right')}>Montant</Text>
@@ -74,12 +74,12 @@ export  const PDFfacture=({value})=>{
                 La présente facture est arrêtée à la somme de <Text style={tw('font-bold tracking-wider text-[9px] text-red-500')}>{value?.montant} FCFA</Text>
               </Text>
             </View>
-            <View style={tw('flex justify-end mt-2 pb-1')}>
+            <View style={tw('flex justify-end mt-1 pb-1')}>
               <Text style={tw('font-medium tracking-tight text-[9px] text-black')}>
                 Créée le {moment(`${value?.createdAt}`).locale('fr').format('LLLL')}
               </Text>
             </View>
-            <View style={tw('flex flex-col justify-center border-t border-t-red-500 mt-2 pt-1')}>
+            <View style={tw('flex flex-col justify-center border-t border-t-red-500 mt-1 pt-1')}>
               <Text style={tw('font-medium tracking-tight text-[8px] text-red-400 text-center mx-3')}>
                 AS-TRAINING, nous communiquons l'excellence
               </Text>

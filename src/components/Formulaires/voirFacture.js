@@ -129,10 +129,16 @@ const dispatch = useDispatch()
             Payer
           </button>
         ) : value?.type === 'enpartie' ? (
+          <div className="flex flex-col gap-2">
           <button onClick={()=>payerEncore()} 
             className="px-4 py-2 bg-yellow-50 text-yellow-700 rounded-lg hover:bg-yellow-100 transition-colors font-medium text-sm md:text-base">
             Payer encore
           </button>
+          <button onClick={()=>voirRecue()} 
+            className="px-4 py-2 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition-colors font-medium text-sm md:text-base">
+            Voir reçu
+          </button>
+          </div>
         ):(
           <button onClick={()=>voirRecue()} 
             className="px-4 py-2 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition-colors font-medium text-sm md:text-base">
