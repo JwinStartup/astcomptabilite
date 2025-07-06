@@ -6,7 +6,7 @@ import { PDFRecu } from './PDFRecu';
 import { WhatsappShareButton, WhatsappIcon } from 'react-share';
 
 const MyDoc = ({ value,client }) => (
-  <Document pageMode='fullScreen' title={`Reçue N° ${value._id.slice(value._id.length - 3)}`}>
+  <Document pageMode='fullScreen' title={`Reçue N° ${value?._id?.slice(-3)}`}>
     <Page size="A7">
       <PDFRecu value={value} client={client} />
     </Page>
@@ -21,7 +21,7 @@ export default function ComposantRecue({ value,client }) {
         const blob = await pdf(<MyDoc value={value} client={client} />).toBlob();
         const blobUrl = window.URL.createObjectURL(blob);
         const anchor = window.document.createElement('a');
-        anchor.download = `Reçue N° ${value?._id.slice(value?._id.length - 3)}.pdf`;
+        anchor.download = `Reçue N° ${value?._id?.slice(-3)}.pdf`;
         anchor.href = blobUrl;
         anchor.click();
         window.URL.revokeObjectURL(blobUrl);
@@ -31,7 +31,7 @@ export default function ComposantRecue({ value,client }) {
           console.log(value,client)
         const blob = await pdf(<MyDoc value={value} client={client} />).toBlob();
         const formdata = new FormData();
-        let file = new File([blob], `Reçue${value?._id.slice(value?._id.length - 3)}.pdf`);
+        let file = new File([blob], `Reçue${value?._id?.slice(-3)}.pdf`);
         formdata.append("file", file);
         formdata.append("upload_preset", "cfcpdf")
         Axios.post(
@@ -62,16 +62,20 @@ export default function ComposantRecue({ value,client }) {
                 <table className='min-w-full text-sm border rounded-lg'>
                     <tbody>
                         <tr className='border-b'>
+                            <td className='py-2 px-3 text-gray-500 font-medium'>Année Scolaire :</td>
+                            <td className='py-2 px-3 text-gray-800'>{value?.anneeAcademique}</td>
+                        </tr>
+                    <tr className='border-b'>
+                        <td className='py-2 px-3 text-gray-500 font-medium'>Période :</td>
+                        <td className='py-2 px-3 text-gray-800'>{value?.periode}</td>
+                    </tr>
+                    <tr className='border-b'>
+                        <td className='py-2 px-3 text-gray-500 font-medium'>Mode de paiement :</td>
+                        <td className='py-2 px-3 text-gray-800'>{value?.modePaiement}</td>
+                    </tr>
+                        <tr className='border-b'>
                             <td className='py-2 px-3 text-gray-500 font-medium'>Montant payé :</td>
                             <td className='py-2 px-3 text-gray-800 font-semibold'>{value?.montantPaye} FCFA</td>
-                        </tr>
-                        <tr className='border-b'>
-                            <td className='py-2 px-3 text-gray-500 font-medium'>Période :</td>
-                            <td className='py-2 px-3 text-gray-800'>{value?.periode}</td>
-                        </tr>
-                        <tr className='border-b'>
-                            <td className='py-2 px-3 text-gray-500 font-medium'>Mode de paiement :</td>
-                            <td className='py-2 px-3 text-gray-800'>{value?.modePaiement}</td>
                         </tr>
                         {value?.refPaiement && (
                             <tr>

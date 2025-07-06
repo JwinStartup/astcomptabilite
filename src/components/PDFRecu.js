@@ -35,7 +35,7 @@ export  const PDFRecu=({value,client})=>{
 
         <Text style={tw('font-bold  tracking-tight text-[11px] text-black pl-1')}>
             Reçue
-        <Text style={tw('font-normal  tracking-tight text-[12px] text-red-400 pl-1')}> N° {value._id.slice(value._id.length-3)} </Text>
+        <Text style={tw('font-normal  tracking-tight text-[12px] text-red-400 pl-1')}> N° {value?._id?.slice(-3)} </Text>
       </Text></View> 
       <View style={tw('flex flex-col w-full   justify-between ')}>
       <View style={tw('my-2 border-b border-b-black py-1')}>
@@ -51,7 +51,7 @@ export  const PDFRecu=({value,client})=>{
       </View>
         <View style={tw('bg-gray-50 rounded-lg px-2 py-1 mb-2')}>
         <Text style={tw('font-semibold tracking-tight text-sm text-gray-700 mb-1')}>Période : <Text style={tw('font-normal')}>{value?.periode}</Text></Text>
-        <Text style={tw('font-semibold tracking-tight text-sm text-gray-700 mb-1')}>N° Facture : <Text style={tw('font-normal')}>{value?.facture?._id.slice(value?.facture?._id.length-3)}</Text></Text>
+        <Text style={tw('font-semibold tracking-tight text-sm text-gray-700 mb-1')}>N° Facture : <Text style={tw('font-normal')}>{value?.facture.slice(-3)}</Text></Text>
         <Text style={tw('font-semibold tracking-tight text-sm text-gray-700 mb-1')}>Mode : <Text style={tw('font-normal')}>{value?.modePaiement}</Text></Text>
         {value.refPaiement && (
           <Text style={tw('font-semibold tracking-tight text-sm text-gray-700 mb-1')}>Réf : <Text style={tw('font-normal')}>{value?.refPaiement}</Text></Text>
