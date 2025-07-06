@@ -76,7 +76,7 @@ export default function VoirRecue({ retour, value }) {
           </div>
           <div className='flex flex-row justify-between items-center mb-4'>
             <div>
-              <div className='text-base font-semibold text-gray-700'>{client.nom} {client.prenoms}</div>
+              <div className='text-base font-semibold text-gray-700'>{recue.client.nom} {recue.client.prenoms}</div>
               <div className='text-xs text-gray-500'>{client.cel}</div>
             </div>
             <div className='text-right'>
