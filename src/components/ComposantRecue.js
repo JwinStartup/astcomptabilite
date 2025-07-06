@@ -12,7 +12,7 @@ const MyDoc = ({ value }) => (
     </Page>
   </Document>
 );
-export default function ComposantRecue({ value,facture }) {
+export default function ComposantRecue({ value,client }) {
     // Sécurité d'accès aux propriétés imbriquées
     const client = value?.client || {};
     const [ficher, setFicher] = useState(null);
@@ -62,11 +62,11 @@ export default function ComposantRecue({ value,facture }) {
                     <tbody>
                         <tr className='border-b'>
                             <td className='py-2 px-3 text-gray-500 font-medium'>Montant payé :</td>
-                            <td className='py-2 px-3 text-gray-800 font-semibold'>{value?.montant} FCFA</td>
+                            <td className='py-2 px-3 text-gray-800 font-semibold'>{value?.montantPaye} FCFA</td>
                         </tr>
                         <tr className='border-b'>
                             <td className='py-2 px-3 text-gray-500 font-medium'>Période :</td>
-                            <td className='py-2 px-3 text-gray-800'>{value?.periodeAjouter}</td>
+                            <td className='py-2 px-3 text-gray-800'>{value?.periode}</td>
                         </tr>
                         <tr className='border-b'>
                             <td className='py-2 px-3 text-gray-500 font-medium'>Mode de paiement :</td>

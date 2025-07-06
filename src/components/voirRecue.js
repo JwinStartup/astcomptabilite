@@ -76,18 +76,18 @@ export default function VoirRecue({ retour, value }) {
           </div>
           <div className='flex flex-row justify-between items-center mb-4'>
             <div>
-              <div className='text-base font-semibold text-gray-700'>{recue.client.nom} {recue.client.prenoms}</div>
-              <div className='text-xs text-gray-500'>{recue.client.cel}</div>
+              <div className='text-base font-semibold text-gray-700'>{client.nom} {client.prenoms}</div>
+              <div className='text-xs text-gray-500'>{client.cel}</div>
             </div>
             <div className='text-right'>
-              <div className='font-bold text-lg text-blue-600'>{recue.montant} FCFA</div>
+              <div className='font-bold text-lg text-blue-600'>{recue.montantPaye} FCFA</div>
               <div className='text-xs text-gray-400'>Montant payé</div>
             </div>
           </div>
           <div className='mb-2'>
             <div className='flex flex-row justify-between'>
               <span className='text-sm text-gray-500'>Période :</span>
-              <span className='font-medium text-gray-700'>{recue.periodeAjouter}</span>
+              <span className='font-medium text-gray-700'>{recue.periode}</span>
             </div>
             <div className='flex flex-row justify-between'>
               <span className='text-sm text-gray-500'>Mode :</span>

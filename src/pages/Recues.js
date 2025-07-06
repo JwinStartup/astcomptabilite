@@ -51,7 +51,7 @@ export default function Recues() {
             <div className='space-y-4'>
               {facture?.paiement?.length > 0 ? (
                 facture.paiement.map((recue, index) => (
-                  <ComposantRecue key={index} value={recue} facture={facture} />
+                  <ComposantRecue key={index} value={recue} client={facture?.client} />
                 ))
               ) : (
                 <div className='text-center text-gray-500'>Aucune reçue trouvée</div>
