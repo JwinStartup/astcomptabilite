@@ -14,7 +14,6 @@ const MyDoc = ({ value }) => (
 );
 export default function ComposantRecue({ value,client }) {
     // Sécurité d'accès aux propriétés imbriquées
-    const client = value?.client || {};
     const [ficher, setFicher] = useState(null);
 
     const download = async () => {
