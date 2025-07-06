@@ -18,6 +18,8 @@ export default function FormulairePayerEncoreFacture({retour, value}) {
       mode: data.mode,
       idFacture: value._id,
       ref: data.ref,
+       periode: value.periode,
+       anneeAcademique:value.anneeAcademique,
       //convertir en valeur numerique
       montantPaye:Number(montantPaye),
       resteApayer:value.resteApayer - Number(montantPaye)

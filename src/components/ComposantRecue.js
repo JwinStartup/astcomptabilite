@@ -5,10 +5,10 @@ import { pdf, Document, Page } from '@react-pdf/renderer';
 import { PDFRecu } from './PDFRecu';
 import { WhatsappShareButton, WhatsappIcon } from 'react-share';
 
-const MyDoc = ({ value }) => (
+const MyDoc = ({ value,client }) => (
   <Document pageMode='fullScreen' title={`Reçue N° ${value._id.slice(value._id.length - 3)}`}>
     <Page size="A7">
-      <PDFRecu value={value} />
+      <PDFRecu value={value} client={client} />
     </Page>
   </Document>
 );
@@ -17,19 +17,19 @@ export default function ComposantRecue({ value,client }) {
     const [ficher, setFicher] = useState(null);
 
     const download = async () => {
-        const blob = await pdf(<MyDoc value={value} />).toBlob();
+        const blob = await pdf(<MyDoc value={value} client={client} />).toBlob();
         const blobUrl = window.URL.createObjectURL(blob);
         const anchor = window.document.createElement('a');
-        anchor.download = `Reçue N° ${value._id.slice(value._id.length - 3)}.pdf`;
+        anchor.download = `Reçue N° ${value?._id.slice(value?._id.length - 3)}.pdf`;
         anchor.href = blobUrl;
         anchor.click();
         window.URL.revokeObjectURL(blobUrl);
     }
 
     const partager = async () => {
-        const blob = await pdf(<MyDoc value={value} />).toBlob();
+        const blob = await pdf(<MyDoc value={value} client={client} />).toBlob();
         const formdata = new FormData();
-        let file = new File([blob], `Reçue${value._id.slice(value._id.length - 3)}.pdf`);
+        let file = new File([blob], `Reçue${value?._id.slice(value?._id.length - 3)}.pdf`);
         formdata.append("file", file);
         formdata.append("upload_preset", "cfcpdf")
         Axios.post(
@@ -99,7 +99,7 @@ export default function ComposantRecue({ value,client }) {
                 ) : (
                     <WhatsappShareButton
                         url={ficher}
-                        title={`Salut M/Mne ${client.nom}. Vous trouverez ci-joint le lien de votre reçue  N° ${value._id.slice(value._id.length - 3)} de la facture de prestation N° ${value.facture?._id?.slice(value.facture._id.length - 3)} du mois de ${value.periodeAjouter} .Merci pour votre confiance et excellente journée `}
+                        title={`Salut M/Mne ${client.nom} ${client.prenoms}. Vous trouverez ci-joint le lien de votre reçue  N° ${value?._id.slice(value?._id.length - 3)} de la facture de prestation N° ${value?._id?.slice(value?._id.length - 3)} du mois de ${value.periode} .Merci pour votre confiance et excellente journée `}
                     >
                         <button type="button" className="text-green-700 gap-2 font-medium text-sm px-3 py-2 text-center inline-flex items-center">
                             <WhatsappIcon logoFillColor='white' size={30} round={true} />

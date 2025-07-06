@@ -27,7 +27,7 @@ export default function Recues() {
     <div>
               {/* Entête de la page */}
       <Entete />
-      <div className='flex flex-col items-center justify-start mt-10'>
+      <div className='flex flex-row items-center justify-start mt-10'>
         {/* ajouter retour*/}
         <button 
           onClick={() => navigate(-1)} 
@@ -38,7 +38,7 @@ export default function Recues() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
-        <h1 className='text-2xl font-bold text-gray-800 mb-6'>Reçues de la facture N°{facture?._id}</h1>
+        <h1 className='text-2xl font-bold text-gray-800 mb-6'>Reçues de la facture N°{facture?._id?.slice(-3) || ''}</h1>
     </div>
 
      {/* Liste des reçues de la facture , on utilisera map pour afficher chaque reçue , on utilisera le composant VoirRecue pour afficher chaque reçue */}

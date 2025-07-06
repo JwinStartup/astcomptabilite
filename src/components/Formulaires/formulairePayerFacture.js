@@ -19,6 +19,8 @@ export default function FormulairePayerFacture({retour, value}) {
     dispatch(comptabiliteActions.payerFacture({
       mode: data.mode,
       idFacture: value._id,
+      periode: value.periode,
+      anneeAcademique:value.anneeAcademique,
       ref: data.ref,
       type: type,
       montantPayer: type === 'enpartie' ? montantPartiel : value.montant
