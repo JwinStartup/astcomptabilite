@@ -52,8 +52,8 @@ export  const PDFfacture=({value})=>{
               {/* Tableau des cours */}
               <View style={tw('mt-4 border border-blue-200 rounded-lg overflow-hidden')}>
                 <View style={tw('flex flex-row bg-blue-100')}>
-                  <Text style={tw('flex-1 py-1 px-1 text-[8px] text-center font-bold text-blue-900')}>Élève</Text>
-                  <Text style={tw('w-[70px] py-1 px-1 text-[8px] text-center font-bold text-blue-900 text-right')}>Montant</Text>
+                  <Text style={tw('flex-1 py-1 px-1 text-[8px]  font-bold text-blue-900')}>Élève</Text>
+                  <Text style={tw('w-[70px] py-1 px-1 text-[8px]  font-bold text-blue-900 text-right')}>Montant</Text>
                 </View>
                 {Array.isArray(value?.cours) && value.cours.length > 0 ? (
                   value.cours.map((cours, i) => (

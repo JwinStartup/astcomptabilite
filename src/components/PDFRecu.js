@@ -60,7 +60,7 @@ export  const PDFRecu=({value,client})=>{
         </View>
 
       </View>
-        <View style={tw('flex justify-end pb-1 mt-8')}>
+        <View style={tw('flex justify-end pb-1 mt-2')}>
         <Text style={tw('font-medium tracking-tight text-[9px] text-gray-700 italic')}>Créé le {moment(`${value.createdAt}`).locale('fr').format('LLLL')}</Text>
         </View>
 
