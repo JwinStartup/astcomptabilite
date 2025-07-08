@@ -35,7 +35,7 @@ export default function Bilan() {
   useEffect(() => {
     // récupération des statistiques avec paramètre période et année réelle
     const year = getYearFromAnneeAndMois(annee, periode)
-    dispatch(comptabiliteActions.statistiqueFactures(`${periode} ${year}`))
+    dispatch(comptabiliteActions.statistiqueFactures(`${periode} ${year}`,annee))
   }, [periode, annee, dispatch])
 
   const { isLoader, statistique } = useSelector((state) => {
