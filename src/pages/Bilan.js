@@ -41,7 +41,7 @@ export default function Bilan() {
   const { isLoader, statistique } = useSelector((state) => {
     return state.comptabiliteReducer
   });
-  console.log('statistique', statistique)
+  console.log('statistique en frontend', statistique)
 
   // Valeurs par défaut si pas de données
   const stats = statistique || {
