@@ -34,6 +34,7 @@ export default function Bilan() {
   const navigate = useNavigate()
   useEffect(() => {
     // récupération des statistiques avec paramètre période et année réelle
+    console.log(annee)
     const year = getYearFromAnneeAndMois(annee, periode)
     dispatch(comptabiliteActions.statistiqueFactures(`${periode} ${year}`,annee))
   }, [periode, annee, dispatch])
