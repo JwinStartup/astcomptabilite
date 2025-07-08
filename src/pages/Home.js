@@ -88,7 +88,7 @@ export default function Home() {
               <li className="flex items-center text-base text-gray-700"><GiCheckMark size={18} className="text-[#764929] mr-2" />Clôturer les bilans</li>
               <li className="flex items-center text-base text-gray-700"><GiCheckMark size={18} className="text-[#764929] mr-2" />Voir le résultat net</li>
             </ul>
-            <Link to='/profil' className="inline-flex items-center px-4 py-2 text-sm font-semibold text-white bg-[#f01e2c] rounded-lg hover:bg-red-700 transition-colors">
+            <Link to='/bilan' className="inline-flex items-center px-4 py-2 text-sm font-semibold text-white bg-[#f01e2c] rounded-lg hover:bg-red-700 transition-colors">
               Commencer
               <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 14 10">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M1 5h12m0 0L9 1m4 4L9 9"/>

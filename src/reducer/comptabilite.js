@@ -27,6 +27,7 @@ function createInitialState() {
       charges:[],
       recue: null,
       recues:[],
+      statistique:null,
       commissions:[],
         total:null,
     };
@@ -197,6 +198,12 @@ function createInitialState() {
             return await fetchWrapper.get(`${urlCours}`)
           }
         ),
+        //statistique des factures /statistiquesFactures/:periode
+        statistiqueFactures: createAsyncThunk(`${name}/statistiqueFactures`,
+          async (periode) => {
+            return await fetchWrapper.get(`${url}/statistiquesFactures/${periode}`)
+          }
+        ),
          
   }
   }
@@ -229,6 +236,7 @@ function createExtraReducers() {
         deleteCours();
         updateCours();
         getAllCours();
+        statistiqueFactures();
 
         function getCoursById() {
             var { pending, fulfilled, rejected } = extraActions.getCoursById;
@@ -674,6 +682,23 @@ function createExtraReducers() {
               .addCase(fulfilled, (state, action) => {
                const recue = action.payload;
                 state.recues=recue
+                state.isLoader = false;
+              })
+              .addCase(rejected, (state, action) => {
+                state.isLoader = false;
+                state.error = action.error;
+              });
+          }
+          function statistiqueFactures() {
+            var { pending, fulfilled, rejected } = extraActions.statistiqueFactures;
+            builder
+              .addCase(pending, (state) => {
+                state.error = null;
+                state.isLoader = true;
+              })
+              .addCase(fulfilled, (state, action) => {
+               const statistique = action.payload;
+                state.statistique=statistique
                 state.isLoader = false;
               })
               .addCase(rejected, (state, action) => {
