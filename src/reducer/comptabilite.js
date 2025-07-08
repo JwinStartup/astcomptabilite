@@ -202,7 +202,7 @@ function createInitialState() {
         statistiqueFactures: createAsyncThunk(`${name}/statistiqueFactures`,
           async (body) => {
             console.log(body)
-            return await fetchWrapper.post(`${url}/statistiquesFacture}`,body)
+            return await fetchWrapper.post(`${url}/statistiquesFacture`,body)
           }
         ),
          
