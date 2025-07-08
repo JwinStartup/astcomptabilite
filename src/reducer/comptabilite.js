@@ -200,9 +200,9 @@ function createInitialState() {
         ),
         //statistique des factures /statistiquesFactures/:periode/:anneeAcademique
         statistiqueFactures: createAsyncThunk(`${name}/statistiqueFactures`,
-          async (periode,anneeAcademique) => {
-            console.log(periode,anneeAcademique)
-            return await fetchWrapper.get(`${url}/statistiquesFactures/${periode}/${anneeAcademique}`)
+          async (body) => {
+            console.log(body)
+            return await fetchWrapper.post(`${url}/statistiquesFactures}`,body)
           }
         ),
          
