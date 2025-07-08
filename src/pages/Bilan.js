@@ -57,8 +57,9 @@ export default function Bilan() {
 
   return (
     <div className="bilan-page min-h-screen bg-gray-100">
+      <Entete/>
       {/* Entête personnalisée */}
-      <div className="flex items-center justify-between bg-white px-4 py-3 shadow-sm">
+      <div className="flex items-center justify-between px-4 py-3 ">
         <button
           className="px-4 py-1.5 rounded-lg bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium"
           onClick={() => navigate(-1)}
