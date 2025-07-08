@@ -56,40 +56,39 @@ export default function Bilan() {
   }
 
   return (
-    <div className="bilan-page min-h-screen bg-gray-100">
-      <Entete/>
+    <div className="bilan-page min-h-screen bg-gradient-to-br from-blue-50 via-white to-gray-100">
       {/* Entête personnalisée */}
-      <div className="flex items-center justify-between px-4 py-3 ">
+      <div className="flex items-center justify-between bg-white px-4 py-3 shadow-sm sticky top-0 z-10">
         <button
-          className="px-4 py-1.5 rounded-lg bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium"
+          className="px-4 py-1.5 rounded-lg bg-gray-100 hover:bg-blue-100 text-blue-700 font-medium transition"
           onClick={() => navigate(-1)}
         >
           Retour
         </button>
-        <span className="text-xl font-bold text-blue-700">Bilan</span>
-        <div className="w-20" /> {/* Espace pour équilibrer le flex */}
+        <span className="text-2xl font-bold text-blue-700 tracking-wide drop-shadow-sm">Bilan</span>
+        <div className="w-20" />
       </div>
       {/* Deuxième entête */}
-      <div className="bilan-header flex flex-col gap-4 bg-white p-6 rounded-xl mx-auto my-6 max-w-4xl shadow-md">
-        <div className="flex flex-wrap items-center gap-4 justify-between">
-          <div className="flex items-center gap-3">
-            <span className="font-semibold text-lg">Année académique :</span>
+      <div className="bilan-header flex flex-col gap-4 bg-white p-6 rounded-2xl mx-auto my-6 max-w-5xl shadow-lg border border-blue-100">
+        <div className="flex flex-col md:flex-row flex-wrap items-center gap-4 md:gap-8 justify-between">
+          <div className="flex items-center gap-3 w-full md:w-auto">
+            <span className="font-semibold text-lg text-blue-900">Année académique :</span>
             <select
               value={annee}
               onChange={e => setAnnee(e.target.value)}
-              className="px-4 py-1.5 rounded-lg border border-gray-300 text-base bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-200"
+              className="px-4 py-2 rounded-lg border border-blue-200 text-base bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-300 transition"
             >
               {ANNEES.map(a => <option key={a} value={a}>{a}</option>)}
             </select>
           </div>
-          <div className="flex flex-wrap gap-2 items-center">
+          <div className="flex flex-wrap gap-2 items-center w-full md:w-auto justify-center">
             {MOIS.map(mois => (
               <button
                 key={mois.long}
                 onClick={() => setPeriode(mois.long)}
-                className={`px-4 py-1.5 rounded-full font-medium mb-1 transition-all
+                className={`px-3 py-1.5 rounded-full font-medium text-sm transition-all shadow-sm
                   ${periode === mois.long
-                    ? 'bg-blue-700 text-white'
+                    ? 'bg-blue-700 text-white scale-105'
                     : 'bg-gray-200 text-gray-800 hover:bg-blue-100'}
                 `}
               >
@@ -111,11 +110,11 @@ export default function Bilan() {
             Aucune donnée disponible pour cette période.
           </div>
         ) : (
-          <div className="flex flex-wrap gap-8 justify-center mx-auto max-w-4xl">
+          <div className="flex flex-col lg:flex-row gap-8 justify-center mx-auto max-w-5xl w-full px-2">
             {/* Bloc Nombre de factures */}
-            <div className="flex-1 min-w-[320px] bg-white rounded-xl p-6 shadow-md mb-6">
-              <h3 className="text-blue-700 mb-4 text-lg font-semibold">Nombre de factures</h3>
-              <div className="flex flex-col gap-3">
+            <div className="flex-1 min-w-[260px] bg-white rounded-2xl p-6 shadow-lg mb-6 border border-blue-100 flex flex-col">
+              <h3 className="text-blue-700 mb-4 text-lg font-semibold text-center">Nombre de factures</h3>
+              <div className="flex flex-col gap-4">
                 <div className="flex items-center gap-3">
                   <span className="w-4 h-4 rounded-full bg-green-500 inline-block"></span>
                   <span className="font-medium">Payé</span>
@@ -134,9 +133,9 @@ export default function Bilan() {
               </div>
             </div>
             {/* Bloc Montants */}
-            <div className="flex-1 min-w-[320px] bg-white rounded-xl p-6 shadow-md mb-6">
-              <h3 className="text-blue-700 mb-4 text-lg font-semibold">Montants totaux (FCFA)</h3>
-              <div className="flex flex-col gap-3">
+            <div className="flex-1 min-w-[260px] bg-white rounded-2xl p-6 shadow-lg mb-6 border border-blue-100 flex flex-col">
+              <h3 className="text-blue-700 mb-4 text-lg font-semibold text-center">Montants totaux (FCFA)</h3>
+              <div className="flex flex-col gap-4">
                 <div className="flex items-center gap-3">
                   <span className="w-4 h-4 rounded-full bg-green-500 inline-block"></span>
                   <span className="font-medium">Payé</span>
@@ -167,6 +166,10 @@ export default function Bilan() {
           </div>
         )
       )}
+      {/* Footer */}
+      <div className="w-full text-center text-xs text-gray-400 mt-6 mb-2">
+        &copy; 2024 Astraining by jwin technology
+      </div>
     </div>
   )
 }
