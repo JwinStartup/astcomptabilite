@@ -82,7 +82,7 @@ export default function Bilan() {
             >
               {ANNEES.map(a => <option key={a} value={a}>{a}</option>)}
             </select>
-            <Link onclick={()=>navigate(`/bilan/2024-2025`)}>
+            <Link to='/bilan/2024-2025'>
               Voir le bilan
             </Link>
           </div>
