@@ -42,7 +42,7 @@ export default function ParentListe({voir}) {
               <div className="flex gap-2 mt-2">
                 <button
                   className="px-4 py-1 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg font-semibold text-xs shadow transition"
-                  onClick={() => navigate(`/modifier/parent/${i._id}`)}
+                  onClick={() => navigate(`/modifier/parents/${i._id}`)}
                 >
                   Modifier
                 </button>
