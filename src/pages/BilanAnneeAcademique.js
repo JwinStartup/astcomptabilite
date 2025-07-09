@@ -51,75 +51,26 @@ export default function BilanAnneeAcademique() {
                 </h1>
                 <div className="overflow-x-auto">
                     <table className="min-w-full divide-y divide-gray-200 text-sm">
-                        <thead>
-                            <tr>
-                                <th className="py-3 px-4 text-left bg-blue-50" colSpan={2}>ACTIFS</th>
-                            </tr>
-                        </thead>
                         <tbody>
-                            <tr>
+                            <tr className="bg-gray-100">
                                 <td className="py-3 px-4 font-semibold">Factures totalement payées</td>
-                                <td className="py-3 px-4 text-right">{bilan.facturesTotalementPaye}</td>
+                                <td className="py-3 px-4 text-right">{formatCurrency(bilan.facturesTotalementPaye)}</td>
                             </tr>
                             <tr>
+                                <td className="py-3 px-4 font-semibold">Factures impayées</td>
+                                <td className="py-3 px-4 text-right">{formatCurrency(bilan.facturesImpayes)}</td>
+                            </tr>
+                            <tr className="bg-gray-100">
                                 <td className="py-3 px-4 font-semibold">Factures partiellement payées</td>
-                                <td className="py-3 px-4 text-right">{bilan.facturesPartiellementPaye}</td>
-                            </tr>
-                            <tr>
-                                <td className="py-3 px-4 font-semibold">Reste à payer</td>
-                                <td className="py-3 px-4 text-right">{bilan.facturesImpayes}</td>
-                            </tr>
-                            <tr className="bg-gray-100 font-bold">
-                                <td className="py-3 px-4">Total Actifs</td>
-                                <td className="py-3 px-4 text-right">
-                                    {
-                                        bilan.facturesTotalementPaye +
-                                        bilan.facturesPartiellementPaye +
-                                        bilan.facturesImpayes
-                                    }
-                                </td>
-                            </tr>
-                        </tbody>
-                        <thead>
-                            <tr>
-                                <th className="py-3 px-4 text-left bg-blue-50" colSpan={2}>PASSIFS</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td className="py-3 px-4 font-semibold">Charges</td>
-                                <td className="py-3 px-4 text-right">{bilan.charges}</td>
+                                <td className="py-3 px-4 text-right">{formatCurrency(bilan.facturesPartiellementPaye)}</td>
                             </tr>
                             <tr>
                                 <td className="py-3 px-4 font-semibold">Commission cours à domicile</td>
-                                <td className="py-3 px-4 text-right">{bilan.commissionCoursDomicile}</td>
+                                <td className="py-3 px-4 text-right">{formatCurrency(bilan.commissionCoursDomicile)}</td>
                             </tr>
-                            <tr className="bg-gray-100 font-bold">
-                                <td className="py-3 px-4">Total Passifs</td>
-                                <td className="py-3 px-4 text-right">
-                                    {
-                                        bilan.charges +
-                                        bilan.commissionCoursDomicile
-                                    }
-                                </td>
-                            </tr>
-                        </tbody>
-                        <thead>
-                            <tr>
-                                <th className="py-3 px-4 text-left bg-blue-50" colSpan={2}>RÉSULTAT NET</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr className="bg-green-50 font-bold">
-                                <td className="py-3 px-4">Résultat net</td>
-                                <td className="py-3 px-4 text-right">
-                                    {
-                                        (bilan.facturesTotalementPaye +
-                                         bilan.facturesPartiellementPaye +
-                                         bilan.facturesImpayes) -
-                                        (bilan.charges + bilan.commissionCoursDomicile)
-                                    }
-                                </td>
+                            <tr className="bg-gray-100">
+                                <td className="py-3 px-4 font-semibold">Charges</td>
+                                <td className="py-3 px-4 text-right">{formatCurrency(bilan.charges)}</td>
                             </tr>
                         </tbody>
                     </table>

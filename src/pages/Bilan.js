@@ -168,7 +168,7 @@ export default function Bilan() {
                 <div className="flex items-center gap-3">
                   <span className="w-4 h-4 rounded-full bg-gray-700 inline-block"></span>
                   <span className="font-medium">Total charges</span>
-                  <span className="ml-auto font-bold text-gray-700">{stats.totalCharge.toLocaleString()} FCFA</span>
+                  <span className="ml-auto font-bold text-gray-700">{stats.totalCharge.toLocaleString()||0} FCFA</span>
                 </div>
               </div>
             </div>
