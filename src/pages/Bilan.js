@@ -5,6 +5,7 @@ import { comptabiliteActions } from '../reducer/comptabilite'
 import { useDispatch, useSelector } from 'react-redux'
 import { RingLoader } from 'react-spinners'
 import Backdrop from '../components/backdrop'
+import { Link } from 'react-router-dom'
 
 const ANNEES = ['2024-2025','2025-2026','2026-2027']
 const MOIS = [
@@ -72,7 +73,7 @@ export default function Bilan() {
       {/* Deuxième entête */}
       <div className="bilan-header flex flex-col gap-4 bg-white p-6 rounded-2xl mx-auto my-6 max-w-5xl shadow-lg border border-blue-100">
         <div className="flex flex-col md:flex-row flex-wrap items-center gap-4 md:gap-8 justify-between">
-          <div className="flex items-center gap-3 w-full md:w-auto">
+          <div className="flex justify-around items-center gap-3 w-full md:w-auto">
             <span className="font-semibold text-lg text-blue-900">Année académique :</span>
             <select
               value={annee}
@@ -81,9 +82,9 @@ export default function Bilan() {
             >
               {ANNEES.map(a => <option key={a} value={a}>{a}</option>)}
             </select>
-            <button onclick={()=>navigate(`/bilan/2024-2025`)}>
+            <Link onclick={()=>navigate(`/bilan/2024-2025`)}>
               Voir le bilan
-            </button>
+            </Link>
           </div>
           <div className="flex flex-wrap gap-2 items-center w-full md:w-auto justify-center">
             {MOIS.map(mois => (
