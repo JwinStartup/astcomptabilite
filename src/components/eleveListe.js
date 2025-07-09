@@ -32,9 +32,7 @@ export default function EleveListe({voirEl}) {
         >
           <Avatar name={`${i.nom} ${i.prenoms}`} size="60" round={true} className="mb-3 shadow" />
           <div className="text-lg font-bold text-purple-800 mb-1 group-hover:text-purple-900 transition">{i.nom} {i.prenoms}</div>
-          <div className="text-sm text-gray-600 mb-1">
-            <span className="font-semibold">Classe :</span> <span className="text-gray-800">{i.classe}</span>
-          </div>
+          
           <div className="text-sm text-gray-600 mb-1">
             <span className="font-semibold">Parent :</span> <span className="text-gray-800">{i.parent?.nom} {i.parent?.prenoms}</span>
           </div>
