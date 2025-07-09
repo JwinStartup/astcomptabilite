@@ -2,10 +2,10 @@ import React, {useEffect} from 'react'
 import Avatar from 'react-avatar'
 import { useDispatch,useSelector } from 'react-redux';
 import { userActions } from '../reducer/user.js'
-
+import { useNavigate } from 'react-router-dom'
 export default function ParentListe({voir}) {
    const dispatch=useDispatch()
-   
+   const navigate = useNavigate()
    useEffect(() => { 
     dispatch(userActions.listeParent())
   },[])
@@ -39,12 +39,20 @@ export default function ParentListe({voir}) {
               <div className="text-sm text-gray-600 mb-1">
                 <span className="font-semibold">Ville :</span> <span className="text-gray-800">{i.ville}</span>
               </div>
-              <button
-                className="mt-2 px-4 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold text-xs shadow transition"
-                onClick={e => { e.stopPropagation(); voir(i); }}
-              >
-                Voir le profil
-              </button>
+              <div className="flex gap-2 mt-2">
+                <button
+                  className="px-4 py-1 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg font-semibold text-xs shadow transition"
+                  onClick={() => navigate(`/modifier/parent/${i._id}`)}
+                >
+                  Modifier
+                </button>
+                <button
+                  className="px-4 py-1 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold text-xs shadow transition"
+                  onClick={() =>dispatch(userActions.supprimerParent(i._id))}
+                >
+                  Supprimer
+                </button>
+              </div>
             </div>
           ))}
         </div>

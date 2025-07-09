@@ -22,20 +22,20 @@ const SetComponent=({p,voir,voirPer,voirEl})=>{
      case 'PARENT':
       return(
         <div>
-        <ParentListe  voir={voir} />
+        <ParentListe  />
         </div>
       )
      case 'PERSONNEL':
       return(
         <div>
-        <PersonnelListe voirPer={voirPer} />
+        <PersonnelListe  />
         </div>
       )
    
     case 'ELEVE':
       return(
         <div>
-        <EleveListe voirEl={voirEl} />
+        <EleveListe  />
         </div>
       )
   

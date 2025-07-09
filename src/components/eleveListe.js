@@ -2,10 +2,10 @@ import React, {useEffect} from 'react'
 import Avatar from 'react-avatar'
 import { useDispatch,useSelector } from 'react-redux';
 import { userActions } from '../reducer/user.js'
-
+import { useNavigate } from 'react-router-dom'
 export default function EleveListe({voirEl}) {
    const dispatch=useDispatch()
-   
+   const navigate = useNavigate()
    useEffect(() => { 
     dispatch(userActions.listeEnfant())
   },[])
@@ -38,12 +38,29 @@ export default function EleveListe({voirEl}) {
           <div className="text-sm text-gray-600 mb-1">
             <span className="font-semibold">Parent :</span> <span className="text-gray-800">{i.parent?.nom} {i.parent?.prenoms}</span>
           </div>
-          <button
-            className="mt-2 px-4 py-1 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-semibold text-xs shadow transition"
-            onClick={e => { e.stopPropagation(); voirEl(i); }}
-          >
-            Voir le profil
-          </button>
+          <div className="flex gap-2 mt-2">
+            <button
+              className="px-4 py-1 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg font-semibold text-xs shadow transition"
+              onClick={e => {
+                e.stopPropagation();
+                // Naviguer vers la page de modification de l'élève
+                // Nécessite useNavigate
+                  navigate(`/modifier/enfants/${i._id}`);
+              }}
+            >
+              Modifier
+            </button>
+            <button
+              className="px-4 py-1 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold text-xs shadow transition"
+              onClick={e => {
+                e.stopPropagation();
+                // Nécessite useDispatch
+                  dispatch(userActions.supprimerEnfant(i._id));
+              }}
+            >
+              Supprimer
+            </button>
+          </div>
         </div>
      )}
      </div>

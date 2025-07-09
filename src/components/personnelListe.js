@@ -2,9 +2,11 @@ import React, {useEffect} from 'react'
 import Avatar from 'react-avatar'
 import { useDispatch,useSelector } from 'react-redux';
 import { userActions } from '../reducer/user.js'
+import { useNavigate } from 'react-router-dom'
 
 export default function PersonnelListe({voirPer}) {
    const dispatch=useDispatch()
+   const navigate = useNavigate()
    
    useEffect(() => { 
     dispatch(userActions.listePersonnel())
@@ -28,7 +30,6 @@ export default function PersonnelListe({voirPer}) {
           {personnels.map((i, j) => (
             <div
               key={j}
-              onClick={() => voirPer(i)}
               className="flex flex-col items-center bg-gradient-to-br from-green-50 via-white to-green-100 rounded-2xl shadow-xl border border-green-200 p-6 hover:shadow-2xl hover:-translate-y-1 transition-all duration-200 cursor-pointer group"
             >
               <Avatar name={`${i?.nom} ${i?.prenoms}`} size="72" round={true} className="mb-3 shadow" />
@@ -42,12 +43,20 @@ export default function PersonnelListe({voirPer}) {
               <div className="text-sm text-gray-600 mb-2">
                 <span className="font-semibold">Ville :</span> <span className="text-gray-800">{i?.ville}</span>
               </div>
-              <button
-                className="mt-2 px-4 py-1 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold text-xs shadow transition"
-                onClick={e => { e.stopPropagation(); voirPer(i); }}
-              >
-                Voir le profil
-              </button>
+              <div className="flex gap-2 mt-2">
+                <button
+                  className="px-4 py-1 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg font-semibold text-xs shadow transition"
+                  onClick={e => { e.stopPropagation(); navigate(`/modifier/personnels/${i._id}`); }}
+                >
+                  Modifier
+                </button>
+                <button
+                  className="px-4 py-1 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold text-xs shadow transition"
+                  onClick={e => { e.stopPropagation(); dispatch(userActions.supprimerPersonnel(i._id)); }}
+                >
+                  Supprimer
+                </button>
+              </div>
             </div>
           ))}
         </div>
