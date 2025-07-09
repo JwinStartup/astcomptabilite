@@ -52,7 +52,8 @@ export default function Bilan() {
     impaye: { count: 0, montant: 0 },
     enpartie: { count: 0, montant: 0 },
     totalResteApayer: 0,
-    totalCommissionCoursDomicile: 0
+    totalCommissionCoursDomicile: 0,
+    totalCharge: 0
   }
 
   return (
@@ -80,6 +81,9 @@ export default function Bilan() {
             >
               {ANNEES.map(a => <option key={a} value={a}>{a}</option>)}
             </select>
+            <button onclick={()=>navigate(`/bilan/2024-2025`)}>
+              Voir le bilan
+            </button>
           </div>
           <div className="flex flex-wrap gap-2 items-center w-full md:w-auto justify-center">
             {MOIS.map(mois => (
@@ -160,6 +164,11 @@ export default function Bilan() {
                   <span className="w-4 h-4 rounded-full bg-purple-700 inline-block"></span>
                   <span className="font-medium">Commissions</span>
                   <span className="ml-auto font-bold text-purple-700">{stats.totalCommissionCoursDomicile.toLocaleString()} FCFA</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="w-4 h-4 rounded-full bg-gray-700 inline-block"></span>
+                  <span className="font-medium">Total charges</span>
+                  <span className="ml-auto font-bold text-gray-700">{stats.totalCharge.toLocaleString()} FCFA</span>
                 </div>
               </div>
             </div>

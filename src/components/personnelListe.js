@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import Avatar from 'react-avatar'
 import { useDispatch,useSelector } from 'react-redux';
 import { userActions } from '../reducer/user.js'
@@ -7,17 +7,30 @@ import { useNavigate } from 'react-router-dom'
 export default function PersonnelListe({voirPer}) {
    const dispatch=useDispatch()
    const navigate = useNavigate()
+   const [search, setSearch] = useState("")
    
    useEffect(() => { 
     dispatch(userActions.listePersonnel())
-  },[])
+  },[dispatch])
   
     const {isLoader,personnels}  = useSelector((state)=>{
       return state.userReducer
      })
-  console.log(personnels)
+  // Filtrage par nom/prenoms (insensible à la casse)
+  const filteredPersonnels = personnels.filter(p =>
+    (p.nom + " " + p.prenoms).toLowerCase().includes(search.toLowerCase())
+  )
   return(
     <div className="w-full flex flex-col items-center">
+      <div className="w-full max-w-md px-2 mt-4 mb-2">
+        <input
+          type="text"
+          placeholder="Rechercher par nom..."
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+          className="w-full px-4 py-2 border border-green-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 transition"
+        />
+      </div>
       {isLoader ? (
         <div className='w-full flex justify-center items-center mt-10'>
           <svg aria-hidden="true" className="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -27,7 +40,7 @@ export default function PersonnelListe({voirPer}) {
         </div>
       ) : (
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 px-2 py-6">
-          {personnels.map((i, j) => (
+          {filteredPersonnels.map((i, j) => (
             <div
               key={j}
               className="flex flex-col items-center bg-gradient-to-br from-green-50 via-white to-green-100 rounded-2xl shadow-xl border border-green-200 p-6 hover:shadow-2xl hover:-translate-y-1 transition-all duration-200 cursor-pointer group"

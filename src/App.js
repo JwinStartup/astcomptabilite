@@ -34,6 +34,7 @@ import ListePersonnel from "./pages/ListePersonnels.js";
 import ListeEnfant from "./pages/ListeEnfants.js";
 import PrivateRouter from "./context/PrivateRouter.js";
 import FormulaireCreerFacture from './pages/formulaireCreerFacture.js';
+import BilanAnneeAcademique from "./pages/BilanAnneeAcademique.js";
 function App() {
      history.navigate = useNavigate();
     history.location = useLocation();
@@ -146,6 +147,13 @@ function App() {
                 element={
                             <PrivateRouter>
                                <Bilan/>
+                            </PrivateRouter>
+                        }
+                />
+        <Route path="/bilan/:anneeAcademique" 
+                element={
+                            <PrivateRouter>
+                               <BilanAnneeAcademique/>
                             </PrivateRouter>
                         }
                 />
