@@ -59,24 +59,24 @@ export default function BilanAnneeAcademique() {
                         <tbody>
                             <tr>
                                 <td className="py-3 px-4 font-semibold">Factures totalement payées</td>
-                                <td className="py-3 px-4 text-right">{formatCurrency(bilan.facturesTotalementPaye)}</td>
+                                <td className="py-3 px-4 text-right">{bilan.facturesTotalementPaye}</td>
                             </tr>
                             <tr>
                                 <td className="py-3 px-4 font-semibold">Factures partiellement payées</td>
-                                <td className="py-3 px-4 text-right">{formatCurrency(bilan.facturesPartiellementPaye)}</td>
+                                <td className="py-3 px-4 text-right">{bilan.facturesPartiellementPaye}</td>
                             </tr>
                             <tr>
                                 <td className="py-3 px-4 font-semibold">Reste à payer</td>
-                                <td className="py-3 px-4 text-right">{formatCurrency(bilan.facturesImpayes)}</td>
+                                <td className="py-3 px-4 text-right">{bilan.facturesImpayes}</td>
                             </tr>
                             <tr className="bg-gray-100 font-bold">
                                 <td className="py-3 px-4">Total Actifs</td>
                                 <td className="py-3 px-4 text-right">
-                                    {formatCurrency(
+                                    {
                                         bilan.facturesTotalementPaye +
                                         bilan.facturesPartiellementPaye +
                                         bilan.facturesImpayes
-                                    )}
+                                    }
                                 </td>
                             </tr>
                         </tbody>
@@ -88,19 +88,19 @@ export default function BilanAnneeAcademique() {
                         <tbody>
                             <tr>
                                 <td className="py-3 px-4 font-semibold">Charges</td>
-                                <td className="py-3 px-4 text-right">{formatCurrency(bilan.charges)}</td>
+                                <td className="py-3 px-4 text-right">{bilan.charges}</td>
                             </tr>
                             <tr>
                                 <td className="py-3 px-4 font-semibold">Commission cours à domicile</td>
-                                <td className="py-3 px-4 text-right">{formatCurrency(bilan.commissionCoursDomicile)}</td>
+                                <td className="py-3 px-4 text-right">{bilan.commissionCoursDomicile}</td>
                             </tr>
                             <tr className="bg-gray-100 font-bold">
                                 <td className="py-3 px-4">Total Passifs</td>
                                 <td className="py-3 px-4 text-right">
-                                    {formatCurrency(
+                                    {
                                         bilan.charges +
                                         bilan.commissionCoursDomicile
-                                    )}
+                                    }
                                 </td>
                             </tr>
                         </tbody>
@@ -113,12 +113,12 @@ export default function BilanAnneeAcademique() {
                             <tr className="bg-green-50 font-bold">
                                 <td className="py-3 px-4">Résultat net</td>
                                 <td className="py-3 px-4 text-right">
-                                    {formatCurrency(
+                                    {
                                         (bilan.facturesTotalementPaye +
                                          bilan.facturesPartiellementPaye +
                                          bilan.facturesImpayes) -
                                         (bilan.charges + bilan.commissionCoursDomicile)
-                                    )}
+                                    }
                                 </td>
                             </tr>
                         </tbody>
