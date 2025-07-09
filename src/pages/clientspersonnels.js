@@ -57,22 +57,7 @@ const SetComponentPEP=({p,retour,value,supprimer,supprimerPer,supprimerEl})=>{
   const modalStyle = "w-full max-w-lg mx-2 sm:mx-auto bg-white rounded-2xl shadow-2xl p-6 relative animate-fadeIn flex items-center justify-center";
 
   switch (p) {
-    case 'CREER':
-      return(
-        <div className={overlayStyle}>
-          <div className={modalStyle}>
-            <button
-              className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold"
-              onClick={retour}
-              aria-label="Fermer"
-            >×</button>
-            <div className="w-full flex items-center justify-center">
-              <CreerPersonnel retour={retour} />
-            </div>
-          </div>
-        </div>
-      )
-    case 'MODIFIERPERSONNEL':
+        case 'MODIFIERPERSONNEL':
       return(
         <div className={overlayStyle}>
           <div className={modalStyle}>
@@ -105,17 +90,7 @@ const SetComponentPEP=({p,retour,value,supprimer,supprimerPer,supprimerEl})=>{
           </div>
         </div>
       )
-    case 'CREERPARENT':
-      return(
-        <div className={overlayStyle}>
-          <div className={modalStyle}>
-            <button className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold" onClick={retour} aria-label="Fermer">×</button>
-            <div className="w-full flex items-center justify-center">
-              <CreerParent retour={retour} value={value}/>
-            </div>
-          </div>
-        </div>
-      )
+ 
     case 'MODIFIERPARENT':
       return(
         <div className={overlayStyle}>
@@ -149,17 +124,7 @@ const SetComponentPEP=({p,retour,value,supprimer,supprimerPer,supprimerEl})=>{
           </div>
         </div>
       )
-    case 'CREERELEVE':
-      return(
-        <div className={overlayStyle}>
-          <div className={modalStyle}>
-            <button className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold" onClick={retour} aria-label="Fermer">×</button>
-            <div className="w-full flex items-center justify-center">
-              <CreerEleve retour={retour} value={value}/>
-            </div>
-          </div>
-        </div>
-      )
+  
     case 'MODIFIERELEVE':
       return(
         <div className={overlayStyle}>
