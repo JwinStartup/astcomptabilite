@@ -48,7 +48,6 @@ export default function CreerCharge() {
             className='outline-none w-full border-b-2 py-2 text-md rounded-md bg-gray-50 focus:border-blue-400 transition'
           >
             <option value='salaire'>Salaire personnel</option>
-            <option value='eaucourantintent'>Eau-Courant-Internet</option>
             <option value='loyer'>Loyer</option>
             <option value='autreCharge'>Autres charges</option>
           </select>

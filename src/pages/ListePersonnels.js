@@ -22,10 +22,7 @@ export default function ListePersonnel() {
 
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100">
-        {rub.bol!==false&&<div>
-          <Backdrop/>
-          <SupprimerPersonnel retour={()=>setRub({bol:false,value:null})} rub={rub} />
-        </div>}
+      
         <Entete />
         <div className="w-full flex flex-col items-center mt-6">
           <div className="w-full max-w-5xl flex flex-row items-center justify-between mb-6 px-2">

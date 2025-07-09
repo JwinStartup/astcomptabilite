@@ -8,9 +8,6 @@ import VoirParent from '../components/voirParent'
 import SupprimerParent from '../components/suppParent'
 import ModifierParent from '../components/modifierParent'
 import VoirPersonnel from '../components/voirPersonnel'
-import CreerParent from '../components/creerParent'
-import CreerEleve from '../components/creerEleve'
-import CreerPersonnel from '../components/creerPersonnel'
 import SupprimerPersonnel from '../components/suppPersonnel'
 import ModifierPersonnel from '../components/modifierPersonnel'
 import VoirEleve from '../components/voirEleve'
@@ -209,11 +206,11 @@ export default function ClientsPersonnels() {
 
   const changeCreer=(p)=>{
     if(p==='PARENT'){
-      setRub({bol:true,nom:'CREERPARENT',value:null})
+      navigate('/inscription/parents')
     }else if(p==='PERSONNEL'){
-      setRub({bol:true,nom:'CREERPERSONNEL',value:null})
+      navigate('/inscription/personnels')
     }else{
-      setRub({bol:true,nom:'CREERELEVE',value:null})
+      navigate('/inscription/enfants')
     }
   }
   const voir=(i)=>{

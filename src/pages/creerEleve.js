@@ -64,26 +64,6 @@ const {personnels} = useSelector((state)=>{
              defaultValue=" " className='outline-none w-[250px] border-b-2 py-1 text-lg'>
         {parents.map((val,index)=> <option className='' value={val._id} key={index}> {val.nom}  {val.prenoms}</option>)}
         </select> </label>
-  <select {...register("classe")} defaultValue='Cp1' className='outline-none w-[250px] border-b-2 py-1 text-lg'>
-            <option>Cp1 </option>
-            <option>Cp2</option>
-            <option>Ce1</option>
-            <option>Ce2</option>
-            <option>Cm1</option>
-            <option>Cm2</option>
-            <option>6eme</option>
-           <option>5eme</option>
-            <option>4eme</option>
-            <option>3eme</option>
-             <option>2ndA</option>
-             <option>2ndC</option>
-            <option>1ereC</option>
-             <option>1ereD</option>
-            <option>1ereA</option>
-            <option>TleC</option>
-             <option>TleD</option>
-            <option>TleA</option>
-        </select>
       <div> 
     
       <div  className="w-[250px] ">
