@@ -62,15 +62,7 @@ export default function Parents() {
             <input {...register("commune")} type='text' placeholder='Commune'
               className='outline-none w-full border-b-2 py-2 px-2 text-md focus:border-blue-500 transition-all duration-200'
             />
-            <input {...register("montantCours")} type='number' placeholder='Montant du cours à domicile'
-              className='outline-none w-full border-b-2 py-2 px-2 text-md focus:border-blue-500 transition-all duration-200'
-            />
-            <input {...register("commission")} type='number' placeholder='Commission sur le Montant'
-              className='outline-none w-full border-b-2 py-2 px-2 text-md focus:border-blue-500 transition-all duration-200'
-            />
-            <input {...register("nombreEnfant")} type='number' placeholder="Nombre d'enfant à inscrire"
-              className='outline-none w-full border-b-2 py-2 px-2 text-md focus:border-blue-500 transition-all duration-200'
-            />
+           
           </div>
           <div className="mt-8 flex justify-center">
             {chargement==false?
