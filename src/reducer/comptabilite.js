@@ -172,6 +172,12 @@ function createInitialState() {
             return await fetchWrapper.get(`${urlCours}/${id}`)
           }
         ),
+           genererbilan: createAsyncThunk(`${name}/genererbilan`,
+          async (annee) => {
+            console.log(annee)
+            return await fetchWrapper.get(`${url}/genererBilan/${annee}`)
+          }
+        ),
            getFactureById: createAsyncThunk(`${name}/getFactureById`,
           async (id) => {
             console.log(id)
@@ -220,6 +226,7 @@ function createExtraReducers() {
         supprimerFacture();
         modifierFacture();
         voirRecueByid();
+        genererbilan();
         voirCharge();
         payerFacture();
         payerEncoreFacture();
@@ -267,6 +274,25 @@ function createExtraReducers() {
               .addCase(fulfilled, (state, action) => {
                const facture = action.payload;
                 state.facture=facture;
+                state.isLoader = false;
+              })
+              .addCase(rejected, (state, action) => {
+                state.isLoader = false;
+                state.error = action.error;
+              });
+          }
+
+        function genererbilan() {
+            var { pending, fulfilled, rejected } = extraActions.genererbilan;
+            builder
+              .addCase(pending, (state) => {
+                state.error = null;
+                state.isLoader = true;
+              })
+              .addCase(fulfilled, (state, action) => {
+               const bilan = action.payload;
+               console.log("payloadbilan",bilan)
+                state.bilan=bilan;
                 state.isLoader = false;
               })
               .addCase(rejected, (state, action) => {

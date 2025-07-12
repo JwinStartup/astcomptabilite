@@ -2,34 +2,41 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 // Mock data fetching functions (replace with real API calls)
+/*
 const fetchBilanData = async (anneeAcademique) => {
     // Simulated data
     return {
-        facturesTotalementPaye: 12000,
-        facturesImpayes: 3000,
-        facturesPartiellementPaye: 1500,
+        paye: 12000,
+        impaye: 3000,
+        enpartie: 1500,
         commissionCoursDomicile: 800,
         charges: 4000,
     };
 };
+ paye: 0,
+            impaye: 0,
+            enpartie: 0,
+            totalResteApayer: 0,
+            totalCommissionCoursDomicile: 0,
+            totalCharge:0
+
 
 const formatCurrency = (amount) =>
     amount.toLocaleString("fr-FR", { style: "currency", currency: "EUR" });
-
+*/
 export default function BilanAnneeAcademique() {
     const { anneeAcademique } = useParams();
     const navigate = useNavigate();
-    const [bilan, setBilan] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        fetchBilanData(anneeAcademique).then((data) => {
-            setBilan(data);
-            setLoading(false);
-        });
-    }, [anneeAcademique]);
+useEffect(() => {
+    dispatch(comptabiliteActions.genererbilan(`${annee}`))
+  }, [anneeAcademique])
 
-    if (loading) {
+  const { isLoader, bilan } = useSelector((state) => {
+    return state.comptabiliteReducer
+  });
+    if (isLoader) {
         return (
             <div className="flex items-center justify-center h-screen">
                 <div className="text-lg font-semibold">Chargement...</div>
@@ -59,24 +66,29 @@ export default function BilanAnneeAcademique() {
                         <tbody>
                             <tr>
                                 <td className="py-3 px-4 font-semibold">Factures totalement payées</td>
-                                <td className="py-3 px-4 text-right">{formatCurrency(bilan.facturesTotalementPaye)}</td>
+                                <td className="py-3 px-4 text-right">{bilan.paye}</td>
                             </tr>
                             <tr>
                                 <td className="py-3 px-4 font-semibold">Factures partiellement payées</td>
-                                <td className="py-3 px-4 text-right">{formatCurrency(bilan.facturesPartiellementPaye)}</td>
+                                <td className="py-3 px-4 text-right">{bilan.enpartie}</td>
+                            </tr>
+                            <tr>
+                                <td className="py-3 px-4 font-semibold">facture impayée</td>
+                                <td className="py-3 px-4 text-right">{bilan.impaye}</td>
                             </tr>
                             <tr>
                                 <td className="py-3 px-4 font-semibold">Reste à payer</td>
-                                <td className="py-3 px-4 text-right">{formatCurrency(bilan.facturesImpayes)}</td>
+                                <td className="py-3 px-4 text-right">{bilan.totalResteApayer}</td>
                             </tr>
                             <tr className="bg-gray-100 font-bold">
                                 <td className="py-3 px-4">Total Actifs</td>
                                 <td className="py-3 px-4 text-right">
-                                    {formatCurrency(
-                                        bilan.facturesTotalementPaye +
-                                        bilan.facturesPartiellementPaye +
-                                        bilan.facturesImpayes
-                                    )}
+                                    {
+                                        bilan.paye +
+                                        bilan.enpartie +
+                                        bilan.totalResteApayer +
+                                        bilan.impaye
+                                    }
                                 </td>
                             </tr>
                         </tbody>
@@ -88,19 +100,19 @@ export default function BilanAnneeAcademique() {
                         <tbody>
                             <tr>
                                 <td className="py-3 px-4 font-semibold">Charges</td>
-                                <td className="py-3 px-4 text-right">{formatCurrency(bilan.charges)}</td>
+                                <td className="py-3 px-4 text-right">{bilan.charges}</td>
                             </tr>
                             <tr>
                                 <td className="py-3 px-4 font-semibold">Commission cours à domicile</td>
-                                <td className="py-3 px-4 text-right">{formatCurrency(bilan.commissionCoursDomicile)}</td>
+                                <td className="py-3 px-4 text-right">{bilan.commissionCoursDomicile}</td>
                             </tr>
                             <tr className="bg-gray-100 font-bold">
                                 <td className="py-3 px-4">Total Passifs</td>
                                 <td className="py-3 px-4 text-right">
-                                    {formatCurrency(
+                                    {
                                         bilan.charges +
                                         bilan.commissionCoursDomicile
-                                    )}
+                                    }
                                 </td>
                             </tr>
                         </tbody>
@@ -113,12 +125,13 @@ export default function BilanAnneeAcademique() {
                             <tr className="bg-green-50 font-bold">
                                 <td className="py-3 px-4">Résultat net</td>
                                 <td className="py-3 px-4 text-right">
-                                    {formatCurrency(
-                                        (bilan.facturesTotalementPaye +
-                                         bilan.facturesPartiellementPaye +
-                                         bilan.facturesImpayes) -
+                                    {
+                                        (bilan.paye +
+                                         bilan.enpartie +
+                                         bilan.totalResteApayer+
+                                         bilan.impaye) -
                                         (bilan.charges + bilan.commissionCoursDomicile)
-                                    )}
+                                    }
                                 </td>
                             </tr>
                         </tbody>

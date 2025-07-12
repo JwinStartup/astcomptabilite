@@ -59,6 +59,7 @@ export default function Bilan() {
 
   return (
     <div className="bilan-page min-h-screen bg-gradient-to-br from-blue-50 via-white to-gray-100">
+     <Entete/>
       {/* Entête personnalisée */}
       <div className="flex items-center justify-between bg-white px-4 py-3 shadow-sm sticky top-0 z-10">
         <button
@@ -82,9 +83,9 @@ export default function Bilan() {
             >
               {ANNEES.map(a => <option key={a} value={a}>{a}</option>)}
             </select>
-            <Link to='/bilan/2024-2025'>
-              Voir le bilan
-            </Link>
+            <button className='bg-red-500 p-2 m-2 text-sm' onClick={navigate(`/bilan/${annee}`)} >
+              Cloturer le bilan {annee}
+            </button>
           </div>
           <div className="flex flex-wrap gap-2 items-center w-full md:w-auto justify-center">
             {MOIS.map(mois => (
@@ -169,7 +170,7 @@ export default function Bilan() {
                 <div className="flex items-center gap-3">
                   <span className="w-4 h-4 rounded-full bg-gray-700 inline-block"></span>
                   <span className="font-medium">Total charges</span>
-                  <span className="ml-auto font-bold text-gray-700">0 FCFA</span>
+                  <span className="ml-auto font-bold text-gray-700">{stats.totalCharge} FCFA</span>
                 </div>
               </div>
             </div>
