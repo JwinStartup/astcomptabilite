@@ -30,9 +30,9 @@ export default function BilanAnneeAcademique() {
     const { anneeAcademique } = useParams();
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
-
+    const dispatch=useDispatch()
 useEffect(() => {
-    dispatch(comptabiliteActions.genererbilan(`${annee}`))
+    dispatch(comptabiliteActions.genererbilan(`${anneeAcademique}`))
   }, [anneeAcademique])
 
   const { isLoader, bilan } = useSelector((state) => {
