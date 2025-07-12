@@ -83,7 +83,7 @@ export default function Bilan() {
             >
               {ANNEES.map(a => <option key={a} value={a}>{a}</option>)}
             </select>
-            <button className='bg-red-500 p-2 m-2 text-sm' onClick={navigate(`/bilan/${annee}`)} >
+            <button className='bg-red-500 p-2 m-2 text-sm' onClick={()=>navigate(`/bilan/${annee}`)} >
               Cloturer le bilan {annee}
             </button>
           </div>
