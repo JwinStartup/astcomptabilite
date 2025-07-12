@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Entete from '../components/entete'
-import { useNavigate } from 'react-router-dom'
 import { comptabiliteActions } from '../reducer/comptabilite' 
 import { useDispatch, useSelector } from 'react-redux'
 // Mock data fetching functions (replace with real API calls)
