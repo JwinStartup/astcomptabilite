@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-
+import Entete from '../components/entete'
+import { useNavigate } from 'react-router-dom'
+import { comptabiliteActions } from '../reducer/comptabilite' 
+import { useDispatch, useSelector } from 'react-redux'
 // Mock data fetching functions (replace with real API calls)
 /*
 const fetchBilanData = async (anneeAcademique) => {
@@ -46,6 +49,7 @@ useEffect(() => {
 
     return (
         <div className="min-h-screen bg-gray-50 p-4 flex flex-col items-center">
+                 <Entete/>
             <div className="w-full max-w-2xl bg-white rounded-lg shadow-md p-6 mt-8">
                 <button
                     onClick={() => navigate(-1)}
