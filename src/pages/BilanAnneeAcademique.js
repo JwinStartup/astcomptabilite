@@ -38,7 +38,7 @@ useEffect(() => {
   const { isLoader, bilan } = useSelector((state) => {
     return state.comptabiliteReducer
   });
-  console.log(bilan)
+  console.log(bilan,anneeAcademique)
     if (isLoader) {
         return (
             <div className="flex items-center justify-center h-screen">
