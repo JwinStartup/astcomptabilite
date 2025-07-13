@@ -48,7 +48,6 @@ useEffect(() => {
   const { isLoader, bilan } = useSelector((state) => {
     return state.comptabiliteReducer
   });
-  console.log(bilan,anneeAcademique)
     if (isLoader) {
         return (
             <div className="flex items-center justify-center h-screen">
@@ -80,28 +79,28 @@ useEffect(() => {
                         <tbody>
                             <tr>
                                 <td className="py-3 px-4 font-semibold">Factures totalement payées</td>
-                                <td className="py-3 px-4 text-right">{bilan.paye}</td>
+                                <td className="py-3 px-4 text-right">{bilan?.paye}</td>
                             </tr>
                             <tr>
                                 <td className="py-3 px-4 font-semibold">Factures partiellement payées</td>
-                                <td className="py-3 px-4 text-right">{bilan.enpartie}</td>
+                                <td className="py-3 px-4 text-right">{bilan?.enpartie}</td>
                             </tr>
                             <tr>
                                 <td className="py-3 px-4 font-semibold">facture impayée</td>
-                                <td className="py-3 px-4 text-right">{bilan.impaye}</td>
+                                <td className="py-3 px-4 text-right">{bilan?.impaye}</td>
                             </tr>
                             <tr>
                                 <td className="py-3 px-4 font-semibold">Reste à payer</td>
-                                <td className="py-3 px-4 text-right">{bilan.totalResteApayer}</td>
+                                <td className="py-3 px-4 text-right">{bilan?.totalResteApayer}</td>
                             </tr>
                             <tr className="bg-gray-100 font-bold">
                                 <td className="py-3 px-4">Total Actifs</td>
                                 <td className="py-3 px-4 text-right">
                                     {
-                                        bilan.paye +
-                                        bilan.enpartie +
-                                        bilan.totalResteApayer +
-                                        bilan.impaye
+                                        bilan?.paye +
+                                        bilan?.enpartie +
+                                        bilan?.totalResteApayer +
+                                        bilan?.impaye
                                     }
                                 </td>
                             </tr>
@@ -114,18 +113,18 @@ useEffect(() => {
                         <tbody>
                             <tr>
                                 <td className="py-3 px-4 font-semibold">Charges</td>
-                                <td className="py-3 px-4 text-right">{bilan.charges}</td>
+                                <td className="py-3 px-4 text-right">{bilan?.charges}</td>
                             </tr>
                             <tr>
                                 <td className="py-3 px-4 font-semibold">Commission cours à domicile</td>
-                                <td className="py-3 px-4 text-right">{bilan.commissionCoursDomicile}</td>
+                                <td className="py-3 px-4 text-right">{bilan?.commissionCoursDomicile}</td>
                             </tr>
                             <tr className="bg-gray-100 font-bold">
                                 <td className="py-3 px-4">Total Passifs</td>
                                 <td className="py-3 px-4 text-right">
                                     {
-                                        bilan.charges +
-                                        bilan.commissionCoursDomicile
+                                        bilan?.charges +
+                                        bilan?.commissionCoursDomicile
                                     }
                                 </td>
                             </tr>
@@ -140,11 +139,11 @@ useEffect(() => {
                                 <td className="py-3 px-4">Résultat net</td>
                                 <td className="py-3 px-4 text-right">
                                     {
-                                        (bilan.paye +
-                                         bilan.enpartie +
-                                         bilan.totalResteApayer+
-                                         bilan.impaye) -
-                                        (bilan.charges + bilan.commissionCoursDomicile)
+                                        (bilan?.paye +
+                                         bilan?.enpartie +
+                                         bilan?.totalResteApayer+
+                                         bilan?.impaye) -
+                                        (bilan?.charges + bilan?.commissionCoursDomicile)
                                     }
                                 </td>
                             </tr>
