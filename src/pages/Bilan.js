@@ -33,7 +33,7 @@ export default function Bilan() {
     const monthName = monthNames[parseInt(mois) - 1]
     dispatch(comptabiliteActions.statistiqueFactures({
       periode: `${monthName} ${annee}`,
-      anneeAcademique: `${annee}-${parseInt(annee)+1}`
+      anneeAcademique: `${annee}`
     }))
   }, [mois, annee, dispatch])
 
