@@ -13,9 +13,23 @@ export default function CreerCharge() {
   const navigate = useNavigate()
   const [select, setSelect] = useState('salaire')
   const [chargement, setChargement] = useState(false)
+  const [periode, setPeriode] = useState('')
+  
+  // Fonction pour convertir la date en format "Mois Année"
+  const handlePeriodeChange = (e) => {
+    const [year, month] = e.target.value.split('-')
+    const monthNames = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 
+                       'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre']
+    const monthName = monthNames[parseInt(month) - 1]
+    const formattedPeriode = `${monthName} ${year}`
+    setPeriode(formattedPeriode)
+  }
+  
   const onSubmit = (data) => {
     setChargement(true)
-    dispatch(comptabiliteActions.creerCharge(data)).then(() => {
+    // Utiliser la période formatée
+    const formData = { ...data, periode: periode }
+    dispatch(comptabiliteActions.creerCharge(formData)).then(() => {
       setChargement(false)
       navigate('/charges')
     })
@@ -71,24 +85,18 @@ export default function CreerCharge() {
               placeholder='Préciser la charge'
             />
           }
-          <select
-            {...register("periode")}
-            defaultValue='Janvier 2024'
-            className='outline-none w-full border-b-2 py-2 text-md rounded-md bg-gray-50 focus:border-blue-400 transition'
-          >
-            <option>Janvier 2024</option>
-            <option>Février 2024</option>
-            <option>Mars 2024</option>
-            <option>Avril 2024</option>
-            <option>Mai 2024</option>
-            <option>Juin 2024</option>
-            <option>Juillet 2024</option>
-            <option>Août 2024</option>
-            <option>Septembre 2024</option>
-            <option>Octobre 2024</option>
-            <option>Novembre 2024</option>
-            <option>Décembre 2024</option>
-          </select>
+          <div className="flex flex-col gap-2">
+            <label className="text-sm font-medium text-gray-700">Période :</label>
+            <input
+              type="month"
+              onChange={handlePeriodeChange}
+              className='outline-none w-full border-b-2 py-2 text-md rounded-md bg-gray-50 focus:border-blue-400 transition'
+              required
+            />
+            {periode && (
+              <span className="text-xs text-gray-500">Période sélectionnée : {periode}</span>
+            )}
+          </div>
           <input
             {...register("montant")}
             type="text"

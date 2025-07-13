@@ -39,7 +39,32 @@ export default function BilanAnneeAcademique() {
     const { anneeAcademique } = useParams();
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
+    const [clotureEnCours, setClotureEnCours] = useState(false);
     const dispatch=useDispatch()
+    
+    // Fonction pour clôturer le bilan
+    const cloturerBilan = () => {
+        if (!bilan) {
+            console.error('Aucun bilan disponible pour la clôture');
+            return;
+        }
+        
+        setClotureEnCours(true);
+        console.log('Clôture du bilan en cours...', anneeAcademique);
+        
+        dispatch(comptabiliteActions.cloturer(bilan))
+            .then(() => {
+                console.log('Bilan clôturé avec succès');
+                setClotureEnCours(false);
+                // Optionnel : rediriger ou afficher un message de succès
+                navigate('/bilans');
+            })
+            .catch((error) => {
+                console.error('Erreur lors de la clôture du bilan:', error);
+                setClotureEnCours(false);
+            });
+    };
+
 useEffect(() => {
     console.log('useEffect déclenché avec anneeAcademique:', anneeAcademique)
     console.log('Type de anneeAcademique:', typeof anneeAcademique)
@@ -89,13 +114,26 @@ useEffect(() => {
                     </h1>
                     <div className="flex justify-center">
                         <button 
-                            className='px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 flex items-center gap-2'
-                            onClick={() => {
-                                // Action de clôture à implémenter
-                                console.log('Clôture du bilan', anneeAcademique)
-                            }}
+                            className={`px-6 py-3 ${clotureEnCours 
+                                ? 'bg-gray-400 cursor-not-allowed' 
+                                : 'bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700'
+                            } text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 flex items-center gap-2`}
+                            onClick={cloturerBilan}
+                            disabled={clotureEnCours || !bilan}
                         >
-                            📋 Clôturer le bilan
+                            {clotureEnCours ? (
+                                <>
+                                    <svg className="animate-spin h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24">
+                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                    </svg>
+                                    Clôture en cours...
+                                </>
+                            ) : (
+                                <>
+                                    📋 Clôturer le bilan
+                                </>
+                            )}
                         </button>
                     </div>
                 </div>
