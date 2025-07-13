@@ -8,36 +8,34 @@ import Backdrop from '../components/backdrop'
 import { Link } from 'react-router-dom'
 
 // const ANNEES = ['2025','2026','2027'] // Remplacé par input date
-const MOIS = [
-  { long: 'janvier', short: 'Jan' },
-  { long: 'février', short: 'Fév' },
-  { long: 'mars', short: 'Mar' },
-  { long: 'avril', short: 'Avr' },
-  { long: 'mai', short: 'Mai' },
-  { long: 'juin', short: 'Jui' },
-  { long: 'juillet', short: 'Jul' },
-  { long: 'août', short: 'Août' },
-  { long: 'septembre', short: 'Sep' },
-  { long: 'octobre', short: 'Oct' },
-  { long: 'novembre', short: 'Nov' },
-  { long: 'décembre', short: 'Déc' }
-]
+// const MOIS = [...] // Supprimé car remplacé par input month
 
 export default function Bilan() {
   const dispatch = useDispatch()
-  const [annee, setAnnee] = useState('2025')
-  const [periode, setPeriode] = useState(MOIS[0].long)
+  const currentDate = new Date()
+  const currentYear = currentDate.getFullYear().toString()
+  const currentMonth = (currentDate.getMonth() + 1).toString().padStart(2, '0')
+  const defaultValue = `${currentYear}-${currentMonth}`
+  
+  const [annee, setAnnee] = useState(currentYear)
+  const [mois, setMois] = useState(currentMonth)
   const navigate = useNavigate()
   
-  const handleDateChange = (e) => {
-    const selectedDate = new Date(e.target.value)
-    const year = selectedDate.getFullYear().toString()
+  const handleMonthChange = (e) => {
+    const [year, month] = e.target.value.split('-')
     setAnnee(year)
+    setMois(month)
   }
   
   useEffect(() => {
-    dispatch(comptabiliteActions.statistiqueFactures({periode:`${periode} ${annee}`,anneeAcademique:`${annee}`}))
-  }, [periode, annee, dispatch])
+    const monthNames = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 
+                       'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
+    const monthName = monthNames[parseInt(mois) - 1]
+    dispatch(comptabiliteActions.statistiqueFactures({
+      periode: `${monthName} ${annee}`,
+      anneeAcademique: `${annee}-${parseInt(annee)+1}`
+    }))
+  }, [mois, annee, dispatch])
 
   const { isLoader, statistique } = useSelector((state) => {
     return state.comptabiliteReducer
@@ -67,38 +65,21 @@ export default function Bilan() {
         <div className="w-20" />
       </div>
       {/* Deuxième entête */}
-      <div className="bilan-header flex flex-col gap-4 bg-white p-6 rounded-2xl mx-auto my-6 max-w-5xl shadow-lg border border-blue-100">
-        <div className="flex flex-col md:flex-row flex-wrap items-center gap-4 md:gap-8 justify-between">
-          <div className="flex justify-around items-center gap-3 w-full md:w-auto">
-            <span className="font-semibold text-lg text-blue-900">Année :</span>
-            <input
-              type="date"
-              onChange={handleDateChange}
-              className="px-4 py-2 rounded-lg border border-blue-200 text-base bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-300 transition"
-            />
-            <span className="text-sm text-gray-600">{annee}-{parseInt(annee)+1}</span>
-            <button 
-              className='px-6 py-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200' 
-              onClick={()=>navigate(`/bilan/${annee}`)}
-            >
-              📊 Clôturer le bilan {annee}
-            </button>
-          </div>
-          <div className="flex flex-wrap gap-2 items-center w-full md:w-auto justify-center">
-            {MOIS.map(mois => (
-              <button
-                key={mois.long}
-                onClick={() => setPeriode(mois.long)}
-                className={`px-3 py-1.5 rounded-full font-medium text-sm transition-all shadow-sm
-                  ${periode === mois.long
-                    ? 'bg-blue-700 text-white scale-105'
-                    : 'bg-gray-200 text-gray-800 hover:bg-blue-100'}
-                `}
-              >
-                {mois.short} <span className="text-xs text-gray-500">({annee})</span>
-              </button>
-            ))}
-          </div>
+      <div className="bilan-header bg-white p-6 rounded-2xl mx-auto my-6 max-w-5xl shadow-lg border border-blue-100">
+        <div className="flex flex-col sm:flex-row items-center gap-4 justify-center">
+          <span className="font-semibold text-lg text-blue-900">Période :</span>
+          <input
+            type="month"
+            defaultValue={defaultValue}
+            onChange={handleMonthChange}
+            className="px-4 py-2 rounded-lg border border-blue-200 text-base bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-300 transition"
+          />
+          <button 
+            className='px-6 py-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200' 
+            onClick={()=>navigate(`/bilan/${annee}`)}
+          >
+            📊 Clôturer le bilan {annee}
+          </button>
         </div>
       </div>
       {/* Loader */}
