@@ -32,8 +32,18 @@ export default function BilanAnneeAcademique() {
     const [loading, setLoading] = useState(true);
     const dispatch=useDispatch()
 useEffect(() => {
-    dispatch(comptabiliteActions.genererbilan(`${anneeAcademique}`))
-  }, [anneeAcademique])
+    console.log('useEffect déclenché avec anneeAcademique:', anneeAcademique)
+    console.log('Type de anneeAcademique:', typeof anneeAcademique)
+    console.log('comptabiliteActions.genererbilan:', comptabiliteActions.genererbilan)
+    if (anneeAcademique) {
+      console.log('Dispatching genererbilan avec:', anneeAcademique)
+      const action = comptabiliteActions.genererbilan(anneeAcademique)
+      console.log('Action créée:', action)
+      dispatch(action)
+    } else {
+      console.log('anneeAcademique est falsy:', anneeAcademique)
+    }
+  }, [anneeAcademique, dispatch])
 
   const { isLoader, bilan } = useSelector((state) => {
     return state.comptabiliteReducer
