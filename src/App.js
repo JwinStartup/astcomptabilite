@@ -16,6 +16,7 @@ import FacturesCommissions from './pages/FacturesCommussions.js'
 import FacturesImpayes from './pages/FacturesImpayes.js'
 import Charges from './pages/Charges.js'
 import Bilan from './pages/Bilan.js'
+import BilanCloture from './pages/BilanCloture.js'
 import ClientsPersonnels from './pages/clientspersonnels.js'
 import Parents from './pages/Parents.js'
 import UserAdmin from './pages/UserAdmin.js'
@@ -154,6 +155,13 @@ function App() {
                 element={
                             <PrivateRouter>
                                <BilanAnneeAcademique/>
+                            </PrivateRouter>
+                        }
+                />
+        <Route path="/bilan/cloture/:id" 
+                element={
+                            <PrivateRouter>
+                               <BilanCloture/>
                             </PrivateRouter>
                         }
                 />

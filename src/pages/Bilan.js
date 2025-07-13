@@ -47,7 +47,8 @@ export default function Bilan() {
     enpartie: { count: 0, montant: 0 },
     totalResteApayer: 0,
     totalCommissionCoursDomicile: 0,
-    totalCharge: 0
+    totalCharge: 0,
+    bilanCloture:null
   }
 
   return (
@@ -74,12 +75,21 @@ export default function Bilan() {
             onChange={handleMonthChange}
             className="px-4 py-2 rounded-lg border border-blue-200 text-base bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-300 transition"
           />
-          <button 
-            className='px-6 py-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200' 
-            onClick={()=>navigate(`/bilan/${annee}`)}
-          >
-            📊 Clôturer le bilan {annee}
-          </button>
+          {stats?.bilanCloture == null ? (
+            <button 
+              className='px-6 py-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200' 
+              onClick={()=>navigate(`/bilan/${annee}`)}
+            > 
+              📊 Clôturer le bilan {annee}
+            </button>
+          ) : (
+            <button 
+              className='px-6 py-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200' 
+              onClick={()=>navigate(`/bilan/cloture/${stats.bilanCloture}`)}
+            > 
+              �️ Voir bilan
+            </button>
+          )}
         </div>
       </div>
       {/* Loader */}

@@ -86,9 +86,9 @@ function createInitialState() {
             return await fetchWrapper.get(`${url}/supprimerCharge/${body}`)
           }
           ),
-          voirByIdBilan:createAsyncThunk(`${name}/voirByIdBilan`,
+          BilanById:createAsyncThunk(`${name}/BilanById`,
         async (body)=>{
-            return await fetchWrapper.get(`${url}/voirByIdBilan/${body}`)
+            return await fetchWrapper.get(`${url}/bilanById/${body}`)
           }
           ),
             partager:createAsyncThunk(`${name}/partager`,
@@ -235,7 +235,7 @@ function createExtraReducers() {
         listeCharge();
         listeBilan();
         voirTotal();
-        voirByIdBilan();
+        BilanById();
         listeCommission();
         cloturer();
         getCoursById();
@@ -471,8 +471,8 @@ function createExtraReducers() {
                 state.error = action.error;
               });
           }
-        function voirByIdBilan() {
-            var { pending, fulfilled, rejected } = extraActions.voirByIdBilan;
+        function BilanById() {
+            var { pending, fulfilled, rejected } = extraActions.BilanById;
             builder
               .addCase(pending, (state) => {
                 state.error = null;
@@ -482,7 +482,6 @@ function createExtraReducers() {
                const bilan = action.payload;
                console.log('le bilan:',bilan);
                 state.bilan=bilan;
-                state.resultat=bilan.recette-bilan.charge
                 state.isLoader = false;
               })
               .addCase(rejected, (state, action) => {

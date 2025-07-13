@@ -3,85 +3,31 @@ import { useParams, useNavigate } from "react-router-dom";
 import Entete from '../components/entete'
 import { comptabiliteActions } from '../reducer/comptabilite' 
 import { useDispatch, useSelector } from 'react-redux'
-// Mock data fetching functions (replace with real API calls)
-/*
-const fetchBilanData = async (anneeAcademique) => {
-    // Simulated data
-    return {
-        paye: 12000,
-        impaye: 3000,
-        enpartie: 1500,
-        commissionCoursDomicile: 800,
-        charges: 4000,
-    };
-};
- paye: 0,
-            impaye: 0,
-            enpartie: 0,
-            totalResteApayer: 0,
-            totalCommissionCoursDomicile: 0,
-            totalCharge:0
-            
-            facturesPaye
-            facturesImpaye
-            facturesEnpartie
-            totalResteApayer
-            totalCommissionCoursDomicile
-            totalCharge
-            totalRecettes
-            beneficeNet
-            annee: annee
 
-const formatCurrency = (amount) =>
-    amount.toLocaleString("fr-FR", { style: "currency", currency: "EUR" });
-*/
-export default function BilanAnneeAcademique() {
-    const { anneeAcademique } = useParams();
+export default function BilanCloture() {
+    const { id } = useParams();
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
-    const [clotureEnCours, setClotureEnCours] = useState(false);
-    const dispatch=useDispatch()
+    const dispatch = useDispatch()
     
-    // Fonction pour clôturer le bilan
-    const cloturerBilan = () => {
-        if (!bilan) {
-            console.error('Aucun bilan disponible pour la clôture');
-            return;
+    useEffect(() => {
+        console.log('useEffect déclenché avec id:', id)
+        console.log('Type de id:', typeof id)
+        console.log('comptabiliteActions.BilanById:', comptabiliteActions.BilanById)
+        if (id) {
+            console.log('Dispatching BilanById avec:', id)
+            const action = comptabiliteActions.BilanById(id)
+            console.log('Action créée:', action)
+            dispatch(action)
+        } else {
+            console.log('id est falsy:', id)
         }
-        
-        setClotureEnCours(true);
-        console.log('Clôture du bilan en cours...', anneeAcademique);
-        
-        dispatch(comptabiliteActions.cloturer(bilan))
-            .then(() => {
-                console.log('Bilan clôturé avec succès');
-                setClotureEnCours(false);
-                // Optionnel : rediriger ou afficher un message de succès
-                navigate('/bilans');
-            })
-            .catch((error) => {
-                console.error('Erreur lors de la clôture du bilan:', error);
-                setClotureEnCours(false);
-            });
-    };
+    }, [id, dispatch])
 
-useEffect(() => {
-    console.log('useEffect déclenché avec anneeAcademique:', anneeAcademique)
-    console.log('Type de anneeAcademique:', typeof anneeAcademique)
-    console.log('comptabiliteActions.genererbilan:', comptabiliteActions.genererbilan)
-    if (anneeAcademique) {
-      console.log('Dispatching genererbilan avec:', anneeAcademique)
-      const action = comptabiliteActions.genererbilan(anneeAcademique)
-      console.log('Action créée:', action)
-      dispatch(action)
-    } else {
-      console.log('anneeAcademique est falsy:', anneeAcademique)
-    }
-  }, [anneeAcademique, dispatch])
-
-  const { isLoader, bilan } = useSelector((state) => {
-    return state.comptabiliteReducer
-  });
+    const { isLoader, bilan } = useSelector((state) => {
+        return state.comptabiliteReducer
+    });
+    
     if (isLoader) {
         return (
             <div className="flex items-center justify-center h-screen">
@@ -102,39 +48,20 @@ useEffect(() => {
                 >
                     ← Retour
                 </button>
-                <span className="text-xl font-bold text-blue-700 tracking-wide">Bilan Année Académique</span>
+                <span className="text-xl font-bold text-blue-700 tracking-wide">Bilan Clôturé</span>
                 <div className="w-20" />
             </div>
 
             <div className="container mx-auto px-4 py-8 max-w-4xl">
-                {/* Titre et année */}
+                {/* Titre */}
                 <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
                     <h1 className="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-4">
-                        Bilan Année  {anneeAcademique}
+                        Bilan Clôturé - {bilan?.annee || 'N/A'}
                     </h1>
                     <div className="flex justify-center">
-                        <button 
-                            className={`px-6 py-3 ${clotureEnCours 
-                                ? 'bg-gray-400 cursor-not-allowed' 
-                                : 'bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700'
-                            } text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 flex items-center gap-2`}
-                            onClick={cloturerBilan}
-                            disabled={clotureEnCours || !bilan}
-                        >
-                            {clotureEnCours ? (
-                                <>
-                                    <svg className="animate-spin h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24">
-                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                    </svg>
-                                    Clôture en cours...
-                                </>
-                            ) : (
-                                <>
-                                    📋 Clôturer le bilan
-                                </>
-                            )}
-                        </button>
+                        <div className="px-4 py-2 bg-green-100 text-green-800 rounded-lg font-medium">
+                            ✅ Bilan clôturé
+                        </div>
                     </div>
                 </div>
 
@@ -142,7 +69,6 @@ useEffect(() => {
                 <div className="bg-white rounded-xl shadow-lg overflow-hidden">
                     <div className="overflow-x-auto">
                         <table className="min-w-full divide-y divide-gray-200 text-sm">
-                            {/* ...existing code... */}
                             <thead>
                                 <tr>
                                     <th className="py-4 px-6 text-left bg-blue-50 font-bold text-blue-800" colSpan={2}>ACTIFS</th>
