@@ -83,8 +83,11 @@ export default function Bilan() {
             >
               {ANNEES.map(a => <option key={a} value={a}>{a}</option>)}
             </select>
-            <button className='bg-red-500 p-2 m-2 text-sm' onClick={()=>navigate(`/bilan/${annee}`)} >
-              Cloturer le bilan {annee}
+            <button 
+              className='px-6 py-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200' 
+              onClick={()=>navigate(`/bilan/${annee}`)}
+            >
+              📊 Clôturer le bilan {annee}
             </button>
           </div>
           <div className="flex flex-wrap gap-2 items-center w-full md:w-auto justify-center">
