@@ -7,7 +7,7 @@ import { RingLoader } from 'react-spinners'
 import Backdrop from '../components/backdrop'
 import { Link } from 'react-router-dom'
 
-const ANNEES = ['2024-2025','2025-2026','2026-2027']
+// const ANNEES = ['2025','2026','2027'] // Remplacé par input date
 const MOIS = [
   { long: 'janvier', short: 'Jan' },
   { long: 'février', short: 'Fév' },
@@ -23,25 +23,20 @@ const MOIS = [
   { long: 'décembre', short: 'Déc' }
 ]
 
-function getYearFromAnneeAndMois(annee, mois) {
-  const [anneeDebut, anneeFin] = annee.split('-')
-  const moisIndex = MOIS.findIndex(m => m.long === mois)
-  if (moisIndex === -1) return anneeDebut // fallback
-  if (moisIndex <= 6) {
-    return anneeFin
-  } else {
-    return anneeDebut
-  }
-}
-
 export default function Bilan() {
   const dispatch = useDispatch()
-  const [annee, setAnnee] = useState(ANNEES[1])
+  const [annee, setAnnee] = useState('2025')
   const [periode, setPeriode] = useState(MOIS[0].long)
   const navigate = useNavigate()
+  
+  const handleDateChange = (e) => {
+    const selectedDate = new Date(e.target.value)
+    const year = selectedDate.getFullYear().toString()
+    setAnnee(year)
+  }
+  
   useEffect(() => {
-    const year = getYearFromAnneeAndMois(annee, periode)
-    dispatch(comptabiliteActions.statistiqueFactures({periode:`${periode} ${year}`,anneeAcademique:`${annee}`}))
+    dispatch(comptabiliteActions.statistiqueFactures({periode:`${periode} ${annee}`,anneeAcademique:`${annee}`}))
   }, [periode, annee, dispatch])
 
   const { isLoader, statistique } = useSelector((state) => {
@@ -75,14 +70,13 @@ export default function Bilan() {
       <div className="bilan-header flex flex-col gap-4 bg-white p-6 rounded-2xl mx-auto my-6 max-w-5xl shadow-lg border border-blue-100">
         <div className="flex flex-col md:flex-row flex-wrap items-center gap-4 md:gap-8 justify-between">
           <div className="flex justify-around items-center gap-3 w-full md:w-auto">
-            <span className="font-semibold text-lg text-blue-900">Année académique :</span>
-            <select
-              value={annee}
-              onChange={e => setAnnee(e.target.value)}
+            <span className="font-semibold text-lg text-blue-900">Année :</span>
+            <input
+              type="date"
+              onChange={handleDateChange}
               className="px-4 py-2 rounded-lg border border-blue-200 text-base bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-300 transition"
-            >
-              {ANNEES.map(a => <option key={a} value={a}>{a}</option>)}
-            </select>
+            />
+            <span className="text-sm text-gray-600">{annee}-{parseInt(annee)+1}</span>
             <button 
               className='px-6 py-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200' 
               onClick={()=>navigate(`/bilan/${annee}`)}
