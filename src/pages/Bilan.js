@@ -54,7 +54,7 @@ export default function Bilan() {
     <div className="bilan-page min-h-screen bg-gradient-to-br from-blue-50 via-white to-gray-100">
      <Entete/>
       {/* Entête personnalisée */}
-      <div className="flex items-center justify-between bg-white px-4 py-3 shadow-sm sticky top-0 z-10">
+      <div className="flex items-center justify-between px-4 py-3 sticky top-0 z-10">
         <button
           className="px-4 py-1.5 rounded-lg bg-gray-100 hover:bg-blue-100 text-blue-700 font-medium transition"
           onClick={() => navigate(-1)}

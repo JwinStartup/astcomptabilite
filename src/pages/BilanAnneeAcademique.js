@@ -59,7 +59,7 @@ useEffect(() => {
     return (
         <div className="min-h-screen bg-gray-50 p-4 flex flex-col items-center">
                  <Entete/>
-            <div className="w-full max-w-2xl bg-white rounded-lg shadow-md p-6 mt-8">
+            <div className="w-full max-w-2xl  p-6 mt-8">
                 <button
                     onClick={() => navigate(-1)}
                     className="mb-6 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
