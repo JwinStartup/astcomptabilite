@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { userActions } from '../reducer/user';
+import Entete from '../components/entete'
 
 const ChangeMotpasse = () => {
     const { register, handleSubmit, formState: { errors }, watch, reset } = useForm();
