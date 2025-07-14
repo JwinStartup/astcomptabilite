@@ -25,6 +25,7 @@ const ChangeMotpasse = () => {
 
     return (
         <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+            <Entete />
             <div className="max-w-md mx-auto bg-white rounded-lg shadow-md">
                 <div className="px-6 py-8">
                     <div className="text-center mb-8">
