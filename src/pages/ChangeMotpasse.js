@@ -8,10 +8,10 @@ const ChangeMotpasse = () => {
     const { register, handleSubmit, formState: { errors }, watch, reset } = useForm();
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const [chargement,setChargement]= useState(false)
     const { id } = useParams();
-    const { chargement } = useSelector(state => state.user);
-    
     const onSubmit = (data) => {
+        setChargement(true)
         dispatch(userActions.changerMotPasse({id: id, ...data}))
             .then(() => {
                 alert('Mot de passe changé avec succès !');
