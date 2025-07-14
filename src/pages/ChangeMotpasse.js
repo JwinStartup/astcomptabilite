@@ -3,7 +3,8 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { userActions } from '../reducer/user';
-import Entete from '../components/entete'
+import Entete from '../components/entete';
+import { IoIosArrowDropleftCircle } from "react-icons/io";
 
 const ChangeMotpasse = () => {
     const { register, handleSubmit, formState: { errors }, watch, reset } = useForm();
@@ -26,10 +27,15 @@ const ChangeMotpasse = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+        <div className="min-h-screen bg-gray-50 ">
             <Entete />
-            <div className="max-w-md mx-auto bg-white rounded-lg shadow-md">
-                <div className="px-6 py-8">
+            <div className="container mx-auto px-4 py-6">
+                <div className="flex items-center gap-2 mb-6 cursor-pointer" onClick={() => navigate(-1)}>
+                    <IoIosArrowDropleftCircle size={30} className="text-blue-700" />
+                    <h5 className="text-xl font-bold tracking-tight text-gray-900">Retour</h5>
+                </div>
+                <div className="max-w-md mx-auto bg-white rounded-lg shadow-md">
+                    <div className="px-6 py-8">
                     <div className="text-center mb-8">
                         <h2 className="text-3xl font-bold text-gray-900">Changer le mot de passe</h2>
                         <p className="mt-2 text-sm text-gray-600">
@@ -107,6 +113,7 @@ const ChangeMotpasse = () => {
                         </div>
                     </form>
                 </div>
+            </div>
             </div>
         </div>
     );

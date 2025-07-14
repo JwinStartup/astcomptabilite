@@ -18,18 +18,18 @@ export default function CreerCharge() {
   
   // Liste des mois
   const moisOptions = [
-    { value: '01', label: 'Janvier' },
-    { value: '02', label: 'Février' },
-    { value: '03', label: 'Mars' },
-    { value: '04', label: 'Avril' },
-    { value: '05', label: 'Mai' },
-    { value: '06', label: 'Juin' },
-    { value: '07', label: 'Juillet' },
-    { value: '08', label: 'Août' },
-    { value: '09', label: 'Septembre' },
-    { value: '10', label: 'Octobre' },
-    { value: '11', label: 'Novembre' },
-    { value: '12', label: 'Décembre' }
+    { value: '01', label: 'janvier' },
+    { value: '02', label: 'février' },
+    { value: '03', label: 'mars' },
+    { value: '04', label: 'avril' },
+    { value: '05', label: 'mai' },
+    { value: '06', label: 'juin' },
+    { value: '07', label: 'juillet' },
+    { value: '08', label: 'août' },
+    { value: '09', label: 'septembre' },
+    { value: '10', label: 'octobre' },
+    { value: '11', label: 'novembre' },
+    { value: '12', label: 'décembre' }
   ]
   
   // Générer les années (année actuelle +/- 5 ans)
