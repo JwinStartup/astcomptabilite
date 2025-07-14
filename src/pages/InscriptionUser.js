@@ -15,7 +15,7 @@ export default function InscriptionUser() {
     setChargement(true)
     dispatch(userActions.inscription(data)).then(() => {
       setChargement(false)
-      navigate('/userAdmin')
+      navigate(-1)
     })
   }
   return (
@@ -35,6 +35,12 @@ export default function InscriptionUser() {
           <input {...register("email")} type='email' placeholder='Email' className='outline-none w-full border-b-2 py-2 text-md rounded-md bg-gray-50 focus:border-blue-400 transition' />
           <input {...register("password")} type='password' placeholder='Mot de passe' className='outline-none w-full border-b-2 py-2 text-md rounded-md bg-gray-50 focus:border-blue-400 transition' />
           <input {...register("cel")} type='text' placeholder='Cel' className='outline-none w-full border-b-2 py-2 text-md rounded-md bg-gray-50 focus:border-blue-400 transition' />
+         <select {...register("zone")} defaultValue='Abidjan' className='outline-none w-full border-b-2 py-2 text-md rounded-md bg-gray-50 focus:border-blue-400 transition'>
+            <option>Abidjan</option>
+            <option>Bouake</option>
+            <option>Yamoussoukro</option>
+            <option>Korhogo</option>
+          </select>
           <select {...register("role")} defaultValue='Directeur' className='outline-none w-full border-b-2 py-2 text-md rounded-md bg-gray-50 focus:border-blue-400 transition'>
             <option>Directeur</option>
             <option>Administrateur</option>

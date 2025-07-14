@@ -39,6 +39,12 @@ export default function ModifierUser() {
           <input {...register("nom")} type='text' placeholder='Nom utilisateur' className='outline-none w-full border-b-2 py-2 text-md rounded-md bg-gray-50 focus:border-blue-400 transition' />
           <input {...register("email")} type='text' placeholder='Email' className='outline-none w-full border-b-2 py-2 text-md rounded-md bg-gray-50 focus:border-blue-400 transition' />
           <input {...register("cel")} type='text' placeholder='Cel' className='outline-none w-full border-b-2 py-2 text-md rounded-md bg-gray-50 focus:border-blue-400 transition' />
+          <select {...register("zone")} defaultValue='Abidjan' className='outline-none w-full border-b-2 py-2 text-md rounded-md bg-gray-50 focus:border-blue-400 transition'>
+            <option>Abidjan</option>
+            <option>Bouake</option>
+            <option>Yamoussoukro</option>
+            <option>Korhogo</option>
+          </select>
           <select {...register("role")} defaultValue='Directeur' className='outline-none w-full border-b-2 py-2 text-md rounded-md bg-gray-50 focus:border-blue-400 transition'>
             <option>Directeur</option>
             <option>Administrateur</option>
