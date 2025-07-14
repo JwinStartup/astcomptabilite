@@ -56,7 +56,7 @@ const [rub , setRub]=useState({retour:false,id:null})
             Se déconnecter
           </button>
           {/* Bouton créer utilisateur visible seulement pour les administrateurs */}
-          {useur?.user?.role === 'administrateur' && (
+          {useur?.user?.role === 'Administrateur' && (
             <button
               onClick={() => navigate('/inscriptionUser')}
               className="text-md font-semibold tracking-wider py-2 px-4 bg-green-600 hover:bg-green-700 text-white rounded-lg transition mb-2"

@@ -181,7 +181,7 @@ useEffect(() => {
                                     <td className="py-4 px-6 text-right font-medium">{bilan?.totalCharge?.toLocaleString()} FCFA</td>
                                 </tr>
                                 <tr className="hover:bg-gray-50">
-                                    <td className="py-4 px-6 font-semibold text-gray-700">Commission cours à domicile</td>
+                                    <td className="py-4 px-6 font-semibold text-gray-700">Commission prestation</td>
                                     <td className="py-4 px-6 text-right font-medium">{bilan?.totalCommissionCoursDomicile?.toLocaleString()} FCFA</td>
                                 </tr>
                                 <tr className="bg-red-100 font-bold">
