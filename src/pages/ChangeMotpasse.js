@@ -11,6 +11,7 @@ const ChangeMotpasse = () => {
     const [chargement,setChargement]= useState(false)
     const { id } = useParams();
     const onSubmit = (data) => {
+        console.log(data)
         setChargement(true)
         dispatch(userActions.changerMotPasse({id: id, ...data}))
             .then(() => {

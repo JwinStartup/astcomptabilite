@@ -16,13 +16,36 @@ export default function CreerCharge() {
   const [mois, setMois] = useState('')
   const [annee, setAnnee] = useState(new Date().getFullYear().toString())
   
+  // Liste des mois
+  const moisOptions = [
+    { value: '01', label: 'Janvier' },
+    { value: '02', label: 'Février' },
+    { value: '03', label: 'Mars' },
+    { value: '04', label: 'Avril' },
+    { value: '05', label: 'Mai' },
+    { value: '06', label: 'Juin' },
+    { value: '07', label: 'Juillet' },
+    { value: '08', label: 'Août' },
+    { value: '09', label: 'Septembre' },
+    { value: '10', label: 'Octobre' },
+    { value: '11', label: 'Novembre' },
+    { value: '12', label: 'Décembre' }
+  ]
+  
+  // Générer les années (année actuelle +/- 5 ans)
+  const anneeActuelle = new Date().getFullYear()
+  const anneesOptions = []
+  for (let i = anneeActuelle - 5; i <= anneeActuelle + 5; i++) {
+    anneesOptions.push(i.toString())
+  }
+  
   const onSubmit = (data) => {
     setChargement(true)
-    // Utiliser la période formatée
-      const moisNom = mois
-      ? new Date(2000, parseInt(mois, 10) - 1, 1).toLocaleString('fr-FR', { month: 'long' })
-      : "";
-    const formData = { ...data, periode: `${moisNom} ${annee}` }
+    // Construire la période formatée
+    const moisSelectionne = moisOptions.find(m => m.value === mois)
+    const periode = moisSelectionne ? `${moisSelectionne.label} ${annee}` : `${annee}`
+    
+    const formData = { ...data, periode: periode }
     dispatch(comptabiliteActions.creerCharge(formData)).then(() => {
       setChargement(false)
       navigate('/charges')
@@ -80,30 +103,42 @@ export default function CreerCharge() {
             />
           }
           <div>
-            <label className='block text-sm font-medium text-gray-700 mb-1'>Période (mois et année)</label>
-            <input
-              type="month"
-              value={
-                mois && annee
-                  ? `${annee}-${mois.padStart(2, '0')}`
-                  : (() => {
-                      const d = new Date();
-                      d.setMonth(d.getMonth() - 1);
-                      const y = d.getFullYear();
-                      const m = String(d.getMonth() + 1).padStart(2, '0');
-                      setMois(m);
-                      setAnnee(String(y));
-                      return `${y}-${m}`;
-                    })()
-              }
-              onChange={e => {
-                const [y, m] = e.target.value.split('-')
-                setMois(m)
-                setAnnee(y)
-              }}
-              className='w-full border rounded-lg px-3 py-2 text-sm bg-gray-100'
-              required
-            />
+            <label className='block text-sm font-medium text-gray-700 mb-1'>Période</label>
+            <div className="flex gap-3">
+              {/* Sélection du mois */}
+              <select
+                value={mois}
+                onChange={(e) => setMois(e.target.value)}
+                className='flex-1 outline-none border-b-2 py-2 text-md rounded-md bg-gray-50 focus:border-blue-400 transition'
+                required
+              >
+                <option value="">Choisir le mois</option>
+                {moisOptions.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+              
+              {/* Sélection de l'année */}
+              <select
+                value={annee}
+                onChange={(e) => setAnnee(e.target.value)}
+                className='flex-1 outline-none border-b-2 py-2 text-md rounded-md bg-gray-50 focus:border-blue-400 transition'
+                required
+              >
+                {anneesOptions.map((year) => (
+                  <option key={year} value={year}>
+                    {year}
+                  </option>
+                ))}
+              </select>
+            </div>
+            {mois && annee && (
+              <span className="text-xs text-gray-500 mt-1 block">
+                Période sélectionnée : {moisOptions.find(m => m.value === mois)?.label} {annee}
+              </span>
+            )}
           </div>
           <input
             {...register("montant")}
