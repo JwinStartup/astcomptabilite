@@ -53,11 +53,11 @@ export default function BilanAnneeAcademique() {
         console.log('Clôture du bilan en cours...', anneeAcademique);
         
         dispatch(comptabiliteActions.cloturer(bilan))
-            .then(() => {
-                console.log('Bilan clôturé avec succès');
+            .then((payload) => {
+                console.log('Bilan clôturé avec succès', payload);
                 setClotureEnCours(false);
                 // Optionnel : rediriger ou afficher un message de succès
-                navigate('/bilans');
+                navigate(`/bilan/cloture/${payload._id}`)
             })
             .catch((error) => {
                 console.error('Erreur lors de la clôture du bilan:', error);
@@ -66,17 +66,10 @@ export default function BilanAnneeAcademique() {
     };
 
 useEffect(() => {
-    console.log('useEffect déclenché avec anneeAcademique:', anneeAcademique)
-    console.log('Type de anneeAcademique:', typeof anneeAcademique)
-    console.log('comptabiliteActions.genererbilan:', comptabiliteActions.genererbilan)
     if (anneeAcademique) {
-      console.log('Dispatching genererbilan avec:', anneeAcademique)
       const action = comptabiliteActions.genererbilan(anneeAcademique)
-      console.log('Action créée:', action)
       dispatch(action)
-    } else {
-      console.log('anneeAcademique est falsy:', anneeAcademique)
-    }
+    } 
   }, [anneeAcademique, dispatch])
 
   const { isLoader, bilan } = useSelector((state) => {
