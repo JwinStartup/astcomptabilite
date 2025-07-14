@@ -70,13 +70,7 @@ export default function FormulaireCreerFacture({retour}) {
       ? new Date(2000, parseInt(mois, 10) - 1, 1).toLocaleString('fr-FR', { month: 'long' })
       : "";
 
-    console.log ({
-      client: selectedParent?._id,
-      cours: selectedCours.map(c => c._id), // tableau des ids des cours sélectionnés
-      montant: montant,
-      periode: `${moisNom} ${annee}`,
-      anneeAcademique: anneeAcademiqueSelectionnee
-    })
+    
     dispatch(comptabiliteActions.creerFacture({
       client: selectedParent?._id,
       cours: selectedCours.map(c => c._id), // tableau des ids des cours sélectionnés

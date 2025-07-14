@@ -13,22 +13,16 @@ export default function CreerCharge() {
   const navigate = useNavigate()
   const [select, setSelect] = useState('salaire')
   const [chargement, setChargement] = useState(false)
-  const [periode, setPeriode] = useState('')
-  
-  // Fonction pour convertir la date en format "Mois Année"
-  const handlePeriodeChange = (e) => {
-    const [year, month] = e.target.value.split('-')
-    const monthNames = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 
-                       'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre']
-    const monthName = monthNames[parseInt(month) - 1]
-    const formattedPeriode = `${monthName} ${year}`
-    setPeriode(formattedPeriode)
-  }
+  const [mois, setMois] = useState('')
+  const [annee, setAnnee] = useState(new Date().getFullYear().toString())
   
   const onSubmit = (data) => {
     setChargement(true)
     // Utiliser la période formatée
-    const formData = { ...data, periode: periode }
+      const moisNom = mois
+      ? new Date(2000, parseInt(mois, 10) - 1, 1).toLocaleString('fr-FR', { month: 'long' })
+      : "";
+    const formData = { ...data, periode: `${moisNom} ${annee}` }
     dispatch(comptabiliteActions.creerCharge(formData)).then(() => {
       setChargement(false)
       navigate('/charges')
@@ -85,17 +79,31 @@ export default function CreerCharge() {
               placeholder='Préciser la charge'
             />
           }
-          <div className="flex flex-col gap-2">
-            <label className="text-sm font-medium text-gray-700">Période :</label>
+          <div>
+            <label className='block text-sm font-medium text-gray-700 mb-1'>Période (mois et année)</label>
             <input
               type="month"
-              onChange={handlePeriodeChange}
-              className='outline-none w-full border-b-2 py-2 text-md rounded-md bg-gray-50 focus:border-blue-400 transition'
+              value={
+                mois && annee
+                  ? `${annee}-${mois.padStart(2, '0')}`
+                  : (() => {
+                      const d = new Date();
+                      d.setMonth(d.getMonth() - 1);
+                      const y = d.getFullYear();
+                      const m = String(d.getMonth() + 1).padStart(2, '0');
+                      setMois(m);
+                      setAnnee(String(y));
+                      return `${y}-${m}`;
+                    })()
+              }
+              onChange={e => {
+                const [y, m] = e.target.value.split('-')
+                setMois(m)
+                setAnnee(y)
+              }}
+              className='w-full border rounded-lg px-3 py-2 text-sm bg-gray-100'
               required
             />
-            {periode && (
-              <span className="text-xs text-gray-500">Période sélectionnée : {periode}</span>
-            )}
           </div>
           <input
             {...register("montant")}
