@@ -67,7 +67,7 @@ const [rub , setRub]=useState({retour:false,id:null})
         </div>
 
         {/* Section Liste des utilisateurs */}
-        <div className="w-full">
+         {useur?.user?.role === 'Administrateur' && (<div className="w-full">
           <h2 className="text-2xl font-bold text-blue-800 mb-4 text-center">Liste des utilisateurs</h2>
           {isLoader ? (
             <div className="flex justify-center items-center min-h-[200px]">
@@ -107,7 +107,7 @@ const [rub , setRub]=useState({retour:false,id:null})
                       🔑 Changer mot de passe
                     </button>
                     <button
-                      onClick={() => dispatch(userActions.supprimer(user._id))}
+                      onClick={() => dispatch(userActions.supprimer(user._id)).then(()=>navigate(-1))}
                       className="w-full py-2 px-4 bg-red-500 hover:bg-red-600 text-white font-medium rounded-lg transition"
                     >
                       🗑️ Supprimer
@@ -117,8 +117,8 @@ const [rub , setRub]=useState({retour:false,id:null})
               ))}
             </div>
           )}
+      </div>)}
         </div>
-      </div>
       <footer className="w-full text-center text-xs text-gray-400 py-4 mt-8">
         (c) 2024 Astraining by jwin technology
       </footer>

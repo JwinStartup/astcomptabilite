@@ -15,7 +15,7 @@ const ChangeMotpasse = () => {
     const onSubmit = (data) => {
         console.log(data)
         setChargement(true)
-        dispatch(userActions.changerMotPasse({id: id, ...data}))
+        dispatch(userActions.changerMotPasse({userId: id, ...data}))
             .then(() => {
                 alert('Mot de passe changé avec succès !');
                 reset();

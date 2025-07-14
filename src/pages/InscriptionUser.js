@@ -21,7 +21,7 @@ export default function InscriptionUser() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-gray-100">
       <Entete />
-      <div className="flex items-center gap-2 px-4 pt-4 cursor-pointer" onClick={() => navigate('/userAdmin')}>
+      <div className="flex items-center gap-2 px-4 pt-4 cursor-pointer" onClick={() => navigate(-1)}>
         <IoIosArrowDropleftCircle size={30} className="text-blue-700" />
         <h5 className="text-xl font-bold tracking-tight text-gray-900">Inscription utilisateur</h5>
       </div>
