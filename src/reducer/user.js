@@ -159,6 +159,12 @@ function createInitialState() {
           async ()=>{
              return  await fetchWrapper.get(`${url}/listePersonnel`)
             }
+            ),
+            changerMotPasse:createAsyncThunk(`${name}/changerMotPasse`,
+          async (body)=>{
+              console.log(body)
+             return  await fetchWrapper.post(`${url}/changerMotPasse`,body)
+            }
             )
     }
   }
@@ -189,6 +195,7 @@ function createExtraReducers() {
         listePersonnel();
         login();
         deconnecte();
+        changerMotPasse();
         function inscriptionPersonnel() {
             var { pending, fulfilled, rejected } = extraActions.inscriptionPersonnel;
             builder
@@ -586,6 +593,24 @@ function createExtraReducers() {
               state.isLoader = false;
               state.error = action.error;
             });
+          }
+        function changerMotPasse() {
+            var { pending, fulfilled, rejected } = extraActions.changerMotPasse;
+            builder
+              .addCase(pending, (state) => {
+                state.error = null;
+                state.isLoader = true;
+              })
+              .addCase(fulfilled, (state, action) => {
+                const message = action.payload;
+                console.log(message)
+                state.message = message;
+                state.isLoader = false;
+              })
+              .addCase(rejected, (state, action) => {
+                state.isLoader = false;
+                state.error = action.error;
+              });
           }
           
     }

@@ -29,6 +29,7 @@ import ModifierEnfants from './pages/modifierEnfant.js'
 import Enfants from './pages/Enfants.js'
 import Login from './pages/Login.js'
 import InscriptionUser from "./pages/InscriptionUser.js";
+import ChangeMotpasse from "./pages/ChangeMotpasse.js";
 import ProfilPage from "./pages/profilPage.js";
 import ListeParents from "./pages/ListeParents.js";
 import ListePersonnel from "./pages/ListePersonnels.js";
@@ -197,6 +198,13 @@ function App() {
                 element={
                             <PrivateRouter>
                               <ProfilPage/>
+                            </PrivateRouter>
+                        }
+                />
+        <Route path="/changeMotpasse/:id" 
+                element={
+                            <PrivateRouter>
+                             <ChangeMotpasse/>
                             </PrivateRouter>
                         }
                 />

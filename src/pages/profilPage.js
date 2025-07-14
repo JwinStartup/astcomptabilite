@@ -24,7 +24,7 @@ const [rub , setRub]=useState({retour:false,id:null})
  const { login,logout, user } = useContext(UserContext);
   useEffect(() => { 
     dispatch(userActions.liste())
-  },[])
+  },[dispatch])
   const {isLoader,users} = useSelector((state)=>{
     return state.userReducer
    });
@@ -90,15 +90,15 @@ const [rub , setRub]=useState({retour:false,id:null})
                     </button>
                     <button
                       onClick={() => {
-                        // Action pour changer le mot de passe
-                        console.log('Changer mot de passe pour:', user._id)
+                        // navigater vers une page change mot de passe
+                        navigate(`/changeMotpasse/${user._id}`)
                       }}
                       className="w-full py-2 px-4 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg transition"
                     >
                       🔑 Changer mot de passe
                     </button>
                     <button
-                      onClick={() => dispatch(userActions.supprimerUser(user._id))}
+                      onClick={() => dispatch(userActions.supprimer(user._id))}
                       className="w-full py-2 px-4 bg-red-500 hover:bg-red-600 text-white font-medium rounded-lg transition"
                     >
                       🗑️ Supprimer
