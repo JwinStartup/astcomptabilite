@@ -133,11 +133,6 @@ function createInitialState() {
              return  await fetchWrapper.get(`${url}/voirParent/${body}`)
             }
             ),
-            liste:createAsyncThunk(`${name}/liste`,
-          async (body)=>{
-             return  await fetchWrapper.get(`${url}/liste`)
-            }
-            ),
             voirPersonnel:createAsyncThunk(`${name}/voirPersonnel`,
           async (body)=>{
              return  await fetchWrapper.get(`${url}/voirPersonnel/${body}`)
@@ -191,7 +186,6 @@ function createExtraReducers() {
         supprimerPersonnel();
         modifierPersonnel();
         listeEnfant();
-        liste();
         listePersonnel();
         login();
         deconnecte();
@@ -524,23 +518,7 @@ function createExtraReducers() {
               state.error = action.error;
             });
           }
-        function liste() {
-            var {pending,fulfilled,rejected}=extraActions.liste
-            builder
-            .addCase(pending, (state) => {
-              state.error = null;
-              state.isLoader = true;
-            })
-            .addCase(fulfilled, (state, action) => {
-              const users = action.payload;
-              state.users = users;
-              state.isLoader = false;
-            })
-            .addCase(rejected, (state, action) => {
-              state.isLoader = false;
-              state.error = action.error;
-            });
-          }
+        
         function voirEnfant() {
             var {pending,fulfilled,rejected}=extraActions.voirEnfant
             builder
