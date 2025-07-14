@@ -43,7 +43,7 @@ export default function BilanCloture() {
             {/* En-tête avec navigation */}
             <div className="flex items-center justify-between bg-white px-4 py-3 shadow-sm sticky top-0 z-10">
                 <button
-                    onClick={() => navigate(-1)}
+                    onClick={() => navigate('/')}
                     className="px-4 py-2 rounded-lg bg-gray-100 hover:bg-blue-100 text-blue-700 font-medium transition-all duration-200 flex items-center gap-2"
                 >
                     ← Retour

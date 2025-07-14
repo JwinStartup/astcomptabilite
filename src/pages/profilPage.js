@@ -23,13 +23,10 @@ const dispatch = useDispatch()
 const [rub , setRub]=useState({retour:false,id:null})
  const { login,logout, user } = useContext(UserContext);
   useEffect(() => { 
-    dispatch(comptabiliteActions.listeBilan())
+    dispatch(userActions.liste())
   },[])
-  useEffect(() => { 
-    dispatch(comptabiliteActions.voirTotal())
-  },[])
-  const {isLoader,bilans,total} = useSelector((state)=>{
-    return state.comptabiliteReducer
+  const {isLoader,users} = useSelector((state)=>{
+    return state.userReducer
    });
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 flex flex-col items-center">
@@ -58,6 +55,59 @@ const [rub , setRub]=useState({retour:false,id:null})
           >
             Se déconnecter
           </button>
+        </div>
+
+        {/* Section Liste des utilisateurs */}
+        <div className="w-full">
+          <h2 className="text-2xl font-bold text-blue-800 mb-4 text-center">Liste des utilisateurs</h2>
+          {isLoader ? (
+            <div className="flex justify-center items-center min-h-[200px]">
+              <FadeLoader color="#2563eb" />
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {users.map((user, index) => (
+                <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-200">
+                  <div className="flex flex-col items-center mb-4">
+                    <Avatar name={`${user.nom}`} size="60" round={true} className="mb-3 shadow" />
+                    <div className="text-lg font-bold text-blue-800 text-center">
+                      {user.nom} 
+                    </div>
+                    <div className="text-sm font-medium text-gray-600 mb-1">{user.email}</div>
+                    <div className="text-sm font-medium text-blue-600 mb-1">{user.cel}</div>
+                    <div className="text-sm font-medium text-blue-600 mb-1">{user.zone}</div>
+                    <div className="text-xs font-semibold text-red-500 bg-red-100 px-2 py-1 rounded-full">
+                      {user.role}
+                    </div>
+                  </div>
+                  
+                  <div className="flex flex-col gap-2">
+                    <button
+                      onClick={() => navigate(`/modifier/users/${user._id}`)}
+                      className="w-full py-2 px-4 bg-yellow-500 hover:bg-yellow-600 text-white font-medium rounded-lg transition"
+                    >
+                      ✏️ Modifier
+                    </button>
+                    <button
+                      onClick={() => {
+                        // Action pour changer le mot de passe
+                        console.log('Changer mot de passe pour:', user._id)
+                      }}
+                      className="w-full py-2 px-4 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg transition"
+                    >
+                      🔑 Changer mot de passe
+                    </button>
+                    <button
+                      onClick={() => dispatch(userActions.supprimerUser(user._id))}
+                      className="w-full py-2 px-4 bg-red-500 hover:bg-red-600 text-white font-medium rounded-lg transition"
+                    >
+                      🗑️ Supprimer
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
       <footer className="w-full text-center text-xs text-gray-400 py-4 mt-8">
