@@ -21,9 +21,7 @@ export default function FormulaireCreerFacture({retour}) {
   const [showParentDropdown, setShowParentDropdown] = useState(false)
   const [mois, setMois] = useState("")
   const [annee, setAnnee] = useState("")
-  const [anneeAcademiqueSelectionnee, setAnneeAcademiqueSelectionnee] = useState(
-    "2024-2025"
-  );
+  const [anneeAcademiqueSelectionnee, setAnneeAcademiqueSelectionnee] = useState();
   const dispatch = useDispatch()
   const navigate=useNavigate()
 
@@ -93,9 +91,9 @@ export default function FormulaireCreerFacture({retour}) {
   }, [parentParam, parents]);
 
   return (
-    <div className="w-full min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100 py-10">
+    <div className="w-full min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100 ">
       <Entete />
-      <div className="w-full max-w-lg mx-auto border p-8 bg-white border-blue-100 shadow-2xl rounded-2xl">
+      <div className="w-full max-w-lg mx-auto border p-8 mt-2 bg-white border-blue-100 shadow-2xl rounded-2xl">
         <div className="font-bold text-2xl text-blue-700 mb-6 text-center">Créer une facture</div>
         <form onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex flex-col gap-6 w-full'>
           {/* Sélection parent avec recherche intégrée */}
@@ -182,7 +180,7 @@ export default function FormulaireCreerFacture({retour}) {
               className='w-full border rounded-lg px-3 py-2 text-sm bg-gray-100'
               required
             >
-              <option value="2024-2025">2024-2025</option>
+              <option default value="2024-2025">2024-2025</option>
               <option value="2025-2026">2025-2026</option>
               <option value="2026-2027">2026-2027</option>
             </select>

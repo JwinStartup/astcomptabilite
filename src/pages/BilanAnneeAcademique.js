@@ -150,6 +150,10 @@ useEffect(() => {
                                     <td className="py-4 px-6 font-semibold text-gray-700">Factures partiellement payées</td>
                                     <td className="py-4 px-6 text-right font-medium">{bilan?.facturesEnpartie?.toLocaleString()} FCFA</td>
                                 </tr>
+                                <tr className="bg-blue-100 font-bold">
+                                    <td className="py-4 px-6 text-blue-800">Total recettes</td>
+                                    <td className="py-4 px-6 text-right text-blue-800">{bilan?.totalRecettes?.toLocaleString()} FCFA</td>
+                                </tr>
                                 <tr className="hover:bg-gray-50">
                                     <td className="py-4 px-6 font-semibold text-gray-700">Factures impayées</td>
                                     <td className="py-4 px-6 text-right font-medium">{bilan?.facturesImpaye?.toLocaleString()} FCFA</td>
@@ -180,18 +184,18 @@ useEffect(() => {
                                     <td className="py-4 px-6 font-semibold text-gray-700">Charges</td>
                                     <td className="py-4 px-6 text-right font-medium">{bilan?.totalCharge?.toLocaleString()} FCFA</td>
                                 </tr>
-                                <tr className="hover:bg-gray-50">
-                                    <td className="py-4 px-6 font-semibold text-gray-700">Commission prestation</td>
-                                    <td className="py-4 px-6 text-right font-medium">{bilan?.totalCommissionCoursDomicile?.toLocaleString()} FCFA</td>
-                                </tr>
+                                
                                 <tr className="bg-red-100 font-bold">
                                     <td className="py-4 px-6 text-red-800">Total Passifs</td>
                                     <td className="py-4 px-6 text-right text-red-800">
                                         {
-                                            ((bilan?.totalCharge || 0) +
-                                            (bilan?.totalCommissionCoursDomicile || 0)).toLocaleString()
+                                            ((bilan?.totalCharge || 0) ).toLocaleString()
                                         } FCFA
                                     </td>
+                                </tr>
+                                <tr className="hover:bg-gray-50">
+                                    <td className="py-4 px-6 font-semibold text-gray-700">Commission prestation</td>
+                                    <td className="py-4 px-6 text-right font-medium">{bilan?.totalCommissionCoursDomicile?.toLocaleString()} FCFA</td>
                                 </tr>
                             </tbody>
                             <thead>
@@ -201,13 +205,10 @@ useEffect(() => {
                             </thead>
                             <tbody className="bg-white divide-y divide-gray-200">
                                 <tr className="bg-green-100 font-bold">
-                                    <td className="py-4 px-6 text-green-800">Bénéfice net</td>
+                                    <td className="py-4 px-6 text-green-800">Résultat net</td>
                                     <td className="py-4 px-6 text-right text-green-800 text-lg">{bilan?.beneficeNet?.toLocaleString()} FCFA</td>
                                 </tr>
-                                <tr className="bg-blue-100 font-bold">
-                                    <td className="py-4 px-6 text-blue-800">Total recettes</td>
-                                    <td className="py-4 px-6 text-right text-blue-800">{bilan?.totalRecettes?.toLocaleString()} FCFA</td>
-                                </tr>
+                                
                             </tbody>
                         </table>
                     </div>
