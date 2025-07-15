@@ -126,10 +126,7 @@ export default function BilanCloture() {
                                         } FCFA
                                     </td>
                                 </tr>
-                                <tr className="hover:bg-gray-50">
-                                    <td className="py-4 px-6 font-semibold text-gray-700">Commission cours à domicile</td>
-                                    <td className="py-4 px-6 text-right font-medium">{bilan?.totalCommissionCoursDomicile?.toLocaleString()} FCFA</td>
-                                </tr>
+                                
                             </tbody>
                             <thead>
                                 <tr>
@@ -141,7 +138,10 @@ export default function BilanCloture() {
                                     <td className="py-4 px-6 text-green-800">Résultat net</td>
                                     <td className="py-4 px-6 text-right text-green-800 text-lg">{bilan?.beneficeNet?.toLocaleString()} FCFA</td>
                                 </tr>
-                                
+                                <tr className="hover:bg-gray-50">
+                                    <td className="py-4 px-6 font-semibold text-gray-700">Commission cours à domicile</td>
+                                    <td className="py-4 px-6 text-right font-medium">{bilan?.totalCommissionCoursDomicile?.toLocaleString()} FCFA</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
