@@ -101,7 +101,7 @@ export default function FormCoursDomicile() {
             <select {...register("anneeAcademique", { required: true })} className="border rounded px-3 py-2">
               <option value="">Sélectionner </option>
               {anneeAcademiqueData.map(annee => (
-                <option key={annee} value={annee}>{annee}</option>
+                <option key={annee} defaultValue={anneeAcademiqueData[0]} value={annee}>{annee}</option>
               ))}
             </select>
             {errors.anneeAcademique && <span className="text-red-500 text-xs">Ce champ est requis</span>}

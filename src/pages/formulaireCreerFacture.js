@@ -21,7 +21,7 @@ export default function FormulaireCreerFacture({retour}) {
   const [showParentDropdown, setShowParentDropdown] = useState(false)
   const [mois, setMois] = useState("")
   const [annee, setAnnee] = useState("")
-  const [anneeAcademiqueSelectionnee, setAnneeAcademiqueSelectionnee] = useState();
+  const [anneeAcademiqueSelectionnee, setAnneeAcademiqueSelectionnee] = useState("");
   const dispatch = useDispatch()
   const navigate=useNavigate()
 
@@ -180,7 +180,7 @@ export default function FormulaireCreerFacture({retour}) {
               className='w-full border rounded-lg px-3 py-2 text-sm bg-gray-100'
               required
             >
-              <option default value="2024-2025">2024-2025</option>
+              <option  value="2024-2025">2024-2025</option>
               <option value="2025-2026">2025-2026</option>
               <option value="2026-2027">2026-2027</option>
             </select>
