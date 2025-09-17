@@ -37,13 +37,13 @@ useEffect(() => {
             >
               Retour
             </button>
-            <h2 className="text-xl font-bold text-gray-700">Cours à domicile</h2>
+            <h2 className="text-xl font-bold text-gray-700">Contrat</h2>
           </div>
           <Link
             to="/cd/nouveau"
             className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg shadow transition-colors flex items-center justify-center"
           >
-            + Créer cours
+            + Créer contrat
           </Link>
         </div>
         {/* Liste de cartes responsive */}
@@ -54,7 +54,7 @@ useEffect(() => {
             </div>
           ) : (
             cours.length === 0 ? (
-              <p className="text-center w-full text-gray-500 mt-10">Aucun cours à domicile enregistré</p>
+              <p className="text-center w-full text-gray-500 mt-10">Aucun contrat enregistré</p>
             ) : (
               cours.map((cours, idx) => (
                 <div key={idx} className="bg-white border border-gray-200 rounded-2xl shadow-lg p-5 flex flex-col gap-2 hover:shadow-2xl transition-all duration-200">
@@ -69,18 +69,46 @@ useEffect(() => {
                   <div className="text-sm text-gray-600"><span className="font-semibold">Matières :</span> {Array.isArray(cours.matieres) ? cours.matieres.join(', ') : cours.matieres}</div>
                   <div className="text-sm text-gray-600"><span className="font-semibold">Commissions :</span> {cours.commission}</div>
                   <div className="text-sm text-gray-700 font-bold mt-2"><span className="text-purple-600">Prix :</span> {cours.prix} FCFA</div>
-                  {/* 
-                    Le lien ci-dessous permet de créer une nouvelle facture pour le cours sélectionné.
-                    - Le paramètre 't' est fixé à 'cd' pour indiquer qu'il s'agit d'un cours à domicile.
-                    - Le paramètre 'cours' transmet l'identifiant unique du cours concerné.
-                    Ainsi, la page de création de facture saura pour quel cours et quel type de prestation la facture doit être générée.
-                  */}
-                  <Link
-                    to={`/factures/nouveau?parent=${cours.parent._id}`}
-                    className="mt-3 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold py-2 px-3 rounded shadow transition-colors text-center"
-                  >
-                    Créer une facture
-                  </Link>
+                  
+                  {/* Boutons d'action */}
+                  <div className="flex flex-col gap-2 mt-3">
+                    <Link
+                      to={`/cd/modifier/${cours._id}`}
+                      className="bg-yellow-500 hover:bg-yellow-600 text-white text-xs font-semibold py-2 px-3 rounded shadow transition-colors text-center"
+                    >
+                      ✏️ Modifier contrat
+                    </Link>
+                    <button
+                      onClick={() => {
+                        if (window.confirm('Êtes-vous sûr de vouloir supprimer ce contrat ?')) {
+                          dispatch(comptabiliteActions.deleteCours(cours._id))
+                            .then(() => {
+                              alert('Contrat supprimé avec succès !');
+                              // Recharger la liste des cours
+                              dispatch(comptabiliteActions.getAllCours());
+                            })
+                            .catch(() => {
+                              alert('Erreur lors de la suppression du contrat');
+                            });
+                        }
+                      }}
+                      className="bg-red-500 hover:bg-red-600 text-white text-xs font-semibold py-2 px-3 rounded shadow transition-colors text-center"
+                    >
+                      🗑️ Supprimer contrat
+                    </button>
+                    {/* 
+                      Le lien ci-dessous permet de créer une nouvelle facture pour le cours sélectionné.
+                      - Le paramètre 't' est fixé à 'cd' pour indiquer qu'il s'agit d'un cours à domicile.
+                      - Le paramètre 'cours' transmet l'identifiant unique du cours concerné.
+                      Ainsi, la page de création de facture saura pour quel cours et quel type de prestation la facture doit être générée.
+                    */}
+                    <Link
+                      to={`/factures/nouveau?parent=${cours.parent._id}`}
+                      className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold py-2 px-3 rounded shadow transition-colors text-center"
+                    >
+                      📄 Créer une facture
+                    </Link>
+                  </div>
                 </div>
               ))
             )

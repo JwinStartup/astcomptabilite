@@ -65,6 +65,7 @@ dispatch(userActions.inscriptionPersonnel(data)).then(()=>{
             <select {...register("discipline")} defaultValue='Science'
               className='outline-none w-full border-b-2 py-2 px-2 text-lg focus:border-blue-500 transition-all duration-200 bg-transparent'
             >
+              <option>Polyvalent</option>
               <option>Science</option>
               <option>Litterature</option>
               <option>Mathematique</option>

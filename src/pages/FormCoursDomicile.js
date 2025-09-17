@@ -7,14 +7,14 @@ import { comptabiliteActions } from '../reducer/comptabilite.js';
 import { userActions } from '../reducer/user.js';
 
 const matieresData = [
- "Primaire","EDHC", "Mathématiques", "Physique", "Français", "Anglais", "SVT", "Histoire", "Géographie", "Philosophie", "Informatique"
+ "Primaire","EDHC", "Mathématiques", "Physique", "Français", "Anglais", "SVT", "Histoire", "Géographie", "Philosophie", "Informatique", "Comptabilité", "Economie","Musique","Arts","Autre"
 ];
 
 const classesData = [
   "Cp1", "Cp2", "Ce1", "Ce2", "Cm1", "Cm2",
   "6eme", "5eme", "4eme", "3eme",
   "2ndA", "2ndC", "1ereC", "1ereD", "1ereA",
-  "TleC", "TleD", "TleA"
+  "TleC", "TleD", "TleA","LICENCE1", "LICENCE2", "LICENCE3","MASTER1", "MASTER2","AUTRE"
 ];
 const anneeAcademiqueData = ["2024-2025", "2025-2026", "2026-2027"];
 
@@ -68,14 +68,14 @@ export default function FormCoursDomicile() {
   }, [selectedMatieres, setValue]);
 
   const onSubmit = data => {
-    console.log('Données du formulaire cours à domicile:', data);
+    console.log('Données du formulaire contrat:', data);
     
     // Ici, vous pouvez envoyer les données à votre API ou effectuer d'autres actions
      dispatch(comptabiliteActions.createCours(data)).then(() => {
-        alert('Cours à domicile créé avec succès !');
+        alert('contrat créé avec succès !');
     }).catch(err => {
-        console.error('Erreur lors de la création du cours à domicile:', err);
-        alert('Erreur lors de la création du cours à domicile. Veuillez réessayer.');
+        console.error('Erreur lors de la création du contrat:', err);
+        alert('Erreur lors de la création du contrat. Veuillez réessayer.');
     });
         navigate('/cd');
   };
@@ -93,7 +93,7 @@ export default function FormCoursDomicile() {
     <div className="w-full min-h-screen bg-gray-50">
       <Entete />
       <div className="max-w-lg mx-auto mt-10 bg-white p-8 rounded-2xl shadow">
-        <h2 className="text-2xl font-bold mb-6 text-purple-700">Nouveau cours à domicile</h2>
+        <h2 className="text-2xl font-bold mb-6 text-purple-700">Nouveau contrat</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
           {/* Année académique */}
           <div>

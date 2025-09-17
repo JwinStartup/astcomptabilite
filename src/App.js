@@ -10,6 +10,7 @@ import {
 import Home from './pages/Home.js'
 import CoursDomicile from './pages/CoursDomicile.js'
 import FormulaireCours from './pages/FormCoursDomicile.js'
+import ModifierFormulaireCours from './pages/ModifierFormulaireCours.js'
 import Recues from './pages/Recues.js'
 import CreerCharge from './pages/creerCharge.js'
 import FacturesCommissions from './pages/FacturesCommussions.js'
@@ -64,6 +65,13 @@ function App() {
                 element={
                             <PrivateRouter>
                                 <FormulaireCours/>
+                            </PrivateRouter>
+                        }
+                />
+        <Route path="/cd/modifier/:id" 
+                element={
+                            <PrivateRouter>
+                                <ModifierFormulaireCours/>
                             </PrivateRouter>
                         }
                 />
