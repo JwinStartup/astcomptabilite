@@ -60,20 +60,20 @@ useEffect(() => {
                 <div key={idx} className="bg-white border border-gray-200 rounded-2xl shadow-lg p-5 flex flex-col gap-2 hover:shadow-2xl transition-all duration-200">
                   <div className="flex items-center gap-2 mb-2">
                     <FaUserTie className="text-purple-600" size={22} />
-                    <span className="font-bold text-lg text-gray-800">{cours.eleve?.nom} {cours.eleve?.prenoms}</span>
+                    <span className="font-bold text-lg text-gray-800">{cours?.eleve?.nom} {cours?.eleve?.prenoms}</span>
                   </div>
-                  <div className="text-sm text-gray-600"><span className="font-semibold">Année :</span> {cours.anneeAcademique}</div>
-                  <div className="text-sm text-gray-600"><span className="font-semibold">Parent :</span> {cours.parent?.nom} {cours.parent?.prenoms}</div>
-                  <div className="text-sm text-gray-600"><span className="font-semibold">Formateur :</span> {cours.formateur?.nom} {cours.formateur?.prenoms}</div>
-                  <div className="text-sm text-gray-600"><span className="font-semibold">Classe :</span> {cours.classe}</div>
-                  <div className="text-sm text-gray-600"><span className="font-semibold">Matières :</span> {Array.isArray(cours.matieres) ? cours.matieres.join(', ') : cours.matieres}</div>
-                  <div className="text-sm text-gray-600"><span className="font-semibold">Commissions :</span> {cours.commission}</div>
-                  <div className="text-sm text-gray-700 font-bold mt-2"><span className="text-purple-600">Prix :</span> {cours.prix} FCFA</div>
+                  <div className="text-sm text-gray-600"><span className="font-semibold">Année :</span> {cours?.anneeAcademique}</div>
+                  <div className="text-sm text-gray-600"><span className="font-semibold">Parent :</span> {cours?.parent?.nom} {cours?.parent?.prenoms}</div>
+                  <div className="text-sm text-gray-600"><span className="font-semibold">Formateur :</span> {cours?.formateur?.nom} {cours?.formateur?.prenoms}</div>
+                  <div className="text-sm text-gray-600"><span className="font-semibold">Classe :</span> {cours?.classe}</div>
+                  <div className="text-sm text-gray-600"><span className="font-semibold">Matières :</span> {Array.isArray(cours?.matieres) ? cours?.matieres.join(', ') : cours?.matieres}</div>
+                  <div className="text-sm text-gray-600"><span className="font-semibold">Commissions :</span> {cours?.commission}</div>
+                  <div className="text-sm text-gray-700 font-bold mt-2"><span className="text-purple-600">Prix :</span> {cours?.prix} FCFA</div>
                   
                   {/* Boutons d'action */}
                   <div className="flex flex-col gap-2 mt-3">
                     <Link
-                      to={`/cd/modifier/${cours._id}`}
+                      to={`/cd/modifier/${cours?._id}`}
                       className="bg-yellow-500 hover:bg-yellow-600 text-white text-xs font-semibold py-2 px-3 rounded shadow transition-colors text-center"
                     >
                       ✏️ Modifier contrat
@@ -81,7 +81,7 @@ useEffect(() => {
                     <button
                       onClick={() => {
                         if (window.confirm('Êtes-vous sûr de vouloir supprimer ce contrat ?')) {
-                          dispatch(comptabiliteActions.deleteCours(cours._id))
+                          dispatch(comptabiliteActions.deleteCours(cours?._id))
                             .then(() => {
                               alert('Contrat supprimé avec succès !');
                               // Recharger la liste des cours
@@ -103,7 +103,7 @@ useEffect(() => {
                       Ainsi, la page de création de facture saura pour quel cours et quel type de prestation la facture doit être générée.
                     */}
                     <Link
-                      to={`/factures/nouveau?parent=${cours.parent._id}`}
+                      to={`/factures/nouveau?parent=${cours?.parent?._id}`}
                       className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold py-2 px-3 rounded shadow transition-colors text-center"
                     >
                       📄 Créer une facture
