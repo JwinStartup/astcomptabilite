@@ -108,10 +108,27 @@ export default function ModifierFormulaireCours() {
     console.log('Données de modification du contrat:', data);
     setChargement(true);
     
+    // Préparer les données avec les IDs corrects
+    const formData = {
+      ...data,
+      parent: data.parentId, // Utiliser l'ID du parent au lieu du nom
+      eleve: data.eleve,
+      formateur: data.formateur,
+      matieres: selectedMatieres,
+      anneeAcademique: anneeAcademique
+    };
+    
+    // Supprimer les champs non nécessaires
+    delete formData.parentId;
+    
+    console.log('Données formatées à envoyer:', formData);
+    
     // Envoyer les données modifiées à l'API
-    dispatch(comptabiliteActions.updateCours({ id, data }))
+    dispatch(comptabiliteActions.updateCours({ id, data: formData }))
       .then(() => {
         alert('Contrat modifié avec succès !');
+        // Actualiser la liste des cours après modification réussie
+        dispatch(comptabiliteActions.getAllCours());
         navigate('/cd');
       })
       .catch(err => {

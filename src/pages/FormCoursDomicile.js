@@ -70,14 +70,31 @@ export default function FormCoursDomicile() {
   const onSubmit = data => {
     console.log('Données du formulaire contrat:', data);
     
-    // Ici, vous pouvez envoyer les données à votre API ou effectuer d'autres actions
-     dispatch(comptabiliteActions.createCours(data)).then(() => {
-        alert('contrat créé avec succès !');
+    // Préparer les données avec les IDs corrects
+    const formData = {
+      ...data,
+      parent: data.parentId, // Utiliser l'ID du parent au lieu du nom
+      eleve: data.eleve,
+      formateur: data.formateur,
+      matieres: selectedMatieres,
+      anneeAcademique: anneeAcademique
+    };
+    
+    // Supprimer les champs non nécessaires
+    delete formData.parentId;
+    
+    console.log('Données formatées à envoyer:', formData);
+    
+    // Envoyer les données à l'API
+    dispatch(comptabiliteActions.createCours(formData)).then(() => {
+        alert('Contrat créé avec succès !');
+        // Actualiser la liste des cours après création réussie
+        dispatch(comptabiliteActions.getAllCours());
+        navigate('/cd');
     }).catch(err => {
         console.error('Erreur lors de la création du contrat:', err);
         alert('Erreur lors de la création du contrat. Veuillez réessayer.');
     });
-        navigate('/cd');
   };
 
   // Filtrage pour recherche élève
