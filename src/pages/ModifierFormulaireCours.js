@@ -22,15 +22,26 @@ const anneeAcademiqueData = ["2024-2025", "2025-2026", "2026-2027"];
 export default function ModifierFormulaireCours() {
   const navigate = useNavigate();
   const { id } = useParams();
-  const { register, handleSubmit, formState: { errors }, setValue, control, watch, reset } = useForm();
-  const [searchEleve, setSearchEleve] = useState('');
-  const [showEleveDropdown, setShowEleveDropdown] = useState(false);
-  const [searchFormateur, setSearchFormateur] = useState('');
-  const [showFormateurDropdown, setShowFormateurDropdown] = useState(false);
-  const [selectedMatieres, setSelectedMatieres] = useState([]);
-  const [anneeAcademique, setAnneeAcademique] = useState("");
-  const [chargement, setChargement] = useState(false);
   const [coursData, setCoursData] = useState(null);
+  const { register, handleSubmit, formState: { errors }, setValue, control, watch, reset } = useForm({
+    defaultValues: {
+      eleve: coursData?.eleve?._id || '',
+      parent: coursData?.parent ? `${coursData.parent.nom} ${coursData.parent.prenoms}` : '',
+      parentId: coursData?.parent?._id || '',
+      formateur: coursData?.formateur?._id || '',
+      classe: coursData?.classe || '',
+      prix: coursData?.prix || '',
+      commission: coursData?.commission || '',
+      anneeAcademique: coursData?.anneeAcademique || ''
+    }
+  });
+  const [searchEleve, setSearchEleve] = useState(coursData?.eleve ? `${coursData.eleve.nom} ${coursData.eleve.prenoms}` : '');
+  const [showEleveDropdown, setShowEleveDropdown] = useState(false);
+  const [searchFormateur, setSearchFormateur] = useState(coursData?.formateur ? `${coursData.formateur.nom} ${coursData.formateur.prenoms}` : '');
+  const [showFormateurDropdown, setShowFormateurDropdown] = useState(false);
+  const [selectedMatieres, setSelectedMatieres] = useState(coursData?.matieres ? (Array.isArray(coursData.matieres) ? coursData.matieres : [coursData.matieres]) : []);
+  const [anneeAcademique, setAnneeAcademique] = useState(coursData?.anneeAcademique || "");
+  const [chargement, setChargement] = useState(false);
   const dispatch = useDispatch();
        
   useEffect(() => { 
@@ -46,19 +57,27 @@ export default function ModifierFormulaireCours() {
         .then((result) => {
           const cours = result.payload;
           setCoursData(cours);
-          // Préremplir le formulaire avec les données existantes
+          
+          // Utiliser les données de coursData pour préremplir le formulaire
           reset({
-            eleve: cours.eleve?._id,
-            parent: `${cours.parent?.nom} ${cours.parent?.prenoms}`,
-            parentId: cours.parent?._id,
-            formateur: cours.formateur?._id,
-            classe: cours.classe,
-            prix: cours.prix,
-            commission: cours.commission,
-            anneeAcademique: cours.anneeAcademique
+            eleve: cours?.eleve?._id || '',
+            parent: cours?.parent ? `${cours.parent.nom} ${cours.parent.prenoms}` : '',
+            parentId: cours?.parent?._id || '',
+            formateur: cours?.formateur?._id || '',
+            classe: cours?.classe || '',
+            prix: cours?.prix || '',
+            commission: cours?.commission || '',
+            anneeAcademique: cours?.anneeAcademique || ''
           });
-          setAnneeAcademique(cours.anneeAcademique);
-          setSelectedMatieres(Array.isArray(cours.matieres) ? cours.matieres : [cours.matieres]);
+          
+          // Mettre à jour les états avec les valeurs de coursData
+          setAnneeAcademique(cours?.anneeAcademique || '');
+          setSelectedMatieres(cours?.matieres ? (Array.isArray(cours.matieres) ? cours.matieres : [cours.matieres]) : []);
+          
+          // Mettre à jour les champs de recherche avec les valeurs de coursData
+          setSearchEleve(cours?.eleve ? `${cours.eleve.nom} ${cours.eleve.prenoms}` : '');
+          setSearchFormateur(cours?.formateur ? `${cours.formateur.nom} ${cours.formateur.prenoms}` : '');
+          
           setChargement(false);
         })
         .catch(() => {
