@@ -93,7 +93,7 @@ export default function FormCoursDomicile() {
       eleve: data.eleve,
       formateur: data.formateur,
       matieres: selectedMatieres,
-      anneeAcademique: anneeAcademique
+      anneeAcademique: data.anneeAcademique
     };
     
     // Supprimer les champs non nécessaires
