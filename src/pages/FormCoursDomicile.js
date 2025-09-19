@@ -44,10 +44,20 @@ export default function FormCoursDomicile() {
   // Pour remplir automatiquement le parent
   const selectedEleveId = watch("eleve");
   useEffect(() => {
-    const eleve = enfants.find(e => String(e._id) === String(selectedEleveId));
-    if (eleve) {setValue("parent",  eleve?.parent?.nom + " " + eleve?.parent?.prenoms);setValue("parentId", eleve?.parent?._id)}
-    else {setValue("parent", ""); setValue("parentId", "")};
-  }, [selectedEleveId, setValue]);
+    if (selectedEleveId) {
+      const eleve = enfants.find(e => String(e._id) === String(selectedEleveId));
+      if (eleve && eleve.parent && eleve.parent._id) {
+        setValue("parent", eleve.parent.nom + " " + eleve.parent.prenoms);
+        setValue("parentId", eleve.parent._id);
+      } else {
+        setValue("parent", "Aucun parent associé");
+        setValue("parentId", "");
+      }
+    } else {
+      setValue("parent", "");
+      setValue("parentId", "");
+    }
+  }, [selectedEleveId, setValue, enfants]);
 
   // Pour l'affichage de l'année académique sélectionnée
   useEffect(() => {
@@ -69,6 +79,12 @@ export default function FormCoursDomicile() {
 
   const onSubmit = data => {
     console.log('Données du formulaire contrat:', data);
+    
+    // Vérifier que le parent existe avant de soumettre
+    if (!data.parentId) {
+      alert('Erreur: Aucun parent associé à cet élève. Veuillez vérifier que l\'élève sélectionné a un parent enregistré.');
+      return;
+    }
     
     // Préparer les données avec les IDs corrects
     const formData = {
@@ -182,6 +198,8 @@ export default function FormCoursDomicile() {
             <label className="block text-sm font-medium text-gray-700 mb-1">Parent</label>
           <input {...register("parent", { required: true })} placeholder="Nom du parent" className="border rounded px-3 py-2 bg-gray-100" readOnly />
           {errors.parent && <span className="text-red-500 text-xs">Ce champ est requis</span>}
+          <input type="hidden" {...register("parentId", { required: true })} />
+          {errors.parentId && <span className="text-red-500 text-xs">Aucun parent associé à cet élève</span>}
           {/* Sélection formateur avec recherche */}
           <div className="relative" tabIndex={0}
             onBlur={e => {
